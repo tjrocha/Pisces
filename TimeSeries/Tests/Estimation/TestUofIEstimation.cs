@@ -93,7 +93,6 @@ namespace Pisces.NunitTests.Estimation
             // disaggregated daily summed to monthly acre-feet
             Series infilled = Math.RMSEInterp(daily, monthly);
             Series infilledMonthlySumAcreFeet = Math.MonthlySum(infilled) * 1.98347;
-            infilledMonthlySumAcreFeet.TimeInterval = TimeInterval.Monthly;
             
             // get equal time period for infilled data to original monthly data
             Series s = infilledMonthlySumAcreFeet.Subset(monthly.MinDateTime, monthly.MaxDateTime);

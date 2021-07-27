@@ -39,101 +39,101 @@ namespace Reclamation.TimeSeries
                                  updated.Hour, 0, 0, dateTime.Kind);
         }
 
-        public static void ConvertCelciusToF(Series s)
-        {
-            // convert nrcs C to F
-            for (int j = 0; j < s.Count; j++)
-            {
-                Point p = s[j];
-                p.Value = p.Value * 9.0 / 5.0 + 32.0;
-                s[j] = p;
-            }
-        }
-
         /// <summary>
-        /// Converts series to specified units
+        /// Returns new series converted to specified units
         /// </summary>
-        /// <param name="units"></param>
-        public static void ConvertUnits(Series s, string units)
+        public static Series ConvertUnits(Series s, string units)
         {
-            if (s.Count == 0)
-                return;
+            if (s.Count == 0 || s.Units == units)
+                return s.Copy();
 
-            if (s.Units == "degrees C" && units == "degrees F")
+            Series rval = s.Clone();
+            if (s.Units.ToLower() == "degrees c" && units.ToLower() == "degrees f")
             {
                 for (int i = 0; i < s.Count; i++)
                 {
-                    Point p = s[i];
-                    if (p.IsMissing)
-                        continue;
-                    p.Value = p.Value * 9.0 / 5.0 + 32.0;
-                    s[i] = p;
+                    Point pt = s[i];
+                    if (!pt.IsMissing)
+                        pt.Value = pt.Value * 9.0 / 5.0 + 32.0;
+                    rval.Add(pt);
                 }
-                s.Units = "degrees F";
-                return;
+                rval.Units = units;
             }
-
             else if (s.Units.ToLower() == "degrees f" && units.ToLower() == "degrees c")
             {
                 for (int i = 0; i < s.Count; i++)
                 {
-                    Point p = s[i];
-                    if (p.IsMissing)
-                        continue;
-                    p.Value = (p.Value - 32.0) * 5.0 / 9.0;
-                    s[i] = p;
+                    Point pt = s[i];
+                    if (!pt.IsMissing)
+                        pt.Value = (pt.Value - 32.0) * 5.0 / 9.0;
+                    rval.Add(pt);
                 }
-                s.Units = "degrees C";
-                return;
+                rval.Units = units;
+            }
+            else if (s.Units.ToLower() == "acre-feet" && units.ToLower() == "cfs"
+                || s.Units.ToLower() == "cfs" && units.ToLower() == "acre-feet")
+            {
+                for (int i = 0; i < s.Count; i++)
+                {
+                    Point pt = s[i];
+                    if (!pt.IsMissing)
+                        pt.Value *= ConvertUnitsFactor(s.TimeInterval, s.Units, units, pt.DateTime);
+                    rval.Add(pt);
+                }
+                rval.Units = units;
             }
             else
-                if (s.Units == "acre-feet" && units == "cfs")
-                {
-                    if (s.TimeInterval == TimeInterval.Daily)
-                    {
-                        Math.Multiply(s, ConvertUnitsFactor(s.TimeInterval, s.Units, units, DateTime.Now));
-                        s.Units = "cfs";
-                        return;
-                    }
-                    else
-                        if (s.TimeInterval == TimeInterval.Monthly)
-                        {
-                            for (int i = 0; i < s.Count; i++)
-                            {
-                                Point pt = s[i];
-                                pt = pt * ConvertUnitsFactor(s.TimeInterval, s.Units, units, pt.DateTime);
-                                s[i] = pt;
+            {
+                throw new NotImplementedException(string.Format("cannot convert '{0}' from '{1}' to '{2}'", s.TimeInterval, s.Units, units));
+            }
 
-                            }
-                            s.Units = "cfs";
-                            return;
-                        }
-                }
-
-            throw new NotImplementedException("cannot convert " + s.TimeInterval.ToString() + " " + s.Units + " to " + units);
+            return rval;
         }
 
-       
 
-        public static double ConvertUnitsFactor(TimeInterval type, string fromUnits, string toUnits, DateTime date)
+        public static double ConvertUnitsFactor(TimeInterval interval, string fromUnits, string toUnits, DateTime date)
         {
-            double rval = 1.0;
-            if (fromUnits == "acre-feet" && toUnits == "cfs")
+            double rval;
+
+            var errorMessage = string.Format("cannot convert '{0}' from '{1}' to '{2}'", interval, fromUnits, toUnits);
+
+            var days = DateTime.DaysInMonth(date.Year, date.Month);
+            if (fromUnits.ToLower() == "acre-feet" && toUnits.ToLower() == "cfs")
             {
-                if (type == TimeInterval.Daily)
+                if (interval == TimeInterval.Daily)
                 {
                     rval = 1.0 / 1.98347;
                 }
-                else if (type == TimeInterval.Monthly)
+                else if (interval == TimeInterval.Monthly)
                 {
-                    int days = DateTime.DaysInMonth(date.Year, date.Month);
                     rval = 1.0 / (1.98347 * days);
                 }
                 else
                 {
-                    throw new NotImplementedException("cannot convert " + type.ToString() + " " + fromUnits + " to " + toUnits);
+                    throw new NotImplementedException(errorMessage);
+                }
+
+            }
+            else if (fromUnits.ToLower() == "cfs" && toUnits.ToLower() == "acre-feet")
+            {
+                if (interval == TimeInterval.Daily)
+                {
+                    rval = 1.98347;
+                }
+                else if (interval == TimeInterval.Monthly)
+                {
+                    rval = 1.98347 * days;
+                }
+                else
+                {
+                    throw new NotImplementedException(errorMessage);
                 }
             }
+            else
+            {
+                throw new NotImplementedException(errorMessage);
+            }
+
             return rval;
         }
 

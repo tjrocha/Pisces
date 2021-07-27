@@ -83,7 +83,7 @@ namespace Reclamation.TimeSeries
         {
             // Generates the monthly totals for the RMS calculations in cu.ft/month
             Series SSmonthTot = MonthSum(Math.MonthlyAverage(daily));
-            Series TSmonthTot = MonthSum(ConvertAcreFeetToCfs(monthly));
+            Series TSmonthTot = MonthSum(Math.ConvertUnits(monthly, "cfs"));
 
             // Builds a Series to keep track of the corresponding year with the minimum RMSe
             Series TSrms = RMSEGenerateMatchList(SSmonthTot, TSmonthTot);
@@ -367,55 +367,7 @@ namespace Reclamation.TimeSeries
             return sMonthTot;
         }
 
-
-
-        /// <summary>
-        /// Converts acre-feet to cfs 
-        /// </summary>
-        /// <param name="s">Series to convert units</param>
-        private static Series ConvertAcreFeetToCfs(Series s)
-        {
-            Series rval = new Series();
-            Series.CopyAttributes(s, rval);
-            if (s.Units == "cfs")
-            {
-                return s;
-            }
-            else if (s.Units.ToLower() == "acre-feet" || s.Units.ToLower() == "a-f")
-            {
-                for (int i = 0; i < s.Count; i++)
-                {
-                    Point p = s[i];
-                    if (s.TimeInterval == TimeInterval.Daily)
-                    {
-                        p.Value /= 1.98347;
-                    }
-                    else if (s.TimeInterval == TimeInterval.Monthly)
-                    {
-                        int numDays = DateTime.DaysInMonth(p.DateTime.Year, p.DateTime.Month);
-                        p.Value /= (numDays * 1.98347);
-                    }
-                    else
-                    {
-                        string msg = "series '" + s.Name + "' undefined or unsupported time interval, only daily or monthly";
-                        Logger.WriteLine(msg);
-                        throw new NotImplementedException(msg);
-                    }
-                    rval.Add(p.DateTime, p.Value);
-                }
-            }
-            else
-            {
-                string msg = "unknown units '" + s.Units + "' only acre-feet or a-f";
-                Logger.WriteLine(msg);
-                throw new NotImplementedException(msg);
-            }
-            rval.Units = "cfs";
-            return rval;
-        }
-
-
-
+        
         /// <summary>
         /// Merges the disaggregated series with the observed daily series and scales the disaggregated values
         /// to maintain mass balance. 
