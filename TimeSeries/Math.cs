@@ -53,9 +53,15 @@ namespace Reclamation.TimeSeries
                 for (int i = 0; i < s.Count; i++)
                 {
                     Point pt = s[i];
-                    if (!pt.IsMissing)
+                    if (pt.IsMissing)
+                    {
+                        rval.AddMissing(pt.DateTime);
+                    }
+                    else
+                    {
                         pt.Value = pt.Value * 9.0 / 5.0 + 32.0;
-                    rval.Add(pt);
+                        rval.Add(pt);
+                    }
                 }
                 rval.Units = units;
             }
@@ -64,9 +70,15 @@ namespace Reclamation.TimeSeries
                 for (int i = 0; i < s.Count; i++)
                 {
                     Point pt = s[i];
-                    if (!pt.IsMissing)
+                    if (pt.IsMissing)
+                    {
+                        rval.AddMissing(pt.DateTime);
+                    }
+                    else
+                    {
                         pt.Value = (pt.Value - 32.0) * 5.0 / 9.0;
-                    rval.Add(pt);
+                        rval.Add(pt);
+                    }
                 }
                 rval.Units = units;
             }
@@ -76,9 +88,15 @@ namespace Reclamation.TimeSeries
                 for (int i = 0; i < s.Count; i++)
                 {
                     Point pt = s[i];
-                    if (!pt.IsMissing)
+                    if (pt.IsMissing)
+                    {
+                        rval.AddMissing(pt.DateTime);
+                    }
+                    else
+                    {
                         pt.Value *= ConvertUnitsFactor(s.TimeInterval, s.Units, units, pt.DateTime);
-                    rval.Add(pt);
+                        rval.Add(pt);
+                    }
                 }
                 rval.Units = units;
             }
