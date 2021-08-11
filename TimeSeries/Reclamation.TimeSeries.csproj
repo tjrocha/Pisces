@@ -153,7 +153,6 @@
     <Compile Include="CubicSpline.cs" />
     <Compile Include="DataLogger\CsvScadaFile.cs" />
     <Compile Include="EnsembleSeries.cs" />
-    <Compile Include="Estimation\test.cs" />
     <Compile Include="Estimation\ScaleDailyToMonthlyVolume.cs" />
     <Compile Include="Estimation\UofIEstimation.cs" />
     <Compile Include="MonthlyTimeSeriesCalculator.cs" />
