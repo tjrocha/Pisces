@@ -153,6 +153,8 @@
     <Compile Include="CubicSpline.cs" />
     <Compile Include="DataLogger\CsvScadaFile.cs" />
     <Compile Include="EnsembleSeries.cs" />
+    <Compile Include="Estimation\test.cs" />
+    <Compile Include="Estimation\ScaleDailyToMonthlyVolume.cs" />
     <Compile Include="Estimation\UofIEstimation.cs" />
     <Compile Include="MonthlyTimeSeriesCalculator.cs" />
     <Compile Include="Estimation\MonthlyToDailyConversion.cs" />
@@ -198,6 +200,7 @@
     <Compile Include="Tests\Database\TestAlarms.cs" />
     <Compile Include="Tests\Database\TestSiteInfo.cs" />
     <Compile Include="Tests\DateMath\TestDailyCalcRange.cs" />
+    <Compile Include="Tests\Estimation\TestScaleDailyToMonthlyVolume.cs" />
     <Compile Include="Tests\Estimation\TestUofIEstimation.cs" />
     <Compile Include="Tests\Import\TestXC.cs" />
     <Compile Include="Tests\Import\TestUsgsRating.cs" />
