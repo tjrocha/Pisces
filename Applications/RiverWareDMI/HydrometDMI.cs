@@ -135,8 +135,8 @@ namespace Reclamation.Riverware
                 controlFile1.TryParse(i, "file", out filename[i]);
                 controlFile1.TryParse(i, "cbtt", out cbtt[i]);
                 controlFile1.TryParse(i, "pcode", out pcode[i]);
-                controlFile1.TryParse(i, "days_offset", out daysOffset[i], 0);
-                controlFile1.TryParse(i, "slot_offset", out slot_offset[i], 0);
+                controlFile1.TryParse(i, "days_offset", out daysOffset[i], 0, true);
+                controlFile1.TryParse(i, "slot_offset", out slot_offset[i], 0, true);
 
                 hasCount[i] = controlFile1.TryParse(i, "count", out dayCount[i], -1, true);
                 
