@@ -92,32 +92,32 @@ namespace Reclamation.Riverware
 
         private void WriteToRiverwareFiles(SeriesList list)
         {
-            for(int i=0; i<list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 Series s = list[i];
-                File.Delete(filename[i]);
+
                 if (s.Count <= 0)
                     continue;
-                StreamWriter sw = new StreamWriter(filename[i]);
-                sw.WriteLine("# this data was imported from Hydromet "+DateTime.Now.ToString() );
-                sw.WriteLine("# " + cbtt[i] + " " + pcode[i]);
 
-                sw.WriteLine("start_date: " + s[0].DateTime.AddDays(slot_offset[i]).ToString("yyyy-MM-dd") + " 24:00");
+                var lines = new StringBuilder();
+                lines.AppendLine("# this data was imported from Hydromet " + DateTime.Now.ToString());
+                lines.AppendLine("# " + cbtt[i] + " " + pcode[i]);
+                lines.AppendLine("start_date: " + s[0].DateTime.AddDays(slot_offset[i]).ToString("yyyy-MM-dd") + " 24:00");
 
                 for (int j = 0; j < s.Count; j++)
                 {
                     if (s[j].IsMissing)
                     {
-                        Console.WriteLine(cbtt[i]+" "+pcode[i] + " Error: missing data " + s[j].ToString());
-                        sw.WriteLine("NaN");
+                        Console.WriteLine(string.Format("{0} {1} Error: missing data {2}", cbtt[i], pcode[i], s[j]));
+                        lines.AppendLine("NaN");
                     }
                     else
                     {
-                        sw.WriteLine(s[j].Value);
+                        lines.AppendLine(string.Format("{0}", s[j].Value));
                     }
                 }
-                sw.Close();
 
+                File.WriteAllText(filename[i], lines.ToString());
             }
         }
 
@@ -133,7 +133,6 @@ namespace Reclamation.Riverware
             for (int i = 0; i < controlFile1.Length; i++)
             {
                 controlFile1.TryParse(i, "file", out filename[i]);
-                File.Delete(filename[i]);
                 controlFile1.TryParse(i, "cbtt", out cbtt[i]);
                 controlFile1.TryParse(i, "pcode", out pcode[i]);
                 controlFile1.TryParse(i, "days_offset", out daysOffset[i], 0);
