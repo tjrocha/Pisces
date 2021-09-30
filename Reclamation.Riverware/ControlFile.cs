@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using Reclamation.Core;
 
 namespace Reclamation.Riverware
 {
@@ -77,6 +78,22 @@ namespace Reclamation.Riverware
             value = Regex.Match(this[index], pattern).Groups[1].Value;
 
             return true;
+        }
+
+        public bool TryParseObjectSlot(int index, out string value)
+        {
+            value = "";
+
+            int idx = this[index].IndexOf(":");
+            if (idx > 0)
+            {
+                value = this[index].Substring(0, idx);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // filenames with spaces will be quoted

@@ -69,11 +69,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlFile.cs" />
-    <Compile Include="ControlFileWithData.cs" />
-    <Compile Include="ExcelDMI.cs" />
-    <Compile Include="HydrometDMI.cs" />
-    <Compile Include="PiscesDMI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\TestExcelDMI.cs" />
@@ -131,13 +126,13 @@
       <Project>{80c73d4c-43cf-42de-addc-7b0f06ecf086}</Project>
       <Name>Reclamation.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Reclamation.Riverware\Reclamation.Riverware.csproj">
+      <Project>{4fa07f03-e6c3-418e-aa20-6378e7e6599d}</Project>
+      <Name>Reclamation.Riverware</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Reclamation.Windows\Reclamation.Windows.csproj">
       <Project>{c9278b32-7c94-4532-9f4c-92109a6b8e03}</Project>
       <Name>Reclamation.Windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj">
-      <Project>{5dd20a8a-4037-4885-ab91-2f5a3d1f48b4}</Project>
-      <Name>Reclamation.TimeSeries</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

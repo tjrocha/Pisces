@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Data;
 using Reclamation.TimeSeries;
 using Reclamation.Core;
-using Reclamation.TimeSeries.Parser;
 
 namespace Reclamation.Riverware
 {
@@ -15,7 +12,7 @@ namespace Reclamation.Riverware
     /// database into text files, ready to import into
     /// RiverWare through a DMI.
     /// </summary>
-    class PiscesDMI
+    public class PiscesDMI
     {
         ControlFile m_controlFile;
         string m_dbName;

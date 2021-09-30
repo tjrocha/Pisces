@@ -10,7 +10,7 @@ namespace Reclamation.Riverware
     /// Used for control files that have data 'embeded' in the
     /// control file instead of an external data source
     /// </summary>
-    class ControlFileWithData
+    public class ControlFileWithData
     {
 
 

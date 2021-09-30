@@ -1,13 +1,7 @@
 using System;
-using System.IO;
-using System.Data;
-using System.Configuration;
 using System.Text.RegularExpressions;
-using Reclamation;
-using Reclamation.TimeSeries.Hydromet;
 using Reclamation.Riverware;
 using Reclamation.Core;
-using Reclamation.TimeSeries;
 
 namespace Reclamation.RiverwareDmi
 {
@@ -82,7 +76,8 @@ namespace Reclamation.RiverwareDmi
                 ReadFromExcel(controlFilename, xlsFileName, t1, t2, traceNumber);
             }
             else if (arguments.Contains("uhydrometserver"))
-            {//"-UHydrometServer=pnhyd0"
+            {
+                //"-UHydrometServer=pnhyd"
                 string serverName = arguments["uhydrometserver"];
                 ReadFromHydromet(controlFilename, serverName, t1, t2);
             }
@@ -117,15 +112,14 @@ namespace Reclamation.RiverwareDmi
 
         private static void ReadFromHydromet(string controlFilename, string serverName, DateTime t1, DateTime t2)
         {
+            HydrometDMI dmi = new HydrometDMI(serverName,controlFilename,t1,t2);
+            dmi.ExportTextFilesDMI();
+        }
 
-            HydrometHost server = HydrometHost.PNLinux;
-            if (serverName.IndexOf("yakhyd") >= 0)
-            {
-                server = HydrometHost.Yakima;
-            }
-            HydrometDMI dmi = new HydrometDMI(server,controlFilename,t1,t2);
-
-            dmi.ExportTextFiles();
+        private static void ReadFromExcel(string controlFileName, string xlsFileName, DateTime t1, DateTime t2, int traceNumber)
+        {
+            ExcelDMI dmi = new ExcelDMI(xlsFileName, controlFileName);
+            dmi.ExportTextFiles(t1, t2, traceNumber);
         }
 
         private static void Usage()
@@ -144,9 +138,9 @@ namespace Reclamation.RiverwareDmi
             Console.WriteLine("");
             
          //                                       1        2          3     4          5     6    7                        8  
-            Console.WriteLine("Usage 2: controlfile tempPath yyyy-mm-dd hh:mm yyyy-mm-dd hh:mm 1DAY  -UHydrometServer=pnhyd0");
+            Console.WriteLine("Usage 2: controlfile tempPath yyyy-mm-dd hh:mm yyyy-mm-dd hh:mm 1DAY  -UHydrometServer=pnhyd");
             Console.WriteLine("Where:");
-            Console.WriteLine("       -UHydrometServer pnhyd0|yakhyd specifies what hydromet server to read from");
+            Console.WriteLine("       -UHydrometServer pnhyd|yakhyd specifies what hydromet server to read from");
 
             Console.WriteLine("Usage 3: controlfile tempPath yyyy-mm-dd hh:mm yyyy-mm-dd hh:mm 1DAY  -UpdbFileName=file.pdb");
             Console.WriteLine("Where:");
@@ -159,12 +153,5 @@ namespace Reclamation.RiverwareDmi
 
         }
 
-        private static void ReadFromExcel(string controlFileName, string xlsFileName, DateTime t1, DateTime t2, int traceNumber)
-        {
-            // basic data import.
-            ExcelDMI dmi = new ExcelDMI(xlsFileName, controlFileName);
-
-            dmi.ExportTextFiles(t1,t2,traceNumber);
-        }
     }
 }
