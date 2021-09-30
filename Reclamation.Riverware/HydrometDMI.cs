@@ -203,18 +203,26 @@ namespace Reclamation.Riverware
 
         private void ParseControlFile()
         {
+            string objectSlot;
+            string filename;
+            string cbtt;
+            string pcode;
+            int daysOffset;
+            int slot_offset;
+            int dayCount;
+
             for (int i = 0; i < controlFile1.Length; i++)
             {
                 if (controlFile1[i].StartsWith("#") || controlFile1[i].Trim() == "")
                     continue;
 
-                controlFile1.TryParseObjectSlot(i, out string objectSlot);
-                controlFile1.TryParse(i, "file", out string filename);
-                controlFile1.TryParse(i, "cbtt", out string cbtt);
-                controlFile1.TryParse(i, "pcode", out string pcode);
-                controlFile1.TryParse(i, "days_offset", out int daysOffset, 0, true);
-                controlFile1.TryParse(i, "slot_offset", out int slot_offset, 0, true);
-                var hasCount = controlFile1.TryParse(i, "count", out int dayCount, -1, true);
+                controlFile1.TryParseObjectSlot(i, out objectSlot);
+                controlFile1.TryParse(i, "file", out filename);
+                controlFile1.TryParse(i, "cbtt", out cbtt);
+                controlFile1.TryParse(i, "pcode", out pcode);
+                controlFile1.TryParse(i, "days_offset", out daysOffset, 0, true);
+                controlFile1.TryParse(i, "slot_offset", out slot_offset, 0, true);
+                var hasCount = controlFile1.TryParse(i, "count", out dayCount, -1, true);
 
                 this.objectSlot.Add(objectSlot);
                 this.filename.Add(filename);

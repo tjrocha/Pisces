@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
-using Reclamation.TimeSeries.Hydromet;
-using ReclamationTesting;
-using Reclamation.Core;
 using System.IO;
+using NUnit.Framework;
+using Reclamation.Core;
+using Reclamation.Riverware;
 
 namespace ReclamationTesting.RiverWareDmiTest
 {
@@ -36,8 +33,7 @@ namespace ReclamationTesting.RiverWareDmiTest
            DateTime t = DateTime.Now.Date.AddDays(-1);
             //c:\temp\Storage.Jackson.txt
             
-            Reclamation.Riverware.HydrometDMI dmi;
-            dmi = new Reclamation.Riverware.HydrometDMI(HydrometHost.PNLinux, cf, t, DateTime.Now);
+            var dmi = new HydrometDMI("pnhyd", cf, t, DateTime.Now);
             dmi.ExportTextFilesDMI();
 
             foreach (var item in tempFiles)
@@ -57,8 +53,7 @@ namespace ReclamationTesting.RiverWareDmiTest
             DateTime t2 = DateTime.Now.Date.AddDays(-50);
             //c:\temp\Storage.Jackson.txt
 
-            Reclamation.Riverware.HydrometDMI dmi;
-            dmi = new Reclamation.Riverware.HydrometDMI(HydrometHost.PNLinux, cf, t1, t2);
+            var dmi = new HydrometDMI("pnhyd", cf, t1, t2);
             dmi.ExportTextFilesDMI();
 
             foreach (var item in tempFiles)

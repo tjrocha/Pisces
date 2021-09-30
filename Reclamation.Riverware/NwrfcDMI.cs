@@ -125,6 +125,8 @@ namespace Reclamation.Riverware
                 return rval;
             }
 
+            DateTime date;
+            double val;
             for (int i = dataIndex; i < data.Length; i++)
             {
                 if (data[i].Trim() == "")
@@ -132,7 +134,8 @@ namespace Reclamation.Riverware
 
                 var lineItems = data[i].Split(',');
 
-                DateTime.TryParse(lineItems[0], out DateTime date);
+
+                DateTime.TryParse(lineItems[0], out date);
 
                 // skip leap year data, Feb 29
                 if (date.Month == 2 && date.Day == 29)
@@ -147,7 +150,7 @@ namespace Reclamation.Riverware
 
                     for (int j = traceIndex; j < traceIndex + traceCount; j++)
                     {
-                        Double.TryParse(lineItems[j], out double val);
+                        Double.TryParse(lineItems[j], out val);
                         rval[date].Add((val * 1000).ToString());
                     }
                 }
@@ -196,13 +199,16 @@ namespace Reclamation.Riverware
 
         private void ParseControlFile()
         {
+            string objectSlot;
+            string cbtt;
+
             for (int i = 0; i < controlFile1.Length; i++)
             {
                 if (controlFile1[i].StartsWith("#") || controlFile1[i].Trim() == "")
                     continue;
 
-                controlFile1.TryParseObjectSlot(i, out string objectSlot);
-                controlFile1.TryParse(i, "cbtt", out string cbtt);
+                controlFile1.TryParseObjectSlot(i, out objectSlot);
+                controlFile1.TryParse(i, "cbtt", out cbtt);
 
                 this.objectSlot.Add(objectSlot);
                 this.cbtt.Add(cbtt);
