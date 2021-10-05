@@ -24,7 +24,8 @@ namespace Reclamation.Riverware
         List<int> daysOffset = new List<int>();
         List<int> dayCount = new List<int>();
         List<int> slot_offset = new List<int>();
-        List<bool> hasCount = new List<bool>();
+        List<bool> hasDayCount = new List<bool>();
+        List<bool> mrm_init = new List<bool>();
         DateTime startDate;
         DateTime endDate;
         HydrometHost server;
@@ -75,23 +76,30 @@ namespace Reclamation.Riverware
             {
                 HydrometDailySeries s =
                     new HydrometDailySeries(cbtt[i], pcode[i], this.server);
-                DateTime t1 = startDate.AddDays(daysOffset[i]);
-                DateTime t2 = t1.AddDays(dayCount[i] - 1);
+                DateTime t1 = mrm_init[i] ? DateTime.Now.AddDays(daysOffset[i] - 1) : startDate.AddDays(daysOffset[i]);
+                DateTime t2 = hasDayCount[i] ? t1.AddDays(dayCount[i] - 1) : endDate;
 
-                if (!hasCount[i])
-                {
-                    t2 = endDate;
-                }
-                
-                if (dayCount[i] < 1 && hasCount[i])
+                if (dayCount[i] < 1 && hasDayCount[i])
                 {
                     Console.WriteLine("Warning: The number of days requested was " + dayCount[i] + "from hydromet");
                 }
 
                 s.Read(t1, t2);
-                if (s.Count < dayCount[i] && hasCount[0])
+                if (s.Count < dayCount[i] && hasDayCount[0])
                 {
                     Console.WriteLine("Warning: the requested hydromet data is missing.");
+                }
+
+                if (mrm_init[i])
+                {
+                    t1 = startDate.AddDays(daysOffset[i]);
+                    for (int j = 0; j < s.Count; j++)
+                    {
+                        var pt = s[j];
+                        pt.DateTime = t1;
+                        s[j] = pt;
+                        t1.AddDays(1);
+                    }
                 }
 
                 rval.Add(s);
@@ -162,41 +170,40 @@ namespace Reclamation.Riverware
                 if (s.Count <= 0)
                     continue;
 
-                var header = new StringBuilder();
-                header.AppendLine("# this data was imported from Hydromet " + DateTime.Now.ToString());
-                header.AppendLine("# " + cbtt[i] + " " + pcode[i]);
-                header.AppendLine("start_date: " + new DateTime(2000, startDate.Month, startDate.Day).ToString("yyyy-MM-dd") + " 24:00");
-
                 var trace = 1;
-                var lines = new StringBuilder();
-                foreach (var pt in s)
+                for (int j = startDate.Year; j < endDate.Year; j++)
                 {
-                    // skip leap year data, Feb 29
-                    if (pt.DateTime.Month == 2 && pt.DateTime.Day == 29)
-                        continue;
+                    var dt1 = new DateTime(j, startDate.Month, startDate.Day);
+                    var dt2 = new DateTime(j + 1, endDate.Month, endDate.Day);
 
-                    if (pt.DateTime.Month == startDate.Month && pt.DateTime.Day == startDate.Day)
+                    var wySeries = s.Subset(dt1, dt2);
+
+                    var lines = new StringBuilder();
+                    lines.AppendLine("# this data was imported from Hydromet " + DateTime.Now.ToString());
+                    lines.AppendLine("# " + cbtt[i] + " " + pcode[i]);
+                    lines.AppendLine("start_date: " + new DateTime(2000, startDate.Month, startDate.Day).ToString("yyyy-MM-dd") + " 24:00");
+
+                    foreach (var pt in wySeries)
                     {
-                        lines.Clear();
-                        lines.Append(header);
-                    }
-                    if (pt.IsMissing)
-                    {
-                        Console.WriteLine(string.Format("{0} {1} Error: missing data {2}", cbtt[i], pcode[i], pt));
-                        lines.AppendLine("NaN");
-                    }
-                    else
-                    {
-                        lines.AppendLine(string.Format("{0}", pt.Value));
+                        // skip leap year data, Feb 29
+                        if (pt.DateTime.Month == 2 && pt.DateTime.Day == 29)
+                            continue;
+
+                        if (pt.IsMissing)
+                        {
+                            Console.WriteLine(string.Format("{0} {1} Error: missing data {2}", cbtt[i], pcode[i], pt));
+                            lines.AppendLine("NaN");
+                        }
+                        else
+                        {
+                            lines.AppendLine(string.Format("{0}", pt.Value));
+                        }
                     }
 
-                    if (pt.DateTime.Month == endDate.Month && pt.DateTime.Day == endDate.Day)
-                    {
-                        var outputpath = Path.Combine(outdirectory, "trace" + trace);
-                        Directory.CreateDirectory(outputpath);
-                        File.WriteAllText(Path.Combine(outputpath, objectSlot[i] + ".txt"), lines.ToString());
-                        trace += 1;
-                    }
+                    var outputpath = Path.Combine(outdirectory, "trace" + trace);
+                    Directory.CreateDirectory(outputpath);
+                    File.WriteAllText(Path.Combine(outputpath, objectSlot[i] + ".txt"), lines.ToString());
+                    trace += 1;
                 }
             }
         }
@@ -210,6 +217,7 @@ namespace Reclamation.Riverware
             int daysOffset;
             int slot_offset;
             int dayCount;
+            bool mrm_init;
 
             for (int i = 0; i < controlFile1.Length; i++)
             {
@@ -223,6 +231,7 @@ namespace Reclamation.Riverware
                 controlFile1.TryParse(i, "days_offset", out daysOffset, 0, true);
                 controlFile1.TryParse(i, "slot_offset", out slot_offset, 0, true);
                 var hasCount = controlFile1.TryParse(i, "count", out dayCount, -1, true);
+                controlFile1.TryParse(i, "mrm_init", out mrm_init, false);
 
                 this.objectSlot.Add(objectSlot);
                 this.filename.Add(filename);
@@ -231,7 +240,8 @@ namespace Reclamation.Riverware
                 this.daysOffset.Add(daysOffset);
                 this.slot_offset.Add(slot_offset);
                 this.dayCount.Add(dayCount);
-                this.hasCount.Add(hasCount);
+                this.hasDayCount.Add(hasCount);
+                this.mrm_init.Add(mrm_init);
             }
         }
 

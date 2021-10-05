@@ -30,6 +30,7 @@ namespace Reclamation.Riverware
             if (!int.TryParse(s, out value))
             {
                 Console.WriteLine("Error: could not convert '" + s + "' to a integer ["+name+"]");
+                return false;
             }
             return true;
         }
@@ -43,6 +44,23 @@ namespace Reclamation.Riverware
             if (!double.TryParse(s, out value))
             {
                 Console.WriteLine("Error: could not convert '" + s + "' to a double [" + name + "]");
+                return false;
+            }
+            return true;
+        }
+
+        public bool TryParse(int index, string name, out bool value, bool defaultValue)
+        {
+            value = defaultValue;
+
+            string s = "";
+            if (!TryParse(index, name, out s, "false"))
+                return false;
+
+            if (!bool.TryParse(s, out value))
+            {
+                Console.WriteLine(string.Format("Error: could not convert '{0}' to a boolean [{1}]", s, name));
+                return false;
             }
             return true;
         }
@@ -65,8 +83,9 @@ namespace Reclamation.Riverware
                 return true;
             }
 
-            string pattern = name + "=" + @"(\S+)"; 
-            if (!Regex.IsMatch(this[index], pattern))
+            string pattern = name + "=" + @"(\S+)";
+            var match = Regex.Match(this[index], pattern);
+            if (!match.Success)
             {
                 if (!suppressWarnings)
                 {
@@ -75,7 +94,7 @@ namespace Reclamation.Riverware
                 return false;
             }
 
-            value = Regex.Match(this[index], pattern).Groups[1].Value;
+            value = match.Groups[1].Value;
 
             return true;
         }
