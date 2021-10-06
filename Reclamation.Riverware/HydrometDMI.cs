@@ -98,7 +98,7 @@ namespace Reclamation.Riverware
                         var pt = s[j];
                         pt.DateTime = t1;
                         s[j] = pt;
-                        t1.AddDays(1);
+                        t1 = t1.AddDays(1);
                     }
                 }
 
