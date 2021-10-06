@@ -22,7 +22,7 @@ namespace Reclamation.Riverware
             controlFile1 = new ControlFile(controlFilename);
             this.host = host;
             this.startDate = startDate;
-            this.endDate = endDate;
+            this.endDate = endDate.AddDays(1);
         }
 
         public void GenerateFilesTrace(string format, string outdirectory)
