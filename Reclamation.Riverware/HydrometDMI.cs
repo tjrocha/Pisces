@@ -8,11 +8,11 @@ using Reclamation.TimeSeries.Hydromet;
 namespace Reclamation.Riverware
 {
     /// <summary>
-    /// Imports daily excel time-series data
+    /// Imports daily hydromet time-series data
     /// into riverware as a dmi
-    /// Either imports all data in your spreadsheet
-    /// or imports a single year for multiple year trace type run 
-    /// Karl Tarbet October 2006
+    /// Either creates timeseries of all data in hydromet
+    /// or creates single year traces for multiple year 
+    /// trace type run Karl Tarbet October 2006
     /// </summary>
     public class HydrometDMI
     {
@@ -52,8 +52,7 @@ namespace Reclamation.Riverware
             }
             else
             {
-                var msg = string.Format("unknown server string: {0} only pnhyd or yakhyd supported", server);
-                Console.WriteLine(msg);
+                throw new NotImplementedException($"unknown server string: '{server}' only pnhyd or yakhyd supported");
             }
         }
 
@@ -81,7 +80,7 @@ namespace Reclamation.Riverware
 
                 if (dayCount[i] < 1 && hasDayCount[i])
                 {
-                    Console.WriteLine("Warning: The number of days requested was " + dayCount[i] + "from hydromet");
+                    Console.WriteLine($"Warning: The number of days requested was '{dayCount[i]}' days from hydromet");
                 }
 
                 s.Read(t1, t2);
@@ -118,15 +117,15 @@ namespace Reclamation.Riverware
                     continue;
 
                 var lines = new StringBuilder();
-                lines.AppendLine("# this data was imported from Hydromet " + DateTime.Now.ToString());
-                lines.AppendLine("# " + cbtt[i] + " " + pcode[i]);
-                lines.AppendLine("start_date: " + s[0].DateTime.AddDays(slot_offset[i]).ToString("yyyy-MM-dd") + " 24:00");
+                lines.AppendLine($"# this data was imported from Hydromet {DateTime.Now}");
+                lines.AppendLine($"# {cbtt[i]} {pcode[i]}");
+                lines.AppendLine($"start_date: {s[0].DateTime.AddDays(slot_offset[i])}:yyyy-MM-dd 24:00");
 
                 for (int j = 0; j < s.Count; j++)
                 {
                     if (s[j].IsMissing)
                     {
-                        Console.WriteLine(string.Format("{0} {1} Error: missing data {2}", cbtt[i], pcode[i], s[j]));
+                        Console.WriteLine($"{cbtt[i]} {pcode[i]} Error: missing data {s[j]}");
                         lines.AppendLine("NaN");
                     }
                     else
@@ -151,14 +150,13 @@ namespace Reclamation.Riverware
             }
             else
             {
-                var msg = string.Format("unknown output format: {0} only txt or xls", format);
-                Console.WriteLine(msg);
+                throw new NotImplementedException($"Error: unknown output format: '{format}' only txt or xls");
             }
         }
 
         private void WriteRiverwareTraceExcel(SeriesList list, string outdirectory)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Error: xls output currently unsupported");
         }
 
         private void WriteRiverwareTraceText(SeriesList list, string outdirectory)
@@ -179,9 +177,9 @@ namespace Reclamation.Riverware
                     var wySeries = s.Subset(dt1, dt2);
 
                     var lines = new StringBuilder();
-                    lines.AppendLine("# this data was imported from Hydromet " + DateTime.Now.ToString());
-                    lines.AppendLine("# " + cbtt[i] + " " + pcode[i]);
-                    lines.AppendLine("start_date: " + new DateTime(2000, startDate.Month, startDate.Day).ToString("yyyy-MM-dd") + " 24:00");
+                    lines.AppendLine($"# this data was imported from Hydromet {DateTime.Now}");
+                    lines.AppendLine($"# {cbtt[i]} {pcode[i]}");
+                    lines.AppendLine($"start_date: {new DateTime(2000, startDate.Month, startDate.Day)}:yyyy-MM-dd 24:00");
 
                     foreach (var pt in wySeries)
                     {
@@ -191,18 +189,18 @@ namespace Reclamation.Riverware
 
                         if (pt.IsMissing)
                         {
-                            Console.WriteLine(string.Format("{0} {1} Error: missing data {2}", cbtt[i], pcode[i], pt));
+                            Console.WriteLine($"{cbtt[i]} {pcode[i]} Error: missing data {pt}");
                             lines.AppendLine("NaN");
                         }
                         else
                         {
-                            lines.AppendLine(string.Format("{0}", pt.Value));
+                            lines.AppendLine($"{pt.Value}");
                         }
                     }
 
-                    var outputpath = Path.Combine(outdirectory, "trace" + trace);
+                    var outputpath = Path.Combine(outdirectory, $"trace{trace}");
                     Directory.CreateDirectory(outputpath);
-                    File.WriteAllText(Path.Combine(outputpath, objectSlot[i] + ".txt"), lines.ToString());
+                    File.WriteAllText(Path.Combine(outputpath, $"{objectSlot[i]}.txt"), lines.ToString());
                     trace += 1;
                 }
             }

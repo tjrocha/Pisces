@@ -71,15 +71,14 @@ namespace Reclamation.Riverware
             }
             else
             {
-                var msg = string.Format("unknown output format: {0} only txt or xls", format);
-                Console.WriteLine(msg);
+                throw new NotImplementedException($"Error: unknown output format: '{format}' only txt or xls");
             }
 
         }
 
         private void WriteRiverwareTraceExcel(string[] data, string outdirectory, string objectSlot)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Error: xls output currently unsupported");
         }
 
         private void WriteRiverwareTraceText(string[] data, string outdirectory, string objectSlot)
@@ -93,19 +92,19 @@ namespace Reclamation.Riverware
             for (int i = 0; i < results.First().Value.Count; i++)
             {
                 var lines = new StringBuilder();
-                lines.AppendLine("# this data was imported from Northwest River Forecast Center " + DateTime.Now.ToString());
-                lines.AppendLine("# " + data[0] + ".csv");
-                lines.AppendLine("start_date: " + new DateTime(2000, results.First().Key.Month, results.First().Key.Day).ToString("yyyy-MM-dd") + " 24:00");
-                lines.AppendLine("end_date: " + new DateTime(2000, results.Last().Key.Month, results.Last().Key.Day).ToString("yyyy-MM-dd") + " 24:00");
+                lines.AppendLine($" this data was imported from Northwest River Forecast Center {DateTime.Now}");
+                lines.AppendLine($"# {data[0]}.csv");
+                lines.AppendLine($"start_date: {new DateTime(2000, results.First().Key.Month, results.First().Key.Day):yyyy-MM-dd 24:00}");
+                lines.AppendLine($"end_date: {new DateTime(2000, results.Last().Key.Month, results.Last().Key.Day):yyyy-MM-dd 24:00}");
 
                 foreach (var item in results.Keys)
                 {
                     lines.AppendLine(results[item][i]);
                 }
 
-                var outputpath = Path.Combine(outdirectory, "trace" + trace);
+                var outputpath = Path.Combine(outdirectory, $"trace{trace}");
                 Directory.CreateDirectory(outputpath);
-                File.WriteAllText(Path.Combine(outputpath, objectSlot + ".txt"), lines.ToString());
+                File.WriteAllText(Path.Combine(outputpath, $"{objectSlot}.txt"), lines.ToString());
                 trace += 1;
             }
 
@@ -122,7 +121,7 @@ namespace Reclamation.Riverware
 
             if (traceIndex * traceCount * dataIndex < 0)
             {
-                Console.WriteLine("unable to parse data -- " + data[0] + ".csv");
+                Console.WriteLine($"unable to parse data -- {data[0]}.csv");
                 return rval;
             }
 
