@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Net.NetworkInformation;
 
 namespace Reclamation.Core
 {
@@ -10,6 +11,7 @@ namespace Reclamation.Core
     {
         private static bool s_intranet = false;
         private static bool knowMyIP = false;
+        private static bool alreadyInitialized = false;
 
         public static bool Intranet
         {
@@ -21,6 +23,23 @@ namespace Reclamation.Core
                     s_intranet = MyIpStartsWith(prefix);
                     knowMyIP = true;
                 }
+
+                // Check if we can see the lrgs1 server
+                try
+                {
+                    if (!alreadyInitialized)
+                    {
+                        alreadyInitialized = true;
+                        var lrgs1Host = Dns.GetHostEntry("140.218.6.18");
+                        s_intranet = true;
+                        knowMyIP = true;
+                    }
+                }
+                catch
+                {
+                    s_intranet = false;
+                }
+
                 return s_intranet;
             }
         }

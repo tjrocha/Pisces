@@ -118,11 +118,13 @@
             // 
             // radioButtonBoiseLinux
             // 
+            this.radioButtonBoiseLinux.Checked = true;
             this.radioButtonBoiseLinux.Location = new System.Drawing.Point(15, 93);
             this.radioButtonBoiseLinux.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonBoiseLinux.Name = "radioButtonBoiseLinux";
             this.radioButtonBoiseLinux.Size = new System.Drawing.Size(136, 20);
             this.radioButtonBoiseLinux.TabIndex = 5;
+            this.radioButtonBoiseLinux.TabStop = true;
             this.radioButtonBoiseLinux.Text = "Boise Linux Hydromet ";
             this.radioButtonBoiseLinux.CheckedChanged += new System.EventHandler(this.serverChanged);
             // 

@@ -79,12 +79,14 @@
             this.timeSelectorBeginEnd1 = new Reclamation.TimeSeries.Forms.TimeSelectorBeginEnd();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxSiteFilter = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageStream.SuspendLayout();
             this.tabPageReservoir.SuspendLayout();
             this.tabPageDiversion.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -99,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 289);
+            this.label2.Location = new System.Drawing.Point(13, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 13);
             this.label2.TabIndex = 5;
@@ -453,7 +455,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(24, 165);
+            this.labelName.Location = new System.Drawing.Point(13, 40);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(41, 13);
             this.labelName.TabIndex = 14;
@@ -462,7 +464,7 @@
             // labelSID
             // 
             this.labelSID.AutoSize = true;
-            this.labelSID.Location = new System.Drawing.Point(24, 184);
+            this.labelSID.Location = new System.Drawing.Point(13, 59);
             this.labelSID.Name = "labelSID";
             this.labelSID.Size = new System.Drawing.Size(45, 13);
             this.labelSID.TabIndex = 15;
@@ -473,7 +475,7 @@
             this.labelYears.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelYears.AutoSize = true;
-            this.labelYears.Location = new System.Drawing.Point(24, 203);
+            this.labelYears.Location = new System.Drawing.Point(13, 78);
             this.labelYears.MaximumSize = new System.Drawing.Size(350, 0);
             this.labelYears.Name = "labelYears";
             this.labelYears.Size = new System.Drawing.Size(86, 13);
@@ -483,7 +485,7 @@
             // labelSType
             // 
             this.labelSType.AutoSize = true;
-            this.labelSType.Location = new System.Drawing.Point(228, 184);
+            this.labelSType.Location = new System.Drawing.Point(217, 59);
             this.labelSType.Name = "labelSType";
             this.labelSType.Size = new System.Drawing.Size(58, 13);
             this.labelSType.TabIndex = 17;
@@ -492,7 +494,7 @@
             // textBoxSID
             // 
             this.textBoxSID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSID.Location = new System.Drawing.Point(70, 181);
+            this.textBoxSID.Location = new System.Drawing.Point(59, 56);
             this.textBoxSID.Name = "textBoxSID";
             this.textBoxSID.ReadOnly = true;
             this.textBoxSID.Size = new System.Drawing.Size(139, 13);
@@ -517,10 +519,12 @@
             // radioButtonHistorical
             // 
             this.radioButtonHistorical.AutoSize = true;
-            this.radioButtonHistorical.Location = new System.Drawing.Point(80, 145);
+            this.radioButtonHistorical.Checked = true;
+            this.radioButtonHistorical.Location = new System.Drawing.Point(69, 20);
             this.radioButtonHistorical.Name = "radioButtonHistorical";
             this.radioButtonHistorical.Size = new System.Drawing.Size(68, 17);
             this.radioButtonHistorical.TabIndex = 20;
+            this.radioButtonHistorical.TabStop = true;
             this.radioButtonHistorical.Text = "Historical";
             this.radioButtonHistorical.UseVisualStyleBackColor = true;
             this.radioButtonHistorical.CheckedChanged += new System.EventHandler(this.radioButtonHistorical_CheckedChanged);
@@ -528,7 +532,7 @@
             // radioButtonAccounting
             // 
             this.radioButtonAccounting.AutoSize = true;
-            this.radioButtonAccounting.Location = new System.Drawing.Point(246, 143);
+            this.radioButtonAccounting.Location = new System.Drawing.Point(235, 18);
             this.radioButtonAccounting.Name = "radioButtonAccounting";
             this.radioButtonAccounting.Size = new System.Drawing.Size(79, 17);
             this.radioButtonAccounting.TabIndex = 21;
@@ -539,7 +543,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 147);
+            this.label6.Location = new System.Drawing.Point(13, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 22;
@@ -579,7 +583,7 @@
             // 
             // timeSelectorBeginEnd1
             // 
-            this.timeSelectorBeginEnd1.Location = new System.Drawing.Point(133, 282);
+            this.timeSelectorBeginEnd1.Location = new System.Drawing.Point(122, 153);
             this.timeSelectorBeginEnd1.Name = "timeSelectorBeginEnd1";
             this.timeSelectorBeginEnd1.ShowTime = false;
             this.timeSelectorBeginEnd1.Size = new System.Drawing.Size(199, 46);
@@ -612,25 +616,37 @@
             this.comboBoxSiteFilter.Text = "A - Show All Sites";
             this.comboBoxSiteFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxSiteFilter_SelectedIndexChanged);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.radioButtonAccounting);
+            this.groupBox2.Controls.Add(this.radioButtonHistorical);
+            this.groupBox2.Controls.Add(this.textBoxSID);
+            this.groupBox2.Controls.Add(this.labelSType);
+            this.groupBox2.Controls.Add(this.labelYears);
+            this.groupBox2.Controls.Add(this.labelSID);
+            this.groupBox2.Controls.Add(this.labelName);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.timeSelectorBeginEnd1);
+            this.groupBox2.Location = new System.Drawing.Point(8, 125);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(399, 205);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Site Info";
+            // 
             // ImportIdwrData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 516);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.comboBoxSiteFilter);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.radioButtonSiteIdSort);
             this.Controls.Add(this.radioButtonSiteNameSort);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.radioButtonAccounting);
-            this.Controls.Add(this.radioButtonHistorical);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.textBoxSID);
-            this.Controls.Add(this.labelSType);
-            this.Controls.Add(this.labelYears);
-            this.Controls.Add(this.labelSID);
-            this.Controls.Add(this.labelName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxRiverSites);
             this.Controls.Add(this.comboBoxRiverSystems);
@@ -639,9 +655,7 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.timeSelectorBeginEnd1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(436, 451);
             this.Name = "ImportIdwrData";
@@ -657,6 +671,8 @@
             this.tabPageDiversion.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -714,5 +730,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxSiteFilter;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

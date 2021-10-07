@@ -57,7 +57,23 @@ namespace Reclamation.TimeSeries.Hydromet.Operations
                     sum += quAverage[j].Value;
                 }
                 var pt = quAverage[i];
-                quSumJuly.Add(new DateTime(waterYear,pt.DateTime.Month,pt.DateTime.Day), sum);
+                DateTime t;
+                if (pt.DateTime.Month == 2 && pt.DateTime.Day == 29)
+                {
+                    try
+                    {
+                        t = new DateTime(waterYear, pt.DateTime.Month, pt.DateTime.Day);
+                    }
+                    catch
+                    {
+                        t = new DateTime(waterYear, pt.DateTime.Month, pt.DateTime.Day - 1);
+                    }
+                }
+                else
+                {
+                    t = new DateTime(waterYear, pt.DateTime.Month, pt.DateTime.Day);
+                }                
+                quSumJuly.Add(t, sum);
             }
            quAverage = Reclamation.TimeSeries.Math.ShiftToYear(quAverage, waterYear);
         }

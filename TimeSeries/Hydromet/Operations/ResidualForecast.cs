@@ -271,18 +271,28 @@ namespace Reclamation.TimeSeries.Hydromet.Operations
             fcm.Read(t1, t2);
         }
 
-        public DataTable ReportTable { get
+        public DataTable ReportTable
         {
-            var tbl = Report.ToDataTable(true);
-            // add flag column
-            tbl.Columns.Add("flag",typeof(string));
-            int n = System.Math.Min(tbl.Rows.Count, flags.Count);
-            for (int i = 0; i < n; i++)
+            get
             {
-                tbl.Rows[i]["flag"] = flags[i];
+                var tbl = Report.ToDataTable(true);
+                // add flag column
+                tbl.Columns.Add("flag",typeof(string));
+                int n = System.Math.Min(tbl.Rows.Count, flags.Count);
+                for (int i = 0; i < n; i++)
+                {
+                    tbl.Rows[i]["flag"] = flags[i];
+                }
+                return tbl;
             }
-            return tbl;
-        }  }
+        }
+
+
+        public void AddColumnToReportTable(Series s)
+        {
+            Report.Add(s);
+        }
+
 
         public string[] DailyCbttPcodeList()
         {
