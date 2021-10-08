@@ -91,11 +91,14 @@ namespace Reclamation.Riverware
             var trace = 1;
             for (int i = 0; i < results.First().Value.Count; i++)
             {
+                var today = DateTime.Now;
+                var wy = today.Month > endDate.Month ? 2000 : 2001;
+
                 var lines = new StringBuilder();
-                lines.AppendLine($"# this data was imported from Northwest River Forecast Center {DateTime.Now}");
+                lines.AppendLine($"# this data was imported from Northwest River Forecast Center {today}");
                 lines.AppendLine($"# {data[0]}.csv");
-                lines.AppendLine($"start_date: {new DateTime(2000, results.First().Key.Month, results.First().Key.Day):yyyy-MM-dd 24:00}");
-                lines.AppendLine($"end_date: {new DateTime(2000, results.Last().Key.Month, results.Last().Key.Day):yyyy-MM-dd 24:00}");
+                lines.AppendLine($"start_date: {new DateTime(wy, results.First().Key.Month, results.First().Key.Day):yyyy-MM-dd 24:00}");
+                lines.AppendLine($"end_date: {new DateTime(wy, results.Last().Key.Month, results.Last().Key.Day):yyyy-MM-dd 24:00}");
 
                 foreach (var item in results.Keys)
                 {
