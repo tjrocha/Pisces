@@ -119,7 +119,7 @@ namespace Reclamation.Riverware
                 var lines = new StringBuilder();
                 lines.AppendLine($"# this data was imported from Hydromet {DateTime.Now}");
                 lines.AppendLine($"# {cbtt[i]} {pcode[i]}");
-                lines.AppendLine($"start_date: {s[0].DateTime.AddDays(slot_offset[i])}:yyyy-MM-dd 24:00");
+                lines.AppendLine($"start_date: {s[0].DateTime.AddDays(slot_offset[i]):yyyy-MM-dd 24:00}");
 
                 for (int j = 0; j < s.Count; j++)
                 {
@@ -179,7 +179,7 @@ namespace Reclamation.Riverware
                     var lines = new StringBuilder();
                     lines.AppendLine($"# this data was imported from Hydromet {DateTime.Now}");
                     lines.AppendLine($"# {cbtt[i]} {pcode[i]}");
-                    lines.AppendLine($"start_date: {new DateTime(2000, startDate.Month, startDate.Day)}:yyyy-MM-dd 24:00");
+                    lines.AppendLine($"start_date: {new DateTime(2000, startDate.Month, startDate.Day):yyyy-MM-dd 24:00}");
 
                     foreach (var pt in wySeries)
                     {

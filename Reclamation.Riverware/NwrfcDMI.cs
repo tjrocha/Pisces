@@ -92,7 +92,7 @@ namespace Reclamation.Riverware
             for (int i = 0; i < results.First().Value.Count; i++)
             {
                 var lines = new StringBuilder();
-                lines.AppendLine($" this data was imported from Northwest River Forecast Center {DateTime.Now}");
+                lines.AppendLine($"# this data was imported from Northwest River Forecast Center {DateTime.Now}");
                 lines.AppendLine($"# {data[0]}.csv");
                 lines.AppendLine($"start_date: {new DateTime(2000, results.First().Key.Month, results.First().Key.Day):yyyy-MM-dd 24:00}");
                 lines.AppendLine($"end_date: {new DateTime(2000, results.Last().Key.Month, results.Last().Key.Day):yyyy-MM-dd 24:00}");
