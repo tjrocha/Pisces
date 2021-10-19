@@ -5,7 +5,6 @@ namespace Reclamation.TimeSeries.Hydromet.Operations
     class HeiiRuleCurve: HydrometRuleCurve
     {
 
-        private Series qu;
         private DateTime quDate20000 = DateTime.MaxValue; // date that 20,000 cfs occurs
 
 

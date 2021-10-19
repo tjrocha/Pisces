@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
-  <Import Project="..\..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="..\..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="..\..\packages\NUnit.3.13.2\build\NUnit.props" Condition="Exists('..\..\packages\NUnit.3.13.2\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -44,7 +45,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PISCES_OPEN</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PISCES_NOTOPEN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,18 +63,17 @@
     <Reference Include="libsim">
       <HintPath>..\..\ThirdParty\Modsim\libsim.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.13.2.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.3.13.2\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SpreadsheetGear, Version=5.1.1.134, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL">
+    <Reference Include="SpreadsheetGear2017.Core, Version=8.6.9.102, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PaidThirdParty\SpreadsheetGear.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -84,8 +84,8 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net451\System.Data.SQLite.dll</HintPath>
+    <Reference Include="System.Data.SQLite, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\lib\net451\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
@@ -97,9 +97,14 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TeeChart, Version=3.5.3700.30575, Culture=neutral, PublicKeyToken=9c8126276c77bdb7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PaidThirdParty\TeeChart.dll</HintPath>
+    <Reference Include="TeeChart, Version=4.2021.8.23, Culture=neutral, PublicKeyToken=9c8126276c77bdb7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Steema.TeeChart.NET.4.2021.8.23\lib\net40\TeeChart.dll</HintPath>
+    </Reference>
+    <Reference Include="TeeChart.WPF, Version=4.2021.8.23, Culture=neutral, PublicKeyToken=98e8c3f289a4e286, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Steema.TeeChart.NET.4.2021.8.23\lib\net40\TeeChart.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="TeeChart.Xaml.WPF, Version=4.2021.8.23, Culture=neutral, PublicKeyToken=9406d226170aa089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Steema.TeeChart.NET.4.2021.8.23\lib\net40\TeeChart.Xaml.WPF.dll</HintPath>
     </Reference>
     <Reference Include="XYFile">
       <HintPath>..\..\ThirdParty\Modsim\XYFile.dll</HintPath>
@@ -148,7 +153,7 @@
     </Compile>
     <Compile Include="Reclamation.TimeSeries\BpaHydsim\HydSimScenarioPicker.Designer.cs">
       <DependentUpon>HydSimScenarioPicker.cs</DependentUpon>
-    </Compile>    
+    </Compile>
     <Compile Include="FormTeeChartLicense.cs" Condition="!$(DefineConstants.Contains('PISCES_OPEN'))">
       <SubType>Form</SubType>
     </Compile>
@@ -207,7 +212,7 @@
     <EmbeddedResource Include="Reclamation.TimeSeries\BpaHydsim\HydSimScenarioPicker.resx">
       <DependentUpon>HydSimScenarioPicker.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>    
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTeeChartLicense.resx" Condition="!$(DefineConstants.Contains('PISCES_OPEN'))">
       <DependentUpon>FormTeeChartLicense.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,7 +220,6 @@
       <DependentUpon>PiscesForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" Condition="!$(DefineConstants.Contains('PISCES_OPEN'))" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -395,6 +399,7 @@
     <Content Include="plugins.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Properties\TeeChart.licenses" />
     <None Include="images\folder_closed_32.ico" />
     <Content Include="images\hecdss.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -412,7 +417,19 @@
     <None Include="Reclamation.TimeSeries\RBMS\Export - DH Manual Monitoring - Oct 2015.csv" />
     <None Include="Resources\folder_closed_32.bmp" />
   </ItemGroup>
-  <ItemGroup>    
+  <ItemGroup>
+    <ProjectReference Include="..\..\Reclamation.Riverware\Reclamation.Riverware.csproj">
+      <Project>{4fa07f03-e6c3-418e-aa20-6378e7e6599d}</Project>
+      <Name>Reclamation.Riverware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TimeSeries.Excel\Reclamation.TimeSeries.Excel.csproj">
+      <Project>{37b543f5-03a5-479e-b20c-7b4acc53d16a}</Project>
+      <Name>Reclamation.TimeSeries.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TimeSeries.Graphing\Reclamation.TimeSeries.Graphing.csproj">
+      <Project>{862135b0-793a-4f06-b731-26c61b3ad068}</Project>
+      <Name>Reclamation.TimeSeries.Graphing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rwis.Sync\Rwis.Sync.csproj">
       <Project>{d2b37530-5d24-4772-8480-325920744643}</Project>
       <Name>Rwis.Sync</Name>
@@ -469,10 +486,11 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
-    <Error Condition="!Exists('..\..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\..\packages\NUnit.3.13.2\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NUnit.3.13.2\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NUnit3TestAdapter.4.0.0\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
-  <Import Project="..\..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets')" />
+  <Import Project="..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

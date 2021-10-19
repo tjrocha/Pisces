@@ -20,6 +20,7 @@ using Reclamation.TimeSeries.Excel;
 using Reclamation.TimeSeries.DataLogger;
 using Reclamation.TimeSeries.SHEF;
 using System.Collections.Generic;
+using Reclamation.Riverware;
 
 
 namespace Reclamation.TimeSeries.Forms
@@ -289,27 +290,9 @@ namespace Reclamation.TimeSeries.Forms
                     {
                         ImportExcelDatabaseStyle(openExcelDialog.FileName);
                     }
-                    //else if (w.ImportType == ExcelImportType.Traces)
-                    //{
-                    //    ImportExcelTraces(openExcelDialog.FileName);
-                    //}
                 }
             }
         }
-
-
-        private void ImportExcelTraces(string filename)
-        {
-#if !PISCES_OPEN
-            ImportExcelTraces dlg = new ImportExcelTraces(filename);
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-#endif
-        }
-        
-
 
         private void ImportExcelDatabaseStyle(string filename)
         {
@@ -391,40 +374,21 @@ namespace Reclamation.TimeSeries.Forms
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 var messageList = new List<string>();
-                // No scenarios 
-                if (dlg.ScenarioValues == null)
+                for (int i = 0; i < dlg.ValueColumns.Length; i++)
                 {
-                    for (int i = 0; i < dlg.ValueColumns.Length; i++)
+                    Series s = SpreadsheetGearSeries.ReadFromWorkbook(dlg.WorkBook, dlg.SheetName, dlg.DateColumn, dlg.ValueColumns[i], false, dlg.ComboBoxUnits.Text);
+                    if (s.Count > 0)
                     {
-                        Series s = SpreadsheetGearSeries.ReadFromWorkbook(dlg.WorkBook, dlg.SheetName, dlg.DateColumn, dlg.ValueColumns[i], false, dlg.ComboBoxUnits.Text);
-                        if (s.Count > 0)
-                        {
-                            DB.AddSeries(s, CurrentFolder);
-                        }
-                        else
-                        {
-                            messageList.Add("No data in the selection.  Worksheet: " + dlg.SheetName);
-                        }
-
-                        if (s.Messages.Count > 0)
-                        {
-                            messageList.Add(s.Messages.ToString());
-                        }
+                        DB.AddSeries(s, CurrentFolder);
                     }
-                }
-                // Process all scenarios
-                else
-                {
-                    var scenarioList = dlg.ScenarioValues;
-                    for (int i = 0; i < dlg.ValueColumns.Length; i++)
+                    else
                     {
-                        SeriesList sList = new SeriesList();
-                        foreach (string scenario in scenarioList)
-                        {
-                            Series s = SpreadsheetGearSeries.ReadFromWorkbook(dlg.WorkBook, dlg.SheetName, dlg.DateColumn, dlg.ValueColumns[i], dlg.ScenarioColumn, scenario, dlg.ComboBoxUnits.Text);
-                            sList.Add(s);
+                        messageList.Add("No data in the selection.  Worksheet: " + dlg.SheetName);
+                    }
 
-                        }
+                    if (s.Messages.Count > 0)
+                    {
+                        messageList.Add(s.Messages.ToString());
                     }
                 }
                 if (messageList.Count > 0)

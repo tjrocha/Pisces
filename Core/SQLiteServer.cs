@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
 using Microsoft.Data.Sqlite;
 #else
 using System.Data.SQLite;
@@ -35,7 +35,7 @@ namespace Reclamation.Core
 
         public void ClearPool()
         {
-#if !NETCOREAPP2_0
+#if !NETCOREAPP2_1
             System.Data.SqlClient.SqlConnection.ClearAllPools();
 #endif
         }
@@ -86,7 +86,7 @@ namespace Reclamation.Core
 
         private DbConnection GetConnection(string connStr)
         {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
             return new SqliteConnection(connStr);
 #else
             return new SQLiteConnection(connStr);
@@ -95,7 +95,7 @@ namespace Reclamation.Core
 
         private DbCommand GetCommand(string sql,DbConnection conn)
         {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
             return new SqliteCommand(sql,(SqliteConnection)conn);
 #else
             return new SQLiteCommand(sql,(SQLiteConnection)conn);
@@ -104,7 +104,7 @@ namespace Reclamation.Core
 
         private DbCommand GetCommand()
         {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
             return new SqliteCommand();
 #else
             return new SQLiteCommand();
@@ -112,7 +112,7 @@ namespace Reclamation.Core
         }
         private DbCommand GetCommand(string sql)
         {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
             return new SqliteCommand(sql);
 #else
             return new SQLiteCommand(sql);
@@ -120,7 +120,7 @@ namespace Reclamation.Core
         }
         private DbParameter GetParameter()
         {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
             return new SqliteParameter();
 #else
             return new SQLiteParameter();
@@ -128,7 +128,7 @@ namespace Reclamation.Core
         }
         private DbDataAdapter GetAdapter(DbCommand cmd)
         {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
             return null;//new Microsoft.Data.Sqlite.SqliteDataAdapter(cmd);
 #else
             return new SQLiteDataAdapter((SQLiteCommand)cmd);
@@ -136,7 +136,7 @@ namespace Reclamation.Core
         }
         private DbCommandBuilder GetBuilder(DataAdapter dataAdapter)
         {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_1
             return null;// new Microsoft.Data.Sqlite.SQLiteCommandBuilder(dataAdapter);
 #else
             return new SQLiteCommandBuilder((SQLiteDataAdapter)dataAdapter);
@@ -145,7 +145,7 @@ namespace Reclamation.Core
 
         public void CloseAllConnections()
         {//http://stackoverflow.com/a/24501130/2333687
-#if !NETCOREAPP2_0
+#if !NETCOREAPP2_1
             SQLiteConnection.ClearAllPools();
 #endif
             GC.Collect();
@@ -621,7 +621,7 @@ namespace Reclamation.Core
         ///
         public override string PortableDateString(DateTime t, string fmt)
         {
-#if !NETCOREAPP2_0
+#if !NETCOREAPP2_1
 // TO DO -- ToUnixEpoch ??
             if ( UnixTimeStamps)
                 return System.Data.SQLite.SQLiteConvert.ToUnixEpoch(t).ToString();

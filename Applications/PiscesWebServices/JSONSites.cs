@@ -43,7 +43,7 @@ namespace PiscesWebServices
           {
               try
               {
-                  var pos = new GeographicPosition(s.latitude, s.longitude);
+                  var pos = new Position(s.latitude, s.longitude);
                   var pt = new GeoJSON.Net.Geometry.Point(pos);
 
                   var props = siteProp.GetDictionary(s.siteid);

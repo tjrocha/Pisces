@@ -611,7 +611,7 @@ mm:ss.0
            // {
             //    Console.WriteLine(HSSFDataFormat.GetBuiltinFormat((short)i));
            // }
-            AreaReference ar = new AreaReference(rangeRef);
+            AreaReference ar = new AreaReference(rangeRef, NPOI.SS.SpreadsheetVersion.EXCEL2007);
             FormatRef(sheetIndex, ar,fmt);
         }
 
