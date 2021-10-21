@@ -11,12 +11,12 @@ namespace Pisces.NunitTests.Database
     public class TestMultiDatabaseSupport
     {
 
-        public static void Main()
-        {
-            Logger.EnableLogger();
-            var t = new TestMultiDatabaseSupport();
-            t.TestMySQL();
-        }
+        //public static void Main()
+        //{
+        //    Logger.EnableLogger();
+        //    var t = new TestMultiDatabaseSupport();
+        //    t.TestMySQL();
+        //}
 
         [Test, Category("DatabaseServer")]
         [Ignore("Ignore DatabaseServer tests per KTarbet.")]

@@ -490,4 +490,12 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup Condition="!$(DefineConstants.Contains('PISCES_OPEN'))">
+    <Reference Include="Reclamation.TimeSeries.Excel">
+      <HintPath>..\..\TimeSeries.Excel\bin\Debug\Reclamation.TimeSeries.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Reclamation.TimeSeries.Graphing">
+      <HintPath>..\..\TimeSeries.Graphing\bin\Debug\Reclamation.TimeSeries.Graphing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

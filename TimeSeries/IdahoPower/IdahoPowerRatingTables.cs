@@ -154,8 +154,8 @@ namespace Reclamation.TimeSeries.IdahoPower
 
         private class RatingItem
         {
-            public string InputValue;
-            public string OutputValue;
+            public string InputValue { get; set; }
+            public string OutputValue { get; set; }
         }
 
         private void LegacyCreateFullRatingTable(TextFile rdbFile)

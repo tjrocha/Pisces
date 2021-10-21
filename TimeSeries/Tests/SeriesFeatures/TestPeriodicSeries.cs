@@ -23,14 +23,12 @@ namespace Pisces.NunitTests.SeriesFeatures
 
 
             double space = s.Interpolate2D(t, 4500000);
-            Console.WriteLine(space);
             Assert.AreEqual(1510909, space,0.1);
             space = s.Interpolate2D(DateTime.Parse("1/1/2001"), 500000); // test first row.
             Assert.AreEqual(200000, space,0.1);
             space = s.Interpolate2D(DateTime.Parse("7/31/1965"), 5); // test last row.
             Assert.AreEqual(1, space, 0.1);
 
-            Console.WriteLine(s.Count);
         }
 
         [Test]

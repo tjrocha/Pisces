@@ -338,24 +338,24 @@ ISBN: 0072134852
     // Demonstrate the parser. 
 
 
-    public class ParserDemo1
-    {
-        public static void Main()
-        {
-            string expr;
-            Parser p = new Parser();
+    //public class ParserDemo1
+    //{
+    //    public static void Main()
+    //    {
+    //        string expr;
+    //        Parser p = new Parser();
 
-            Console.WriteLine("Enter an empty expression to stop.");
+    //        Console.WriteLine("Enter an empty expression to stop.");
 
-            for (; ; )
-            {
-                Console.Write("Enter expression: ");
-                expr = Console.ReadLine();
-                if (expr == "") break;
-                Console.WriteLine("Result: " + p.Evaluate(expr));
-            }
-        }
-    }
+    //        for (; ; )
+    //        {
+    //            Console.Write("Enter expression: ");
+    //            expr = Console.ReadLine();
+    //            if (expr == "") break;
+    //            Console.WriteLine("Result: " + p.Evaluate(expr));
+    //        }
+    //    }
+    //}
 
 
 

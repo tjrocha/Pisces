@@ -19,6 +19,9 @@ namespace Pisces.NunitTests.Database
             var fn = Path.Combine(tmpDir, "TestSiteInfo_SiteInfoDesignTest.pdb");
             //var fn = FileUtility.GetTempFileName(".pdb"); 
 
+            if (File.Exists(fn))
+                File.Delete(fn);
+
             SQLiteServer svr = new SQLiteServer(fn);
             var db = new TimeSeriesDatabase(svr,false);
             var siteCatalog = db.GetSiteCatalog();
@@ -40,6 +43,7 @@ namespace Pisces.NunitTests.Database
             TimeSeriesDatabaseDataSet.SeriesCatalogRow row = d[0];
             row.Parameter = "Asce ET #5";
 
+            d.Server = svr;
             d.Save();
 
             Console.WriteLine(si.SeriesList()[0].Parameter);
