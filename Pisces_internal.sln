@@ -84,6 +84,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teacup", "Applications\teac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.Riverware", "Reclamation.Riverware\Reclamation.Riverware.csproj", "{4FA07F03-E6C3-418E-AA20-6378E7E6599D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiverwareTrace", "Applications\RiverwareTrace\RiverwareTrace.csproj", "{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -362,6 +364,14 @@ Global
 		{4FA07F03-E6C3-418E-AA20-6378E7E6599D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FA07F03-E6C3-418E-AA20-6378E7E6599D}.Release|x86.ActiveCfg = Release|Any CPU
 		{4FA07F03-E6C3-418E-AA20-6378E7E6599D}.Release|x86.Build.0 = Release|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Debug|x86.Build.0 = Debug|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Release|x86.ActiveCfg = Release|Any CPU
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -394,6 +404,7 @@ Global
 		{8E17C36A-B111-4185-8723-4074F70CC70F} = {DE7045BA-5007-44D6-975E-B7FA93F801F6}
 		{D9520B7D-DADB-4B87-91F6-C5CB029646EE} = {461202B2-A773-45DD-A2BC-E3AB5E70D88E}
 		{763F2078-F389-4A4A-8644-96C8309A4291} = {461202B2-A773-45DD-A2BC-E3AB5E70D88E}
+		{6FDE3AB4-0917-4912-9A6F-A0D578CDC379} = {461202B2-A773-45DD-A2BC-E3AB5E70D88E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F4C9525-1F25-425A-9DAF-CFE9A51060A3}

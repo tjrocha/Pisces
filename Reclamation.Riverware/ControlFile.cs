@@ -49,12 +49,12 @@ namespace Reclamation.Riverware
             return true;
         }
 
-        public bool TryParse(int index, string name, out bool value, bool defaultValue)
+        public bool TryParse(int index, string name, out bool value, bool defaultValue, bool suppressWarnings)
         {
             value = defaultValue;
 
             string s = "";
-            if (!TryParse(index, name, out s, "false"))
+            if (!TryParse(index, name, out s, "false", suppressWarnings))
                 return false;
 
             if (!bool.TryParse(s, out value))
