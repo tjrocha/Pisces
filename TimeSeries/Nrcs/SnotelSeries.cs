@@ -8,46 +8,42 @@ namespace Reclamation.TimeSeries.Nrcs
 
     public enum SnotelParameterCodes
     {
-///<summary>AIR TEMPERATURE AVERAGE</summary>     
-[Description("AIR TEMPERATURE AVERAGE - Fahrenheit")]  TAVG    ,
-///<summary>AIR TEMPERATURE MAXIMUM</summary>     
-[Description("AIR TEMPERATURE MAXIMUM - Fahrenheit")]  TMAX    ,
-///<summary>AIR TEMPERATURE MINIMUM</summary>     
-[Description("AIR TEMPERATURE MINIMUM - Fahrenheit")]  TMIN    ,
-///<summary>AIR TEMPERATURE OBSERVED</summary>     
-[Description("AIR TEMPERATURE OBSERVED - Fahrenheit")]  TOBS    ,
-///<summary>DIVERSION FLOW VOLUME OBSERVED</summary>     
-[Description("DIVERSION FLOW VOLUME OBSERVED - acre-feet")]  DIV,
-///<summary>DIVERSION DISCHARGE OBSERVED MEAN</summary>     
-[Description("DIVERSION DISCHARGE OBSERVED MEAN - cfs")]  DIVD,
-///<summary>DISCHARGE MANUAL/EXTERNAL ADJUSTED MEAN</summary>     
-[Description("DISCHARGE MANUAL/EXTERNAL ADJUSTED MEAN - cfs")]  SRDOX,
-///<summary>PRECIPITATION ACCUMULATION</summary>     
-[Description("PRECIPITATION ACCUMULATION - inches")]  PREC    ,
-///<summary>PRECIPITATION INCREMENT</summary>     
-[Description("PRECIPITATION INCREMENT - inches")]  PRCP    ,
-///<summary>PRECIPITATION INCREMENT – SNOW-ADJUSTED</summary>     
-[Description("PRECIPITATION INCREMENT – SNOW-ADJUSTED - inches")]  PRCPSA,
-///<summary>RESERVOIR STORAGE VOLUME</summary>     
-[Description("RESERVOIR STORAGE VOLUME - acre-feet")]  RESC    ,
-///<summary>RIVER DISCHARGE OBSERVED MEAN</summary>     
-[Description("RIVER DISCHARGE OBSERVED MEAN - cfs")]  SRDOO,
-///<summary>SNOW DEPTH</summary>     
-[Description("SNOW DEPTH - inches")]  SNWD    ,
-///<summary>SNOW WATER EQUIVALENT</summary>     
-[Description("SNOW WATER EQUIVALENT - inches")]  WTEQ    ,
-///<summary>STREAM VOLUME, ADJUSTED</summary>     
-[Description("STREAM VOLUME, ADJUSTED - acre-feet")]  SRVO    ,
-///<summary>STREAM VOLUME, ADJUSTED EXTERNALLY</summary>     
-[Description("STREAM VOLUME, ADJUSTED EXTERNALLY - acre-feet")]  SRVOX,
-///<summary>STREAM VOLUME, OBSERVED</summary>     
-[Description("STREAM VOLUME, OBSERVED - acre-feet")]  SRVOO   ,
-///<summary>TELECONNECTION INDEX (also known as OSCILLATION INDEX)</summary>     
-[Description("TELECONNECTION INDEX (also known as OSCILLATION INDEX) - N/A")]  OI      ,
-
-
-
-
+        ///<summary>AIR TEMPERATURE AVERAGE</summary>     
+        [Description("AIR TEMPERATURE AVERAGE - Fahrenheit")] TAVG,
+        ///<summary>AIR TEMPERATURE MAXIMUM</summary>     
+        [Description("AIR TEMPERATURE MAXIMUM - Fahrenheit")] TMAX,
+        ///<summary>AIR TEMPERATURE MINIMUM</summary>     
+        [Description("AIR TEMPERATURE MINIMUM - Fahrenheit")] TMIN,
+        ///<summary>AIR TEMPERATURE OBSERVED</summary>     
+        [Description("AIR TEMPERATURE OBSERVED - Fahrenheit")] TOBS,
+        ///<summary>DIVERSION FLOW VOLUME OBSERVED</summary>     
+        [Description("DIVERSION FLOW VOLUME OBSERVED - acre-feet")] DIV,
+        ///<summary>DIVERSION DISCHARGE OBSERVED MEAN</summary>     
+        [Description("DIVERSION DISCHARGE OBSERVED MEAN - cfs")] DIVD,
+        ///<summary>DISCHARGE MANUAL/EXTERNAL ADJUSTED MEAN</summary>     
+        [Description("DISCHARGE MANUAL/EXTERNAL ADJUSTED MEAN - cfs")] SRDOX,
+        ///<summary>PRECIPITATION ACCUMULATION</summary>     
+        [Description("PRECIPITATION ACCUMULATION - inches")] PREC,
+        ///<summary>PRECIPITATION INCREMENT</summary>     
+        [Description("PRECIPITATION INCREMENT - inches")] PRCP,
+        ///<summary>PRECIPITATION INCREMENT – SNOW-ADJUSTED</summary>     
+        [Description("PRECIPITATION INCREMENT – SNOW-ADJUSTED - inches")] PRCPSA,
+        ///<summary>RESERVOIR STORAGE VOLUME</summary>     
+        [Description("RESERVOIR STORAGE VOLUME - acre-feet")] RESC,
+        ///<summary>RIVER DISCHARGE OBSERVED MEAN</summary>     
+        [Description("RIVER DISCHARGE OBSERVED MEAN - cfs")] SRDOO,
+        ///<summary>SNOW DEPTH</summary>     
+        [Description("SNOW DEPTH - inches")] SNWD,
+        ///<summary>SNOW WATER EQUIVALENT</summary>     
+        [Description("SNOW WATER EQUIVALENT - inches")] WTEQ,
+        ///<summary>STREAM VOLUME, ADJUSTED</summary>     
+        [Description("STREAM VOLUME, ADJUSTED - acre-feet")] SRVO,
+        ///<summary>STREAM VOLUME, ADJUSTED EXTERNALLY</summary>     
+        [Description("STREAM VOLUME, ADJUSTED EXTERNALLY - acre-feet")] SRVOX,
+        ///<summary>STREAM VOLUME, OBSERVED</summary>     
+        [Description("STREAM VOLUME, OBSERVED - acre-feet")] SRVOO,
+        ///<summary>TELECONNECTION INDEX (also known as OSCILLATION INDEX)</summary>     
+        [Description("TELECONNECTION INDEX (also known as OSCILLATION INDEX) - N/A")] OI,
     }
 
     /// <summary>
