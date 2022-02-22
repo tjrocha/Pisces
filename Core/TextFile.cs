@@ -3,6 +3,8 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
 
 namespace Reclamation.Core
 {
@@ -200,26 +202,54 @@ namespace Reclamation.Core
         {
 
             lines = new List<string>();
-            if (expression == "")
-            {
-                lines.AddRange(File.ReadAllLines(filename));
-                return;
-            }
+
+            var haveExpression = !String.IsNullOrEmpty(expression);
 
             Regex re = new Regex(expression, RegexOptions.Compiled);
 
-            this.filename = filename;
-            using (var srFromFile = File.OpenText(filename))
+            string[] slines = new string[File.ReadLines(filename).Count()];
+            var sbLines = new StringBuilder();
+
+            int i = 0;
+            using (var sr = new StreamReader(filename))
             {
-                string strLine;
-                while ((strLine = srFromFile.ReadLine()) != null)
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    if (re.IsMatch(strLine))
+                    if (haveExpression && re.IsMatch(line))
                     {
-                        lines.Add(strLine);
+                        slines[i] = line;
                     }
+                    else
+                    {
+                        slines[i] = line;
+                    }
+                    i++;
                 }
             }
+            lines.AddRange(slines);
+            
+            //if (expression == "")
+            //{
+            //    int linesCount = File.ReadLines(FileName).Count();
+            //    var l = File.ReadAllLines(FileName);
+            //    lines.AddRange(File.ReadAllLines(filename));
+            //    return;
+            //}
+
+
+            //this.filename = filename;
+            //using (var srFromFile = File.OpenText(filename))
+            //{
+            //    string strLine;
+            //    while ((strLine = srFromFile.ReadLine()) != null)
+            //    {
+            //        if (re.IsMatch(strLine))
+            //        {
+            //            lines.Add(strLine);
+            //        }
+            //    }
+            //}
         }
 
 

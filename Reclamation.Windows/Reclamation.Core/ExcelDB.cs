@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Collections;
 using System.Reflection;
+using System.Collections.Generic;
+
 namespace Reclamation.Core
 {
   
@@ -46,22 +48,42 @@ namespace Reclamation.Core
         /// <returns></returns>
       static string ConnectionString(string filename)
       {
-        bool xlsx = Path.GetExtension(filename).ToLower().Contains("xlsx");
+            bool xlsx = Path.GetExtension(filename).ToLower().Contains("xlsx");
 
-        string connectionStr= "Provider=Microsoft.Jet.OLEDB.4.0;" +
-          "Data Source=" + filename + ";" +
-          "Extended Properties=Excel 8.0;";
+            var enumerator = new OleDbEnumerator();
+            var tbl = enumerator.GetElements();
+            
 
-        if (xlsx)
-        {
-            connectionStr = "Provider=Microsoft.ACE.OLEDB.12.0;" +
-           "Data Source=" + filename + ";" +
-           "Extended Properties=Excel 12.0";
+            var reader = OleDbEnumerator.GetRootEnumerator();
 
+            var listACEOLEDB = new List<string>();
+            while (reader.Read())
+            {
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    if (reader.GetName(i) == "SOURCES_NAME")
+                        listACEOLEDB.Add(reader.GetValue(i).ToString());
+                }
+            }
+
+
+            if (listACEOLEDB.Count == 0)
+            {
+                Logger.WriteLine($"error: no Microsoft.Ace.OLEDB driver found to read excel file: {filename}");
+                return "";
+            }
+
+            string connectionStr = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={filename};" +
+                                   "Extended Properties=Excel 8.0";
+
+            if (xlsx)
+            {
+                connectionStr = $"Provider=Microsoft.ACE.OLEDB.16.0;Data Source={filename};" +
+                                 "Extended Properties=Excel 12.0 Xml";
+            }
+
+            return connectionStr;
         }
-
-        return connectionStr;
-      }
 
       /// <summary>
       /// Creates a new excel file
@@ -110,9 +132,6 @@ namespace Reclamation.Core
       {
 
         Debug.Assert(File.Exists(filename));
-
-
-       
 
         string strAccessConn = ConnectionString(filename);
 

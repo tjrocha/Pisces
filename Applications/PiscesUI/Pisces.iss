@@ -58,7 +58,8 @@ Source:  ".\bin\debug\Reclamation.TimeSeries.Forms.dll";   DestDir: "{app}";   F
 Source:  ".\bin\debug\Reclamation.TimeSeries.Graphing.dll";   DestDir: "{app}";   Flags: ignoreversion
 ;Source:  ".\bin\debug\Reclamation.TimeSeries.ArmyCorps.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\SpreadsheetGear2017.Core.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\System.Threading.Tasks.Extensions.dll";   DestDir: "{app}";   Flags: ignoreversion       
+Source:  ".\bin\debug\System.Threading.Tasks.Extensions.dll";   DestDir: "{app}";   Flags: ignoreversion  
+Source:  ".\bin\debug\System.Runtime.CompilerServices.Unsafe.dll";   DestDir: "{app}";   Flags: ignoreversion     
 Source:  ".\bin\debug\RestSharp.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\Newtonsoft.Json.dll";   DestDir: "{app}";   Flags: ignoreversion
 
@@ -127,7 +128,7 @@ Source:  "..\..\PiscesTestData\data\ac_flow.xls";   DestDir: "{app}\sample-data"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 [Icons]
 Name: "{group}\Pisces3"; Filename: "{app}\Pisces.exe"
-Name: "{commondesktop}\Pisces3"; Filename: "{app}\Pisces.exe"; Tasks: desktopicon
+Name: "{autodesktop}\Pisces3"; Filename: "{app}\Pisces.exe"; Tasks: desktopicon
 
 [Code]
 

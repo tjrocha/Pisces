@@ -88,7 +88,6 @@ namespace Reclamation.Riverware
             // write data foreach trace which should be faster.
             var results = GetTraceDataFromString(data);
 
-            var trace = 1;
             for (int i = 0; i < results.First().Value.Count; i++)
             {
                 var today = DateTime.Now;
@@ -105,10 +104,9 @@ namespace Reclamation.Riverware
                     lines.AppendLine(results[item][i]);
                 }
 
-                var outputpath = Path.Combine(outdirectory, $"trace{trace}");
+                var outputpath = Path.Combine(outdirectory, $"trace{i + 1}");
                 Directory.CreateDirectory(outputpath);
                 File.WriteAllText(Path.Combine(outputpath, $"{objectSlot}.txt"), lines.ToString());
-                trace += 1;
             }
 
         }
@@ -151,10 +149,12 @@ namespace Reclamation.Riverware
 
                     rval.Add(date, new List<string>());
 
-                    for (int j = traceIndex; j < traceIndex + traceCount; j++)
+                    for (int j = 1; j <= traceCount; j++)
                     {
-                        Double.TryParse(lineItems[j], out val);
-                        rval[date].Add((val * 1000).ToString());
+                        if (Double.TryParse(lineItems[j], out val))
+                            rval[date].Add($"{val * 1000}");
+                        else
+                            rval[date].Add("NaN");
                     }
                 }
 
@@ -190,7 +190,7 @@ namespace Reclamation.Riverware
 
                         if (lineItems[j] == endDate.Year.ToString())
                         {
-                            traceCount = j - traceIndex;
+                            traceCount = j;
                             return new Tuple<int, int, int>(traceIndex, traceCount, dataIndex);
                         }
                     }
