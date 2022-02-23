@@ -1,6 +1,6 @@
 ﻿using Reclamation.Core;
 using Reclamation.TimeSeries.Hydromet.Operations;
-#if !NETCOREAPP2_1
+#if !NETCOREAPP3_1
 using Reclamation.TimeSeries.Nrcs;
 #endif
 using Reclamation.TimeSeries.Parser;
@@ -174,7 +174,7 @@ namespace Reclamation.TimeSeries
             return rval;
         }
 
-#if !NETCOREAPP2_1
+#if !NETCOREAPP3_1
         [FunctionAttribute("Reads daily NRCS snowcourse data into monthly", "DailySnowCourseToMonthly(triplet)")]
         public static Series DailySnowCourseToMonthly(string triplet)
         {

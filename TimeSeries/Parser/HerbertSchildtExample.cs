@@ -86,15 +86,9 @@ ISBN: 0072134852
         void EvalExp1(out double result)
         {
             int varIdx;
-            Types ttokType;
-            string temptoken;
 
             if (tokType == Types.VARIABLE)
             {
-                // save old token 
-                temptoken = String.Copy(token);
-                ttokType = tokType;
-
                 // Compute the index of the variable. 
                 varIdx = Char.ToUpper(token[0]) - 'A';
 
@@ -103,8 +97,6 @@ ISBN: 0072134852
                 {
                     PutBack(); // return current token 
                     // restore old token -- not an assignment 
-                    token = String.Copy(temptoken);
-                    tokType = ttokType;
                 }
                 else
                 {
