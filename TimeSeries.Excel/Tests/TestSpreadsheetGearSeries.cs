@@ -199,13 +199,15 @@ namespace Pisces.NunitTests.SeriesTypes
 
 
 
-        [Test, Category("Internal")]
+        [Test]
         public void LargeImport()
         {
 
             Performance perf = new Performance();
             string dataPath = TestData.DataPath;
-            string fn = @"T:\PN6200\Staff\KTarbet\PiscesSampleData\CraigAddley\Testout.txt";
+            string fnZip = Path.Combine(dataPath, "CraigAddley", "Testout.zip");
+            string fn = Path.ChangeExtension(fnZip, "txt");
+            ZipFileUtility.UnzipFile(fnZip, fn);
             Console.WriteLine(fn);
             Assert.IsTrue(File.Exists(fn),"Missing file "+fn);
             SpreadsheetGearExcel xls = new SpreadsheetGearExcel(fn);
