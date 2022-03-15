@@ -44,45 +44,49 @@ namespace Reclamation.Core
         /// 
         /// </summary>
         /// <param name="filename"></param>
-        /// <param name="xlsx">when false uses excel 8.0 oldb driver.</param>
         /// <returns></returns>
       static string ConnectionString(string filename)
       {
-            bool xlsx = Path.GetExtension(filename).ToLower().Contains("xlsx");
-
-            var enumerator = new OleDbEnumerator();
-            var tbl = enumerator.GetElements();
-            
-
             var reader = OleDbEnumerator.GetRootEnumerator();
 
-            var listACEOLEDB = new List<string>();
+            var listOLEDB = new List<string>();
             while (reader.Read())
             {
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
                     if (reader.GetName(i) == "SOURCES_NAME")
-                        listACEOLEDB.Add(reader.GetValue(i).ToString());
+                        listOLEDB.Add(reader.GetValue(i).ToString());
                 }
             }
 
-
-            if (listACEOLEDB.Count == 0)
+            var provider = "";
+            foreach (var item in listOLEDB)
             {
-                Logger.WriteLine($"error: no Microsoft.Ace.OLEDB driver found to read excel file: {filename}");
-                return "";
+                if (item.ToLower().StartsWith("microsoft.ace.oledb")
+                    || item.ToLower().StartsWith("microsoft.jet.oledb"))
+                {
+                    provider = item;
+                }
             }
 
-            string connectionStr = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={filename};" +
-                                   "Extended Properties=Excel 8.0";
-
-            if (xlsx)
+            if (string.IsNullOrEmpty(provider))
             {
-                connectionStr = $"Provider=Microsoft.ACE.OLEDB.16.0;Data Source={filename};" +
-                                 "Extended Properties=Excel 12.0 Xml";
+                var msg = $"error: no Excel database driver found to read excel file: {filename}";
+                Logger.WriteLine(msg);
+                throw new Exception(msg);
+            }
+            else
+            {
+                var connectionStr =  $"Provider={provider};Data Source={filename};Extended Properties=Excel 12.0";
+
+                if (Path.GetExtension(filename).ToLower().Contains("xlsx"))
+                {
+                    connectionStr += " Xml";
+                }
+
+                return connectionStr;
             }
 
-            return connectionStr;
         }
 
       /// <summary>

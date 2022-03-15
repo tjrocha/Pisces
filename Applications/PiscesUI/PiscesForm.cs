@@ -1077,32 +1077,6 @@ namespace Reclamation.TimeSeries.Forms
             d.Show();
         }
 
-        private void toolStripMenuRWIS_Click(object sender, EventArgs e)
-        {
-            System.DirectoryServices.ActiveDirectory.Domain usrDom;
-            bool allowForm = false;
-            try
-            {
-                usrDom = System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain();
-                if (usrDom.Name != "bor.doi.net")
-                { System.Windows.Forms.MessageBox.Show("RWIS Management Interface only available within the DOI-USBR network..."); }
-                else
-                { allowForm = true; }
-            }
-            catch
-            {
-                System.Windows.Forms.MessageBox.Show("RWIS Management Interface only available within the DOI-USBR network...");
-                toolStripMenuRWIS.Enabled = false;
-            }
-
-            if (allowForm)
-            {
-                var f = new Rwis.Sync.rwisForm();
-                f.DB = this.DB;
-                f.ShowDialog();
-            }
-        }
-
         private void toolStripMenuItemAlarmManager_Click(object sender, EventArgs e)
         {
             try

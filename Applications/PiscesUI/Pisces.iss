@@ -78,9 +78,6 @@ Source:  ".\bin\debug\System.Data.SQLite.dll";   DestDir: "{app}";   Flags: igno
 Source:  ".\bin\debug\x86\SQLite.Interop.dll";   DestDir: "{app}\x86";   Flags: ignoreversion
 Source:  ".\bin\debug\x64\SQLite.Interop.dll";   DestDir: "{app}\x64";   Flags: ignoreversion
 Source:  ".\bin\debug\System.Data.SQLite.dll";   DestDir: "{app}";   Flags: ignoreversion
-; RWIS
-Source:  "..\Rwis.Sync\bin\Debug\Rwis.Sync.exe";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\Rwis.Sync\bin\Debug\Rwis.Sync.exe.config";   DestDir: "{app}";   Flags: ignoreversion
 
 ; ORACLE
 ;Source:  "C:\Program Files (x86)\Common Files\Devart\dotConnect\5.00\Net2\Common\Devart.Data.Oracle.dll";   DestDir: "{app}";   Flags: ignoreversion
