@@ -1,5 +1,6 @@
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
@@ -23,23 +24,38 @@ namespace Reclamation.Core
       }
     private static string GetConnectionString(string fileName)
     {
+            var reader = OleDbEnumerator.GetRootEnumerator();
 
-        if (Path.GetExtension(fileName).ToLower() == ".mdb" || Path.GetExtension(fileName).ToLower() == ".accdb")
-        {
-            using (RegistryKey key = Registry.ClassesRoot.OpenSubKey("Microsoft.ACE.OLEDB.14.0"))
+            var listOLEDB = new List<string>();
+            while (reader.Read())
             {
-                if (key != null)
+                for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    return "Provider=Microsoft.ACE.OLEDB.14.0;Data Source=" + fileName;
-                }
-                else
-                {
-                    return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fileName;
+                    if (reader.GetName(i) == "SOURCES_NAME")
+                        listOLEDB.Add(reader.GetValue(i).ToString());
                 }
             }
-        }
-        else
-            throw new Exception("Unsupported file format "+fileName);
+
+            var provider = "";
+            foreach (var item in listOLEDB)
+            {
+                if (item.ToLower().StartsWith("microsoft.ace.oledb")
+                    || item.ToLower().StartsWith("microsoft.jet.oledb"))
+                {
+                    provider = item;
+                }
+            }
+
+            if (string.IsNullOrEmpty(provider))
+            {
+                var msg = $"error: no Access database driver found to read access file: {fileName}";
+                Logger.WriteLine(msg);
+                throw new Exception(msg);
+            }
+            else
+            {
+                return $"Provider={provider};Data Source={fileName}";
+            }
     }
 
     static bool debugOutput = false;

@@ -425,10 +425,6 @@
       <Project>{4fa07f03-e6c3-418e-aa20-6378e7e6599d}</Project>
       <Name>Reclamation.Riverware</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rwis.Sync\Rwis.Sync.csproj">
-      <Project>{d2b37530-5d24-4772-8480-325920744643}</Project>
-      <Name>Rwis.Sync</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj">
       <Project>{80C73D4C-43CF-42DE-ADDC-7B0F06ECF086}</Project>
       <Name>Reclamation.Core</Name>
