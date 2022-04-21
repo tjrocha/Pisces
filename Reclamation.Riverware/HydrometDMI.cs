@@ -75,8 +75,21 @@ namespace Reclamation.Riverware
             {
                 HydrometDailySeries s =
                     new HydrometDailySeries(cbtt[i], pcode[i], this.server);
-                DateTime t1 = mrm_init[i] ? DateTime.Now.AddDays(daysOffset[i] - 1) : startDate.AddDays(daysOffset[i]);
+                
+                DateTime t1 = startDate.AddDays(daysOffset[i]);
+                if (mrm_init[i])
+                {
+                    if (server == HydrometHost.Yakima || server == HydrometHost.YakimaLinux)
+                    {
+                        t1 = startDate.FirstOfMonth();
+                    }
+                }
+                
                 DateTime t2 = hasDayCount[i] ? t1.AddDays(dayCount[i] - 1) : endDate;
+                if (mrm_init[i])
+                {
+                    t2 = startDate;
+                }
 
                 if (dayCount[i] < 1 && hasDayCount[i])
                 {
@@ -87,18 +100,6 @@ namespace Reclamation.Riverware
                 if (s.Count < dayCount[i] && hasDayCount[0])
                 {
                     Console.WriteLine("Warning: the requested hydromet data is missing.");
-                }
-
-                if (mrm_init[i])
-                {
-                    t1 = startDate.AddDays(daysOffset[i]);
-                    for (int j = 0; j < s.Count; j++)
-                    {
-                        var pt = s[j];
-                        pt.DateTime = t1;
-                        s[j] = pt;
-                        t1 = t1.AddDays(1);
-                    }
                 }
 
                 rval.Add(s);
