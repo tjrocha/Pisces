@@ -79,16 +79,15 @@ namespace Reclamation.Riverware
                 DateTime t1 = startDate.AddDays(daysOffset[i]);
                 if (mrm_init[i])
                 {
-                    if (server == HydrometHost.Yakima || server == HydrometHost.YakimaLinux)
-                    {
-                        t1 = startDate.FirstOfMonth();
-                    }
+                    var currentYear = DateTime.Now.Year;
+                    var startYear = (t1.Year < startDate.Year) ? currentYear - 1 : currentYear;
+                    t1 = new DateTime(startYear, t1.Month, t1.Day);
                 }
                 
                 DateTime t2 = hasDayCount[i] ? t1.AddDays(dayCount[i] - 1) : endDate;
                 if (mrm_init[i])
                 {
-                    t2 = startDate;
+                    t2 = new DateTime(DateTime.Now.Year, startDate.Month, startDate.Day);
                 }
 
                 if (dayCount[i] < 1 && hasDayCount[i])
@@ -100,6 +99,20 @@ namespace Reclamation.Riverware
                 if (s.Count < dayCount[i] && hasDayCount[0])
                 {
                     Console.WriteLine("Warning: the requested hydromet data is missing.");
+                }
+
+                // put mrm_init values back into model time
+                if (mrm_init[i])
+                {
+                    var endYear = s[s.Count - 1].DateTime.Year;
+
+                    for (int j = 0; j < s.Count; j++)
+                    {
+                        var pt = s[j];
+                        var modelYear = (pt.DateTime.Year < endYear) ? startDate.Year - 1 : startDate.Year;
+                        pt.DateTime = new DateTime(modelYear, pt.DateTime.Month, pt.DateTime.Day);
+                        s[j] = pt;
+                    }
                 }
 
                 rval.Add(s);

@@ -80,7 +80,6 @@
       <Link>reclamationcgi.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="App.config" />
     <None Include="MySQLApp.config">
       <SubType>Designer</SubType>
     </None>
