@@ -75,8 +75,20 @@ namespace Reclamation.Riverware
             {
                 HydrometDailySeries s =
                     new HydrometDailySeries(cbtt[i], pcode[i], this.server);
-                DateTime t1 = mrm_init[i] ? DateTime.Now.AddDays(daysOffset[i] - 1) : startDate.AddDays(daysOffset[i]);
+                
+                DateTime t1 = startDate.AddDays(daysOffset[i]);
+                if (mrm_init[i])
+                {
+                    var currentYear = DateTime.Now.Year;
+                    var startYear = (t1.Year < startDate.Year) ? currentYear - 1 : currentYear;
+                    t1 = new DateTime(startYear, t1.Month, t1.Day);
+                }
+                
                 DateTime t2 = hasDayCount[i] ? t1.AddDays(dayCount[i] - 1) : endDate;
+                if (mrm_init[i])
+                {
+                    t2 = new DateTime(DateTime.Now.Year, startDate.Month, startDate.Day);
+                }
 
                 if (dayCount[i] < 1 && hasDayCount[i])
                 {
@@ -89,15 +101,17 @@ namespace Reclamation.Riverware
                     Console.WriteLine("Warning: the requested hydromet data is missing.");
                 }
 
+                // put mrm_init values back into model time
                 if (mrm_init[i])
                 {
-                    t1 = startDate.AddDays(daysOffset[i]);
+                    var endYear = s[s.Count - 1].DateTime.Year;
+
                     for (int j = 0; j < s.Count; j++)
                     {
                         var pt = s[j];
-                        pt.DateTime = t1;
+                        var modelYear = (pt.DateTime.Year < endYear) ? startDate.Year - 1 : startDate.Year;
+                        pt.DateTime = new DateTime(modelYear, pt.DateTime.Month, pt.DateTime.Day);
                         s[j] = pt;
-                        t1 = t1.AddDays(1);
                     }
                 }
 
