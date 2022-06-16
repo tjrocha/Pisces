@@ -370,7 +370,9 @@
     <Content Include="images\access.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\campbell.ico" />
+    <Content Include="images\campbell.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\cr10x.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -383,7 +385,9 @@
     <Content Include="images\ExcelLink.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\Fish_icon_3.ico" />
+    <Content Include="images\Fish_icon_3.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\hdb.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -403,7 +407,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\TeeChart.licenses" />
-    <None Include="images\folder_closed_32.ico" />
+    <None Include="images\folder_closed_32.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="images\hecdss.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

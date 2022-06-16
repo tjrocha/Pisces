@@ -9,7 +9,6 @@ AppId={{9DC6B8F6-D59D-491E-8FCC-D601FE200836}
 AppName={#AppName}
 AppVersion={#AppVerStr}
 AppVerName={#AppName} {#AppVerStr}
-UninstallDisplayName={#AppName} {#AppVerStr}
 VersionInfoVersion={#AppVerStr}
 VersionInfoTextVersion={#AppVerStr}
 OutputBaseFilename=Pisces3-setup
@@ -30,6 +29,8 @@ SolidCompression=yes
 PrivilegesRequired=lowest
 
 SetupIconFile=".\images\Fish_icon_3.ico"
+UninstallDisplayName={#AppName} {#AppVerStr}
+UninstallDisplayIcon={app}\images\Fish_icon_3.ico
 
 ;clear previously installed files
 [InstallDelete]
@@ -124,8 +125,8 @@ Source:  "..\..\PiscesTestData\data\ac_flow.xls";   DestDir: "{app}\sample-data"
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 [Icons]
-Name: "{group}\Pisces3"; Filename: "{app}\Pisces.exe"
-Name: "{autodesktop}\Pisces3"; Filename: "{app}\Pisces.exe"; Tasks: desktopicon
+Name: "{group}\Pisces3"; Filename: "{app}\{#AppName}.exe"; IconFilename: "{app}\images\Fish_icon_3.ico"
+Name: "{autodesktop}\Pisces3"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon; IconFilename: "{app}\images\Fish_icon_3.ico"
 
 [Code]
 
