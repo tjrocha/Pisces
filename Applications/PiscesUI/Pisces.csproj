@@ -359,6 +359,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\PaidThirdParty\TeeChart.licenses">
+      <Link>Properties\TeeChart.licenses</Link>
+    </EmbeddedResource>
     <Content Include="..\cfg\mpoll_inventory.txt">
       <Link>cfg\mpoll_inventory.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -406,7 +409,6 @@
     <Content Include="plugins.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Properties\TeeChart.licenses" />
     <None Include="images\folder_closed_32.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
