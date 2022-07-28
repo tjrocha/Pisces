@@ -98,7 +98,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\TeeChart.licenses" />
+    <Content Include="..\PaidThirdParty\TeeChart.licenses">
+      <Link>Properties\TeeChart.licenses</Link>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
