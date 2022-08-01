@@ -115,7 +115,7 @@
             this.groupBox1.Controls.Add(this.radioButtonGH);
             this.groupBox1.Controls.Add(this.radioButtonQD);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(8, 327);
+            this.groupBox1.Location = new System.Drawing.Point(8, 330);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(400, 135);
             this.groupBox1.TabIndex = 6;
@@ -429,7 +429,6 @@
             this.comboBoxRiverSystems.Size = new System.Drawing.Size(401, 21);
             this.comboBoxRiverSystems.TabIndex = 11;
             this.comboBoxRiverSystems.Text = "Select A River System";
-            this.comboBoxRiverSystems.DropDown += new System.EventHandler(this.comboBoxRiverSystems_OnDropDown);
             this.comboBoxRiverSystems.SelectedIndexChanged += new System.EventHandler(this.comboBoxRiverSystems_SelectedIndexChanged);
             // 
             // comboBoxRiverSites
@@ -587,8 +586,8 @@
             this.timeSelectorBeginEnd1.Name = "timeSelectorBeginEnd1";
             this.timeSelectorBeginEnd1.ShowTime = false;
             this.timeSelectorBeginEnd1.Size = new System.Drawing.Size(199, 46);
-            this.timeSelectorBeginEnd1.T1 = new System.DateTime(2008, 3, 12, 7, 55, 34, 320);
-            this.timeSelectorBeginEnd1.T2 = new System.DateTime(2008, 3, 12, 7, 55, 34, 320);
+            this.timeSelectorBeginEnd1.T1 = new System.DateTime(2008, 3, 12, 0, 0, 0, 0);
+            this.timeSelectorBeginEnd1.T2 = new System.DateTime(2008, 3, 12, 0, 0, 0, 0);
             this.timeSelectorBeginEnd1.TabIndex = 1;
             // 
             // label8

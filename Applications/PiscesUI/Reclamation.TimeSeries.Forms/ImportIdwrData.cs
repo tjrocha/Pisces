@@ -14,6 +14,7 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
     public partial class ImportIdwrData : Form
     {
         public string parameter, station;
+        public DataType datatype;
         public DateTime tStart, tEnd;
 
         public ImportIdwrData()
@@ -22,9 +23,11 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
 
             this.timeSelectorBeginEnd1.T1 = DateTime.Now.AddDays(-10);
             this.timeSelectorBeginEnd1.T2 = DateTime.Now.AddDays(-1);
+
+            loadComboBoxRiverSystems();
         }
 
-
+        
         public DateTime T2
         {
             get { return this.timeSelectorBeginEnd1.T2; }
@@ -38,13 +41,13 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
 
         private void linkLabelIdwrInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://idwr.idaho.gov/files/help/Accounting-Time-Series-Users-Manual.pdf");
+            Process.Start("https://idwr.idaho.gov/wp-content/uploads/sites/2/help/Accounting-Time-Series-Users-Manual.pdf");
         }
 
 
-        private void comboBoxRiverSystems_OnDropDown(object sender, EventArgs e)
+        private void loadComboBoxRiverSystems()
         {
-            toolStripStatusLabel1.Text = "Requesting River Systems API Data...";
+            //toolStripStatusLabel1.Text = "Requesting River Systems API Data...";
             statusStrip1.Refresh();
             this.comboBoxRiverSystems.DataSource = null;
             this.comboBoxRiverSystems.SelectedValue = null;
@@ -72,7 +75,7 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
                 { maxWidth = newWidth; }
             }
             senderComboBox.DropDownWidth = maxWidth;
-            toolStripStatusLabel1.Text = "Done!";
+            //toolStripStatusLabel1.Text = "Done!";
         }
 
         private DataTable riverSitesTable;
@@ -312,38 +315,36 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             {
                 toolStripStatusLabel1.Text = "Requesting Site Time Series API Data...";
                 this.station = this.textBoxSID.Text;
+                this.datatype = (this.radioButtonHistorical.Checked) ? DataType.HST : DataType.ALC;
                 this.parameter = "";
-                if (this.radioButtonHistorical.Checked)
-                {
-                    if (this.radioButtonAF.Checked) { parameter = "HST.AF"; }
-                    if (this.radioButtonFB.Checked) { parameter = "HST.FB"; }
-                    if (this.radioButtonGH.Checked) { parameter = "HST.GH"; }
-                    if (this.radioButtonQD.Checked) { parameter = "HST.QD"; }
-                }
-                else
+                if (this.radioButtonAF.Checked) { parameter = "AF"; }
+                if (this.radioButtonFB.Checked) { parameter = "FB"; }
+                if (this.radioButtonGH.Checked) { parameter = "GH"; }
+                if (this.radioButtonQD.Checked) { parameter = "QD"; }
+                if (this.radioButtonAccounting.Checked)
                 {
                     if (selectedSiteType == "F")
                     {
-                        if (this.radioButtonNatQ.Checked) { parameter = "ALC.NATQ"; }
-                        if (this.radioButtonActQ.Checked) { parameter = "ALC.ACTQ"; }
-                        if (this.radioButtonStorQ.Checked) { parameter = "ALC.STRQ"; }
-                        if (this.radioButtonGainQ.Checked) { parameter = "ALC.GANQ"; }
+                        if (this.radioButtonNatQ.Checked) { parameter = "NATQ"; }
+                        if (this.radioButtonActQ.Checked) { parameter = "ACTQ"; }
+                        if (this.radioButtonStorQ.Checked) { parameter = "STRQ"; }
+                        if (this.radioButtonGainQ.Checked) { parameter = "GANQ"; }
                     }
                     if (selectedSiteType == "R")
                     {
-                        if (this.radioButtonResEvap.Checked) { parameter = "ALC.EVAP"; }
-                        if (this.radioButtonTotEvap.Checked) { parameter = "ALC.TOTEVAP"; }
-                        if (this.radioButtonAccStor.Checked) { parameter = "ALC.STORACC"; }
-                        if (this.radioButtonTotAcc.Checked) { parameter = "ALC.TOTACC"; }
-                        if (this.radioButtonCurrAf.Checked) { parameter = "ALC.CURSTOR"; }
+                        if (this.radioButtonResEvap.Checked) { parameter = "EVAP"; }
+                        if (this.radioButtonTotEvap.Checked) { parameter = "TOTEVAP"; }
+                        if (this.radioButtonAccStor.Checked) { parameter = "STORACC"; }
+                        if (this.radioButtonTotAcc.Checked) { parameter = "TOTACC"; }
+                        if (this.radioButtonCurrAf.Checked) { parameter = "CURSTOR"; }
                     }
                     if (selectedSiteType == "D" || selectedSiteType == "P")
                     {
-                        if (this.radioButtonDivFlow.Checked) { parameter = "ALC.DIV"; }
-                        if (this.radioButtonTotDiv2Date.Checked) { parameter = "ALC.TOTDIVVOL"; }
-                        if (this.radioButtonStorDiv.Checked) { parameter = "ALC.STORDIV"; }
-                        if (this.radioButtonStorDiv2Date.Checked) { parameter = "ALC.STORDIVVOL"; }
-                        if (this.radioButtonRemStor.Checked) { parameter = "ALC.STORBAL"; }
+                        if (this.radioButtonDivFlow.Checked) { parameter = "DIV"; }
+                        if (this.radioButtonTotDiv2Date.Checked) { parameter = "TOTDIVVOL"; }
+                        if (this.radioButtonStorDiv.Checked) { parameter = "STORDIV"; }
+                        if (this.radioButtonStorDiv2Date.Checked) { parameter = "STORDIVVOL"; }
+                        if (this.radioButtonRemStor.Checked) { parameter = "STORBAL"; }
                     }
                 }
                 this.tStart = timeSelectorBeginEnd1.T1;

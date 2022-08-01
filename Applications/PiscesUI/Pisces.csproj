@@ -74,6 +74,7 @@
     </Reference>
     <Reference Include="SpreadsheetGear2017.Core, Version=8.6.9.102, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PaidThirdParty\SpreadsheetGear2017.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using ConnectionString = Reclamation.Core.ConnectionStringUtility;
 
 namespace Reclamation.TimeSeries.IDWR
 {
@@ -26,15 +27,16 @@ namespace Reclamation.TimeSeries.IDWR
         public static RestClient idwrClient = new RestClient(idwrAPI);
         string station;
         string parameter;
-        DataType dataType;
+        DataType datatype;
 
-        public IDWRDailySeries(string station, string parameter = "QD",
-            DataType datatype = DataType.HST)
+        public IDWRDailySeries(string station, string parameter, DataType datatype)
         {
+            this.Source = "IDWR";
+            this.Provider = "IDWRDailySeries";
             this.station = station;
             this.parameter = parameter;
-            this.dataType = datatype;
-            TimeInterval = TimeInterval.Daily;
+            this.datatype = datatype;
+            this.TimeInterval = TimeInterval.Daily;
             switch (parameter)
             {
                 case "FB":
@@ -51,9 +53,14 @@ namespace Reclamation.TimeSeries.IDWR
                     Units = "cfs";
                     break;
             }
-            Name = parameter + "_" + station;
-            Table.TableName = "IdwrDaily" + parameter.ToString() + "_" + station;
-            ConnectionString = "Source=IDWR;SiteID=" + station.ToString() + ";Parameter=" + parameter.ToString();
+            this.Name = $"{datatype}.{parameter}_{station}";
+            this.Table.TableName = $"IdwrDaily{datatype}{parameter}_{station}";
+            this.ConnectionString = $"Source=IDWR;SiteID={station};Parameter={parameter};DataType={datatype}";
+        }
+
+        public IDWRDailySeries(TimeSeriesDatabase db, TimeSeriesDatabaseDataSet.SeriesCatalogRow sr) : base(db, sr)
+        {
+
         }
 
 
@@ -70,16 +77,19 @@ namespace Reclamation.TimeSeries.IDWR
             }
             else
             {
-                Add(IdwrApiDownload(station, parameter, t1, t2));
+                Add(IdwrApiDownload(station, parameter, datatype, t1, t2));
             }
         }
 
 
         protected override Series CreateFromConnectionString()
         {
+            if (!Enum.TryParse(ConnectionStringUtility.GetToken(ConnectionString, "DataType", ""), out DataType datatype))
+                return new Series();
+
             IDWRDailySeries s = new IDWRDailySeries(
                ConnectionStringUtility.GetToken(ConnectionString, "SiteID", ""),
-               ConnectionStringUtility.GetToken(ConnectionString, "Parameter", ""));
+               ConnectionStringUtility.GetToken(ConnectionString, "Parameter", ""), datatype);
             return s;
         }
 
@@ -116,9 +126,9 @@ namespace Reclamation.TimeSeries.IDWR
             request.AddParameter("yeartype", "CY");
             request.AddParameter("f", "json");
             IRestResponse restResponse = idwrClient.Execute(request);
-            var result = JsonConvert.DeserializeObject<List<TsDataALC>>(restResponse.Content);
-            return result.Cast<TsDataALC>().ToList();
+            return JsonConvert.DeserializeObject<List<TsDataALC>>(restResponse.Content);
         }
+
 
         /// <summary>
         /// Method to call the data download API, get the JSON reponse, and convert to Series()
@@ -128,7 +138,7 @@ namespace Reclamation.TimeSeries.IDWR
         /// <param name="t1"></param>
         /// <param name="t2"></param>
         /// <returns></returns>
-        private Series IdwrApiDownload(string station, string parameter,
+        private Series IdwrApiDownload(string station, string parameter, DataType datatype,
             DateTime t1, DateTime t2)
         {
             var rval = new Series();
@@ -137,121 +147,116 @@ namespace Reclamation.TimeSeries.IDWR
 
             try
             {
-                var pars = parameter.Split('.');
-                if (pars.Count() > 1)
+                switch (datatype)
                 {
-                    if (pars[0].ToLower() != "hst")
-                    {
-                        dataType = DataType.ALC;
-                    }
-                    parameter = pars[1];
-                }
-                if (dataType == DataType.HST)
-                {
-                    var jsonResponse = IdwrApiQuerySiteDataHST(station, yearlist);
-                    foreach (var item in jsonResponse)
-                    {
-                        var t = DateTime.Parse(item.Date);
-                        if (t >= t1 && t <= t2)
+                    case DataType.HST:
+                        var jsonResponseHST = IdwrApiQuerySiteDataHST(station, yearlist);
+                        foreach (var item in jsonResponseHST)
                         {
-                            string value = "";
-                            switch (parameter)
+                            var t = DateTime.Parse(item.Date);
+                            if (t >= t1.Date && t <= t2.Date)
                             {
-                                case ("GH"):
-                                    value = item.GH;
-                                    break;
-                                case ("FB"):
-                                    value = item.FB;
-                                    break;
-                                case ("AF"):
-                                    value = item.AF;
-                                    break;
-                                case ("QD"):
-                                    value = item.QD;
-                                    break;
-                                default:
-                                    value = "NaN";
-                                    break;
-                            }
-                            if (value == "NaN")
-                            {
-                                rval.AddMissing(t);
-                            }
-                            else
-                            {
-                                rval.Add(item.Date, Convert.ToDouble(value));
+                                string value = "";
+                                switch (parameter)
+                                {
+                                    case ("GH"):
+                                        value = item.GH;
+                                        break;
+                                    case ("FB"):
+                                        value = item.FB;
+                                        break;
+                                    case ("AF"):
+                                        value = item.AF;
+                                        break;
+                                    case ("QD"):
+                                        value = item.QD;
+                                        break;
+                                    default:
+                                        value = "NaN";
+                                        break;
+                                }
+                                if (value == "NaN")
+                                {
+                                    rval.AddMissing(t);
+                                }
+                                else
+                                {
+                                    rval.Add(item.Date, Convert.ToDouble(value));
+                                }
                             }
                         }
-                    }
-                }
-                else
-                {
-                    var jsonResponse = IdwrApiQuerySiteDataALC(station, yearlist);
-                    foreach (var item in jsonResponse)
-                    {
-                        var t = DateTime.Parse(item.Date);
-                        if (t >= t1 && t <= t2)
+                        break;
+                    case DataType.ALC:
+                        var jsonResponseALC = IdwrApiQuerySiteDataALC(station, yearlist);
+                        foreach (var item in jsonResponseALC)
                         {
-                            string value = "";
-                            switch (parameter)
+                            var t = DateTime.Parse(item.Date);
+                            if (t >= t1.Date && t <= t2.Date)
                             {
-                                case ("NATQ"):
-                                    value = item.NATQ;
-                                    break;
-                                case ("ACTQ"):
-                                    value = item.ACTQ;
-                                    break;
-                                case ("STRQ"):
-                                    value = item.STRQ;
-                                    break;
-                                case ("GANQ"):
-                                    value = item.GANQ;
-                                    break;
-                                case ("EVAP"):
-                                    value = item.EVAP;
-                                    break;
-                                case ("TOTEVAP"):
-                                    value = item.TOTEVAP;
-                                    break;
-                                case ("STORACC"):
-                                    value = item.STORACC;
-                                    break;
-                                case ("TOTACC"):
-                                    value = item.TOTACC;
-                                    break;
-                                case ("CURSTOR"):
-                                    value = item.CURSTOR;
-                                    break;
-                                case ("DIV"):
-                                    value = item.DIV;
-                                    break;
-                                case ("TOTDIVVOL"):
-                                    value = item.TOTDIVVOL;
-                                    break;
-                                case ("STORDIV"):
-                                    value = item.STORDIV;
-                                    break;
-                                case ("STORDIVVOL"):
-                                    value = item.STORDIVVOL;
-                                    break;
-                                case ("STORBAL"):
-                                    value = item.STORBAL;
-                                    break;
-                                default:
-                                    value = "NaN";
-                                    break;
-                            }
-                            if (value == "NaN")
-                            {
-                                rval.AddMissing(t);
-                            }
-                            else
-                            {
-                                rval.Add(item.Date, Convert.ToDouble(value));
+                                string value = "";
+                                switch (parameter)
+                                {
+                                    case ("NATQ"):
+                                        value = item.NATQ;
+                                        break;
+                                    case ("ACTQ"):
+                                        value = item.ACTQ;
+                                        break;
+                                    case ("STRQ"):
+                                        value = item.STRQ;
+                                        break;
+                                    case ("GANQ"):
+                                        value = item.GANQ;
+                                        break;
+                                    case ("EVAP"):
+                                        value = item.EVAP;
+                                        break;
+                                    case ("TOTEVAP"):
+                                        value = item.TOTEVAP;
+                                        break;
+                                    case ("STORACC"):
+                                        value = item.STORACC;
+                                        break;
+                                    case ("TOTACC"):
+                                        value = item.TOTACC;
+                                        break;
+                                    case ("CURSTOR"):
+                                        value = item.CURSTOR;
+                                        break;
+                                    case ("DIV"):
+                                        value = item.DIV;
+                                        break;
+                                    case ("TOTDIVVOL"):
+                                        value = item.TOTDIVVOL;
+                                        break;
+                                    case ("STORDIV"):
+                                        value = item.STORDIV;
+                                        break;
+                                    case ("STORDIVVOL"):
+                                        value = item.STORDIVVOL;
+                                        break;
+                                    case ("STORBAL"):
+                                        value = item.STORBAL;
+                                        break;
+                                    default:
+                                        value = "NaN";
+                                        break;
+                                }
+                                if (value == "NaN")
+                                {
+                                    rval.AddMissing(t);
+                                }
+                                else
+                                {
+                                    rval.Add(item.Date, Convert.ToDouble(value));
+                                }
                             }
                         }
-                    }
+                        break;
+                    default:
+                        break;
                 }
+
             }
             catch
             {
@@ -267,7 +272,7 @@ namespace Reclamation.TimeSeries.IDWR
             if (t1 == TimeSeriesDatabase.MinDateTime || t2 == TimeSeriesDatabase.MaxDateTime)
             {
                 // assume we want all available data
-                var availYears = IdwrApiQuerySiteYears(station, dataType);
+                var availYears = IdwrApiQuerySiteYears(station, datatype);
                 rval = string.Join(",", availYears);
             }
             else
