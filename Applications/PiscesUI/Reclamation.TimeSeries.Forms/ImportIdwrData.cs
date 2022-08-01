@@ -23,8 +23,6 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
 
             this.timeSelectorBeginEnd1.T1 = DateTime.Now.AddDays(-10);
             this.timeSelectorBeginEnd1.T2 = DateTime.Now.AddDays(-1);
-
-            loadComboBoxRiverSystems();
         }
 
         
@@ -44,10 +42,9 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             Process.Start("https://idwr.idaho.gov/wp-content/uploads/sites/2/help/Accounting-Time-Series-Users-Manual.pdf");
         }
 
-
-        private void loadComboBoxRiverSystems()
+        private void comboBoxRiverSystems_DropDown(object sender, EventArgs e)
         {
-            //toolStripStatusLabel1.Text = "Requesting River Systems API Data...";
+            toolStripStatusLabel1.Text = "Requesting River Systems API Data...";
             statusStrip1.Refresh();
             this.comboBoxRiverSystems.DataSource = null;
             this.comboBoxRiverSystems.SelectedValue = null;
@@ -75,7 +72,7 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
                 { maxWidth = newWidth; }
             }
             senderComboBox.DropDownWidth = maxWidth;
-            //toolStripStatusLabel1.Text = "Done!";
+            toolStripStatusLabel1.Text = "Done!";
         }
 
         private DataTable riverSitesTable;
@@ -303,6 +300,8 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
         {
             FilterSites();
         }
+
+
 
         private void idwrOkButton_Click(object sender, EventArgs e)
         {

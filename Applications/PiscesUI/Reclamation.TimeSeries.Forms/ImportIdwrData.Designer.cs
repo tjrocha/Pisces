@@ -429,6 +429,7 @@
             this.comboBoxRiverSystems.Size = new System.Drawing.Size(401, 21);
             this.comboBoxRiverSystems.TabIndex = 11;
             this.comboBoxRiverSystems.Text = "Select A River System";
+            this.comboBoxRiverSystems.DropDown += new System.EventHandler(this.comboBoxRiverSystems_DropDown);
             this.comboBoxRiverSystems.SelectedIndexChanged += new System.EventHandler(this.comboBoxRiverSystems_SelectedIndexChanged);
             // 
             // comboBoxRiverSites

@@ -84,7 +84,8 @@ namespace Reclamation.TimeSeries.IDWR
 
         protected override Series CreateFromConnectionString()
         {
-            if (!Enum.TryParse(ConnectionStringUtility.GetToken(ConnectionString, "DataType", ""), out DataType datatype))
+            DataType datatype;
+            if (!Enum.TryParse(ConnectionStringUtility.GetToken(ConnectionString, "DataType", ""), out datatype))
                 return new Series();
 
             IDWRDailySeries s = new IDWRDailySeries(
