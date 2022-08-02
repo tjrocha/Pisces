@@ -131,6 +131,7 @@ namespace Reclamation.TimeSeries.Forms
             this.Controls.Add(this.textBoxSiteName);
             this.Controls.Add(this.monthDayRangePicker1);
             this.Name = "FormSumRange";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Series and Range ";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -106,6 +106,7 @@
             this.MinimizeBox = false;
             this.Name = "HydrossScenarioPicker";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Hydross Scenario Configuration";
             this.ResumeLayout(false);
             this.PerformLayout();

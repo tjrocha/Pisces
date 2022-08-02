@@ -129,6 +129,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Name = "ServerDatabaseDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Connection Information";
             this.ResumeLayout(false);
             this.PerformLayout();

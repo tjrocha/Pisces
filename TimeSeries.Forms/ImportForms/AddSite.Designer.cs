@@ -613,6 +613,7 @@
             this.Controls.Add(this.panel2);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddSite";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSite";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

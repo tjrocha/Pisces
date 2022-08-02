@@ -90,6 +90,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "AddRioGrandeSpreadsheet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddRioGrandeSpreadsheet";
             this.ResumeLayout(false);
             this.PerformLayout();

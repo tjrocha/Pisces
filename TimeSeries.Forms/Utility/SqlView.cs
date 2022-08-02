@@ -200,6 +200,7 @@ namespace Reclamation.Core
             this.Controls.Add(this.dataGrid1);
             this.Controls.Add(this.panel1);
             this.Name = "SqlView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SOI SQL Viewer ";
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
             this.panel1.ResumeLayout(false);

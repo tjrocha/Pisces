@@ -108,6 +108,7 @@ namespace Reclamation.TimeSeries.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InputScaleToVolume";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Scale selected flows to match volume";
             this.ResumeLayout(false);
             this.PerformLayout();

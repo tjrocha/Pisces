@@ -46,6 +46,7 @@ namespace Reclamation.TimeSeries.Forms
             this.ClientSize = new System.Drawing.Size(596, 449);
             this.Controls.Add(this.propertyGrid1);
             this.Name = "SettingsPropertyGrid";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SettingsPropertyGrid";
             this.ResumeLayout(false);
 

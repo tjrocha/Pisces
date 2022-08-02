@@ -415,6 +415,7 @@
             this.Controls.Add(this.textBoxSeries);
             this.Controls.Add(this.textBox1);
             this.Name = "ProfileDesigner";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Pisces Profile Tool";
             this.Load += new System.EventHandler(this.ProfileDesigner_Load);
             this.groupBox1.ResumeLayout(false);

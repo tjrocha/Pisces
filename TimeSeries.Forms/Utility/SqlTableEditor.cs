@@ -166,6 +166,7 @@ namespace Reclamation.Core
             this.Controls.Add(this.dataGrid1);
             this.Controls.Add(this.comboBoxTableNames);
             this.Name = "SqlTableEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormTableEditor";
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
             this.ResumeLayout(false);

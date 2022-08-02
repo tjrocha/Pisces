@@ -117,7 +117,7 @@ namespace Reclamation.TimeSeries.Forms
             this.MinimumSize = new System.Drawing.Size(596, 381);
             this.Name = "DisplayOptionsDialog";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
             this.ResumeLayout(false);
             this.PerformLayout();

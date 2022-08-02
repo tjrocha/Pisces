@@ -105,6 +105,7 @@
             this.MinimizeBox = false;
             this.Name = "HydSimScenarioPicker";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BPA Hydsim Scenario Configuration";
             this.ResumeLayout(false);
             this.PerformLayout();

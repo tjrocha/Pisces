@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.buttonApplyFilter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxRegex = new System.Windows.Forms.ComboBox();
@@ -37,7 +38,6 @@
             this.linkLabelSelectDirectory = new System.Windows.Forms.LinkLabel();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 136);
             this.panel1.TabIndex = 0;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(108, 103);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(56, 13);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "regex help";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // buttonApplyFilter
             // 
@@ -81,8 +92,8 @@
             // 
             this.comboBoxRegex.FormattingEnabled = true;
             this.comboBoxRegex.Items.AddRange(new object[] {
-            "C:\\\\TEMP\\\\UWdata\\\\AllData\\\\(?<scenario>[-a-z_0-9]+)-(?<siteid>[a-z0-9]+)-biascorrect" +
-                "ed_streamflow-provisional_0.5.csv"});
+            "C:\\\\TEMP\\\\UWdata\\\\AllData\\\\(?<scenario>[-a-z_0-9]+)-(?<siteid>[a-z0-9]+)-biascorr" +
+                "ected_streamflow-provisional_0.5.csv"});
             this.comboBoxRegex.Location = new System.Drawing.Point(98, 74);
             this.comboBoxRegex.Name = "comboBoxRegex";
             this.comboBoxRegex.Size = new System.Drawing.Size(572, 21);
@@ -139,17 +150,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(733, 388);
             this.dataGridView1.TabIndex = 1;
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(108, 103);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(56, 13);
-            this.linkLabel1.TabIndex = 9;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "regex help";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // BulkImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +158,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "BulkImportForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Bulk Import Series";
             this.Load += new System.EventHandler(this.BulkImportForm_Load);
             this.panel1.ResumeLayout(false);

@@ -123,6 +123,7 @@ namespace Reclamation.TimeSeries.Forms
             this.Controls.Add(this.CancelButton1);
             this.Controls.Add(this.sumButton);
             this.Name = "SeriesListSumForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Selected Series Summation";
             this.ResumeLayout(false);
             this.PerformLayout();

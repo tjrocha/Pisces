@@ -38,6 +38,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBoxVerboseLogging = new System.Windows.Forms.CheckBox();
             this.checkBoxMultiYAxis = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoRefresh = new System.Windows.Forms.CheckBox();
             this.tabPageHydromet = new System.Windows.Forms.TabPage();
@@ -55,7 +56,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxHydrometVariableResolver = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBoxVerboseLogging = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -178,6 +178,16 @@
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "General";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxVerboseLogging
+            // 
+            this.checkBoxVerboseLogging.AutoSize = true;
+            this.checkBoxVerboseLogging.Location = new System.Drawing.Point(31, 132);
+            this.checkBoxVerboseLogging.Name = "checkBoxVerboseLogging";
+            this.checkBoxVerboseLogging.Size = new System.Drawing.Size(101, 17);
+            this.checkBoxVerboseLogging.TabIndex = 2;
+            this.checkBoxVerboseLogging.Text = "verbose logging";
+            this.checkBoxVerboseLogging.UseVisualStyleBackColor = true;
             // 
             // checkBoxMultiYAxis
             // 
@@ -348,16 +358,6 @@
         "nts)");
             this.checkBoxHydrometVariableResolver.UseVisualStyleBackColor = true;
             // 
-            // checkBoxVerboseLogging
-            // 
-            this.checkBoxVerboseLogging.AutoSize = true;
-            this.checkBoxVerboseLogging.Location = new System.Drawing.Point(31, 132);
-            this.checkBoxVerboseLogging.Name = "checkBoxVerboseLogging";
-            this.checkBoxVerboseLogging.Size = new System.Drawing.Size(101, 17);
-            this.checkBoxVerboseLogging.TabIndex = 2;
-            this.checkBoxVerboseLogging.Text = "verbose logging";
-            this.checkBoxVerboseLogging.UseVisualStyleBackColor = true;
-            // 
             // Options
             // 
             this.AcceptButton = this.buttonOK;
@@ -370,6 +370,7 @@
             this.Controls.Add(this.buttonCancel);
             this.MinimumSize = new System.Drawing.Size(369, 365);
             this.Name = "Options";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
