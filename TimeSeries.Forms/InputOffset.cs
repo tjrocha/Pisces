@@ -108,6 +108,7 @@ namespace Reclamation.TimeSeries.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InputOffset";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Vertical offset for selection";
             this.ResumeLayout(false);
             this.PerformLayout();

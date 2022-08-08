@@ -101,6 +101,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Name = "ImportCorpsDataQuery";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "US Army Corps of Engineers, Northwestern Divison ";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -112,6 +112,7 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.buttonCancel);
             this.Name = "ExcelImportWizard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Import from Excel";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

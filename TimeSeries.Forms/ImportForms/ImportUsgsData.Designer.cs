@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonGwDepths = new System.Windows.Forms.RadioButton();
             this.textBoxCustomRealTime = new System.Windows.Forms.TextBox();
             this.radioButtonCustomRealTime = new System.Windows.Forms.RadioButton();
             this.textBoxCustomDaily = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.linkLabelUSGSInfo = new System.Windows.Forms.LinkLabel();
             this.timeSelectorBeginEnd1 = new Reclamation.TimeSeries.Forms.TimeSelectorBeginEnd();
-            this.radioButtonGwDepths = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +106,16 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select data type to import";
+            // 
+            // radioButtonGwDepths
+            // 
+            this.radioButtonGwDepths.AutoSize = true;
+            this.radioButtonGwDepths.Location = new System.Drawing.Point(216, 55);
+            this.radioButtonGwDepths.Name = "radioButtonGwDepths";
+            this.radioButtonGwDepths.Size = new System.Drawing.Size(180, 17);
+            this.radioButtonGwDepths.TabIndex = 15;
+            this.radioButtonGwDepths.Text = "groundwater depths (wrt surface)";
+            this.radioButtonGwDepths.UseVisualStyleBackColor = true;
             // 
             // textBoxCustomRealTime
             // 
@@ -303,16 +313,6 @@
             this.timeSelectorBeginEnd1.T2 = new System.DateTime(2008, 3, 12, 7, 55, 34, 320);
             this.timeSelectorBeginEnd1.TabIndex = 1;
             // 
-            // radioButtonGwDepths
-            // 
-            this.radioButtonGwDepths.AutoSize = true;
-            this.radioButtonGwDepths.Location = new System.Drawing.Point(216, 55);
-            this.radioButtonGwDepths.Name = "radioButtonGwDepths";
-            this.radioButtonGwDepths.Size = new System.Drawing.Size(180, 17);
-            this.radioButtonGwDepths.TabIndex = 15;
-            this.radioButtonGwDepths.Text = "groundwater depths (wrt surface)";
-            this.radioButtonGwDepths.UseVisualStyleBackColor = true;
-            // 
             // ImportUsgsData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,6 +327,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.timeSelectorBeginEnd1);
             this.Name = "ImportUsgsData";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Import USGS Data";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

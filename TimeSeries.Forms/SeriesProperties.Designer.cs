@@ -646,6 +646,7 @@ namespace Reclamation.TimeSeries.Forms
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(465, 523);
             this.Name = "SeriesProperties";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Series Properties";
             this.tabControl1.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);

@@ -98,6 +98,7 @@
             this.Controls.Add(this.buttonCancel);
             this.MinimumSize = new System.Drawing.Size(293, 234);
             this.Name = "FolderProperties";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FolderProperties";
             this.ResumeLayout(false);
             this.PerformLayout();

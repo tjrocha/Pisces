@@ -81,6 +81,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormNewAlarmGroup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "new alarm group";
             this.ResumeLayout(false);
             this.PerformLayout();

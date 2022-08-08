@@ -13,6 +13,7 @@ using Reclamation.TimeSeries.Nrcs;
 using Reclamation.TimeSeries.Hydromet;
 using Reclamation.TimeSeries.RBMS;
 using Reclamation.TimeSeries.Import;
+using Reclamation.TimeSeries.IDWR;
 
 #if !PISCES_OPEN
 using Reclamation.TimeSeries.Excel;
@@ -951,10 +952,11 @@ namespace Reclamation.TimeSeries.Forms
             {
                 string station = dlg.station;
                 string parameter = dlg.parameter;
+                var datatype = dlg.datatype;
                 DateTime t1 = dlg.tStart;
                 DateTime t2 = dlg.tEnd;
 
-                var s = new IDWR.IDWRDailySeries(station, parameter);
+                var s = new IDWRDailySeries(station, parameter, datatype);
                 s.Read(t1, t2);
                 DB.AddSeries(s, CurrentFolder);
             }

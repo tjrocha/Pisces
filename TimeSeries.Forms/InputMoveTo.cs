@@ -108,6 +108,7 @@ namespace Reclamation.TimeSeries.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InputMoveTo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Input new value for selection";
             this.ResumeLayout(false);
             this.PerformLayout();

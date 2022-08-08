@@ -178,6 +178,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Name = "AddSeries";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSeries";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

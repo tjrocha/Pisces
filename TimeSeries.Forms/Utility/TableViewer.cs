@@ -93,6 +93,7 @@ namespace Reclamation.Core
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.statusBar1);
             this.Name = "TableViewer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Table Viewer";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

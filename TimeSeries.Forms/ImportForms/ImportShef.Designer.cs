@@ -164,6 +164,7 @@
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(386, 191);
             this.Name = "ImportShef";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ImportShef";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

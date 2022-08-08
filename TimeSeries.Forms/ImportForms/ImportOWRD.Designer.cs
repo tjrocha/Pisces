@@ -208,6 +208,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.timeSelectorBeginEnd1);
             this.Name = "ImportOWRD";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Import OWRD Data";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

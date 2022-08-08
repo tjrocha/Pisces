@@ -267,6 +267,7 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             this.Controls.Add(this.buttonOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ImportHydromet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Import Hydromet/AgriMet Data from the Reclamation web site";
             this.Load += new System.EventHandler(this.FormImportHydromet_Load);
             this.groupBox1.ResumeLayout(false);

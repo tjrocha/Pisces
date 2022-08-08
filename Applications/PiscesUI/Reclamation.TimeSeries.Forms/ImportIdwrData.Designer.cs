@@ -115,9 +115,9 @@
             this.groupBox1.Controls.Add(this.radioButtonGH);
             this.groupBox1.Controls.Add(this.radioButtonQD);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(8, 327);
+            this.groupBox1.Location = new System.Drawing.Point(8, 330);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(400, 135);
+            this.groupBox1.Size = new System.Drawing.Size(406, 135);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select data type to import";
@@ -131,7 +131,7 @@
             this.tabControl1.Location = new System.Drawing.Point(171, 9);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(223, 120);
+            this.tabControl1.Size = new System.Drawing.Size(235, 120);
             this.tabControl1.TabIndex = 23;
             // 
             // tabPageMain
@@ -139,7 +139,7 @@
             this.tabPageMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageMain.Location = new System.Drawing.Point(4, 22);
             this.tabPageMain.Name = "tabPageMain";
-            this.tabPageMain.Size = new System.Drawing.Size(215, 94);
+            this.tabPageMain.Size = new System.Drawing.Size(227, 94);
             this.tabPageMain.TabIndex = 3;
             this.tabPageMain.Text = "Accounting";
             this.tabPageMain.UseVisualStyleBackColor = true;
@@ -155,6 +155,7 @@
             this.tabPageStream.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageStream.Size = new System.Drawing.Size(215, 94);
             this.tabPageStream.TabIndex = 0;
+            this.tabPageStream.Text = "Stream";
             this.tabPageStream.UseVisualStyleBackColor = true;
             // 
             // radioButtonNatQ
@@ -209,6 +210,7 @@
             this.tabPageReservoir.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageReservoir.Size = new System.Drawing.Size(215, 94);
             this.tabPageReservoir.TabIndex = 1;
+            this.tabPageReservoir.Text = "Reservoir";
             this.tabPageReservoir.UseVisualStyleBackColor = true;
             // 
             // radioButtonCurrAf
@@ -272,6 +274,7 @@
             this.tabPageDiversion.Name = "tabPageDiversion";
             this.tabPageDiversion.Size = new System.Drawing.Size(215, 94);
             this.tabPageDiversion.TabIndex = 2;
+            this.tabPageDiversion.Text = "Diversion";
             this.tabPageDiversion.UseVisualStyleBackColor = true;
             // 
             // radioButtonRemStor
@@ -429,7 +432,7 @@
             this.comboBoxRiverSystems.Size = new System.Drawing.Size(401, 21);
             this.comboBoxRiverSystems.TabIndex = 11;
             this.comboBoxRiverSystems.Text = "Select A River System";
-            this.comboBoxRiverSystems.DropDown += new System.EventHandler(this.comboBoxRiverSystems_OnDropDown);
+            this.comboBoxRiverSystems.DropDown += new System.EventHandler(this.comboBoxRiverSystems_DropDown);
             this.comboBoxRiverSystems.SelectedIndexChanged += new System.EventHandler(this.comboBoxRiverSystems_SelectedIndexChanged);
             // 
             // comboBoxRiverSites
@@ -507,6 +510,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 494);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(420, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -587,8 +591,8 @@
             this.timeSelectorBeginEnd1.Name = "timeSelectorBeginEnd1";
             this.timeSelectorBeginEnd1.ShowTime = false;
             this.timeSelectorBeginEnd1.Size = new System.Drawing.Size(199, 46);
-            this.timeSelectorBeginEnd1.T1 = new System.DateTime(2008, 3, 12, 7, 55, 34, 320);
-            this.timeSelectorBeginEnd1.T2 = new System.DateTime(2008, 3, 12, 7, 55, 34, 320);
+            this.timeSelectorBeginEnd1.T1 = new System.DateTime(2008, 3, 12, 0, 0, 0, 0);
+            this.timeSelectorBeginEnd1.T2 = new System.DateTime(2008, 3, 12, 0, 0, 0, 0);
             this.timeSelectorBeginEnd1.TabIndex = 1;
             // 
             // label8
@@ -630,7 +634,7 @@
             this.groupBox2.Controls.Add(this.timeSelectorBeginEnd1);
             this.groupBox2.Location = new System.Drawing.Point(8, 125);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(399, 205);
+            this.groupBox2.Size = new System.Drawing.Size(406, 205);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Site Info";
@@ -656,9 +660,13 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(436, 451);
             this.Name = "ImportIdwrData";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Import IDWR Data";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

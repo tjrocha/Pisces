@@ -184,6 +184,7 @@ namespace Reclamation.TimeSeries.Forms
             this.Controls.Add(this.statusBar1);
             this.Controls.Add(this.toolBar1);
             this.Name = "TimeSeriesTable";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Closed += new System.EventHandler(this.TimeSeriesTable_Closed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

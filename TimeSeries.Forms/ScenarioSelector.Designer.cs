@@ -500,6 +500,7 @@ namespace Reclamation.TimeSeries.Forms
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(515, 425);
             this.Name = "ScenarioSelector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Trace / Scenario Filter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScenarioSelector_FormClosing);
             this.Load += new System.EventHandler(this.ScenarioSelector_Load);

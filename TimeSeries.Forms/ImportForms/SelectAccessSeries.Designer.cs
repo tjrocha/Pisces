@@ -232,6 +232,7 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             this.MinimumSize = new System.Drawing.Size(330, 405);
             this.Name = "SelectAccessSeries";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Series from database";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

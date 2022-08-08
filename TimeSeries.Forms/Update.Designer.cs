@@ -103,6 +103,7 @@
             this.Controls.Add(this.timeSelectorBeginEnd1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Update";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update Timeseries data";
             this.ResumeLayout(false);
             this.PerformLayout();

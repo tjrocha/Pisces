@@ -86,6 +86,7 @@ namespace Reclamation.Core
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
             this.Name = "LoggerView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LoggerView";
             this.Load += new System.EventHandler(this.LoggerView_Load);
             this.panel1.ResumeLayout(false);

@@ -591,6 +591,19 @@ namespace Reclamation.TimeSeries.Forms
             Reclamation.Core.SqlTableEditor edit =
                 new Reclamation.Core.SqlTableEditor(DB.Server);
             edit.Show();
+
+            //show centered in Pisces
+            CenterFormInPisces(edit);
+
+        }
+
+        private void CenterFormInPisces(Form form)
+        {
+            if (form.StartPosition == FormStartPosition.CenterParent)
+            {
+                form.Location = new System.Drawing.Point(Location.X + (Width - form.Width) / 2,
+                    Location.Y + (Height - form.Height) / 2);
+            }
         }
 
 
@@ -1075,6 +1088,9 @@ namespace Reclamation.TimeSeries.Forms
         {
             ProfileDesigner d = new ProfileDesigner(DB);
             d.Show();
+
+            //show centered in Pisces
+            CenterFormInPisces(d);
         }
 
         private void toolStripMenuItemAlarmManager_Click(object sender, EventArgs e)
@@ -1083,7 +1099,7 @@ namespace Reclamation.TimeSeries.Forms
             {
                 AlarmManagerMain am = new AlarmManagerMain(DB);
                 am.Size = new System.Drawing.Size(600, 400);
-                am.ShowDialog();
+                am.ShowDialog(this);
             }
             catch (Exception ex)
             {
