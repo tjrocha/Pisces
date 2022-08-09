@@ -405,11 +405,16 @@ namespace Reclamation.TimeSeries.RiverWare
                 */
                 string on = m_objectName.Replace("^", "\\^"); // Warren Sharps model had ^ in the object name..
 
-                idxLocation = m_textFile.IndexOfBothRegex("^object_name: " + on + "$", "^slot_name: " + m_slotName + "$", scenarioIndex);
+                idxLocation = m_textFile.IndexOfRegex("^object_name: " + on + "$", scenarioIndex);
                 if (idxLocation >= 0)
                 {
-                    this.Units = ReadUnits(idxLocation);
-                    idxLocation += 5;
+                    var idxSlotName = m_textFile.IndexOfRegex("^slot_name: " + m_slotName + "$", idxLocation);
+                    if (idxSlotName >= 0)
+                    {
+                        var idxEndSlot = m_textFile.IndexOf("END_SLOT_PREAMBLE", idxSlotName);
+                        this.Units = ReadUnits(idxEndSlot);
+                        idxLocation = idxEndSlot + 3; 
+                    }
                 }
             }
             return idxLocation;

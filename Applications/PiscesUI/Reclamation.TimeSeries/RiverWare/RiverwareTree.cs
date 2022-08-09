@@ -20,6 +20,7 @@ namespace Reclamation.TimeSeries.RiverWare
          -----------------------------------
          object_type: SnapShotObj
          object_name: Most Likely 2
+         slot_type: SeriesSlot
          slot_name: Andrews Gage 12447390 at RM 3_5_Gage Outflow
          END_SLOT_PREAMBLE
          units: cfs
@@ -35,42 +36,17 @@ namespace Reclamation.TimeSeries.RiverWare
         public static void AddRiverWareFileToDatabase(string rdfFilename, PiscesFolder parent, 
             TimeSeriesDatabase db)
         {
-            Reclamation.Core.TextFile tf = new Reclamation.Core.TextFile(rdfFilename);
-
-            #region notes
-            /*
-            SnapShotStyle...
-            -------------------------------------
-          2001-9-29 24:00
-          2001-9-30 24:00
-          object_type: SnapShotObj
-          object_name: Most Likely 2     ### scernario name 
-          slot_name: Andrews Gage 12447390 at RM 3_5_Gage Outflow   # object_name slotName are combined.
-          END_SLOT_PREAMBLE
-          units: cfs
-
-          Regular Style ...
-          ---------------------------------------
-          END_COLUMN
-          END_SLOT
-          object_type: StreamGage
-          object_name: Yakima 202_0 at Easton EASW
-          slot_name: Gage Outflow
-          END_SLOT_PREAMBLE
-          units: cfs
-          scale: 1
-
-          */
-            #endregion
+            TextFile tf = new TextFile(rdfFilename);
 
             int number_of_runs = LookupNumberOfRuns(tf);
             PiscesFolder folder = parent;
             if (number_of_runs == 1)
                 folder = db.AddFolder(parent, Path.GetFileNameWithoutExtension(rdfFilename));
             
-            int sz = tf.Length;
-            // object_type and object_name should occur on consecutive lines.
-            int index = tf.IndexOfBoth("object_name:", "slot_name:", 0);
+            int idxObjectName = tf.IndexOf("object_name:", 0);
+            int idxSlotName = tf.IndexOf("slot_name:", idxObjectName);
+            int idxUnits = tf.IndexOf("units:", idxSlotName);
+            
             var objectList = new List<string>(); //list to avoid duplicates in tree
             Performance p1 = new Performance();
             Performance p2 = new Performance();
@@ -81,13 +57,12 @@ namespace Reclamation.TimeSeries.RiverWare
             var sc = db.GetSeriesCatalog();
             Dictionary<string, int> objTypeID = new Dictionary<string, int>();
             Dictionary<string, int> objNameID = new Dictionary<string, int>();
-            while (index < sz && index > 0)
+            while (idxObjectName < tf.Length && idxObjectName > 0)
             {
-                //slot_name: Andrews Gage 12447390 at RM 3_5_Gage Outflow
-                string slot_name = tf[index + 1].Substring(11); //Andrews Gage 12447390 at RM 3_5_Gage Outflow
-                string object_type = tf[index - 1].Substring(13);
-                string object_name = tf[index].Substring(13);
-                string units = tf[index + 3].Substring(6).Trim();
+                string object_type = tf[idxObjectName - 1].Substring(13);
+                string object_name = tf[idxObjectName].Substring(13);
+                string slot_name = tf[idxSlotName].Substring(11);
+                string units = tf[idxUnits].Substring(6).Trim();
 
                 string tag = object_name + ":" + slot_name;
                 if (!objectList.Contains(tag))
@@ -140,7 +115,13 @@ namespace Reclamation.TimeSeries.RiverWare
                     objectList.Add(tag);
                 }
                 
-                index = tf.IndexOfBoth( "object_name:", "slot_name:", index + 2);
+                idxObjectName = tf.IndexOf("object_name:", idxUnits);
+                if (idxObjectName > 0)
+                {
+                    idxSlotName = tf.IndexOf("slot_name:", idxObjectName);
+                    idxUnits = tf.IndexOf("units:", idxSlotName);
+                }
+
                 counter++;
             }
             p1.Report("total");
@@ -156,10 +137,10 @@ namespace Reclamation.TimeSeries.RiverWare
             //34.8756696 seconds elapsed. total
             //20.3753912 seconds elapsed. db.add()
 
-            var convention = Reclamation.TimeSeries.RiverWare.ImportRiverWare.ScenarioConvention.Default;
+            var convention = ImportRiverWare.ScenarioConvention.Default;
             if (number_of_runs > 1) // Multiple runs.
             {// show dialog to allow water year naming or traces
-                var dlg = new Reclamation.TimeSeries.RiverWare.ImportRiverWare();
+                var dlg = new ImportRiverWare();
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     convention = dlg.NamingConvention;
@@ -170,13 +151,13 @@ namespace Reclamation.TimeSeries.RiverWare
                 var tblScen = db.GetScenarios();
                 for (int i = 0; i < number_of_runs; i++)
                 {
-                    string name = "Run" + i;
-                    if (convention == RiverWare.ImportRiverWare.ScenarioConvention.ByYear)
+                    string name = $"Run{i}";
+                    if (convention == ImportRiverWare.ScenarioConvention.ByYear)
                     {
                         name = (dlg.FirstYear + i ).ToString();
                     }
                     //string scenarioPath = ConnectionStringUtility.MakeFileNameRelative("FileName=" + item, DB.Filename);
-                    tblScen.AddScenarioRow(name, true, "ScenarioNumber=" + (i + 1).ToString(), 0);
+                    tblScen.AddScenarioRow(name, true, $"ScenarioNumber={i + 1}", 0);
                 }
                 db.Server.SaveTable(tblScen);
             }
@@ -186,7 +167,7 @@ namespace Reclamation.TimeSeries.RiverWare
             
         }
 
-        private static int LookupNumberOfRuns(Reclamation.Core.TextFile tf)
+        private static int LookupNumberOfRuns(TextFile tf)
         {
             int number_of_runs = 1;
             //:53
