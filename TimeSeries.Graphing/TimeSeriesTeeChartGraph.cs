@@ -7,6 +7,7 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using Reclamation.TimeSeries.Forms.Graphing;
+using System.Collections.Specialized;
 
 namespace Reclamation.TimeSeries.Graphing
 {
@@ -18,6 +19,7 @@ namespace Reclamation.TimeSeries.Graphing
         string title = "";
         string subTitle = "";
         private Steema.TeeChart.Tools.DragPoint dragPoint1;
+        bool m_scaleLineWidths;
 
       //  Steema.TeeChart.Tools.RectangleTool rectTool;
         Steema.TeeChart.Tools.Annotation annotation1;
@@ -308,15 +310,17 @@ namespace Reclamation.TimeSeries.Graphing
             {
                 // Cycle through line widths
                 case MouseButtons.Left:
-                    if (this.tChart1.Series[idx] is Steema.TeeChart.Styles.Line)
+                    if (m_scaleLineWidths)
                     {
-                        int currWidth = (this.tChart1.Series[idx] as Steema.TeeChart.Styles.Line).LinePen.Width;
-                        int newWidth = currWidth + 1;
-                        if (newWidth > 5)
+                        StringCollection sc = Properties.Settings.Default.SeriesWidth;
+                        var defaultWidth = int.Parse(sc[0]);
+                        if (this.tChart1.Series[idx] is Steema.TeeChart.Styles.Line)
                         {
-                            newWidth = 1;
-                        }
-                        (this.tChart1.Series[idx] as Steema.TeeChart.Styles.Line).LinePen.Width = newWidth;
+                            var line = (this.tChart1.Series[idx] as Steema.TeeChart.Styles.Line);
+                            int currWidth = line.LinePen.Width;
+                            int newWidth = (currWidth > defaultWidth + 4) ? defaultWidth : currWidth + 1;
+                            line.LinePen.Width = newWidth;
+                        } 
                     }
                     break;
 
@@ -545,6 +549,11 @@ namespace Reclamation.TimeSeries.Graphing
                     this.tChart1.Panning.Allow = Steema.TeeChart.ScrollModes.Both;
                     break;
             }
+        }
+
+        private void toolStripButtonScaleLineWidth_Click(object sender, EventArgs e)
+        {
+            m_scaleLineWidths = toolStripButtonScaleLineWidth.Checked;
         }
     }
 }

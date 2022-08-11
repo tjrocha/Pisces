@@ -45,6 +45,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxDragPoints = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonSelect = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonScaleLineWidth = new System.Windows.Forms.ToolStripButton();
             this.tChart1 = new Steema.TeeChart.TChart();
             this.line1 = new Steema.TeeChart.Styles.Line();
             this.toolStrip1.SuspendLayout();
@@ -52,6 +53,7 @@ namespace Reclamation.TimeSeries.Graphing
             // 
             // toolStrip1
             // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonPrin,
             this.toolStripSeparator1,
@@ -65,7 +67,8 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripSeparator3,
             this.toolStripLabel2,
             this.toolStripComboBoxDragPoints,
-            this.toolStripButtonSelect});
+            this.toolStripButtonSelect,
+            this.toolStripButtonScaleLineWidth});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(865, 25);
@@ -184,6 +187,19 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonSelect.Size = new System.Drawing.Size(42, 22);
             this.toolStripButtonSelect.Text = "Select";
             this.toolStripButtonSelect.Click += new System.EventHandler(this.toolStripButtonSelect_Click);
+            // 
+            // toolStripButtonScaleLineWidth
+            // 
+            this.toolStripButtonScaleLineWidth.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonScaleLineWidth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.toolStripButtonScaleLineWidth.CheckOnClick = true;
+            this.toolStripButtonScaleLineWidth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonScaleLineWidth.Image = global::Reclamation.TimeSeries.Graphing.Properties.Resources.Editing_Line_Width_icon;
+            this.toolStripButtonScaleLineWidth.Name = "toolStripButtonScaleLineWidth";
+            this.toolStripButtonScaleLineWidth.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonScaleLineWidth.Text = "Scale Line Widths";
+            this.toolStripButtonScaleLineWidth.ToolTipText = "Scale Line Widths";
+            this.toolStripButtonScaleLineWidth.Click += new System.EventHandler(this.toolStripButtonScaleLineWidth_Click);
             // 
             // tChart1
             // 
@@ -1694,6 +1710,7 @@ namespace Reclamation.TimeSeries.Graphing
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton toolStripButtonScaleLineWidth;
     }
 
 }

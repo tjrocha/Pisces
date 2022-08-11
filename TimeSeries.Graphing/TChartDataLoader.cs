@@ -121,10 +121,10 @@ namespace Reclamation.TimeSeries.Graphing
                 series.Stairs = list[i].Appearance.StairStep;
                 string units = list[i].Units;
 
-                // [JR] Hydromet Tools Data Analysis tab - catch and color same years
-                if (System.Drawing.Color.FromName(list[i].Appearance.Color) != System.Drawing.Color.Black)
+                // [JR] Hydromet Tools Data Analysis tab - catch and color same year
+                if (Color.FromName(list[i].Appearance.Color) != Color.Black)
                 {
-                    series.Color = System.Drawing.Color.FromName(list[i].Appearance.Color);
+                    series.Color = Color.FromName(list[i].Appearance.Color);
                 }
 
                 if (multiLeftAxis)
