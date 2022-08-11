@@ -34,18 +34,18 @@ namespace Reclamation.TimeSeries.Graphing.Properties {
             {
                 sc.Add("Black");
             }
-            sc[index] = color.ToArgb().ToString();
+            sc[index] = $"{color.ToArgb()}";
         }
 
-        internal System.Drawing.Color GetSeriesColor(int index)
+        internal Color GetSeriesColor(int index)
         {
             StringCollection sc = Default.SeriesColors;
-            Color c = System.Drawing.Color.Black;
+            Color c = Color.Black;
             if (index >= sc.Count)
             {
                 return c;
             }
-            int argb = 0;
+            int argb;
             if (int.TryParse(sc[index], out argb))
             {
 
@@ -60,29 +60,30 @@ namespace Reclamation.TimeSeries.Graphing.Properties {
 
         internal void SetSeriesWidth(int index, int value)
         {
-            StringCollection sc = Default.SeriesWidth; ;
+            StringCollection sc = Default.SeriesWidth;
             while (index >= sc.Count)
             {
-                sc.Add("1");
+                sc.Add(sc[0]);
             }
-            sc[index] = value.ToString();
+            sc[index] = $"{value}";
         }
 
         internal int GetSeriesWidth(int index)
         {
             StringCollection sc = Default.SeriesWidth;
+            var defaultWidth = int.Parse(sc[0]);
             if (index >= sc.Count)
             {
-                return 1;
+                return defaultWidth;
             }
-            int width = 1;
+            int width;
             if (int.TryParse(sc[index], out width))
             {
                 return width;
             }
             else
             {
-                return 1;
+                return defaultWidth;
             }
         }
     }
