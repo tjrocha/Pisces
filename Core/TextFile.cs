@@ -439,6 +439,48 @@ namespace Reclamation.Core
         }
 
 
+        /// <summary>
+        /// search for two lines that match search Regex prior
+        /// to reaching "END_SLOT_PREAMBLE"
+        /// </summary>
+        public int IndexOfBothRegexRW(string expression1,
+            string expression2)
+        {
+            return IndexOfBothRegexRW(expression1, expression2, 0);
+        }
+        /// <summary>
+        /// search for two lines that match search Regex prior
+        /// to reaching "END_SLOT_PREAMBLE"
+        /// </summary>
+        public int IndexOfBothRegexRW(string expression1,
+            string expression2, int startingIndex)
+        {
+            Regex re1 = new Regex(expression1, RegexOptions.Compiled);
+            Regex re2 = new Regex(expression2, RegexOptions.Compiled);
+            Regex end = new Regex("END_SLOT_PREAMBLE", RegexOptions.Compiled);
+            int i = startingIndex;
+            while (i < Length)
+            {
+                i = IndexOfRegex(re1, i);
+                if (i < 0 || i == Length - 1)
+                {
+                    return -1;
+                }
+                else
+                {
+                    while (!end.IsMatch(this[i++]))
+                    {
+                        if (re2.IsMatch(this[i]))
+                        {
+                            return i;
+                        }
+                    }
+                }
+
+                i++;
+            }
+            return -1;
+        }
 
 
 
