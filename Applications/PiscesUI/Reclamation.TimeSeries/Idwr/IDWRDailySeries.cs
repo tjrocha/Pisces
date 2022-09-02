@@ -43,9 +43,6 @@ namespace Reclamation.TimeSeries.IDWR
                 case "GH":
                     Units = "feet";
                     break;
-                case "QD":
-                    Units = "cfs";
-                    break;
                 case "AF":
                     Units = "acre-feet";
                     break;
@@ -170,6 +167,7 @@ namespace Reclamation.TimeSeries.IDWR
                                         value = item.AF;
                                         break;
                                     case ("QD"):
+                                    case ("QJ"):
                                         value = item.QD;
                                         break;
                                     default:
