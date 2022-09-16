@@ -76,7 +76,7 @@ namespace Reclamation.TimeSeries
 
 
 
-        public virtual void Calculate(DateTime t1, DateTime t2)
+        public virtual void Calculate(DateTime t1, DateTime t2, bool dbSave = true)
         {
 
             var t1a = t1;
@@ -139,7 +139,7 @@ namespace Reclamation.TimeSeries
                     
                     this.Table = result.Series.Table;
                     this.Table.TableName = tableName;
-                    if (m_db != null)
+                    if (m_db != null && dbSave)
                     {
                        // Logger.WriteLine("Setting Flags");
                         m_db.Quality.SetFlags(this);
@@ -150,7 +150,14 @@ namespace Reclamation.TimeSeries
                     {
                         row.SetAdded(); // so database will insert these rows.
                     }
-                    if (m_db != null) // database is not required for calculations.
+
+                    if (seriesBeforeCalc.TimeInterval != this.TimeInterval
+                            || seriesBeforeCalc.Units != this.Units)
+                    {
+                        Logger.WriteLine("Warning Units or interval has changed.");
+                    }
+
+                    if (m_db != null && dbSave) // database is not required for calculations.
                     {
 
                         //bool canSave = m_db.Server.HasSavePrivilge(this.Table.TableName);
@@ -158,13 +165,7 @@ namespace Reclamation.TimeSeries
                         m_db.SaveTimeSeriesTable(this.ID, this, DatabaseSaveOptions.UpdateExisting);
                         Expression = tmpExpression;
 
-                        if (seriesBeforeCalc.TimeInterval != this.TimeInterval
-                            || seriesBeforeCalc.Units != this.Units)
-                        {
-                            Logger.WriteLine("Warning Units or interval has changed.");
-                            //if(canSave)
-                            m_db.SaveProperties(this); // time interval, units, are dependent on calculation.
-                        }
+                        m_db.SaveProperties(this); // time interval, units, are dependent on calculation.
                     }                   
                 }
                 else
