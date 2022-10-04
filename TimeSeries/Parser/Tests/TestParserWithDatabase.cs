@@ -42,6 +42,34 @@ namespace Reclamation.TimeSeries.Parser.Tests
             Assert.AreEqual(249, s[0].Value);
             Assert.AreEqual(16, s[0].DateTime.Day);
         }
+
+        /// <summary>
+        /// Test LookupShift(afci_ch)
+        /// </summary>
+        [Test]
+        public void LookupShift()
+        {
+            _svr.CreateDataBase(_fn);
+
+            DateTime t = new DateTime(2022, 9, 1);
+
+            var s = HydrometInfoUtility.Read("afci", "ch", t, t, 
+                TimeInterval.Irregular, HydrometHost.PNLinux);
+            s.Name = "afci_ch";
+            _db.AddSeries(s);
+            s.Properties.Set("shift", "-0.42");
+
+            var c = new CalculationSeries();
+            c.TimeInterval = TimeInterval.Irregular;
+            c.Name = "afci_hh";
+            c.Expression = "LookupShift(afci_ch)";
+            _db.AddSeries(c);
+
+            c.Calculate();
+
+            Assert.AreEqual(-0.42, c[0].Value, 0.001);
+        }
+
         /// <summary>
         /// Test expression  bigi_qd[t-1]
         /// where t= nov 15, 1999
