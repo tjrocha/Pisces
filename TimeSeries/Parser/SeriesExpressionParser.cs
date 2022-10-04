@@ -446,13 +446,17 @@ ISBN: 0072134852
                     string subExpression = "";
                     ParserUtility.TryGetFunctionCall(token, out subExpression, out function);
                     stack.Add("function call: " + subExpression);
-                    SeriesExpressionParser parser = new SeriesExpressionParser(m_db);
-                    parser.VariableResolver = this.VariableResolver;
+                    SeriesExpressionParser parser = new SeriesExpressionParser(m_db, VariableResolver.LookupOption);
                     List<ParserResult> args = new List<ParserResult>();
                     bool anySeriesArgs = false;
                     for (int i = 0; i < function.Parameters.Length; i++)
                     {
-                        var  a = parser.Evaluate(function.Parameters[i], this.t1, this.t2,defaultTimeInterval);
+                        ParserResult a;
+                        if (m_db == null)
+                            a = Evaluate(function.Parameters[i], this.t1, this.t2, defaultTimeInterval);
+                        else
+                            a = parser.Evaluate(function.Parameters[i], this.t1, this.t2, defaultTimeInterval);
+
                         if (a.IsSeries)
                             anySeriesArgs = true;
                         args.Add(a);
