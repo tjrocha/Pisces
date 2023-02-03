@@ -18,7 +18,9 @@ However, Pisces also supports postgresql, MySql, SqlServer, and ~~SqlCompact~~.
 
 The key programs and assemblies  (HydrometServer.exe, Reclamation.Core.dll and Reclamation.TimeSeries.dll) work under Windows or Linux/mono.  
  
-Hydrologist, Engineers (especially modelers), and programmers have used these Pisces libraries to manage large amounts of time series data with ease. The main componet in the library called Series can be used without any database if desired.
+Hydrologist, Engineers (especially modelers), and Programmers have used these Pisces libraries to manage large amounts of time series data with ease. The main componet in the library called Series can be used without any database if desired.
+
+Pisces has many server-based features.  For example, Pisces running on a server can send text messages or make phone calls , to a list o people , until someone acknowledges, when changing conditions merit that.  https://github.com/usbr/Pisces/wiki/alarm-description
 
 ## History and Motivation
 
