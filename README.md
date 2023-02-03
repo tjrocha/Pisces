@@ -17,8 +17,10 @@ The key programs and assemblies  (HydrometServer.exe, Reclamation.Core.dll and R
  
 Hydrologist, Engineers (especially modelers), and Programmers have used these Pisces libraries to manage large amounts of time series data with ease. The main component in the library called Series can be used without any database if desired.
 
-Download the Pisces user manual here: [a User Manual](Doc/Pisces_User_Manual.doc)  
-Download a summary bulletin here: [a Summary Bulletin](Doc/Pisces_bulletin.DOC)
+Pisces has many server-based features. For example, Pisces running on a server can send text messages or make phone calls, to a list of people until someone acknowledges, when changing conditions merit that. [Alarm Description](https://github.com/usbr/Pisces/wiki/alarm-description)
+
+Download the Pisces user manual here: [User Manual](Doc/Pisces_User_Manual.doc)  
+Download a summary bulletin here: [Summary Bulletin](Doc/Pisces_bulletin.DOC)
 
 ## History and Motivation
 
