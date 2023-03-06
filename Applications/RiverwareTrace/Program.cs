@@ -35,8 +35,8 @@ namespace Reclamation.RiverwareTrace
             Console.WriteLine();
             Console.WriteLine("Usage: RiverwareTrace.exe dt1 dt2 controlfile host txt outputdirectory");
             Console.WriteLine("Where:");
-            Console.WriteLine("    dt1 is the start of the water for the start year of interest");
-            Console.WriteLine("    dt2 is the end of the water for the end year of interest");
+            Console.WriteLine("    dt1 is the start of the water year for the start year of interest");
+            Console.WriteLine("    dt2 is the end of the water year for the end year of interest");
             Console.WriteLine("    controlfile is a RiverWare DMI control file with !cbtt/!pcode for Hydromet and !cbtt for NWRFC");
             Console.WriteLine("    host is pnhyd|yakhyd|nwrfc0|nwrfc10|nwrfcM server data to read");
             Console.WriteLine("    txt is txt|xls output type requested");
