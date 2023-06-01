@@ -90,8 +90,8 @@ namespace Reclamation.TimeSeries
 
                if (this.TimeInterval == TimeSeries.TimeInterval.Daily)
                {
-                   // daily_wrdo_pu needs AdjustStartingDate
-                   t1a = this.AdjustStartingDateFromProperties(t1, t2a);// DO DO??? needed??
+                   // daily_wrdo_pu needs AdjustStartingDate, as well as any pu with WholeWaterYear Property
+                   t1a = this.AdjustStartingDateFromProperties(t1, t2a);
                }
 
             Exception error = new Exception();

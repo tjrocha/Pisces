@@ -109,7 +109,6 @@ namespace Reclamation.TimeSeries
             }
 
             double sum = 0.0;  
-            bool missing = false;
             bool primed = false;
             int index = 0;
             
@@ -134,10 +133,9 @@ namespace Reclamation.TimeSeries
                 {
                     sum = 0.0;
                     primed = true;
-                    missing = false;
                 }
 
-                if (primed && !missing && !incremental[index].IsMissing)
+                if (primed && !incremental[index].IsMissing)
                 {
                     sum += incremental[index].Value;
                     rval.Add(incremental[index].DateTime, sum);
@@ -146,7 +144,6 @@ namespace Reclamation.TimeSeries
                 {
                     rval.AddMissing(incremental[index].DateTime);
                     Console.WriteLine("Missing data: incremental: " + incremental[index].ToString());
-                    missing = true;
                 }
             }
             return rval;
