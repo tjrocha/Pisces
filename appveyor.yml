@@ -1,5 +1,5 @@
 version: 1.0.{build}
-## AppVeyor CI for Windows testing
+image: Visual Studio 2022
 
 branches:
   only:
@@ -10,7 +10,9 @@ branches:
   
 #before_build:
 #  - cmd: nuget restore Pisces.sln
-
+image:
+  environment: Visual Studio 2022
+  
 configuration: Debug
 platform: Any CPU 
 
