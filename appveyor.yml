@@ -5,11 +5,11 @@ branches:
   only:
     - master
 
-install:
-  - cmd: appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe 
+#install:
+#  - cmd: appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe 
   
-before_build:
-  - cmd: nuget restore Pisces.sln
+#before_build:
+#  - cmd: nuget restore Pisces.sln
 
 configuration: Debug
 platform: Any CPU 
