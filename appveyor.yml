@@ -10,9 +10,7 @@ branches:
   
 #before_build:
 #  - cmd: nuget restore Pisces.sln
-image:
-  environment: Visual Studio 2022
-  
+
 configuration: Debug
 platform: Any CPU 
 
