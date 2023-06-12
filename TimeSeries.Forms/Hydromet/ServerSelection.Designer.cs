@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxCustomSource = new System.Windows.Forms.CheckBox();
+            this.textBoxCustomSource = new System.Windows.Forms.TextBox();
             this.radioButtonYakLinux = new System.Windows.Forms.RadioButton();
             this.textBoxDbName = new System.Windows.Forms.TextBox();
             this.labelDbName = new System.Windows.Forms.Label();
-            this.radioButtonLocal = new System.Windows.Forms.RadioButton();
             this.radioButtonPnHydromet = new System.Windows.Forms.RadioButton();
             this.radioButtonYakHydromet = new System.Windows.Forms.RadioButton();
             this.radioButtonBoiseLinux = new System.Windows.Forms.RadioButton();
@@ -42,10 +43,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBoxCustomSource);
+            this.groupBox1.Controls.Add(this.textBoxCustomSource);
             this.groupBox1.Controls.Add(this.radioButtonYakLinux);
             this.groupBox1.Controls.Add(this.textBoxDbName);
             this.groupBox1.Controls.Add(this.labelDbName);
-            this.groupBox1.Controls.Add(this.radioButtonLocal);
             this.groupBox1.Controls.Add(this.radioButtonPnHydromet);
             this.groupBox1.Controls.Add(this.radioButtonYakHydromet);
             this.groupBox1.Controls.Add(this.radioButtonBoiseLinux);
@@ -60,6 +62,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "time series data source";
             // 
+            // checkBoxCustomSource
+            // 
+            this.checkBoxCustomSource.AutoSize = true;
+            this.checkBoxCustomSource.Location = new System.Drawing.Point(15, 143);
+            this.checkBoxCustomSource.Name = "checkBoxCustomSource";
+            this.checkBoxCustomSource.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxCustomSource.TabIndex = 49;
+            this.checkBoxCustomSource.Text = "Custom source";
+            this.checkBoxCustomSource.UseVisualStyleBackColor = true;
+            this.checkBoxCustomSource.CheckedChanged += new System.EventHandler(this.checkBoxCustomSource_CheckedChanged);
+            // 
+            // textBoxCustomSource
+            // 
+            this.textBoxCustomSource.Location = new System.Drawing.Point(111, 141);
+            this.textBoxCustomSource.Name = "textBoxCustomSource";
+            this.textBoxCustomSource.Size = new System.Drawing.Size(110, 20);
+            this.textBoxCustomSource.TabIndex = 48;
+            this.textBoxCustomSource.TextChanged += new System.EventHandler(this.textBoxCustomSource_TextChanged);
+            // 
             // radioButtonYakLinux
             // 
             this.radioButtonYakLinux.Location = new System.Drawing.Point(15, 117);
@@ -68,6 +89,7 @@
             this.radioButtonYakLinux.Size = new System.Drawing.Size(136, 20);
             this.radioButtonYakLinux.TabIndex = 47;
             this.radioButtonYakLinux.Text = "Yakima Linux";
+            this.radioButtonYakLinux.CheckedChanged += new System.EventHandler(this.serverChanged);
             // 
             // textBoxDbName
             // 
@@ -85,15 +107,6 @@
             this.labelDbName.Size = new System.Drawing.Size(83, 13);
             this.labelDbName.TabIndex = 45;
             this.labelDbName.Text = "database name:";
-            // 
-            // radioButtonLocal
-            // 
-            this.radioButtonLocal.Location = new System.Drawing.Point(15, 141);
-            this.radioButtonLocal.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButtonLocal.Name = "radioButtonLocal";
-            this.radioButtonLocal.Size = new System.Drawing.Size(100, 20);
-            this.radioButtonLocal.TabIndex = 6;
-            this.radioButtonLocal.Text = "Local source:";
             // 
             // radioButtonPnHydromet
             // 
@@ -159,9 +172,10 @@
         private System.Windows.Forms.RadioButton radioButtonGP;
         private System.Windows.Forms.RadioButton radioButtonYakHydromet;
         private System.Windows.Forms.RadioButton radioButtonPnHydromet;
-        private System.Windows.Forms.RadioButton radioButtonLocal;
         private System.Windows.Forms.TextBox textBoxDbName;
         private System.Windows.Forms.Label labelDbName;
         private System.Windows.Forms.RadioButton radioButtonYakLinux;
+        private System.Windows.Forms.TextBox textBoxCustomSource;
+        private System.Windows.Forms.CheckBox checkBoxCustomSource;
     }
 }
