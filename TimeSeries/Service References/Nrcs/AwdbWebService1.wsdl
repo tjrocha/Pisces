@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.wcc.nrcs.usda.gov/ns/awdbWebService" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AwdbWebService" targetNamespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:tns="http://www.wcc.nrcs.usda.gov/ns/awdbWebService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AwdbWebService" targetNamespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xs:schema elementFormDefault="unqualified" targetNamespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="areYouThere" type="tns:areYouThere" />
@@ -14,6 +14,8 @@
       <xs:element name="getCentralTendencyDataResponse" type="tns:getCentralTendencyDataResponse" />
       <xs:element name="getCentralTendencyPeakData" type="tns:getCentralTendencyPeakData" />
       <xs:element name="getCentralTendencyPeakDataResponse" type="tns:getCentralTendencyPeakDataResponse" />
+      <xs:element name="getCentralTendencySWETiming" type="tns:getCentralTendencySWETiming" />
+      <xs:element name="getCentralTendencySWETimingResponse" type="tns:getCentralTendencySWETimingResponse" />
       <xs:element name="getData" type="tns:getData" />
       <xs:element name="getDataInsertedOrUpdatedSince" type="tns:getDataInsertedOrUpdatedSince" />
       <xs:element name="getDataInsertedOrUpdatedSinceResponse" type="tns:getDataInsertedOrUpdatedSinceResponse" />
@@ -152,7 +154,6 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="beginDate" type="xs:string" />
           <xs:element minOccurs="0" name="dataPrecision" type="xs:int" />
-          <xs:element minOccurs="0" name="dataSource" type="tns:dataSource" />
           <xs:element minOccurs="0" name="duration" type="tns:duration" />
           <xs:element minOccurs="0" name="elementCd" type="xs:string" />
           <xs:element minOccurs="0" name="endDate" type="xs:string" />
@@ -274,8 +275,9 @@
           <xs:element name="elementCd" type="xs:string" />
           <xs:element minOccurs="0" name="heightDepth" type="tns:heightDepth" />
           <xs:element name="duration" type="tns:duration" />
-          <xs:element name="getFlags" type="xs:boolean" />
+          <xs:element minOccurs="0" default="false" name="getNumberObservationsUsed" type="xs:boolean" />
           <xs:element name="centralTendencyType" type="tns:centralTendencyType" />
+          <xs:element minOccurs="0" name="getFlags" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="getCentralTendencyPeakDataResponse">
@@ -295,7 +297,7 @@
       <xs:complexType name="averagesPeakData">
         <xs:sequence>
           <xs:element minOccurs="0" name="duration" type="tns:duration" />
-          <xs:element minOccurs="0" name="flag" type="xs:string" />
+          <xs:element minOccurs="0" name="numberObservations" type="xs:int" />
           <xs:element name="peakDay" type="xs:int" />
           <xs:element name="peakMonth" type="xs:int" />
           <xs:element minOccurs="0" name="value" type="xs:decimal" />
@@ -307,6 +309,7 @@
           <xs:element name="elementCd" type="xs:string" />
           <xs:element maxOccurs="unbounded" name="periods" type="xs:string" />
           <xs:element name="centralTendencyType" type="tns:centralTendencyType" />
+          <xs:element minOccurs="0" default="false" name="getNumberObservationsUsed" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="getForecastPeriodCentralTendencyResponse">
@@ -325,8 +328,8 @@
       </xs:complexType>
       <xs:complexType name="forecastPeriodAverage">
         <xs:sequence>
-          <xs:element minOccurs="0" name="flag" type="xs:string" />
           <xs:element minOccurs="0" name="forecastPeriod" type="xs:string" />
+          <xs:element minOccurs="0" name="numberObservations" type="xs:int" />
           <xs:element minOccurs="0" name="stationTriplet" type="xs:string" />
           <xs:element minOccurs="0" name="value" type="xs:decimal" />
         </xs:sequence>
@@ -361,18 +364,62 @@
           <xs:element minOccurs="0" name="unitCd" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="getCentralTendencySWETiming">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="stationTriplets" type="xs:string" />
+          <xs:element name="centralTendencyType" type="tns:centralTendencyType" />
+          <xs:element minOccurs="0" default="false" name="getNumberObservationsUsed" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCentralTendencySWETimingResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:CentralTendencySWEStatisticsData" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CentralTendencySWEStatisticsData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="centralTendencyType" type="tns:centralTendencyType" />
+          <xs:element minOccurs="0" name="seasonalSweMeltOutData" type="tns:SeasonalSweMeltOutData" />
+          <xs:element minOccurs="0" name="seasonalSweOnsetData" type="tns:SeasonalSweOnsetData" />
+          <xs:element minOccurs="0" name="seasonalSwePeakData" type="tns:SeasonalSwePeakData" />
+          <xs:element minOccurs="0" name="stationTriplet" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SeasonalSweMeltOutData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="day" type="xs:int" />
+          <xs:element minOccurs="0" name="month" type="xs:int" />
+          <xs:element minOccurs="0" name="numberObservations" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SeasonalSweOnsetData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="day" type="xs:int" />
+          <xs:element minOccurs="0" name="month" type="xs:int" />
+          <xs:element minOccurs="0" name="numberObservations" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SeasonalSwePeakData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="day" type="xs:int" />
+          <xs:element minOccurs="0" name="month" type="xs:int" />
+          <xs:element minOccurs="0" name="numberObservations" type="xs:int" />
+          <xs:element minOccurs="0" name="value" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="getCentralTendencyData">
         <xs:sequence>
           <xs:element maxOccurs="unbounded" name="stationTriplets" type="xs:string" />
           <xs:element name="elementCd" type="xs:string" />
           <xs:element minOccurs="0" name="heightDepth" type="tns:heightDepth" />
           <xs:element name="duration" type="tns:duration" />
-          <xs:element name="getFlags" type="xs:boolean" />
+          <xs:element minOccurs="0" default="false" name="getNumberObservationsUsed" type="xs:boolean" />
           <xs:element name="beginMonth" type="xs:int" />
           <xs:element name="beginDay" type="xs:int" />
           <xs:element name="endMonth" type="xs:int" />
           <xs:element name="endDay" type="xs:int" />
           <xs:element name="centralTendencyType" type="tns:centralTendencyType" />
+          <xs:element minOccurs="0" name="getFlags" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="getCentralTendencyDataResponse">
@@ -393,11 +440,11 @@
         <xs:sequence>
           <xs:element name="beginDay" type="xs:int" />
           <xs:element name="beginMonth" type="xs:int" />
-          <xs:element minOccurs="0" name="dataSetFlag" type="xs:string" />
+          <xs:element minOccurs="0" name="dataSetNumberObservations" type="xs:int" />
           <xs:element minOccurs="0" name="duration" type="tns:duration" />
           <xs:element name="endDay" type="xs:int" />
           <xs:element name="endMonth" type="xs:int" />
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="flags" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="numberObservations" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" maxOccurs="unbounded" name="values" nillable="true" type="xs:decimal" />
         </xs:sequence>
       </xs:complexType>
@@ -476,6 +523,8 @@
       </xs:complexType>
       <xs:complexType name="diagnosticTestResult">
         <xs:sequence>
+          <xs:element minOccurs="0" name="applicationBuildDate" type="xs:string" />
+          <xs:element minOccurs="0" name="applicationVersion" type="xs:string" />
           <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
           <xs:element minOccurs="0" name="exception" type="tns:diagnosticException" />
           <xs:element name="hasSucceeded" type="xs:boolean" />
@@ -613,6 +662,7 @@
           <xs:element maxOccurs="unbounded" name="stationTriplets" type="xs:string" />
           <xs:element name="elementCd" type="xs:string" />
           <xs:element maxOccurs="unbounded" name="periods" type="xs:string" />
+          <xs:element minOccurs="0" default="false" name="getNumberObservationsUsed" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="getForecastPeriodAveragesResponse">
@@ -677,11 +727,12 @@
           <xs:element name="elementCd" type="xs:string" />
           <xs:element minOccurs="0" name="heightDepth" type="tns:heightDepth" />
           <xs:element name="duration" type="tns:duration" />
-          <xs:element name="getFlags" type="xs:boolean" />
+          <xs:element minOccurs="0" default="false" name="getNumberObservationsUsed" type="xs:boolean" />
           <xs:element name="beginMonth" type="xs:int" />
           <xs:element name="beginDay" type="xs:int" />
           <xs:element name="endMonth" type="xs:int" />
           <xs:element name="endDay" type="xs:int" />
+          <xs:element minOccurs="0" name="getFlags" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="getAveragesDataResponse">
@@ -907,7 +958,8 @@
           <xs:element name="elementCd" type="xs:string" />
           <xs:element minOccurs="0" name="heightDepth" type="tns:heightDepth" />
           <xs:element name="duration" type="tns:duration" />
-          <xs:element name="getFlags" type="xs:boolean" />
+          <xs:element minOccurs="0" default="false" name="getNumberObservationsUsed" type="xs:boolean" />
+          <xs:element minOccurs="0" name="getFlags" type="xs:boolean" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="getAveragesPeakResponse">
@@ -981,13 +1033,6 @@
           <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:stationMetaData" />
         </xs:sequence>
       </xs:complexType>
-      <xs:simpleType name="dataSource">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="OBSERVED" />
-          <xs:enumeration value="DERIVED" />
-          <xs:enumeration value="INTERPRETED" />
-        </xs:restriction>
-      </xs:simpleType>
       <xs:simpleType name="duration">
         <xs:restriction base="xs:string">
           <xs:enumeration value="DAILY" />
@@ -1002,8 +1047,8 @@
       </xs:simpleType>
       <xs:simpleType name="centralTendencyType">
         <xs:restriction base="xs:string">
-          <xs:enumeration value="AVERAGE" />
           <xs:enumeration value="MEDIAN" />
+          <xs:enumeration value="AVERAGE" />
           <xs:enumeration value="NORMAL" />
         </xs:restriction>
       </xs:simpleType>
@@ -1052,6 +1097,9 @@
   <wsdl:message name="getUnitNameResponse">
     <wsdl:part name="parameters" element="tns:getUnitNameResponse" />
   </wsdl:message>
+  <wsdl:message name="getCentralTendencySWETiming">
+    <wsdl:part name="parameters" element="tns:getCentralTendencySWETiming" />
+  </wsdl:message>
   <wsdl:message name="getForecastsResponse">
     <wsdl:part name="parameters" element="tns:getForecastsResponse" />
   </wsdl:message>
@@ -1093,6 +1141,9 @@
   </wsdl:message>
   <wsdl:message name="getStationElementsResponse">
     <wsdl:part name="parameters" element="tns:getStationElementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCentralTendencySWETimingResponse">
+    <wsdl:part name="parameters" element="tns:getCentralTendencySWETimingResponse" />
   </wsdl:message>
   <wsdl:message name="getStationMetadataResponse">
     <wsdl:part name="parameters" element="tns:getStationMetadataResponse" />
@@ -1289,6 +1340,10 @@
       <wsdl:input name="getUnits" message="tns:getUnits" />
       <wsdl:output name="getUnitsResponse" message="tns:getUnitsResponse" />
     </wsdl:operation>
+    <wsdl:operation name="getCentralTendencySWETiming">
+      <wsdl:input name="getCentralTendencySWETiming" message="tns:getCentralTendencySWETiming" />
+      <wsdl:output name="getCentralTendencySWETimingResponse" message="tns:getCentralTendencySWETimingResponse" />
+    </wsdl:operation>
     <wsdl:operation name="getCentralTendencyData">
       <wsdl:input name="getCentralTendencyData" message="tns:getCentralTendencyData" />
       <wsdl:output name="getCentralTendencyDataResponse" message="tns:getCentralTendencyDataResponse" />
@@ -1405,21 +1460,12 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getElement">
+    <wsdl:operation name="getHourlyData">
       <soap:operation soapAction="" style="document" />
-      <wsdl:input name="getElement">
+      <wsdl:input name="getHourlyData">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="getElementResponse">
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getForecastEquations">
-      <soap:operation soapAction="" style="document" />
-      <wsdl:input name="getForecastEquations">
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="getForecastEquationsResponse">
+      <wsdl:output name="getHourlyDataResponse">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -1432,12 +1478,21 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getHourlyData">
+    <wsdl:operation name="getForecastEquations">
       <soap:operation soapAction="" style="document" />
-      <wsdl:input name="getHourlyData">
+      <wsdl:input name="getForecastEquations">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="getHourlyDataResponse">
+      <wsdl:output name="getForecastEquationsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getElement">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getElement">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getElementResponse">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -1492,6 +1547,15 @@
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output name="getUnitsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCentralTendencySWETiming">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCentralTendencySWETiming">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCentralTendencySWETimingResponse">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

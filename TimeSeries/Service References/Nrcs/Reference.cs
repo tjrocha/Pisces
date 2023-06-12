@@ -85,6 +85,12 @@ namespace Reclamation.TimeSeries.Nrcs {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        Reclamation.TimeSeries.Nrcs.getCentralTendencySWETimingResponse getCentralTendencySWETiming(Reclamation.TimeSeries.Nrcs.getCentralTendencySWETiming request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         Reclamation.TimeSeries.Nrcs.getCentralTendencyDataResponse getCentralTendencyData(Reclamation.TimeSeries.Nrcs.getCentralTendencyData request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
@@ -239,7 +245,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -299,7 +305,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -345,7 +351,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -699,7 +705,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1795,7 +1801,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1967,7 +1973,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2125,7 +2131,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2507,7 +2513,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2637,7 +2643,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2649,10 +2655,6 @@ namespace Reclamation.TimeSeries.Nrcs {
         private int dataPrecisionField;
         
         private bool dataPrecisionFieldSpecified;
-        
-        private dataSource dataSourceField;
-        
-        private bool dataSourceFieldSpecified;
         
         private duration durationField;
         
@@ -2710,30 +2712,6 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public dataSource dataSource {
-            get {
-                return this.dataSourceField;
-            }
-            set {
-                this.dataSourceField = value;
-                this.RaisePropertyChanged("dataSource");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool dataSourceSpecified {
-            get {
-                return this.dataSourceFieldSpecified;
-            }
-            set {
-                this.dataSourceFieldSpecified = value;
-                this.RaisePropertyChanged("dataSourceSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public duration duration {
             get {
                 return this.durationField;
@@ -2757,7 +2735,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public string elementCd {
             get {
                 return this.elementCdField;
@@ -2769,7 +2747,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public string endDate {
             get {
                 return this.endDateField;
@@ -2781,7 +2759,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public heightDepth heightDepth {
             get {
                 return this.heightDepthField;
@@ -2793,7 +2771,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public int ordinal {
             get {
                 return this.ordinalField;
@@ -2805,7 +2783,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public string originalUnitCd {
             get {
                 return this.originalUnitCdField;
@@ -2817,7 +2795,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
         public string stationTriplet {
             get {
                 return this.stationTripletField;
@@ -2829,7 +2807,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
         public string storedUnitCd {
             get {
                 return this.storedUnitCdField;
@@ -2851,23 +2829,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
-    public enum dataSource {
-        
-        /// <remarks/>
-        OBSERVED,
-        
-        /// <remarks/>
-        DERIVED,
-        
-        /// <remarks/>
-        INTERPRETED,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
     public enum duration {
@@ -2898,7 +2860,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2958,7 +2920,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3004,7 +2966,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3134,7 +3096,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3208,7 +3170,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3296,7 +3258,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3342,7 +3304,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3430,7 +3392,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3574,7 +3536,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3648,7 +3610,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3722,12 +3684,16 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
     public partial class diagnosticTestResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string applicationBuildDateField;
+        
+        private string applicationVersionField;
         
         private string errorMessageField;
         
@@ -3739,6 +3705,30 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string applicationBuildDate {
+            get {
+                return this.applicationBuildDateField;
+            }
+            set {
+                this.applicationBuildDateField = value;
+                this.RaisePropertyChanged("applicationBuildDate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string applicationVersion {
+            get {
+                return this.applicationVersionField;
+            }
+            set {
+                this.applicationVersionField = value;
+                this.RaisePropertyChanged("applicationVersion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string errorMessage {
             get {
                 return this.errorMessageField;
@@ -3750,7 +3740,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
         public diagnosticException exception {
             get {
                 return this.exceptionField;
@@ -3762,7 +3752,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public bool hasSucceeded {
             get {
                 return this.hasSucceededField;
@@ -3774,7 +3764,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public string testDescription {
             get {
                 return this.testDescriptionField;
@@ -3796,7 +3786,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3842,7 +3832,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3972,7 +3962,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4299,7 +4289,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(centralTendencyData))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4310,7 +4300,9 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         private int beginMonthField;
         
-        private string dataSetFlagField;
+        private int dataSetNumberObservationsField;
+        
+        private bool dataSetNumberObservationsFieldSpecified;
         
         private duration durationField;
         
@@ -4320,7 +4312,7 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         private int endMonthField;
         
-        private string[] flagsField;
+        private System.Nullable<int>[] numberObservationsField;
         
         private System.Nullable<decimal>[] valuesField;
         
@@ -4350,13 +4342,25 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string dataSetFlag {
+        public int dataSetNumberObservations {
             get {
-                return this.dataSetFlagField;
+                return this.dataSetNumberObservationsField;
             }
             set {
-                this.dataSetFlagField = value;
-                this.RaisePropertyChanged("dataSetFlag");
+                this.dataSetNumberObservationsField = value;
+                this.RaisePropertyChanged("dataSetNumberObservations");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool dataSetNumberObservationsSpecified {
+            get {
+                return this.dataSetNumberObservationsFieldSpecified;
+            }
+            set {
+                this.dataSetNumberObservationsFieldSpecified = value;
+                this.RaisePropertyChanged("dataSetNumberObservationsSpecified");
             }
         }
         
@@ -4409,14 +4413,14 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("flags", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=6)]
-        public string[] flags {
+        [System.Xml.Serialization.XmlElementAttribute("numberObservations", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=6)]
+        public System.Nullable<int>[] numberObservations {
             get {
-                return this.flagsField;
+                return this.numberObservationsField;
             }
             set {
-                this.flagsField = value;
-                this.RaisePropertyChanged("flags");
+                this.numberObservationsField = value;
+                this.RaisePropertyChanged("numberObservations");
             }
         }
         
@@ -4443,7 +4447,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4480,23 +4484,459 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
     public enum centralTendencyType {
         
         /// <remarks/>
-        AVERAGE,
+        MEDIAN,
         
         /// <remarks/>
-        MEDIAN,
+        AVERAGE,
         
         /// <remarks/>
         NORMAL,
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
+    public partial class SeasonalSwePeakData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int dayField;
+        
+        private bool dayFieldSpecified;
+        
+        private int monthField;
+        
+        private bool monthFieldSpecified;
+        
+        private int numberObservationsField;
+        
+        private bool numberObservationsFieldSpecified;
+        
+        private decimal valueField;
+        
+        private bool valueFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int day {
+            get {
+                return this.dayField;
+            }
+            set {
+                this.dayField = value;
+                this.RaisePropertyChanged("day");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool daySpecified {
+            get {
+                return this.dayFieldSpecified;
+            }
+            set {
+                this.dayFieldSpecified = value;
+                this.RaisePropertyChanged("daySpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int month {
+            get {
+                return this.monthField;
+            }
+            set {
+                this.monthField = value;
+                this.RaisePropertyChanged("month");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool monthSpecified {
+            get {
+                return this.monthFieldSpecified;
+            }
+            set {
+                this.monthFieldSpecified = value;
+                this.RaisePropertyChanged("monthSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int numberObservations {
+            get {
+                return this.numberObservationsField;
+            }
+            set {
+                this.numberObservationsField = value;
+                this.RaisePropertyChanged("numberObservations");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool numberObservationsSpecified {
+            get {
+                return this.numberObservationsFieldSpecified;
+            }
+            set {
+                this.numberObservationsFieldSpecified = value;
+                this.RaisePropertyChanged("numberObservationsSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public decimal value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("value");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool valueSpecified {
+            get {
+                return this.valueFieldSpecified;
+            }
+            set {
+                this.valueFieldSpecified = value;
+                this.RaisePropertyChanged("valueSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
+    public partial class SeasonalSweOnsetData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int dayField;
+        
+        private bool dayFieldSpecified;
+        
+        private int monthField;
+        
+        private bool monthFieldSpecified;
+        
+        private int numberObservationsField;
+        
+        private bool numberObservationsFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int day {
+            get {
+                return this.dayField;
+            }
+            set {
+                this.dayField = value;
+                this.RaisePropertyChanged("day");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool daySpecified {
+            get {
+                return this.dayFieldSpecified;
+            }
+            set {
+                this.dayFieldSpecified = value;
+                this.RaisePropertyChanged("daySpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int month {
+            get {
+                return this.monthField;
+            }
+            set {
+                this.monthField = value;
+                this.RaisePropertyChanged("month");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool monthSpecified {
+            get {
+                return this.monthFieldSpecified;
+            }
+            set {
+                this.monthFieldSpecified = value;
+                this.RaisePropertyChanged("monthSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int numberObservations {
+            get {
+                return this.numberObservationsField;
+            }
+            set {
+                this.numberObservationsField = value;
+                this.RaisePropertyChanged("numberObservations");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool numberObservationsSpecified {
+            get {
+                return this.numberObservationsFieldSpecified;
+            }
+            set {
+                this.numberObservationsFieldSpecified = value;
+                this.RaisePropertyChanged("numberObservationsSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
+    public partial class SeasonalSweMeltOutData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int dayField;
+        
+        private bool dayFieldSpecified;
+        
+        private int monthField;
+        
+        private bool monthFieldSpecified;
+        
+        private int numberObservationsField;
+        
+        private bool numberObservationsFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int day {
+            get {
+                return this.dayField;
+            }
+            set {
+                this.dayField = value;
+                this.RaisePropertyChanged("day");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool daySpecified {
+            get {
+                return this.dayFieldSpecified;
+            }
+            set {
+                this.dayFieldSpecified = value;
+                this.RaisePropertyChanged("daySpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int month {
+            get {
+                return this.monthField;
+            }
+            set {
+                this.monthField = value;
+                this.RaisePropertyChanged("month");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool monthSpecified {
+            get {
+                return this.monthFieldSpecified;
+            }
+            set {
+                this.monthFieldSpecified = value;
+                this.RaisePropertyChanged("monthSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int numberObservations {
+            get {
+                return this.numberObservationsField;
+            }
+            set {
+                this.numberObservationsField = value;
+                this.RaisePropertyChanged("numberObservations");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool numberObservationsSpecified {
+            get {
+                return this.numberObservationsFieldSpecified;
+            }
+            set {
+                this.numberObservationsFieldSpecified = value;
+                this.RaisePropertyChanged("numberObservationsSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
+    public partial class CentralTendencySWEStatisticsData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private centralTendencyType centralTendencyTypeField;
+        
+        private bool centralTendencyTypeFieldSpecified;
+        
+        private SeasonalSweMeltOutData seasonalSweMeltOutDataField;
+        
+        private SeasonalSweOnsetData seasonalSweOnsetDataField;
+        
+        private SeasonalSwePeakData seasonalSwePeakDataField;
+        
+        private string stationTripletField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public centralTendencyType centralTendencyType {
+            get {
+                return this.centralTendencyTypeField;
+            }
+            set {
+                this.centralTendencyTypeField = value;
+                this.RaisePropertyChanged("centralTendencyType");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool centralTendencyTypeSpecified {
+            get {
+                return this.centralTendencyTypeFieldSpecified;
+            }
+            set {
+                this.centralTendencyTypeFieldSpecified = value;
+                this.RaisePropertyChanged("centralTendencyTypeSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public SeasonalSweMeltOutData seasonalSweMeltOutData {
+            get {
+                return this.seasonalSweMeltOutDataField;
+            }
+            set {
+                this.seasonalSweMeltOutDataField = value;
+                this.RaisePropertyChanged("seasonalSweMeltOutData");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public SeasonalSweOnsetData seasonalSweOnsetData {
+            get {
+                return this.seasonalSweOnsetDataField;
+            }
+            set {
+                this.seasonalSweOnsetDataField = value;
+                this.RaisePropertyChanged("seasonalSweOnsetData");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public SeasonalSwePeakData seasonalSwePeakData {
+            get {
+                return this.seasonalSwePeakDataField;
+            }
+            set {
+                this.seasonalSwePeakDataField = value;
+                this.RaisePropertyChanged("seasonalSwePeakData");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string stationTriplet {
+            get {
+                return this.stationTripletField;
+            }
+            set {
+                this.stationTripletField = value;
+                this.RaisePropertyChanged("stationTriplet");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4543,16 +4983,18 @@ namespace Reclamation.TimeSeries.Nrcs {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(forecastPeriodCentralTendency))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
     public partial class forecastPeriodAverage : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string flagField;
-        
         private string forecastPeriodField;
+        
+        private int numberObservationsField;
+        
+        private bool numberObservationsFieldSpecified;
         
         private string stationTripletField;
         
@@ -4562,18 +5004,6 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string flag {
-            get {
-                return this.flagField;
-            }
-            set {
-                this.flagField = value;
-                this.RaisePropertyChanged("flag");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public string forecastPeriod {
             get {
                 return this.forecastPeriodField;
@@ -4581,6 +5011,30 @@ namespace Reclamation.TimeSeries.Nrcs {
             set {
                 this.forecastPeriodField = value;
                 this.RaisePropertyChanged("forecastPeriod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int numberObservations {
+            get {
+                return this.numberObservationsField;
+            }
+            set {
+                this.numberObservationsField = value;
+                this.RaisePropertyChanged("numberObservations");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool numberObservationsSpecified {
+            get {
+                return this.numberObservationsFieldSpecified;
+            }
+            set {
+                this.numberObservationsFieldSpecified = value;
+                this.RaisePropertyChanged("numberObservationsSpecified");
             }
         }
         
@@ -4631,7 +5085,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4669,7 +5123,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(centralTendencyPeakData))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4680,7 +5134,9 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         private bool durationFieldSpecified;
         
-        private string flagField;
+        private int numberObservationsField;
+        
+        private bool numberObservationsFieldSpecified;
         
         private int peakDayField;
         
@@ -4716,13 +5172,25 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string flag {
+        public int numberObservations {
             get {
-                return this.flagField;
+                return this.numberObservationsField;
             }
             set {
-                this.flagField = value;
-                this.RaisePropertyChanged("flag");
+                this.numberObservationsField = value;
+                this.RaisePropertyChanged("numberObservations");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool numberObservationsSpecified {
+            get {
+                return this.numberObservationsFieldSpecified;
+            }
+            set {
+                this.numberObservationsFieldSpecified = value;
+                this.RaisePropertyChanged("numberObservationsSpecified");
             }
         }
         
@@ -4785,7 +5253,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4822,7 +5290,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4896,7 +5364,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5012,7 +5480,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5086,7 +5554,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5160,7 +5628,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5630,22 +6098,28 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool getFlags;
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool getNumberObservationsUsed;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=5)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool getFlags;
+        
         public getCentralTendencyPeakData() {
         }
         
-        public getCentralTendencyPeakData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType) {
+        public getCentralTendencyPeakData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getFlags) {
             this.stationTriplets = stationTriplets;
             this.elementCd = elementCd;
             this.heightDepth = heightDepth;
             this.duration = duration;
-            this.getFlags = getFlags;
+            this.getNumberObservationsUsed = getNumberObservationsUsed;
             this.centralTendencyType = centralTendencyType;
+            this.getFlags = getFlags;
         }
     }
     
@@ -5689,14 +6163,20 @@ namespace Reclamation.TimeSeries.Nrcs {
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool getNumberObservationsUsed;
+        
         public getForecastPeriodCentralTendency() {
         }
         
-        public getForecastPeriodCentralTendency(string[] stationTriplets, string elementCd, string[] periods, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType) {
+        public getForecastPeriodCentralTendency(string[] stationTriplets, string elementCd, string[] periods, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getNumberObservationsUsed) {
             this.stationTriplets = stationTriplets;
             this.elementCd = elementCd;
             this.periods = periods;
             this.centralTendencyType = centralTendencyType;
+            this.getNumberObservationsUsed = getNumberObservationsUsed;
         }
     }
     
@@ -5815,6 +6295,53 @@ namespace Reclamation.TimeSeries.Nrcs {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getCentralTendencySWETiming", WrapperNamespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", IsWrapped=true)]
+    public partial class getCentralTendencySWETiming {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("stationTriplets", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string[] stationTriplets;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool getNumberObservationsUsed;
+        
+        public getCentralTendencySWETiming() {
+        }
+        
+        public getCentralTendencySWETiming(string[] stationTriplets, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getNumberObservationsUsed) {
+            this.stationTriplets = stationTriplets;
+            this.centralTendencyType = centralTendencyType;
+            this.getNumberObservationsUsed = getNumberObservationsUsed;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getCentralTendencySWETimingResponse", WrapperNamespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", IsWrapped=true)]
+    public partial class getCentralTendencySWETimingResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public Reclamation.TimeSeries.Nrcs.CentralTendencySWEStatisticsData[] @return;
+        
+        public getCentralTendencySWETimingResponse() {
+        }
+        
+        public getCentralTendencySWETimingResponse(Reclamation.TimeSeries.Nrcs.CentralTendencySWEStatisticsData[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="getCentralTendencyData", WrapperNamespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", IsWrapped=true)]
     public partial class getCentralTendencyData {
         
@@ -5836,7 +6363,8 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool getFlags;
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool getNumberObservationsUsed;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=5)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -5858,20 +6386,25 @@ namespace Reclamation.TimeSeries.Nrcs {
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool getFlags;
+        
         public getCentralTendencyData() {
         }
         
-        public getCentralTendencyData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags, int beginMonth, int beginDay, int endMonth, int endDay, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType) {
+        public getCentralTendencyData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, int beginMonth, int beginDay, int endMonth, int endDay, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getFlags) {
             this.stationTriplets = stationTriplets;
             this.elementCd = elementCd;
             this.heightDepth = heightDepth;
             this.duration = duration;
-            this.getFlags = getFlags;
+            this.getNumberObservationsUsed = getNumberObservationsUsed;
             this.beginMonth = beginMonth;
             this.beginDay = beginDay;
             this.endMonth = endMonth;
             this.endDay = endDay;
             this.centralTendencyType = centralTendencyType;
+            this.getFlags = getFlags;
         }
     }
     
@@ -6082,13 +6615,19 @@ namespace Reclamation.TimeSeries.Nrcs {
         [System.Xml.Serialization.XmlElementAttribute("periods", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string[] periods;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool getNumberObservationsUsed;
+        
         public getForecastPeriodAverages() {
         }
         
-        public getForecastPeriodAverages(string[] stationTriplets, string elementCd, string[] periods) {
+        public getForecastPeriodAverages(string[] stationTriplets, string elementCd, string[] periods, bool getNumberObservationsUsed) {
             this.stationTriplets = stationTriplets;
             this.elementCd = elementCd;
             this.periods = periods;
+            this.getNumberObservationsUsed = getNumberObservationsUsed;
         }
     }
     
@@ -6261,7 +6800,8 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool getFlags;
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool getNumberObservationsUsed;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=5)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -6279,19 +6819,24 @@ namespace Reclamation.TimeSeries.Nrcs {
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int endDay;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool getFlags;
+        
         public getAveragesData() {
         }
         
-        public getAveragesData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags, int beginMonth, int beginDay, int endMonth, int endDay) {
+        public getAveragesData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, int beginMonth, int beginDay, int endMonth, int endDay, bool getFlags) {
             this.stationTriplets = stationTriplets;
             this.elementCd = elementCd;
             this.heightDepth = heightDepth;
             this.duration = duration;
-            this.getFlags = getFlags;
+            this.getNumberObservationsUsed = getNumberObservationsUsed;
             this.beginMonth = beginMonth;
             this.beginDay = beginDay;
             this.endMonth = endMonth;
             this.endDay = endDay;
+            this.getFlags = getFlags;
         }
     }
     
@@ -6434,7 +6979,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
     public enum instantaneousDataFilter {
@@ -6450,7 +6995,7 @@ namespace Reclamation.TimeSeries.Nrcs {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1085.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService")]
     public enum unitSystem {
@@ -6964,16 +7509,22 @@ namespace Reclamation.TimeSeries.Nrcs {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool getNumberObservationsUsed;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.wcc.nrcs.usda.gov/ns/awdbWebService", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public bool getFlags;
         
         public getAveragesPeak() {
         }
         
-        public getAveragesPeak(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags) {
+        public getAveragesPeak(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, bool getFlags) {
             this.stationTriplets = stationTriplets;
             this.elementCd = elementCd;
             this.heightDepth = heightDepth;
             this.duration = duration;
+            this.getNumberObservationsUsed = getNumberObservationsUsed;
             this.getFlags = getFlags;
         }
     }
@@ -7364,14 +7915,15 @@ namespace Reclamation.TimeSeries.Nrcs {
             return base.Channel.getCentralTendencyPeakData(request);
         }
         
-        public Reclamation.TimeSeries.Nrcs.centralTendencyPeakData[] getCentralTendencyPeakData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType) {
+        public Reclamation.TimeSeries.Nrcs.centralTendencyPeakData[] getCentralTendencyPeakData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getFlags) {
             Reclamation.TimeSeries.Nrcs.getCentralTendencyPeakData inValue = new Reclamation.TimeSeries.Nrcs.getCentralTendencyPeakData();
             inValue.stationTriplets = stationTriplets;
             inValue.elementCd = elementCd;
             inValue.heightDepth = heightDepth;
             inValue.duration = duration;
-            inValue.getFlags = getFlags;
+            inValue.getNumberObservationsUsed = getNumberObservationsUsed;
             inValue.centralTendencyType = centralTendencyType;
+            inValue.getFlags = getFlags;
             Reclamation.TimeSeries.Nrcs.getCentralTendencyPeakDataResponse retVal = ((Reclamation.TimeSeries.Nrcs.AwdbWebService)(this)).getCentralTendencyPeakData(inValue);
             return retVal.@return;
         }
@@ -7381,12 +7933,13 @@ namespace Reclamation.TimeSeries.Nrcs {
             return base.Channel.getForecastPeriodCentralTendency(request);
         }
         
-        public Reclamation.TimeSeries.Nrcs.forecastPeriodCentralTendency[] getForecastPeriodCentralTendency(string[] stationTriplets, string elementCd, string[] periods, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType) {
+        public Reclamation.TimeSeries.Nrcs.forecastPeriodCentralTendency[] getForecastPeriodCentralTendency(string[] stationTriplets, string elementCd, string[] periods, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getNumberObservationsUsed) {
             Reclamation.TimeSeries.Nrcs.getForecastPeriodCentralTendency inValue = new Reclamation.TimeSeries.Nrcs.getForecastPeriodCentralTendency();
             inValue.stationTriplets = stationTriplets;
             inValue.elementCd = elementCd;
             inValue.periods = periods;
             inValue.centralTendencyType = centralTendencyType;
+            inValue.getNumberObservationsUsed = getNumberObservationsUsed;
             Reclamation.TimeSeries.Nrcs.getForecastPeriodCentralTendencyResponse retVal = ((Reclamation.TimeSeries.Nrcs.AwdbWebService)(this)).getForecastPeriodCentralTendency(inValue);
             return retVal.@return;
         }
@@ -7421,22 +7974,37 @@ namespace Reclamation.TimeSeries.Nrcs {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Reclamation.TimeSeries.Nrcs.getCentralTendencySWETimingResponse Reclamation.TimeSeries.Nrcs.AwdbWebService.getCentralTendencySWETiming(Reclamation.TimeSeries.Nrcs.getCentralTendencySWETiming request) {
+            return base.Channel.getCentralTendencySWETiming(request);
+        }
+        
+        public Reclamation.TimeSeries.Nrcs.CentralTendencySWEStatisticsData[] getCentralTendencySWETiming(string[] stationTriplets, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getNumberObservationsUsed) {
+            Reclamation.TimeSeries.Nrcs.getCentralTendencySWETiming inValue = new Reclamation.TimeSeries.Nrcs.getCentralTendencySWETiming();
+            inValue.stationTriplets = stationTriplets;
+            inValue.centralTendencyType = centralTendencyType;
+            inValue.getNumberObservationsUsed = getNumberObservationsUsed;
+            Reclamation.TimeSeries.Nrcs.getCentralTendencySWETimingResponse retVal = ((Reclamation.TimeSeries.Nrcs.AwdbWebService)(this)).getCentralTendencySWETiming(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Reclamation.TimeSeries.Nrcs.getCentralTendencyDataResponse Reclamation.TimeSeries.Nrcs.AwdbWebService.getCentralTendencyData(Reclamation.TimeSeries.Nrcs.getCentralTendencyData request) {
             return base.Channel.getCentralTendencyData(request);
         }
         
-        public Reclamation.TimeSeries.Nrcs.centralTendencyData[] getCentralTendencyData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags, int beginMonth, int beginDay, int endMonth, int endDay, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType) {
+        public Reclamation.TimeSeries.Nrcs.centralTendencyData[] getCentralTendencyData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, int beginMonth, int beginDay, int endMonth, int endDay, Reclamation.TimeSeries.Nrcs.centralTendencyType centralTendencyType, bool getFlags) {
             Reclamation.TimeSeries.Nrcs.getCentralTendencyData inValue = new Reclamation.TimeSeries.Nrcs.getCentralTendencyData();
             inValue.stationTriplets = stationTriplets;
             inValue.elementCd = elementCd;
             inValue.heightDepth = heightDepth;
             inValue.duration = duration;
-            inValue.getFlags = getFlags;
+            inValue.getNumberObservationsUsed = getNumberObservationsUsed;
             inValue.beginMonth = beginMonth;
             inValue.beginDay = beginDay;
             inValue.endMonth = endMonth;
             inValue.endDay = endDay;
             inValue.centralTendencyType = centralTendencyType;
+            inValue.getFlags = getFlags;
             Reclamation.TimeSeries.Nrcs.getCentralTendencyDataResponse retVal = ((Reclamation.TimeSeries.Nrcs.AwdbWebService)(this)).getCentralTendencyData(inValue);
             return retVal.@return;
         }
@@ -7500,11 +8068,12 @@ namespace Reclamation.TimeSeries.Nrcs {
             return base.Channel.getForecastPeriodAverages(request);
         }
         
-        public Reclamation.TimeSeries.Nrcs.forecastPeriodAverage[] getForecastPeriodAverages(string[] stationTriplets, string elementCd, string[] periods) {
+        public Reclamation.TimeSeries.Nrcs.forecastPeriodAverage[] getForecastPeriodAverages(string[] stationTriplets, string elementCd, string[] periods, bool getNumberObservationsUsed) {
             Reclamation.TimeSeries.Nrcs.getForecastPeriodAverages inValue = new Reclamation.TimeSeries.Nrcs.getForecastPeriodAverages();
             inValue.stationTriplets = stationTriplets;
             inValue.elementCd = elementCd;
             inValue.periods = periods;
+            inValue.getNumberObservationsUsed = getNumberObservationsUsed;
             Reclamation.TimeSeries.Nrcs.getForecastPeriodAveragesResponse retVal = ((Reclamation.TimeSeries.Nrcs.AwdbWebService)(this)).getForecastPeriodAverages(inValue);
             return retVal.@return;
         }
@@ -7549,17 +8118,18 @@ namespace Reclamation.TimeSeries.Nrcs {
             return base.Channel.getAveragesData(request);
         }
         
-        public Reclamation.TimeSeries.Nrcs.averagesData[] getAveragesData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags, int beginMonth, int beginDay, int endMonth, int endDay) {
+        public Reclamation.TimeSeries.Nrcs.averagesData[] getAveragesData(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, int beginMonth, int beginDay, int endMonth, int endDay, bool getFlags) {
             Reclamation.TimeSeries.Nrcs.getAveragesData inValue = new Reclamation.TimeSeries.Nrcs.getAveragesData();
             inValue.stationTriplets = stationTriplets;
             inValue.elementCd = elementCd;
             inValue.heightDepth = heightDepth;
             inValue.duration = duration;
-            inValue.getFlags = getFlags;
+            inValue.getNumberObservationsUsed = getNumberObservationsUsed;
             inValue.beginMonth = beginMonth;
             inValue.beginDay = beginDay;
             inValue.endMonth = endMonth;
             inValue.endDay = endDay;
+            inValue.getFlags = getFlags;
             Reclamation.TimeSeries.Nrcs.getAveragesDataResponse retVal = ((Reclamation.TimeSeries.Nrcs.AwdbWebService)(this)).getAveragesData(inValue);
             return retVal.@return;
         }
@@ -7748,12 +8318,13 @@ namespace Reclamation.TimeSeries.Nrcs {
             return base.Channel.getAveragesPeak(request);
         }
         
-        public Reclamation.TimeSeries.Nrcs.averagesPeakData[] getAveragesPeak(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getFlags) {
+        public Reclamation.TimeSeries.Nrcs.averagesPeakData[] getAveragesPeak(string[] stationTriplets, string elementCd, Reclamation.TimeSeries.Nrcs.heightDepth heightDepth, Reclamation.TimeSeries.Nrcs.duration duration, bool getNumberObservationsUsed, bool getFlags) {
             Reclamation.TimeSeries.Nrcs.getAveragesPeak inValue = new Reclamation.TimeSeries.Nrcs.getAveragesPeak();
             inValue.stationTriplets = stationTriplets;
             inValue.elementCd = elementCd;
             inValue.heightDepth = heightDepth;
             inValue.duration = duration;
+            inValue.getNumberObservationsUsed = getNumberObservationsUsed;
             inValue.getFlags = getFlags;
             Reclamation.TimeSeries.Nrcs.getAveragesPeakResponse retVal = ((Reclamation.TimeSeries.Nrcs.AwdbWebService)(this)).getAveragesPeak(inValue);
             return retVal.@return;

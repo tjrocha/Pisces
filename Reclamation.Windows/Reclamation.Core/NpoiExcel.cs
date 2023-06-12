@@ -34,8 +34,7 @@ namespace Reclamation.Core
             //Write the stream data of workbook to the root directory
             var fn = Path.GetTempFileName();
             FileStream file = new FileStream(fn, FileMode.Create);
-            npoi_workbook.Write(file);
-            file.Close();
+            npoi_workbook.Write(file,false);
         }
 
         /// <summary>
@@ -273,8 +272,7 @@ namespace Reclamation.Core
         {
             //Write the stream data of workbook to the root directory
             FileStream file = new FileStream(filename, FileMode.Create);
-            npoi_workbook.Write(file);
-            file.Close();
+            npoi_workbook.Write(file,false);
         }
         public DataTable ReadDataTable(int sheetIndex, bool hasColumnNames=false, bool allText=false)
         {

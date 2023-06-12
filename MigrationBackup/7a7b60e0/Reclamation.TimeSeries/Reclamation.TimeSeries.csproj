@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <Import Project="..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props')" />
+  <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5DD20A8A-4037-4885-AB91-2F5A3D1F48B4}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Reclamation.TimeSeries</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Reclamation.TimeSeries</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>false</SignAssembly>
+    <SccAuxPath>
+    </SccAuxPath>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <WarningLevel>2</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyVersion.cs">
+      <Link>AssemblyVersion.cs</Link>
+    </Compile>
+    <Compile Include="AgriMet\CropChartGenerator.cs" />
+    <Compile Include="AgriMet\CropCurves.cs" />
+    <Compile Include="AgriMet\CropDatesDataSet.cs">
+      <DependentUpon>CropDatesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AgriMet\CropDatesDataSet1.Designer.cs">
+      <DependentUpon>CropDatesDataSet.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Alarms\AlarmDataSet.cs">
+      <DependentUpon>AlarmDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Alarms\AlarmDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlarmDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Alarms\AlarmCondition.cs" />
+    <Compile Include="Alarms\AlarmRegex.cs" />
+    <Compile Include="Alarms\AsteriskCallFile.cs" />
+    <Compile Include="Alarms\AlarmManager.cs" />
+    <Compile Include="Analysis\AnalysisCollection.cs" />
+    <Compile Include="Analysis\BaseAnalysis.cs" />
+    <Compile Include="Analysis\TraceAnalysis.cs" />
+    <Compile Include="Analysis\MonthlySummaryAnalysis.cs" />
+    <Compile Include="Analysis\MovingAverageAnalysis.cs" />
+    <Compile Include="Analysis\CorrelationAnalysis.cs" />
+    <Compile Include="Analysis\ExceedanceAnalysis.cs" />
+    <Compile Include="Analysis\PiscesAnalysis.cs" />
+    <Compile Include="Analysis\ProbabilityAnalysis.cs" />
+    <Compile Include="Analysis\SummaryHydrographAnalysis.cs" />
+    <Compile Include="Analysis\TimeSeriesAnalysis.cs" />
+    <Compile Include="Analysis\WaterYearsAnalysis.cs" />
+    <Compile Include="CalculationSeries.cs" />
+    <Compile Include="ConstantSeries.cs" />
+    <Compile Include="CubicSpline.cs" />
+    <Compile Include="DataLogger\CsvScadaFile.cs" />
+    <Compile Include="EnsembleSeries.cs" />
+    <Compile Include="Estimation\ScaleDailyToMonthlyVolume.cs" />
+    <Compile Include="Estimation\UofIEstimation.cs" />
+    <Compile Include="MonthlyTimeSeriesCalculator.cs" />
+    <Compile Include="Estimation\MonthlyToDailyConversion.cs" />
+    <Compile Include="Estimation\Smoothing.cs" />
+    <Compile Include="FileImporter.cs" />
+    <Compile Include="HDB\HDBWebSeries.cs" />
+    <Compile Include="Import\DirectoryScanner.cs" />
+    <Compile Include="Import\BulkImportDirectory.cs" />
+    <Compile Include="Import\XConnectTextFile.cs" />
+    <Compile Include="Profile\WaterProfileDatabase.cs" />
+    <Compile Include="RatingTables\RatingTableUtility.cs" />
+    <Compile Include="Reports\YakimaStatusReport.cs" />
+    <None Include="Alarms\AlarmDataSet.xsc">
+      <DependentUpon>AlarmDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Alarms\AlarmDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AlarmDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Alarms\AlarmDataSet.xss">
+      <DependentUpon>AlarmDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Alarms\extensions.conf" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\YakimaOthersAboveParker.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Compile Include="Service References\Nrcs\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SHEF\ShefSeries.cs" />
+    <Compile Include="SiteInfo.cs" />
+    <Compile Include="SQLiteSeries.cs" />
+    <Compile Include="SeriesListDataTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tests\Database\TestDeleteDatabaseProperties.cs" />
+    <Compile Include="Tests\Database\TestAlarms.cs" />
+    <Compile Include="Tests\Database\TestSiteInfo.cs" />
+    <Compile Include="Tests\DateMath\TestDailyCalcRange.cs" />
+    <Compile Include="Tests\Estimation\TestScaleDailyToMonthlyVolume.cs" />
+    <Compile Include="Tests\Estimation\TestUofIEstimation.cs" />
+    <Compile Include="Tests\Import\TestXC.cs" />
+    <Compile Include="Tests\Import\TestUsgsRating.cs" />
+    <Compile Include="Tests\Import\TestBulkImport.cs" />
+    <Compile Include="Tests\DateMath\TestTimeRange.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestShiftSeriesBug.cs" />
+    <Compile Include="Tests\SeriesMath\TestDailyCumulative.cs" />
+    <Compile Include="Tests\SeriesMath\TestResidual.cs" />
+    <Compile Include="Tests\SeriesMath\TestInterpolate2D.cs" />
+    <Compile Include="Tests\SeriesTypes\TestHDB.cs" />
+    <Compile Include="TimeRange.cs" />
+    <Compile Include="TimeSeriesDatabase.Factory.cs" />
+    <Compile Include="DataTableSeries.cs" />
+    <Compile Include="Hydromet\AsceEtCalculator.cs" />
+    <Compile Include="Hydromet\CommandLine.cs" />
+    <Compile Include="Hydromet\DayFiles.cs" />
+    <Compile Include="NOAA\SimpleShef.cs" />
+    <Compile Include="Nrcs\MonthlySnowCourseSeries.cs" />
+    <Compile Include="Hydromet\mcf.cs" />
+    <Compile Include="Hydromet\mcf1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mcf.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Hydromet\Operations\FcPlotDataSet.cs">
+      <DependentUpon>FcPlotDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Hydromet\Operations\FcPlotDataSet.Designer.cs">
+      <DependentUpon>FcPlotDataSet.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Hydromet\Operations\FloodControlPoint.cs" />
+    <Compile Include="Hydromet\Operations\HeiiRuleCurve.cs" />
+    <Compile Include="Hydromet\Operations\HghRuleCurve.cs" />
+    <Compile Include="Hydromet\HydrometDailySeries.cs" />
+    <Compile Include="Hydromet\HydrometDataCache.cs" />
+    <Compile Include="Hydromet\HydrometDataUtility.cs" />
+    <Compile Include="Hydromet\HydrometInfoUtility.cs" />
+    <Compile Include="Hydromet\HydrometInstantSeries.cs" />
+    <Compile Include="Hydromet\HydrometMonthlySeries.cs" />
+    <Compile Include="Hydromet\Operations\HydrometRuleCurve.cs" />
+    <Compile Include="ReclamationURL.cs" />
+    <Compile Include="Hydromet\KimberlyPenmanEtSeries.cs" />
+    <Compile Include="Hydromet\McfUtility.cs" />
+    <Compile Include="Hydromet\Operations\ResidualForecast.cs" />
+    <Compile Include="Hydromet\Operations\RuleCurveFactory.cs" />
+    <Compile Include="Hydromet\Tests\TestForecasting.cs" />
+    <Compile Include="IdahoPower\IdahoPowerRatingTables.cs" />
+    <Compile Include="Math.Estimation.cs" />
+    <Compile Include="Math.TableLookup.cs" />
+    <Compile Include="Owrd\OwrdRatingTables.cs" />
+    <Compile Include="Parser\Tests\TestParser.cs" />
+    <Compile Include="Parser\Tests\TestParserWithDatabase.cs" />
+    <Compile Include="SeriesProperties.cs" />
+    <Compile Include="TestData.cs" />
+    <Compile Include="Tests\Database\TestSqLiteUnixTime.cs" />
+    <Compile Include="Tests\Database\TestMultiDatabaseSupport.cs" />
+    <Compile Include="Tests\Database\TestQualityLimits.cs" />
+    <Compile Include="Tests\Database\TimeSeriesDatabaseTest.cs" />
+    <Compile Include="Tests\Estimation\TestEstimation.cs" />
+    <Compile Include="Tests\SeriesFeatures\InsertDelete.cs" />
+    <Compile Include="Tests\DateMath\TestDateRange.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestFillMissingData.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestLookupAndIndexing.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestLookupIndex.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestMissingRecordCount.cs" />
+    <Compile Include="Tests\DateMath\TestMonthDayRange.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestMoveTo.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestOffset.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestPeriodicSeries.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestPoint.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestSeriesList.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestShiftToYear.cs" />
+    <Compile Include="Tests\SeriesFeatures\TestSubset.cs" />
+    <Compile Include="Tests\DateMath\TestYearRange.cs" />
+    <Compile Include="Tests\SeriesMath\AverageTest.cs" />
+    <Compile Include="Tests\SeriesMath\TestWeirEquations.cs" />
+    <Compile Include="Tests\SeriesMath\TestET.cs" />
+    <Compile Include="Tests\SeriesMath\TestMerge.cs" />
+    <Compile Include="Tests\SeriesMath\DailyCalculatorTest.cs" />
+    <Compile Include="Tests\SeriesMath\TestAdd.cs" />
+    <Compile Include="Tests\SeriesMath\TestAnnualAggregates.cs" />
+    <Compile Include="Tests\SeriesMath\TestAverageAggregate.cs" />
+    <Compile Include="Tests\SeriesMath\TestExceedance.cs" />
+    <Compile Include="Tests\SeriesMath\TestInterpolation.cs" />
+    <Compile Include="Tests\SeriesMath\TestMonthlyOperations.cs" />
+    <Compile Include="Tests\SeriesMath\TestMovingAverage.cs" />
+    <Compile Include="Tests\SeriesMath\TestMulitYearAverage.cs" />
+    <Compile Include="Tests\SeriesMath\TestMultiply.cs" />
+    <Compile Include="Tests\SeriesMath\TestOperators.cs" />
+    <Compile Include="Tests\SeriesMath\TestPolynomial.cs" />
+    <Compile Include="Tests\SeriesMath\TestRatingTable.cs" />
+    <Compile Include="Tests\SeriesMath\TestResponseFunction.cs" />
+    <Compile Include="Tests\SeriesMath\TestSimpleAddBug.cs" />
+    <Compile Include="Tests\SeriesMath\TestSmoothRangePreserveTotal.cs" />
+    <Compile Include="Tests\SeriesMath\TestSummaryHydrograph.cs" />
+    <Compile Include="Tests\SeriesMath\TestWaterYear.cs" />
+    <Compile Include="Tests\SeriesTypes\Cr10xTest.cs" />
+    <Compile Include="Tests\SeriesTypes\TestSnotel.cs" />
+    <None Include="Service References\Nrcs\AwdbWebService1.wsdl" />
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.averagesData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.averagesPeakData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.centralTendencyData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.centralTendencyPeakData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.CentralTendencySWEStatisticsData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.configuration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.data.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.diagnostics.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.element.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.forecast.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.forecastEquation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.forecastFull.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.forecastPeriod.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.forecastPeriodAverage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.forecastPeriodCentralTendency.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.forecastPoint.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.heightDepth.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.hourlyData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.insertedOrUpdatedData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.instantaneousData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.peakData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.reservoirMetadata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.stationDataAssuredFlags.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.stationElement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.stationMetaData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Nrcs\Reclamation.TimeSeries.Nrcs.unit.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Tests\SeriesTypes\TestBpaHydsimSeries.cs" />
+    <Compile Include="Tests\SeriesTypes\TestHydromet.cs" />
+    <Compile Include="Tests\SeriesTypes\TestReadTextFile.cs" />
+    <Compile Include="Tests\SeriesTypes\TestUsgs.cs" />
+    <Compile Include="DailyTimeSeriesCalculator.cs" />
+    <Compile Include="TimeSeriesDatabaseUtility.cs" />
+    <Compile Include="TimeSeriesTransfer.cs" />
+    <Compile Include="TimeSeriesImporter.cs" />
+    <Compile Include="Hydromet\Operations\WodiRuleCurve.cs" />
+    <Compile Include="IdahoPower\IdahoPowerSeries.cs" />
+    <Compile Include="Math.ET.cs" />
+    <Compile Include="DataLogger\LoggerNetFile.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="JulianIndex.cs" />
+    <Compile Include="Math.Hydromet.cs" />
+    <Compile Include="Math.Statistics.Daily.cs" />
+    <Compile Include="Nrcs\NrcsDailySerieLegacy.cs" />
+    <Compile Include="Nrcs\NrcsSnotelSeries.cs" />
+    <Compile Include="Nrcs\SnotelSeries.cs" />
+    <Compile Include="Parser\DataTableVariableResolver.cs" />
+    <Compile Include="Parser\ParserFunction.cs" />
+    <Compile Include="Parser\FunctionAttribute.cs" />
+    <Compile Include="Parser\ParserUtility.cs" />
+    <Compile Include="Parser\HydrometVariableResolver.cs" />
+    <Compile Include="Parser\ParserEventArgs.cs" />
+    <Compile Include="Parser\VariableParser.cs" />
+    <Compile Include="Parser\VariableResolver.cs" />
+    <Compile Include="PeriodicSeries.cs" />
+    <Compile Include="Quality.cs" />
+    <Compile Include="Reports\USGSReport.cs" />
+    <Compile Include="TimeSeriesDatabase.CreateSQL.cs" />
+    <Compile Include="TimeSeriesDatabaseDataSet.RatingTable.cs" />
+    <Compile Include="TimeSeriesDependency.cs" />
+    <Compile Include="TimeSeriesName.cs" />
+    <Compile Include="DataLogger\Cr10xSeries.cs" />
+    <Compile Include="IScenarioSelector.cs" />
+    <Compile Include="Owrd\OwrdSeries.cs" />
+    <Compile Include="Parser\ParserResult.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Scenario.cs" />
+    <Compile Include="SimpleMathSeries.cs" />
+    <Compile Include="NOAA\SpokaneCoopSeries.cs" />
+    <Compile Include="PiscesFactory.cs" />
+    <Compile Include="SubtractSeries.cs" />
+    <Compile Include="TimeSeriesDatabase.Upgrade.cs" />
+    <Compile Include="TimeSeriesDatabaseDataSet.cs">
+      <DependentUpon>TimeSeriesDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSeriesDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeSeriesDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSeriesDatabaseDelete.cs" />
+    <Compile Include="PiscesSettings.cs" />
+    <Compile Include="TimeSeriesDatabase.Tree.cs" />
+    <Compile Include="PiscesFolder.cs" />
+    <Compile Include="PiscesObject.cs" />
+    <Compile Include="PeriodOfRecord.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DateRange.cs" />
+    <Compile Include="IExplorerSettings.cs" />
+    <Compile Include="IExplorerView.cs" />
+    <Compile Include="Math.Statistics.cs" />
+    <Compile Include="ExplorerView.cs" />
+    <Compile Include="ScenarioTableEventArgs.cs" />
+    <Compile Include="Parser\SeriesExpressionParser.cs">
+    </Compile>
+    <None Include="AgriMet\CropDatesDataSet.xsc">
+      <DependentUpon>CropDatesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AgriMet\CropDatesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CropDatesDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AgriMet\CropDatesDataSet.xss">
+      <DependentUpon>CropDatesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Hydromet\mcf.xsc">
+      <DependentUpon>mcf.xsd</DependentUpon>
+    </None>
+    <None Include="Hydromet\mcf.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>mcf1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hydromet\mcf.xss">
+      <DependentUpon>mcf.xsd</DependentUpon>
+    </None>
+    <None Include="Hydromet\Operations\FcPlotDataSet.xsc">
+      <DependentUpon>FcPlotDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Hydromet\Operations\FcPlotDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FcPlotDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hydromet\Operations\FcPlotDataSet.xss">
+      <DependentUpon>FcPlotDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Parser\HerbertSchildtExample.cs" />
+    <Compile Include="TimeSeriesDatabase.cs" />
+    <Compile Include="PiscesEngine.cs" />
+    <Compile Include="SeriesListText.cs" />
+    <Compile Include="SeriesRange.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Math.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PolynomialEquation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Point.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Selection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Series.cs" />
+    <Compile Include="SeriesEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SeriesList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextSeries.cs" />
+    <Compile Include="TimeSeriesAppearance.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TimeSeriesMessageList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PiscesObjectEventArgs.cs" />
+    <Compile Include="TimeWindow.cs" />
+    <Compile Include="TriDiagonalMatrixF.cs" />
+    <Compile Include="Usgs\UsgsRatingTables.cs" />
+    <Compile Include="Usgs\UsgsRealTimeSeries.cs" />
+    <Compile Include="Usgs\UsgsUtility.cs" />
+    <Compile Include="Usgs\UsgsDailiyValueSeries.cs" />
+    <Compile Include="Usgs\UsgsInventory.cs" />
+    <Compile Include="Usgs\UsgsRDBFile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Usgs\UsgsGroundWaterLevelSeries.cs" />
+    <Compile Include="WaterYear.cs" />
+    <Compile Include="YearRange.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PiscesTestData\data\xc\pollasci.txt">
+      <Link>Tests\Import\pollasci.txt</Link>
+    </Content>
+    <None Include="Alarms\func_odbc.conf" />
+    <Content Include="IdahoPower\test.xml" />
+    <Content Include="Nrcs\NWCC_Web_Report_Scripting.txt" />
+    <Content Include="Reports\YakimaStatusReport.txt" />
+    <Content Include="Reports\YakimaStatusTemplate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TimeSeriesDatabase.postgres.sql" />
+    <None Include="Service References\Nrcs\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Nrcs\configuration.svcinfo" />
+    <None Include="Service References\Nrcs\configuration91.svcinfo" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TimeSeriesDatabaseDataSet.xsc">
+      <DependentUpon>TimeSeriesDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TimeSeriesDatabaseDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TimeSeriesDatabaseDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TimeSeriesDatabaseDataSet.xss">
+      <DependentUpon>TimeSeriesDatabaseDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Reclamation.Core.csproj">
+      <Project>{80c73d4c-43cf-42de-addc-7b0f06ecf086}</Project>
+      <Name>Reclamation.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Nrcs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="..\ThirdParty\libSQLite.Interop.so" DestinationFolder="$(OutputPath)" Condition=" $(OS) == 'Unix' " />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.3\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+</Project>
