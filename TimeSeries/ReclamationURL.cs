@@ -5,6 +5,7 @@ using System.Text;
 using System.Configuration;
 using System.Data;
 using Reclamation.Core;
+using Reclamation.TimeSeries.Hydromet;
 
 namespace Reclamation.TimeSeries
 {
@@ -34,6 +35,7 @@ namespace Reclamation.TimeSeries
 
         public static string GetUrlToDataCgi(object svr, TimeInterval interval)
         {
+            var rval = "";
 
             string net = "www";
             if (NetworkUtility.Intranet)
@@ -49,7 +51,18 @@ namespace Reclamation.TimeSeries
                 throw new Exception("Error: could not lookup " + qry);
             }
 
-            return rows[0]["CGI"].ToString();
+            rval = rows[0]["CGI"].ToString();
+
+            Boolean.TryParse(UserPreference.Lookup("HydrometCustomServerChecked", ""), out bool customServer);
+            if (customServer)
+            {
+                var idxStart = rval.IndexOf("://") + 3;
+                var idxEnd = rval.IndexOf("/", idxStart);
+                var cgiIP = rval.Substring(idxStart, idxEnd - idxStart);
+                rval = rval.Replace(cgiIP, UserPreference.Lookup("HydrometCustomServer", ""));
+            }
+
+            return rval;
            
         }
 
