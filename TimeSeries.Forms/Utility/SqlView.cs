@@ -15,7 +15,7 @@ namespace Reclamation.Core
 	/// </summary>
 	public class SqlView : System.Windows.Forms.Form
 	{
-    private System.Windows.Forms.DataGrid dataGrid1;
+    private System.Windows.Forms.DataGridView dataGrid1;
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Button buttonSql;
 		private System.Windows.Forms.ListBox listBoxSql;
@@ -67,7 +67,7 @@ namespace Reclamation.Core
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.dataGrid1 = new System.Windows.Forms.DataGrid();
+            this.dataGrid1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonExcel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -87,7 +87,6 @@ namespace Reclamation.Core
             // 
             this.dataGrid1.DataMember = "";
             this.dataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.dataGrid1.Location = new System.Drawing.Point(0, 312);
             this.dataGrid1.Name = "dataGrid1";
             this.dataGrid1.Size = new System.Drawing.Size(752, 134);
