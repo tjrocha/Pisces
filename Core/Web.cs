@@ -200,10 +200,10 @@ namespace Reclamation.Core
                         j = payload.IndexOfAny(reserved, i);
                         if (j == -1)
                         {
-                            UrlEncoded.Append(HttpUtility.UrlEncode(payload.Substring(i, payload.Length - i)));
+                            UrlEncoded.Append(WebUtility.UrlEncode(payload.Substring(i, payload.Length - i)));
                             break;
                         }
-                        UrlEncoded.Append(HttpUtility.UrlEncode(payload.Substring(i, j - i)));
+                        UrlEncoded.Append(WebUtility.UrlEncode(payload.Substring(i, j - i)));
                         UrlEncoded.Append(payload.Substring(j, 1));
                         i = j + 1;
                     }

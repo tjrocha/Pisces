@@ -1,71 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4FA07F03-E6C3-418E-AA20-6378E7E6599D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reclamation.Riverware</RootNamespace>
-    <AssemblyName>Reclamation.Riverware</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ControlFile.cs" />
-    <Compile Include="ControlFileWithData.cs" />
-    <Compile Include="ExcelDMI.cs" />
-    <Compile Include="HydrometDMI.cs" />
-    <Compile Include="NwrfcDMI.cs" />
-    <Compile Include="PiscesDMI.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Reclamation.Core.csproj">
-      <Project>{80c73d4c-43cf-42de-addc-7b0f06ecf086}</Project>
-      <Name>Reclamation.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reclamation.Windows\Reclamation.Windows.csproj">
-      <Project>{c9278b32-7c94-4532-9f4c-92109a6b8e03}</Project>
-      <Name>Reclamation.Windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimeSeries\Reclamation.TimeSeries.csproj">
-      <Project>{5dd20a8a-4037-4885-ab91-2f5a3d1f48b4}</Project>
-      <Name>Reclamation.TimeSeries</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net4.8</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Core\Reclamation.Core.csproj" />
+	  <ProjectReference Include="..\TimeSeries\Reclamation.TimeSeries.csproj" />
+	  <ProjectReference Include="..\Reclamation.Windows\Reclamation.Windows.csproj" />
+	</ItemGroup>
+
+
 </Project>

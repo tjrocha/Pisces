@@ -12,15 +12,7 @@ namespace Pisces.NunitTests.Database
 
         public TestDeleteDatabaseProperties()
         {
-            string path;
-            if (LinuxUtility.IsLinux())
-            {
-                path = "/tmp";
-            }
-            else
-            {
-                path = "C:\\Temp\\";
-            }
+            string path= Path.GetTempPath();
 
             string fn = Path.Combine(path, "factory.pdb");
             FileUtility.GetTempFileNameInDirectory(path, ".pdb");

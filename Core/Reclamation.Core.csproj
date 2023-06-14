@@ -1,194 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{80C73D4C-43CF-42DE-ADDC-7B0F06ECF086}</ProjectGuid>
+    <TargetFramework>net4.8</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reclamation.Core</RootNamespace>
-    <AssemblyName>Reclamation.Core</AssemblyName>
-    <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
+    <PackageReference Include="MySqlConnector" Version="2.2.6" />
+    <PackageReference Include="Npgsql" Version="7.0.4" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyVersion.cs">
-      <Link>AssemblyVersion.cs</Link>
-    </Compile>
-    <Compile Include="AssemblyUtility.cs" />
-    <Compile Include="Arguments.cs" />
-    <Compile Include="ConnectionStringUtility.cs" />
-    <Compile Include="FixedWidthTextFile.cs" />
-    <Compile Include="LinuxUtility.cs" />
-    <Compile Include="MySqlServer.cs" />
-    <Compile Include="NetworkUtility.cs" />
-    <Compile Include="Options.cs" />
-    <Compile Include="StringCipher.cs" />
-    <Compile Include="Tests\TestCredentialsFile.cs" />
-    <Compile Include="Tests\TestHttps.cs" />
-    <Compile Include="PostgreSQL.cs" />
-    <Compile Include="DataRowIO.cs" />
-    <Compile Include="DataTableOutput.cs" />
-    <Compile Include="DataTableUtility.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="Events.cs" />
-    <Compile Include="FileUtility.cs" />
-    <Compile Include="BasicDBServer.cs" />
-    <Compile Include="MonthDayRange.cs" />
-    <Compile Include="ProgramRunner.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="SQLiteServer.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="Performance.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceUtility.cs" />
-    <Compile Include="CsvFile.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Globals.cs" />
-    <Compile Include="Tests\TestPostgreSQL.cs" />
-    <Compile Include="Tests\TestTextAndCsvFile.cs" />
-    <Compile Include="TextFile.cs" />
-    <Compile Include="TextFileCredentials.cs" />
-    <Compile Include="UserPreference.cs" />
-    <Compile Include="Web.cs" />
-    <Compile Include="SimpleWebCache.cs" />
-    <Compile Include="ZipFileUtility.cs" />
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="EntityFramework">
-      <Version>6.4.4</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
-      <Version>7.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="MySql.ConnectorNET.Data">
-      <Version>6.8.3.2</Version>
-    </PackageReference>
-    <PackageReference Include="Npgsql">
-      <Version>7.0.4</Version>
-    </PackageReference>
-    <PackageReference Include="NUnit">
-      <Version>3.13.3</Version>
-    </PackageReference>
-    <PackageReference Include="NUnit.ConsoleRunner">
-      <Version>3.16.3</Version>
-    </PackageReference>
-    <PackageReference Include="NUnit3TestAdapter">
-      <Version>4.5.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Data.SQLite.Core">
-      <Version>1.0.118</Version>
-    </PackageReference>
-    <PackageReference Include="System.Diagnostics.DiagnosticSource">
-      <Version>7.0.2</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.Json">
-      <Version>7.0.2</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">
-    <!-- Create directories needed for Windows -->
     <MakeDir Directories="C:\Temp" Condition=" !Exists('C:\Temp') AND $(OS) == 'Windows_NT' " />
     <MakeDir Directories="C:\Temp\Outgoing" Condition=" !Exists('C:\Temp\Outgoing') AND $(OS) == 'Windows_NT' " />
     <MakeDir Directories="C:\Temp\Incoming" Condition=" !Exists('C:\Temp\Incoming') AND $(OS) == 'Windows_NT' " />
   </Target>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="..\ThirdParty\libSQLite.Interop.so" DestinationFolder="$(OutputPath)" Condition=" $(OS) == 'Unix' " />
     <ItemGroup>
       <PiscesTestData Include="..\PiscesTestData\**\*.*" />
     </ItemGroup>
