@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reclamation.TimeSeries\AccessSeries.cs" />
+    <Compile Include="Reclamation.TimeSeries\BpaHydsim\TestBpaHydsimSeries.cs" />
     <Compile Include="Reclamation.TimeSeries\Hydross\HydrossScenarioPicker.cs">
       <SubType>Form</SubType>
     </Compile>

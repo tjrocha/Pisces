@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32228.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.TimeSeries", "TimeSeries\Reclamation.TimeSeries.csproj", "{5DD20A8A-4037-4885-AB91-2F5A3D1F48B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.Core", "Core\Reclamation.Core.csproj", "{80C73D4C-43CF-42DE-ADDC-7B0F06ECF086}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reclamation.Core", "Core\Reclamation.Core.csproj", "{80C73D4C-43CF-42DE-ADDC-7B0F06ECF086}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.TimeSeries.Forms", "TimeSeries.Forms\Reclamation.TimeSeries.Forms.csproj", "{A7E73F2A-CA66-4BC8-934A-B5068C566F10}"
 EndProject
@@ -58,9 +58,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDailyCalculations", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTestDatabase", "Applications\BuildTestDatabase\BuildTestDatabase.csproj", "{5BFFE433-C7EF-4ADC-A5A6-C005452FF0A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiverwareTrace", "Applications\RiverwareTrace\RiverwareTrace.csproj", "{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiverwareTrace", "Applications\RiverwareTrace\RiverwareTrace.csproj", "{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.Riverware", "Reclamation.Riverware\Reclamation.Riverware.csproj", "{4FA07F03-E6C3-418E-AA20-6378E7E6599D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reclamation.Riverware", "Reclamation.Riverware\Reclamation.Riverware.csproj", "{4FA07F03-E6C3-418E-AA20-6378E7E6599D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usda.Nrcs", "TimeSeries.Nrcs\Usda.Nrcs.csproj", "{84311FAF-8E24-40BB-950B-C53C3E0F0030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -225,6 +227,12 @@ Global
 		{4FA07F03-E6C3-418E-AA20-6378E7E6599D}.poet|Any CPU.Build.0 = Release|Any CPU
 		{4FA07F03-E6C3-418E-AA20-6378E7E6599D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA07F03-E6C3-418E-AA20-6378E7E6599D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.poet|Any CPU.ActiveCfg = Debug|Any CPU
+		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.poet|Any CPU.Build.0 = Debug|Any CPU
+		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

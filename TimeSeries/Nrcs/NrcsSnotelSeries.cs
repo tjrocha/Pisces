@@ -27,7 +27,7 @@ namespace Reclamation.TimeSeries.Nrcs
         static DataTable s_snotelSites, s_inventory;
         static string[] SnotelParameters = { "WTEQ.I-1 (in)", "PREC.I-1 (in)", "TOBS.I-1 (degC)", "TMAX.D-1 (degC)", "TMIN.D-1 (degC)", "TAVG.D-1 (degC)", "SNWD.I-1 (in)" };
         static string[] ParameterCode = { "SE", "PC", "OB", "MX", "MN", "MM", "SD" };
-        string oldURL = @"http://www.wcc.nrcs.usda.gov/nwcc/view?intervalType=Historic&report=STAND&timeseries=Daily&format=copy&sitenum=679&year=2011&month=WY";
+      //  string oldURL = @"http://www.wcc.nrcs.usda.gov/nwcc/view?intervalType=Historic&report=STAND&timeseries=Daily&format=copy&sitenum=679&year=2011&month=WY";
         // https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customSingleStationReport/daily/start_of_period/306:ID:SNTL/2018-01-01,2018-01-10/WTEQ::value,PREC::value,TOBS::value,TMAX::value,TMIN::value,TAVG::value,SNWD::value
         string newURL = @"https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customSingleStationReport/daily/start_of_period/$NRCSTRIPLET$/$T1$,$T2$/WTEQ::value,PREC::value,TOBS::value,TMAX::value,TMIN::value,TAVG::value,SNWD::value";
 
