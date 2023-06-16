@@ -62,7 +62,6 @@
       <Link>cfg\site.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj">

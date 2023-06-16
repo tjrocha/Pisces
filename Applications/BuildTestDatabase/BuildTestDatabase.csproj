@@ -65,7 +65,6 @@
       <Link>site.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="App.config" />
     <None Include="parametercatalog.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

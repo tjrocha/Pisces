@@ -107,9 +107,6 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="samples\etcw.txt" />
     <Content Include="samples\test1.txt" />
     <Content Include="samples\test2.txt" />
