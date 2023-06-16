@@ -4,6 +4,8 @@
 		<TargetFramework>net4.8</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -26,5 +26,5 @@ test:
 
   categories:
     except:
-    - DatabaseServer
-    - Internal
+      - DatabaseServer
+      - Internal
