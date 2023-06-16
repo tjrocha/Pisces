@@ -26,43 +26,40 @@ namespace Reclamation.TimeSeries.IdahoPower
             this.Add(s);
         }
 
-        /*
- * 
-Data Set Export - Flow.DayMean@13087505 Milner Lwr Pwr Plant at Milner - Range: 2017-05-12 00:00 - 2017-05-26 00:00 (UTC-07:00),,,,,
-Data on this site may be provisional and subject to revision,,,,,
-Timestamp (UTC-07:00),Value (Cubic Feet Per Second),Grade Code,Approval Level,Interpolation Type,Comment
-2017-05-12 00:00:00,5260,0,,8,
-2017-05-13 00:00:00,5250,0,,8,
-2017-05-14 00:00:00,5250,0,,8,
-2017-05-15 00:00:00,5260,0,,8,
-2017-05-16 00:00:00,5240,0,,8,
-2017-05-17 00:00:00,5240,0,,8,
-2017-05-18 00:00:00,5200,0,,8,
-2017-05-19 00:00:00,4290,0,,8,
-2017-05-20 00:00:00,2160,0,,8,
-2017-05-21 00:00:00,244,0,,8,
-2017-05-22 00:00:00,0,0,,8,
-2017-05-23 00:00:00,0,0,,8,
-2017-05-24 00:00:00,0,0,,8,
-2017-05-25 00:00:00,0,0,,8,
-2017-05-26 00:00:00,0,0,,8,         
+/*
+#Bulk Export - Points as recorded	
+13227000
+Bully Crk nr Vale, OR
+Flow HR.15
+Timestamp (UTC-07:00)	Value (ft^3/s)
+6/15/2023 0:00	11.3
+6/15/2023 0:15	11.6
+6/15/2023 0:30	11.9
+6/15/2023 0:45	11.9
+6/15/2023 1:00	12.3
+6/15/2023 1:15	12.3
+...
  */
         private static Series ReadFromIdahoPower(string id, DateTime t1, DateTime t2)
         {
-            //var url = "https://idastream.idahopower.com/Data/Export_Data/?dataset=18942&date=2017-05-12&endDate=2017-05-26&exporttype=csv&type=csv";
+            //var url = "https://idastream.idahopower.com/Export/DataSet?DataSet=Flow+HR.15@13227000&DateRange=Custom&StartTime=2017-05-12&EndTime=2017-05-26&Compressed=false&ExportFormat=csv ";
+            var url = "https://idastream.idahopower.com/Export/DataSet?DataSet="
+                + id + "&DateRange=Custom&StartTime=" + t1.Date.ToString("yyyy-MM-dd")
+                + "&EndTime=" + t2.AddDays(1).ToString("yyyy-MM-dd") 
+                + "&Compressed=false&ExportFormat=csv";
 
+            //var fn = DownloadAndUnzip(url);
+            var csvFile = FileUtility.GetTempFileName(".csv");
+            Console.WriteLine("Downloading: " + csvFile);
+            Web.GetFile(url, csvFile);
 
-            var url = "https://idastream.idahopower.com/Data/Export_Data/?dataset="
-                + id + "&date=" + t1.Date.ToString("yyyy-MM-dd")
-                + "&endDate=" + t2.AddDays(1).ToString("yyyy-MM-dd") + "&exporttype=csv&type=csv";
-
-            var fn = DownloadAndUnzip(url);
-
-            TextSeries s = new TextSeries(fn);
+            TextSeries s = new TextSeries(csvFile);
             s.Read();
             s.Trim(t1, t2);
             return s;
         }
+
+
         private static string DownloadAndUnzip(string url)
         {
             var zip = FileUtility.GetTempFileName(".zip");
@@ -75,8 +72,5 @@ Timestamp (UTC-07:00),Value (Cubic Feet Per Second),Grade Code,Approval Level,In
             ZipFileUtility.UnzipFile(zip, csv);
             return csv;
         }
-
-
-
     }
 }

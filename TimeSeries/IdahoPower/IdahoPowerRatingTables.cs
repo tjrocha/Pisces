@@ -33,7 +33,9 @@ namespace Reclamation.TimeSeries.IdahoPower
             this.cbtt = cbtt;
 
             // Get and assign rating table file from the web
-            string idprURL = "https://ps.idahopower.com/RatingsService/Index?id=S-QRiv.Rating@XXXX";
+            // https://api.idahopower.com/WaterManagement/api/AqRating/settings/S-QRiv.Rating%4013203000
+            //string idprURL = "https://ps.idahopower.com/RatingsService/Index?id=S-QRiv.Rating@XXXX";
+            string idprURL = "https://api.idahopower.com/WaterManagement/api/AqRating/settings/S-QRiv.Rating@XXXX";
             downloadURL = idprURL.Replace("XXXX", stationId);
             if (stationId.IndexOf('@') > 0)
             {
