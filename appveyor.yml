@@ -22,10 +22,10 @@ build:
 test:
   assemblies:
     ## Test the libraries
-    - Core\bin\Debug\net4.8\Reclamation.Core.dll
-    - TimeSeries\bin\Debug\net4.8\Reclamation.TimeSeries.dll
+    - Core\bin\Debug\Reclamation.Core.dll
+    - TimeSeries\bin\Debug\Reclamation.TimeSeries.dll
 
   categories:
     except:
-    - DatabaseServer
-    - Internal
+      - DatabaseServer
+      - Internal
