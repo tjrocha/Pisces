@@ -17,14 +17,7 @@ platform: Any CPU
 build:
   project: Pisces.sln
   verbosity: minimal
-  
-test:
-  assemblies:
-    ## Test the libraries
-    - Core\bin\Debug\Reclamation.Core.dll
-    - TimeSeries\bin\Debug\Reclamation.TimeSeries.dll
 
-  categories:
-    except:
-    - DatabaseServer
-    - Internal
+test_script:
+  - cmd: vstest.console TimeSeries\bin\Debug\Reclamation.TimeSeries.dll  
+  - cmd: vstest.console Core\bin\Debug\Reclamation.Core.dll  
