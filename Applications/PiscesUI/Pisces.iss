@@ -71,7 +71,7 @@ Source:  ".\bin\debug\ZedGraph.dll";   DestDir: "{app}";   Flags: ignoreversion
 ;Source:  ".\bin\debug\hdb-poet.exe";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\DSSUTL.EXE";   DestDir: "{app}";   Flags: ignoreversion
 
-Source:  ".\bin\debug\MySql.Data.dll";   DestDir: "{app}";   Flags: ignoreversion
+Source:  ".\bin\debug\MySqlConnector.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\Npgsql.dll";   DestDir: "{app}";   Flags: ignoreversion
 ;Source:  ".\bin\debug\Mono.Security.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\DgvFilterPopup.dll";   DestDir: "{app}";   Flags: ignoreversion
@@ -79,6 +79,7 @@ Source:  ".\bin\debug\System.Data.SQLite.dll";   DestDir: "{app}";   Flags: igno
 Source:  ".\bin\debug\x86\SQLite.Interop.dll";   DestDir: "{app}\x86";   Flags: ignoreversion
 Source:  ".\bin\debug\x64\SQLite.Interop.dll";   DestDir: "{app}\x64";   Flags: ignoreversion
 Source:  ".\bin\debug\System.Data.SQLite.dll";   DestDir: "{app}";   Flags: ignoreversion
+Source:  ".\bin\debug\System.Text.Json.dll";   DestDir: "{app}";   Flags: ignoreversion
 
 ; ORACLE
 ;Source:  "C:\Program Files (x86)\Common Files\Devart\dotConnect\5.00\Net2\Common\Devart.Data.Oracle.dll";   DestDir: "{app}";   Flags: ignoreversion
