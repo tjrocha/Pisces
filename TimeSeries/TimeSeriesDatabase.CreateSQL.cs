@@ -201,13 +201,7 @@ namespace Reclamation.TimeSeries
                 ExecuteCreateTable(m_server, sql);
 
                 
-                sql = " ALTER TABLE seriesproperties  "
-                    + " ADD UNIQUE INDEX idx1 (seriesid ASC, `name` ASC)"; //mysql
-
-                if (m_server is MySqlServer)
-                    m_server.RunSqlCommand(sql);
-
-                sql = " ALTER TABLE siteproperties "
+                sql = " ALTER TABLE siteproperties " // FIX ME . Should be seriesproperties ???
                     + " ADD CONSTRAINT idx1 UNIQUE(siteid, name);"; // postgresql
 
                 if( m_server is PostgreSQL)

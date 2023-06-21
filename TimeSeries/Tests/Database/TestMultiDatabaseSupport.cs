@@ -18,17 +18,6 @@ namespace Pisces.NunitTests.Database
         //    t.TestMySQL();
         //}
 
-        [Test, Category("DatabaseServer")]
-        [Ignore("Ignore DatabaseServer tests per KTarbet.")]
-        public void TestMySQL()
-        {
-            var svr = MySqlServer.GetMySqlServer("localhost", "timeseries");
-
-            var db = new TimeSeriesDatabase(svr,false);
-
-            BasicDatabaseTest(db);
-        }
-
       
         [Test]
         public void TestSQLite()

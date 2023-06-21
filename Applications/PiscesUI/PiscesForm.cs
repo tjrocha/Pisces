@@ -793,10 +793,6 @@ namespace Reclamation.TimeSeries.Forms
             {
                 svr = new SqlServer(server, database);
             }
-            if (t == DatabaseType.MySQL)
-            {
-                svr = MySqlServer.GetMySqlServer(server, database, "", password);
-            }
 
             return svr;
         }
