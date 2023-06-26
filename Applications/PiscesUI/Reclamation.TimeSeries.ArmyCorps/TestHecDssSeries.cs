@@ -5,6 +5,8 @@ using NUnit.Framework;
 using Reclamation.TimeSeries.Hec;
 using Reclamation.TimeSeries;
 using Reclamation.Core;
+using Hec.Dss;
+
 namespace Pisces.NunitTests.SeriesTypes
 {
     /// <summary>
@@ -30,8 +32,11 @@ namespace Pisces.NunitTests.SeriesTypes
         public void Catalog()
         {
             string fn = DataPath + "\\HecDss\\sample.dss";
-            string[] stuff = HecDssTree.GetCatalog(fn);
-            Console.WriteLine(String.Join("\n",stuff));
+            using (DssReader r = new DssReader(fn))
+            {
+             var  c = r.GetCatalog();
+             Console.WriteLine(c.Count);
+            }
         }
 
         [Test]
@@ -46,5 +51,17 @@ namespace Pisces.NunitTests.SeriesTypes
             Assert.AreEqual(504, s.Count);
             Assert.AreEqual(2580.0, s[s.Count - 1].Value, 0.01);
         }
+    [Test]
+    public void DSS7()
+    {
+      string fn = DataPath + "\\HecDss\\sample7.dss";
+      HecDssSeries s = new HecDssSeries(fn, "/GREEN RIVER/OAKVILLE/FLOW-RES OUT//1HOUR/OBS/");
+      s.Read();
+
+      Assert.AreEqual(TimeInterval.Hourly, s.TimeInterval);
+      Assert.AreEqual("CFS", s.Units);
+      Assert.AreEqual(504, s.Count);
+      Assert.AreEqual(2580.0, s[s.Count - 1].Value, 0.01);
     }
+  }
 }

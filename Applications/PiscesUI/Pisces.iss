@@ -57,7 +57,9 @@ Source:  ".\bin\debug\Reclamation.TimeSeries.dll";   DestDir: "{app}";   Flags: 
 Source:  ".\bin\debug\Reclamation.TimeSeries.Excel.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\Reclamation.TimeSeries.Forms.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\Reclamation.TimeSeries.Graphing.dll";   DestDir: "{app}";   Flags: ignoreversion
-;Source:  ".\bin\debug\Reclamation.TimeSeries.ArmyCorps.dll";   DestDir: "{app}";   Flags: ignoreversion
+Source:  ".\bin\debug\Hec.Dss.dll";   DestDir: "{app}";   Flags: ignoreversion
+Source:  ".\bin\debug\bin64\Hec.Dss.Native.dll";   DestDir: "{app}\bin64";   Flags: ignoreversion
+Source:  ".\bin\debug\bin32\Hec.Dss.Native.dll";   DestDir: "{app}\bin32";   Flags: ignoreversion
 Source:  ".\bin\debug\SpreadsheetGear2017.Core.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\System.Threading.Tasks.Extensions.dll";   DestDir: "{app}";   Flags: ignoreversion  
 Source:  ".\bin\debug\System.Runtime.CompilerServices.Unsafe.dll";   DestDir: "{app}";   Flags: ignoreversion     
@@ -68,8 +70,6 @@ Source:  ".\bin\debug\Newtonsoft.Json.dll";   DestDir: "{app}";   Flags: ignorev
 Source:  ".\bin\debug\TeeChart.dll";   DestDir: "{app}";   Flags: ignoreversion
 Source:  ".\bin\debug\ZedGraph.dll";   DestDir: "{app}";   Flags: ignoreversion
 
-;Source:  ".\bin\debug\hdb-poet.exe";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\DSSUTL.EXE";   DestDir: "{app}";   Flags: ignoreversion
 
 Source:  ".\bin\debug\Npgsql.dll";   DestDir: "{app}";   Flags: ignoreversion
 ;Source:  ".\bin\debug\Mono.Security.dll";   DestDir: "{app}";   Flags: ignoreversion
