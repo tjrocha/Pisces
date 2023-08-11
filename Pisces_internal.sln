@@ -58,10 +58,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.Windows", "Recl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportOWRD", "Applications\ImportOWRD\ImportOWRD.csproj", "{98584217-A9DA-4375-9DC4-D82CF6899162}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDailyCalculations", "Applications\CreateDailyCalculations\CreateDailyCalculations.csproj", "{9C591F97-0713-44BA-AEB6-4147A5202CED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTestDatabase", "Applications\BuildTestDatabase\BuildTestDatabase.csproj", "{5BFFE433-C7EF-4ADC-A5A6-C005452FF0A1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.TimeSeries.Graphing", "TimeSeries.Graphing\Reclamation.TimeSeries.Graphing.csproj", "{862135B0-793A-4F06-B731-26C61B3AD068}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.TimeSeries.Excel", "TimeSeries.Excel\Reclamation.TimeSeries.Excel.csproj", "{37B543F5-03A5-479E-B20C-7B4ACC53D16A}"

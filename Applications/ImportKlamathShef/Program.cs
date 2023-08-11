@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using Reclamation.Core;
 using Reclamation.TimeSeries.NOAA;
 using Reclamation.TimeSeries.Hydromet;
@@ -17,7 +16,7 @@ namespace ImportKlamathShef
         {
             if (args.Length != 3)
             {
-                Console.WriteLine(" ImportKlamathShef.exe "+ Application.ProductVersion+ " "+AssemblyUtility.CreationDate());
+                Console.WriteLine(" ImportKlamathShef.exe "+ " "+AssemblyUtility.CreationDate());
                 Console.WriteLine("Usage: ImportKlamathShef.exe config.csv output.txt input_filepath");
                 return -1;
             }

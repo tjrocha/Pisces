@@ -68,7 +68,7 @@ namespace PiscesWebServices
             return s_db.Server.Table("a", sql);
         }
 
-        internal static DataTable GetSiteProperties(dynamic siteid)
+        internal static DataTable GetSiteProperties(string siteid)
         {
             var sql = "select siteid,name, value from siteproperties where siteid = '"+siteid+"'";
             return s_db.Server.Table("a", sql);

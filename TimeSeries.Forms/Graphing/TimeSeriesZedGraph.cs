@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Reclamation.TimeSeries.Graphing
+namespace Reclamation.TimeSeries.Forms.Graphing
 {
     public partial class TimeSeriesZedGraph : UserControl,ITimeSeriesGraph
     {

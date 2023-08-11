@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ZedGraph;
 using System.Drawing;
 
-namespace Reclamation.TimeSeries.Graphing
+namespace Reclamation.TimeSeries.Forms.Graphing
 {
     /// <summary>
     /// Loads TimeSeries data into a ZedGraph Graph

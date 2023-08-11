@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-namespace Reclamation.TimeSeries.Graphing
+namespace Reclamation.TimeSeries.Forms.Graphing
 {
     public interface ITimeSeriesGraph 
     {

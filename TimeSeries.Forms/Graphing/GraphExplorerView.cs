@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Reclamation.TimeSeries;
 
-namespace Reclamation.TimeSeries.Graphing
+namespace Reclamation.TimeSeries.Forms.Graphing
 {
 
     /// <summary>
