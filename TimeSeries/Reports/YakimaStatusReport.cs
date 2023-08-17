@@ -34,7 +34,7 @@ namespace Reclamation.TimeSeries.Reports
         /// Creates and returns the report.
         /// </summary>
         /// <returns></returns>
-        public string Create(DateTime t, int year1=0, int year2=0) // default 8am.
+        public string Create(HydrometHost host, DateTime t, int year1=0, int year2=0) // default 8am.
         {
             string rval = GetTemplate();
             //13-OCT-2016  09:12:35
@@ -51,13 +51,13 @@ namespace Reclamation.TimeSeries.Reports
             DateTime t2 = t;
             HydrometDataCache c = new HydrometDataCache();
             
-            HydrometInstantSeries.Cache.Add(this.yakima_data, t1, t2, HydrometHost.Yakima, TimeInterval.Irregular);
+            HydrometInstantSeries.Cache.Add(this.yakima_data, t1, t2, host, TimeInterval.Irregular);
             
             foreach (var cbtt in resList)
             {
-              rval = ProcessParameter(rval ,t, cbtt, "fb");
-              rval = ProcessParameter(rval, t, cbtt, "af");
-              rval = ProcessParameter(rval, t, cbtt, "q");
+              rval = ProcessParameter(host, rval, t, cbtt, "af");
+              rval = ProcessParameter(host, rval ,t, cbtt, "fb");
+              rval = ProcessParameter(host, rval, t, cbtt, "q");
             }
 
             rval = ReplaceSymbol(rval, "%total_af", total_af);
@@ -78,10 +78,10 @@ namespace Reclamation.TimeSeries.Reports
             foreach (var canal in DataSubset("qc"))
             {
                 var cbtt = canal.Substring(0, canal.IndexOf(" "));
-                rval = ProcessParameter(rval, t, cbtt, "qc");
+                rval = ProcessParameter(host, rval, t, cbtt, "qc");
             }
 
-            double others = ComputeOthersAboveParker(t1);
+            double others = ComputeOthersAboveParker(host, t1);
             rval = ReplaceSymbol(rval, "%major_qc", major_qc_total);
             rval = ReplaceSymbol(rval, "%other_qc", others);
             above_parker_qc += others + major_qc_total;
@@ -92,7 +92,7 @@ namespace Reclamation.TimeSeries.Reports
             {
                 var cbtt = river.Substring(0, river.IndexOf(" "));
                 if( !resList.Contains(cbtt)) // reservoir allready processed
-                  rval = ProcessParameter(rval, t, cbtt, "q");
+                  rval = ProcessParameter(host, rval, t, cbtt, "q");
             }
             
             // unregulated tributary and return flows above parker.
@@ -131,11 +131,11 @@ namespace Reclamation.TimeSeries.Reports
         /// </summary>
         /// <param name="t1"></param>
         /// <returns></returns>
-        private static double ComputeOthersAboveParker(DateTime t)
+        private static double ComputeOthersAboveParker(HydrometHost host, DateTime t)
         {
 
-            HydrometDailySeries wesw = new HydrometDailySeries("wesw", "qj", HydrometHost.Yakima);
-            HydrometDailySeries nscw = new HydrometDailySeries("nscw", "qj", HydrometHost.Yakima);
+            HydrometDailySeries wesw = new HydrometDailySeries("wesw", "qj", host);
+            HydrometDailySeries nscw = new HydrometDailySeries("nscw", "qj", host);
 
             DateTime t1 = t.Date;
 
@@ -159,7 +159,7 @@ namespace Reclamation.TimeSeries.Reports
         private static double GetValue(DateTime t1, double wesw, double nscw)
         {
             double rval = 200.0;
-            var fn = Path.Combine(FileUtility.GetExecutableDirectory(),"YakimaOthersAboveParker.csv");
+            var fn = Path.Combine(FileUtility.GetExecutableDirectory(), "Reports", "YakimaOthersAboveParker.csv");
             CsvFile csv = new CsvFile(fn, CsvFile.FieldTypes.AutoDetect);
 
             for (int i = 0; i < csv.Rows.Count; i++)
@@ -221,10 +221,10 @@ namespace Reclamation.TimeSeries.Reports
             return rval.ToArray();
         }
 
-        private string ProcessParameter(string txt, DateTime t,
+        private string ProcessParameter(HydrometHost host, string txt, DateTime t,
             string cbtt, string pcode)
         {
-            var x = GetValue(cbtt, pcode, t);
+            var x = GetValue(host, cbtt, pcode, t);
             int decimals =  ( pcode.Trim() == "fb") ? 2 : 0;
             int idx = Array.IndexOf(resList, cbtt);
 
@@ -240,7 +240,7 @@ namespace Reclamation.TimeSeries.Reports
                     double pct = 100.0 * x /resCapacity[idx];
                     rval = ReplaceSymbol(rval, "%" + cbtt + "_pct", pct, 0);
                    // get yesterdays storage
-                    var x2 = GetValue(cbtt, pcode, t.AddDays(-1));
+                    var x2 = GetValue(host, cbtt, pcode, t.AddDays(-1));
                     if (!Point.IsMissingValue(x2))
                     {
                         res_af2[idx] = x2;
@@ -298,9 +298,9 @@ namespace Reclamation.TimeSeries.Reports
             return text.Replace(symbol, str);
         }
 
-        public double GetValue(string cbtt, string pcode, DateTime t)
+        public double GetValue(HydrometHost host, string cbtt, string pcode, DateTime t)
         {
-            var s = new HydrometInstantSeries(cbtt, pcode,HydrometHost.Yakima);
+            var s = new HydrometInstantSeries(cbtt, pcode, host);
             //DateTime th = new DateTime(t.Year, t.Month, t.Day, hour, 0, 0);
             s.Read(t,t);
             
@@ -316,6 +316,7 @@ namespace Reclamation.TimeSeries.Reports
             return File.ReadAllText(
                   Path.Combine(
                   FileUtility.GetExecutableDirectory(),
+                  "Reports",
                   "YakimaStatusTemplate.txt")
                   );
 
