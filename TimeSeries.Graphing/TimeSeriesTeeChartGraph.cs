@@ -12,7 +12,7 @@ using System.Collections.Specialized;
 namespace Reclamation.TimeSeries.Graphing
 {
 
-    public partial class TimeSeriesTeeChartGraph : UserControl, Reclamation.TimeSeries.Graphing.ITimeSeriesGraph
+    public partial class TimeSeriesTeeChartGraph : UserControl, Reclamation.TimeSeries.Forms.Graphing.ITimeSeriesGraph
     {
         double _missingDataValue;
         SeriesList seriesList;
