@@ -11,7 +11,7 @@ AppVersion={#AppVerStr}
 AppVerName={#AppName} {#AppVerStr}
 VersionInfoVersion={#AppVerStr}
 VersionInfoTextVersion={#AppVerStr}
-OutputBaseFilename=Pisces3-setup
+OutputBaseFilename=PiscesSetup_v{#AppVerStr}
 ;show dialogs even if previous install found
 DisableDirPage=no
 DisableProgramGroupPage=no
@@ -39,97 +39,45 @@ Type: filesandordirs; Name: "{app}"
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
+ 
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 
 [Files]
-Source:  ".\bin\debug\Pisces.exe";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\plugins.txt";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Pisces.exe.config";   DestDir: "{app}";   Flags: ignoreversion
+; dll's
+Source:  "bin\debug\*.dll"; DestDir: "{app}"; Flags: ignoreversion
+
+; Pisces
+Source:  "bin\debug\Pisces.exe";   DestDir: "{app}";   Flags: ignoreversion
+Source:  "bin\debug\plugins.txt";   DestDir: "{app}";   Flags: ignoreversion
+Source:  "bin\debug\Pisces.exe.config";   DestDir: "{app}";   Flags: ignoreversion
 Source:  "..\..\private.config";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\images\*";   DestDir: "{app}\images";   Flags: ignoreversion
-Source:  ".\bin\debug\Aga.Controls.dll";   DestDir: "{app}";   Flags: ignoreversion
-;Source:  ".\bin\debug\ICSharpCode.SharpZipLib.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Reclamation.Core.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Reclamation.TimeSeries.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Reclamation.TimeSeries.Excel.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Reclamation.TimeSeries.Forms.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Reclamation.TimeSeries.Graphing.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Hec.Dss.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\bin64\Hec.Dss.Native.dll";   DestDir: "{app}\bin64";   Flags: ignoreversion
-Source:  ".\bin\debug\bin32\Hec.Dss.Native.dll";   DestDir: "{app}\bin32";   Flags: ignoreversion
-Source:  ".\bin\debug\SpreadsheetGear2017.Core.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\System.Threading.Tasks.Extensions.dll";   DestDir: "{app}";   Flags: ignoreversion  
-Source:  ".\bin\debug\System.Runtime.CompilerServices.Unsafe.dll";   DestDir: "{app}";   Flags: ignoreversion     
-Source:  ".\bin\debug\RestSharp.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Newtonsoft.Json.dll";   DestDir: "{app}";   Flags: ignoreversion
+Source:  "bin\debug\images\*";   DestDir: "{app}\images";   Flags: ignoreversion
 
-; Charting
-Source:  ".\bin\debug\TeeChart.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\ZedGraph.dll";   DestDir: "{app}";   Flags: ignoreversion
+; Hec-dss
+Source:  "bin\debug\bin64\Hec.Dss.Native.dll";   DestDir: "{app}\bin64";   Flags: ignoreversion
+Source:  "bin\debug\bin32\Hec.Dss.Native.dll";   DestDir: "{app}\bin32";   Flags: ignoreversion
 
+; SQLite
+Source:  "bin\debug\x86\SQLite.Interop.dll";   DestDir: "{app}\x86";   Flags: ignoreversion
+Source:  "bin\debug\x64\SQLite.Interop.dll";   DestDir: "{app}\x64";   Flags: ignoreversion
 
-Source:  ".\bin\debug\Npgsql.dll";   DestDir: "{app}";   Flags: ignoreversion
-;Source:  ".\bin\debug\Mono.Security.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\DgvFilterPopup.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\System.Data.SQLite.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\x86\SQLite.Interop.dll";   DestDir: "{app}\x86";   Flags: ignoreversion
-Source:  ".\bin\debug\x64\SQLite.Interop.dll";   DestDir: "{app}\x64";   Flags: ignoreversion
-Source:  ".\bin\debug\System.Data.SQLite.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\System.Text.Json.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\Microsoft.Bcl.AsyncInterfaces.dll";   DestDir: "{app}";   Flags: ignoreversion
+; config folder
+Source:  "bin\debug\cfg\*";   DestDir: "{app}\cfg";   Flags: ignoreversion recursesubdirs
 
-; ORACLE
-;Source:  "C:\Program Files (x86)\Common Files\Devart\dotConnect\5.00\Net2\Common\Devart.Data.Oracle.dll";   DestDir: "{app}";   Flags: ignoreversion
-;Source:  "C:\Program Files (x86)\Common Files\Devart\dotConnect\5.00\Net2\Common\Devart.Data.dll";   DestDir: "{app}";   Flags: ignoreversion
-
-Source:  "..\cfg\gp\*.*";   DestDir: "{app}\gp";   Flags: ignoreversion
-Source:  "..\cfg\yak\*.*";   DestDir: "{app}\yak";   Flags: ignoreversion
-Source:  "..\cfg\site.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\pcode.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\daily_pcode.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\instant_pcode.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\monthly_pcode.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\reclamationcgi.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\group.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\cc.dat";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\nwcc_inventory.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\snotel_site_list2.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\boise_arc.dat";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\owrd_station_list.csv";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\mpoll.cbt";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "..\cfg\mpoll_inventory.txt";   DestDir: "{app}";   Flags: ignoreversion
-
-; Modsim
-;Source:  ".\bin\debug\alglibnet2.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\libsim.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\XYFile.dll";   DestDir: "{app}";   Flags: ignoreversion
-Source:  ".\bin\debug\A2CM.dll";   DestDir: "{app}";   Flags: ignoreversion
-;
 ; Sample Data and templates
-;
 Source:  "..\..\PiscesTestData\data\el68d_export.csv";   DestDir: "{app}\sample-data";   Flags: ignoreversion
 Source:  "..\..\PiscesTestData\data\wateryear.xls";   DestDir: "{app}\sample-data";   Flags: ignoreversion
 Source:  "..\..\PiscesTestData\data\bulk-import-template.xlsx";   DestDir: "{app}\sample-data";   Flags: ignoreversion
 Source:  "..\..\PiscesTestData\data\ac_flow.xls";   DestDir: "{app}\sample-data";   Flags: ignoreversion                                              
-
-;Source:  ".\pisces\sample data\SnakeRiverFlow.xls";   DestDir: "{app}\sample data";   Flags: ignoreversion
-;Source:  ".\pisces\sample data\SnakeRiverTemperature.txt";   DestDir: "{app}\sample data";   Flags: ignoreversion
-;Source:  ".\pisces\sample data\SpecificationTestData.xls";   DestDir: "{app}\sample data";   Flags: ignoreversion
-;Source:  ".\pisces\sample data\HydrometDailyValues.sdf";   DestDir: "{app}\sample data";   Flags: ignoreversion
-
-;Source:  ".\Database Samples\EMI RuleCurve.xls";   DestDir: "{app}\sample data";   Flags: ignoreversion
-;Source:  ".\Database Samples\Talent2.sdf";   DestDir: "{app}\sample data";   Flags: ignoreversion
 
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 [Icons]
 Name: "{group}\Pisces3"; Filename: "{app}\{#AppName}.exe"; IconFilename: "{app}\images\Fish_icon_3.ico"
 Name: "{autodesktop}\Pisces3"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon; IconFilename: "{app}\images\Fish_icon_3.ico"
-
-[Code]
 
 
 [Code]
