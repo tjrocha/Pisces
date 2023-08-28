@@ -27,6 +27,8 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
 
         private void SaveToUserPref()
         {
+            this.textBoxCustomSource.Enabled = false;
+
             if (this.radioButtonPnHydromet.Checked)
             {
                 UserPreference.Save("HydrometServer", HydrometHost.PN.ToString());
@@ -47,6 +49,11 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
             {
                 UserPreference.Save("HydrometServer", HydrometHost.YakimaLinux.ToString());
             }
+            else if (this.radioButtonCustomSource.Checked)
+            {
+                UserPreference.Save("HydrometServer", HydrometHost.Custom.ToString());
+                this.textBoxCustomSource.Enabled = true;
+            }
 
             
             UserPreference.Save("TimeSeriesDatabaseName", this.textBoxDbName.Text);
@@ -55,6 +62,7 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
         private void ReadSettings()
         {
             var svr = HydrometInfoUtility.HydrometServerFromPreferences();
+            this.textBoxCustomSource.Enabled = false;
 
             // retiring PN 
             if (svr == HydrometHost.PNLinux || svr == HydrometHost.PN)
@@ -73,10 +81,13 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
             {
                 this.radioButtonYakLinux.Checked = true;
             }
+            else if (svr == HydrometHost.Custom)
+            {
+                this.radioButtonCustomSource.Checked = true;
+                this.textBoxCustomSource.Enabled = true;
 
-            Boolean.TryParse(UserPreference.Lookup("HydrometCustomServerChecked", ""), out bool customSourceChecked);
-            this.checkBoxCustomSource.Checked = customSourceChecked;
-            CustomIP = UserPreference.Lookup("HydrometCustomServer", "");
+                CustomIP = UserPreference.Lookup("HydrometCustomServer", "");
+            }
 
             this.textBoxDbName.Text = UserPreference.Lookup("TimeSeriesDatabaseName", "timeseries");
         }
@@ -86,14 +97,11 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
             SaveToUserPref();
         }
 
-        private void checkBoxCustomSource_CheckedChanged(object sender, EventArgs e)
-        {
-            UserPreference.Save("HydrometCustomServerChecked", this.checkBoxCustomSource.Checked.ToString());
-        }
 
         private void textBoxCustomSource_TextChanged(object sender, EventArgs e)
         {
             UserPreference.Save("HydrometCustomServer", CustomIP);
         }
+
     }
 }

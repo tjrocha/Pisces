@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBoxCustomSource = new System.Windows.Forms.CheckBox();
+            this.radioButtonCustomSource = new System.Windows.Forms.RadioButton();
             this.textBoxCustomSource = new System.Windows.Forms.TextBox();
             this.radioButtonYakLinux = new System.Windows.Forms.RadioButton();
             this.textBoxDbName = new System.Windows.Forms.TextBox();
@@ -43,7 +43,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBoxCustomSource);
+            this.groupBox1.Controls.Add(this.radioButtonCustomSource);
             this.groupBox1.Controls.Add(this.textBoxCustomSource);
             this.groupBox1.Controls.Add(this.radioButtonYakLinux);
             this.groupBox1.Controls.Add(this.textBoxDbName);
@@ -62,20 +62,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "time series data source";
             // 
-            // checkBoxCustomSource
+            // radioButtonCustomSource
             // 
-            this.checkBoxCustomSource.AutoSize = true;
-            this.checkBoxCustomSource.Location = new System.Drawing.Point(15, 143);
-            this.checkBoxCustomSource.Name = "checkBoxCustomSource";
-            this.checkBoxCustomSource.Size = new System.Drawing.Size(96, 17);
-            this.checkBoxCustomSource.TabIndex = 49;
-            this.checkBoxCustomSource.Text = "Custom source";
-            this.checkBoxCustomSource.UseVisualStyleBackColor = true;
-            this.checkBoxCustomSource.CheckedChanged += new System.EventHandler(this.checkBoxCustomSource_CheckedChanged);
+            this.radioButtonCustomSource.AutoSize = true;
+            this.radioButtonCustomSource.Location = new System.Drawing.Point(15, 118);
+            this.radioButtonCustomSource.Name = "radioButtonCustomSource";
+            this.radioButtonCustomSource.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonCustomSource.TabIndex = 50;
+            this.radioButtonCustomSource.TabStop = true;
+            this.radioButtonCustomSource.Text = "Custom Source";
+            this.radioButtonCustomSource.UseVisualStyleBackColor = true;
             // 
             // textBoxCustomSource
             // 
-            this.textBoxCustomSource.Location = new System.Drawing.Point(111, 141);
+            this.textBoxCustomSource.Location = new System.Drawing.Point(118, 118);
             this.textBoxCustomSource.Name = "textBoxCustomSource";
             this.textBoxCustomSource.Size = new System.Drawing.Size(110, 20);
             this.textBoxCustomSource.TabIndex = 48;
@@ -83,7 +83,7 @@
             // 
             // radioButtonYakLinux
             // 
-            this.radioButtonYakLinux.Location = new System.Drawing.Point(15, 117);
+            this.radioButtonYakLinux.Location = new System.Drawing.Point(15, 93);
             this.radioButtonYakLinux.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonYakLinux.Name = "radioButtonYakLinux";
             this.radioButtonYakLinux.Size = new System.Drawing.Size(136, 20);
@@ -110,12 +110,12 @@
             // 
             // radioButtonPnHydromet
             // 
-            this.radioButtonPnHydromet.Location = new System.Drawing.Point(15, 21);
+            this.radioButtonPnHydromet.Location = new System.Drawing.Point(208, 23);
             this.radioButtonPnHydromet.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonPnHydromet.Name = "radioButtonPnHydromet";
             this.radioButtonPnHydromet.Size = new System.Drawing.Size(152, 20);
             this.radioButtonPnHydromet.TabIndex = 0;
-            this.radioButtonPnHydromet.Text = "Boise Hydromet";
+            this.radioButtonPnHydromet.Text = "Boise Hydromet VMS";
             this.radioButtonPnHydromet.Visible = false;
             this.radioButtonPnHydromet.CheckedChanged += new System.EventHandler(this.serverChanged);
             // 
@@ -132,13 +132,13 @@
             // radioButtonBoiseLinux
             // 
             this.radioButtonBoiseLinux.Checked = true;
-            this.radioButtonBoiseLinux.Location = new System.Drawing.Point(15, 93);
+            this.radioButtonBoiseLinux.Location = new System.Drawing.Point(15, 23);
             this.radioButtonBoiseLinux.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonBoiseLinux.Name = "radioButtonBoiseLinux";
             this.radioButtonBoiseLinux.Size = new System.Drawing.Size(136, 20);
             this.radioButtonBoiseLinux.TabIndex = 5;
             this.radioButtonBoiseLinux.TabStop = true;
-            this.radioButtonBoiseLinux.Text = "Boise Linux Hydromet ";
+            this.radioButtonBoiseLinux.Text = "Boise Hydromet ";
             this.radioButtonBoiseLinux.CheckedChanged += new System.EventHandler(this.serverChanged);
             // 
             // radioButtonGP
@@ -176,6 +176,6 @@
         private System.Windows.Forms.Label labelDbName;
         private System.Windows.Forms.RadioButton radioButtonYakLinux;
         private System.Windows.Forms.TextBox textBoxCustomSource;
-        private System.Windows.Forms.CheckBox checkBoxCustomSource;
+        private System.Windows.Forms.RadioButton radioButtonCustomSource;
     }
 }
