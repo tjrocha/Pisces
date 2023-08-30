@@ -53,8 +53,7 @@ namespace Reclamation.TimeSeries
 
             rval = rows[0]["CGI"].ToString();
 
-            Boolean.TryParse(UserPreference.Lookup("HydrometCustomServerChecked", ""), out bool customServer);
-            if (customServer)
+            if (svr.ToString() == "Custom")
             {
                 var idxStart = rval.IndexOf("://") + 3;
                 var idxEnd = rval.IndexOf("/", idxStart);
