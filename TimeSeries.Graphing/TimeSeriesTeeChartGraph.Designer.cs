@@ -54,6 +54,7 @@ namespace Reclamation.TimeSeries.Graphing
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonPrin,
             this.toolStripSeparator1,
@@ -71,7 +72,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonScaleLineWidth});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(865, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(865, 27);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -82,7 +83,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonPrin.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonPrin.Image")));
             this.toolStripButtonPrin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPrin.Name = "toolStripButtonPrin";
-            this.toolStripButtonPrin.Size = new System.Drawing.Size(36, 22);
+            this.toolStripButtonPrin.Size = new System.Drawing.Size(36, 24);
             this.toolStripButtonPrin.Text = "Print";
             this.toolStripButtonPrin.ToolTipText = "print";
             this.toolStripButtonPrin.Click += new System.EventHandler(this.toolStripButtonPrin_Click);
@@ -90,7 +91,7 @@ namespace Reclamation.TimeSeries.Graphing
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripButtonEditGraph
             // 
@@ -98,19 +99,19 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonEditGraph.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline);
             this.toolStripButtonEditGraph.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditGraph.Name = "toolStripButtonEditGraph";
-            this.toolStripButtonEditGraph.Size = new System.Drawing.Size(66, 22);
+            this.toolStripButtonEditGraph.Size = new System.Drawing.Size(66, 24);
             this.toolStripButtonEditGraph.Text = "Edit Graph";
             this.toolStripButtonEditGraph.Click += new System.EventHandler(this.toolStripButtonEditGraph_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(45, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(45, 24);
             this.toolStripLabel1.Text = "Zoom: ";
             // 
             // toolStripComboBoxZoomType
@@ -121,7 +122,7 @@ namespace Reclamation.TimeSeries.Graphing
             "Zoom Horizontal",
             "Zoom Vertical"});
             this.toolStripComboBoxZoomType.Name = "toolStripComboBoxZoomType";
-            this.toolStripComboBoxZoomType.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBoxZoomType.Size = new System.Drawing.Size(121, 27);
             this.toolStripComboBoxZoomType.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxZoomType_SelectedIndexChanged);
             // 
             // toolStripButtonZoomOut
@@ -130,7 +131,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonZoomOut.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonZoomOut.Image")));
             this.toolStripButtonZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonZoomOut.Name = "toolStripButtonZoomOut";
-            this.toolStripButtonZoomOut.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonZoomOut.Size = new System.Drawing.Size(23, 24);
             this.toolStripButtonZoomOut.Text = "-";
             this.toolStripButtonZoomOut.ToolTipText = "zoom out";
             this.toolStripButtonZoomOut.Click += new System.EventHandler(this.toolStripButtonZoomOut_Click);
@@ -141,7 +142,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonZoomIn.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonZoomIn.Image")));
             this.toolStripButtonZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonZoomIn.Name = "toolStripButtonZoomIn";
-            this.toolStripButtonZoomIn.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonZoomIn.Size = new System.Drawing.Size(23, 24);
             this.toolStripButtonZoomIn.Text = "+";
             this.toolStripButtonZoomIn.ToolTipText = "zoom in";
             this.toolStripButtonZoomIn.Click += new System.EventHandler(this.toolStripButtonZoomIn_Click);
@@ -153,26 +154,26 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonUndoZoom.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUndoZoom.Image")));
             this.toolStripButtonUndoZoom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUndoZoom.Name = "toolStripButtonUndoZoom";
-            this.toolStripButtonUndoZoom.Size = new System.Drawing.Size(39, 22);
+            this.toolStripButtonUndoZoom.Size = new System.Drawing.Size(39, 24);
             this.toolStripButtonUndoZoom.Text = "Reset";
             this.toolStripButtonUndoZoom.Click += new System.EventHandler(this.toolStripButtonUndoZoom_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(74, 22);
+            this.toolStripLabel2.Size = new System.Drawing.Size(74, 24);
             this.toolStripLabel2.Text = "Drag Points: ";
             // 
             // toolStripComboBoxDragPoints
             // 
             this.toolStripComboBoxDragPoints.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBoxDragPoints.Name = "toolStripComboBoxDragPoints";
-            this.toolStripComboBoxDragPoints.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBoxDragPoints.Size = new System.Drawing.Size(121, 27);
             this.toolStripComboBoxDragPoints.ToolTipText = "drag points for selected series";
             this.toolStripComboBoxDragPoints.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxDragPoints_SelectedIndexChanged);
             // 
@@ -184,7 +185,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonSelect.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSelect.Image")));
             this.toolStripButtonSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSelect.Name = "toolStripButtonSelect";
-            this.toolStripButtonSelect.Size = new System.Drawing.Size(42, 22);
+            this.toolStripButtonSelect.Size = new System.Drawing.Size(42, 24);
             this.toolStripButtonSelect.Text = "Select";
             this.toolStripButtonSelect.Click += new System.EventHandler(this.toolStripButtonSelect_Click);
             // 
@@ -196,7 +197,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.toolStripButtonScaleLineWidth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonScaleLineWidth.Image = global::Reclamation.TimeSeries.Graphing.Properties.Resources.Editing_Line_Width_icon;
             this.toolStripButtonScaleLineWidth.Name = "toolStripButtonScaleLineWidth";
-            this.toolStripButtonScaleLineWidth.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonScaleLineWidth.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonScaleLineWidth.Text = "Scale Line Widths";
             this.toolStripButtonScaleLineWidth.ToolTipText = "Scale Line Widths";
             this.toolStripButtonScaleLineWidth.Click += new System.EventHandler(this.toolStripButtonScaleLineWidth_Click);
@@ -1163,8 +1164,12 @@ namespace Reclamation.TimeSeries.Graphing
             this.tChart1.Legend.Title.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart1.Legend.Title.Shadow.Brush.Solid = true;
             this.tChart1.Legend.Title.Shadow.Brush.Visible = true;
-            this.tChart1.Location = new System.Drawing.Point(0, 25);
+            this.tChart1.Location = new System.Drawing.Point(0, 27);
             this.tChart1.Name = "tChart1";
+            // 
+            // 
+            // 
+            this.tChart1.Page.AutoScale = true;
             // 
             // 
             // 
@@ -1200,7 +1205,7 @@ namespace Reclamation.TimeSeries.Graphing
             this.tChart1.Panel.Shadow.Brush.Solid = true;
             this.tChart1.Panel.Shadow.Brush.Visible = true;
             this.tChart1.Series.Add(this.line1);
-            this.tChart1.Size = new System.Drawing.Size(865, 569);
+            this.tChart1.Size = new System.Drawing.Size(865, 567);
             // 
             // 
             // 

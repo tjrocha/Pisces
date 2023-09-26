@@ -283,6 +283,7 @@ namespace Reclamation.TimeSeries.Graphing
             }
 
             SetupTChartNearestPointTool();
+            tChart1.Draw();
         }
 
         private void tChart1_ClickLegend(object sender, MouseEventArgs e)
