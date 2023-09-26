@@ -447,11 +447,11 @@ namespace Reclamation.Core
 
                   myDataAdapter.Fill(myDataSet, tableName);
                }
-               catch (Exception e)
+               catch (Exception )
                {
-                  string msg = "Error reading from database " + sql + " Exception " + e.ToString();
+                  string msg = "Error reading from database " + sql;
                   Console.WriteLine(msg);
-                  throw e;
+                  throw;
                }
                finally
                {
@@ -481,11 +481,11 @@ namespace Reclamation.Core
 
             myDataAdapter.Fill(dataTable);
          }
-         catch (Exception e)
+         catch (Exception )
          {
-            string msg = "Error reading from database " + sql + " Exception " + e.ToString();
+        string msg = "Error reading from database " + sql;
             Console.WriteLine(msg);
-            throw e;
+            throw ;
          }
          finally
          {
@@ -513,11 +513,11 @@ namespace Reclamation.Core
             myAccessConn.Open();
             myDataAdapter.Fill(myDataSet, tableName);
          }
-         catch (Exception e)
+         catch (Exception)
          {
-            string msg = "Error reading from database " + sql + " Exception " + e.ToString();
+            string msg = "Error reading from database " + sql ;
             Console.WriteLine(msg);
-            throw e;
+            throw;
          }
          finally
          {
@@ -564,13 +564,11 @@ namespace Reclamation.Core
                   this.lastSqlCommand = sql;
                   SqlCommands.Add(sql);
                }
-               catch (Exception e)
+               catch (Exception)
                {
                   myTrans.Rollback();
-                  Console.WriteLine(e.ToString());
                   Console.WriteLine("Error running " + sql);
-                  this.lastMessage = e.ToString();
-                  throw e;
+                  throw;
                }
                finally
                {

@@ -514,11 +514,11 @@ namespace Reclamation.Core
                 myDataAdapter.Fill(myDataSet, tableName);
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
-                string msg = "Error reading from database " + sql + " Exception " + e.Message;
+                string msg = "Error reading from database " + sql ;
                 Logger.WriteLine(msg);
-                throw e;
+                throw;
             }
             finally
             {
@@ -551,15 +551,15 @@ namespace Reclamation.Core
                 myAccessConn.Open();
                 myDataAdapter.Fill(dataTable);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                string msg = "Error reading from database " + sql + " Exception " + e.ToString();
+                string msg = "Error reading from database " + sql ;
                 Console.WriteLine(msg);
-                throw e;
+                throw;
             }
             finally
             {
-                myAccessConn.Close(); //
+                myAccessConn.Close(); 
             }
         }
 
@@ -644,15 +644,14 @@ namespace Reclamation.Core
                 this.lastSqlCommand = sql;
                 Logger.WriteLine(sql);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (useTransaction)
                     myTrans.Rollback();
 
-                Logger.WriteLine(e.ToString());
                 Logger.WriteLine("Error running " + sql);
                 //this.lastMessage = e.ToString();
-                throw e;
+                throw;
             }
             finally
             {

@@ -7,53 +7,55 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reclamation.TimeSeries", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reclamation.Core", "Core\Reclamation.Core.csproj", "{80C73D4C-43CF-42DE-ADDC-7B0F06ECF086}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.TimeSeries.Forms", "TimeSeries.Forms\Reclamation.TimeSeries.Forms.csproj", "{A7E73F2A-CA66-4BC8-934A-B5068C566F10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reclamation.TimeSeries.Forms", "TimeSeries.Forms\Reclamation.TimeSeries.Forms.csproj", "{A7E73F2A-CA66-4BC8-934A-B5068C566F10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{461202B2-A773-45DD-A2BC-E3AB5E70D88E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetSnotel", "Applications\GetSnotel\GetSnotel.csproj", "{C69867AF-0F8C-470D-82F9-7C678083C5E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportUsgs", "Applications\ImportUSGS\ImportUsgs.csproj", "{8300960D-26B3-453D-AE72-D0267F035E20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportUsgs", "Applications\ImportUSGS\ImportUsgs.csproj", "{8300960D-26B3-453D-AE72-D0267F035E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RogueBiOpCheck", "Applications\RogueBiOpCheck\RogueBiOpCheck.csproj", "{D427C920-62C7-41D3-BCE1-27E315C2D122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RogueBiOpCheck", "Applications\RogueBiOpCheck\RogueBiOpCheck.csproj", "{D427C920-62C7-41D3-BCE1-27E315C2D122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiverwareDMI", "Applications\RiverWareDMI\RiverwareDMI.csproj", "{AAB62A5F-54CA-4115-92FE-91D54B9E932A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiverwareDMI", "Applications\RiverWareDMI\RiverwareDMI.csproj", "{AAB62A5F-54CA-4115-92FE-91D54B9E932A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetUsace", "Applications\GetUsace\GetUsace.csproj", "{035F594F-8B4C-4A32-AD96-D31E11BE0A37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetUsace", "Applications\GetUsace\GetUsace.csproj", "{035F594F-8B4C-4A32-AD96-D31E11BE0A37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HydrometIdwr", "Applications\HydrometIdwr\HydrometIdwr.csproj", "{B518FE6E-AC32-4204-A7FF-36E45E8E9AAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HydrometIdwr", "Applications\HydrometIdwr\HydrometIdwr.csproj", "{B518FE6E-AC32-4204-A7FF-36E45E8E9AAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportKlamathShef", "Applications\ImportKlamathShef\ImportKlamathShef.csproj", "{FD42C9F7-7516-4492-9B25-9A1D3AF8C911}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportKlamathShef", "Applications\ImportKlamathShef\ImportKlamathShef.csproj", "{FD42C9F7-7516-4492-9B25-9A1D3AF8C911}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HydrometNotifications", "Applications\HydrometNotifications\HydrometNotifications.csproj", "{09B73D14-AFBB-434E-A71D-73248CBBF0A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HydrometNotifications", "Applications\HydrometNotifications\HydrometNotifications.csproj", "{09B73D14-AFBB-434E-A71D-73248CBBF0A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HydrometServer", "Applications\HydrometServer\HydrometServer.csproj", "{36DFC19C-1840-4CF4-9A62-CCA9FF142619}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HydrometServer", "Applications\HydrometServer\HydrometServer.csproj", "{36DFC19C-1840-4CF4-9A62-CCA9FF142619}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiscesWebServices", "Applications\PiscesWebServices\PiscesWebServices.csproj", "{AE98A3D7-E0CD-4675-B268-C8D4CEF429CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiscesWebServices", "Applications\PiscesWebServices\PiscesWebServices.csproj", "{AE98A3D7-E0CD-4675-B268-C8D4CEF429CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessHydrometEmail", "Applications\ProcessHydrometEmail\ProcessHydrometEmail.csproj", "{C51C9443-95C6-49B2-A194-D794A25DC4F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessHydrometEmail", "Applications\ProcessHydrometEmail\ProcessHydrometEmail.csproj", "{C51C9443-95C6-49B2-A194-D794A25DC4F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USFOShifts", "Applications\USFOShifts\USFOShifts.csproj", "{B5149AE3-25DC-4ED3-8C22-6E429AA9532E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "USFOShifts", "Applications\USFOShifts\USFOShifts.csproj", "{B5149AE3-25DC-4ED3-8C22-6E429AA9532E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pisces", "Applications\PiscesUI\Pisces.csproj", "{60537C98-6E33-42F7-9B7D-9B326ABC019E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportCsv", "Applications\ImportCsv\ImportCsv.csproj", "{DF7D7FCA-F5A0-4950-9E1A-354331D190ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportCsv", "Applications\ImportCsv\ImportCsv.csproj", "{DF7D7FCA-F5A0-4950-9E1A-354331D190ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetNiceNet", "Applications\GetNiceNet\GetNiceNet.csproj", "{728DF7C2-69D7-41FA-A358-61206BB90C4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetNiceNet", "Applications\GetNiceNet\GetNiceNet.csproj", "{728DF7C2-69D7-41FA-A358-61206BB90C4E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetINL", "Applications\GetINL\GetINL.csproj", "{213AF28D-B0FD-4063-826F-86F6B21DCAD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Depth", "Applications\depth\Depth.csproj", "{D6EE1B30-3205-4948-9BA3-8BE37BA50D27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Depth", "Applications\depth\Depth.csproj", "{D6EE1B30-3205-4948-9BA3-8BE37BA50D27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclamation.Windows", "Reclamation.Windows\Reclamation.Windows.csproj", "{C9278B32-7C94-4532-9F4C-92109A6B8E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportOWRD", "Applications\ImportOWRD\ImportOWRD.csproj", "{98584217-A9DA-4375-9DC4-D82CF6899162}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportOWRD", "Applications\ImportOWRD\ImportOWRD.csproj", "{98584217-A9DA-4375-9DC4-D82CF6899162}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiverwareTrace", "Applications\RiverwareTrace\RiverwareTrace.csproj", "{6FDE3AB4-0917-4912-9A6F-A0D578CDC379}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reclamation.Riverware", "Reclamation.Riverware\Reclamation.Riverware.csproj", "{4FA07F03-E6C3-418E-AA20-6378E7E6599D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usda.Nrcs", "TimeSeries.Nrcs\Usda.Nrcs.csproj", "{84311FAF-8E24-40BB-950B-C53C3E0F0030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Usda.Nrcs", "TimeSeries.Nrcs\Usda.Nrcs.csproj", "{84311FAF-8E24-40BB-950B-C53C3E0F0030}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Usda.Nrcs7", "TimeSeries.Nrcs.7\Usda.Nrcs7.csproj", "{768CB909-D83B-44D0-ACA5-786DA314D610}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -212,6 +214,12 @@ Global
 		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.poet|Any CPU.Build.0 = Debug|Any CPU
 		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84311FAF-8E24-40BB-950B-C53C3E0F0030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768CB909-D83B-44D0-ACA5-786DA314D610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768CB909-D83B-44D0-ACA5-786DA314D610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768CB909-D83B-44D0-ACA5-786DA314D610}.poet|Any CPU.ActiveCfg = Debug|Any CPU
+		{768CB909-D83B-44D0-ACA5-786DA314D610}.poet|Any CPU.Build.0 = Debug|Any CPU
+		{768CB909-D83B-44D0-ACA5-786DA314D610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768CB909-D83B-44D0-ACA5-786DA314D610}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,150 +1,116 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84311FAF-8E24-40BB-950B-C53C3E0F0030}</ProjectGuid>
+    <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Usda</RootNamespace>
-    <AssemblyName>Usda.Nrcs</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
+    <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\averagesData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\averagesData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\averagesPeakData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\averagesPeakData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\AwdbWebService.wsdl" />
-    <None Include="Web References\gov.usda.egov.sc.wcc\centralTendencyData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\centralTendencyData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\centralTendencyPeakData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\centralTendencyPeakData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\CentralTendencySWEStatisticsData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\CentralTendencySWEStatisticsData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\configuration1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\configuration1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\data1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\data1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\diagnostics1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\diagnostics1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\element1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\element1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\forecast1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\forecast1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\forecastEquation1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\forecastEquation1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\forecastFull1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\forecastFull1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\forecastPeriod1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPeriod1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\forecastPeriodAverage1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPeriodAverage1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\forecastPeriodCentralTendency1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPeriodCentralTendency1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\forecastPoint1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPoint1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\heightDepth1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\heightDepth1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\hourlyData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\hourlyData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\insertedOrUpdatedData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\insertedOrUpdatedData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\instantaneousData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\instantaneousData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\peakData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\peakData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\Reference.map">
+    <None Update="Web References\gov.usda.egov.sc.wcc\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\reservoirMetadata1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\reservoirMetadata1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\stationDataAssuredFlags1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\stationDataAssuredFlags1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\stationElement1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\stationElement1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\stationMetaData1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\stationMetaData1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\gov.usda.egov.sc.wcc\unit1.datasource">
+    <None Update="Web References\gov.usda.egov.sc.wcc\unit1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Compile Include="Properties\Settings.Designer.cs">
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\gov.usda.egov.sc.wcc\Reference.cs">
+    <Compile Update="Web References\gov.usda.egov.sc.wcc\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -158,13 +124,10 @@
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\gov.usda.egov.sc.wcc\</RelPath>
       <UpdateFromURL>https://wcc.sc.egov.usda.gov/awdbWebService/services%3fWSDL</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
+      <ServiceLocationURL></ServiceLocationURL>
+      <CachedDynamicPropName></CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Usda_Nrcs_Web_gov_usda_egov_sc_wcc_AwdbWebService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

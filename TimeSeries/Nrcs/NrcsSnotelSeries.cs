@@ -12,8 +12,6 @@ namespace Reclamation.TimeSeries.Nrcs
     /// Karl Tarbet January 2011 - Jon Rocha 2022
     /// Reads SNOTEL data from nrcs web site.
     /// 
-    /// KT: I talked with Maggie Dunklee:  503-414-3049.
-    /// Dunklee, Maggie - Portland, OR [maggie.dunklee@por.usda.gov]
     /// see NWCC_Web_Report_Scripting.txt in same directory as this file.
     /// aslo see example test.bat in same directory
     /// 

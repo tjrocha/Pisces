@@ -526,10 +526,10 @@ namespace Reclamation.Core
             {
                 rval = Convert.ToDateTime(s);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("TextFile.ReadDate() Error converting '" + label + "' to a DateTime ");
-                throw ex;
+                throw;
             }
             return rval;
         }
@@ -551,10 +551,10 @@ namespace Reclamation.Core
             {
                 rval = Convert.ToInt32(s);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("TextFile.ReadInt() Error converting '" + label + "' to a integer ");
-                throw ex;
+                throw;
             }
             return rval;
         }
@@ -575,10 +575,10 @@ namespace Reclamation.Core
             {
                 rval = Convert.ToSingle(s);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("TextFile.ReadSingle() Error converting '" + label + "' to a integer ");
-                throw ex;
+                throw ;
             }
             return rval;
         }

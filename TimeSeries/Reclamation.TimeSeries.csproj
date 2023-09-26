@@ -1,34 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net48;net7.0</TargetFrameworks>
+	</PropertyGroup>
 
-  	<ItemGroup>
-	  <ProjectReference Include="..\Core\Reclamation.Core.csproj" />
-	  <ProjectReference Include="..\TimeSeries.Nrcs\Usda.Nrcs.csproj" />
-	  </ItemGroup>
-      
-  <ItemGroup>
-  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  <PackageReference Include="NUnit" Version="3.13.3" />
-  <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" /> 
-  <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
-  <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
-  <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Core\Reclamation.Core.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-  <Content Include="Reports\YakimaStatusTemplate.txt">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-  </Content>
-  </ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+		<ProjectReference Include="..\TimeSeries.Nrcs\Usda.Nrcs.csproj" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="System.Web.Services" />
+	</ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<ProjectReference Include="..\TimeSeries.Nrcs.7\Usda.Nrcs7.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Services" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="NUnit" Version="3.13.3" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
+		<PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+		<PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Reports\YakimaStatusTemplate.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+
 </Project>
 

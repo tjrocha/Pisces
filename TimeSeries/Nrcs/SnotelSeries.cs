@@ -88,23 +88,25 @@ namespace Reclamation.TimeSeries.Nrcs
         {
             try
             {
+        System.Net.ServicePointManager.Expect100Continue = false;
+        var dur = duration.DAILY;
 
-              var ws = new AwdbWebService();
-        
-                System.Net.ServicePointManager.Expect100Continue = false;
+        if (NetworkFromTriplet(m_triplet) == "SNOW")
+          dur = duration.SEMIMONTHLY;
 
-                var dur = duration.DAILY;
-
-                
-                if (NetworkFromTriplet(m_triplet) == "SNOW")
-                    dur = duration.SEMIMONTHLY;
-
-               
-
-                var data = ws.getData(new string[] { m_triplet }, Parameter, 1, null,
+#if NET48
+        var ws = new AwdbWebService();
+                  var data = ws.getData(new string[] { m_triplet }, Parameter, 1, null,
                     dur, true, t1.ToString("yyyy-MM-dd"), t2.ToString("yyyy-MM-dd"),false,false);
+#elif NET7_0_OR_GREATER
+        var ws = new AwdbWebServiceClient();
+        var data = ws.getData(new string[] { m_triplet }, Parameter, 1, null,
+          dur, true, t1.ToString("yyyy-MM-dd"), t2.ToString("yyyy-MM-dd"), false);
+#endif
 
-                Console.Write(Parameter+" "+"duration = " + dur + " " + m_triplet);
+
+
+        Console.Write(Parameter+" "+"duration = " + dur + " " + m_triplet);
                 Console.Write(" " +t1.ToString("yyyy-MM-dd"));
                 Console.Write(" " +t2.ToString("yyyy-MM-dd"));
                  

@@ -941,10 +941,10 @@ namespace Reclamation.Core
 
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("error parsing csv values '" + oneLine + "'");
-                throw e;
+                throw;
             }
             string[] srval;
             srval = new string[rval.Count];
