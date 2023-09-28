@@ -8,8 +8,6 @@
     <UserSecretsId>45b42ca4-3bdd-4f73-8c14-31c161b3d763</UserSecretsId>
     <AssemblyVersion>1.0.0.2</AssemblyVersion>
     <FileVersion>1.0.0.2</FileVersion>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <DocumentationFile>bin\$(Configuration)\netcoreapp2.1\PiscesAPI.xml</DocumentationFile>
     <DefineConstants>TRACE;DEBUG;NETCOREAPP2_1;READONLY</DefineConstants>
