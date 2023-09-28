@@ -1,21 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net48;net7.0</TargetFrameworks>
-    <OutputType>Library</OutputType>
+    <TargetFrameworks>net4.8;net6.0</TargetFrameworks>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Npgsql" Version="7.0.4" />
-    <PackageReference Include="NUnit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
-    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
-  </ItemGroup>
   <Target Name="BeforeBuild">
     <MakeDir Directories="C:\Temp" Condition=" !Exists('C:\Temp') AND $(OS) == 'Windows_NT' " />
     <MakeDir Directories="C:\Temp\Outgoing" Condition=" !Exists('C:\Temp\Outgoing') AND $(OS) == 'Windows_NT' " />
@@ -27,4 +13,17 @@
     </ItemGroup>
     <Copy SourceFiles="@(PiscesTestData)" DestinationFolder="\var\tmp\PiscesTestData\%(RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Condition=" $(OS) == 'Unix' " />
   </Target>
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="7.0.6" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+  </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@ namespace ProcessHydrometEmail
     {
         //http://imapx.codeplex.com/documentation
 
-        static void Main(string[] args)
+        static void Main()
         {
 
            // ApplicationTrustPolicy.TrustAll();
@@ -76,13 +76,14 @@ namespace ProcessHydrometEmail
 
         private static Series GetSerieData(Folder folder)
         {
-            var s = new Series();
-            s.TimeInterval = TimeInterval.Daily;
+            var s = new Series
+            {
+                TimeInterval = TimeInterval.Daily
+            };
             foreach (var msg in folder.Messages)
             {
                 var txt = msg.Body.Text;
                 var exp = @"Pump Station Average Flow:(\s*\d{1,10}(\.){0,1}\d{0,3})\s*cfs";
-                Regex re = new Regex(exp);
                 var m = Regex.Match(txt, exp);
                 if (m.Success)
                 {

@@ -1,11 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="..\TimeSeries\AgriMet\CropChartGenerator.cs" Link="AgriMet\CropChartGenerator.cs" />
     <Compile Include="..\TimeSeries\AgriMet\CropCurves.cs" Link="AgriMet\CropCurves.cs" />
@@ -69,7 +67,6 @@
     <Compile Include="..\TimeSeries\Hydromet\Tests\TestForecasting.cs" Link="Hydromet\Tests\TestForecasting.cs" />
     <Compile Include="..\TimeSeries\IdahoPower\IdahoPowerRatingTables.cs" Link="IdahoPower\IdahoPowerRatingTables.cs" />
     <Compile Include="..\TimeSeries\IdahoPower\IdahoPowerSeries.cs" Link="IdahoPower\IdahoPowerSeries.cs" />
-    
     <Compile Include="..\TimeSeries\IExplorerSettings.cs" Link="IExplorerSettings.cs" />
     <Compile Include="..\TimeSeries\IExplorerView.cs" Link="IExplorerView.cs" />
     <Compile Include="..\TimeSeries\Import\BulkImportDirectory.cs" Link="Import\BulkImportDirectory.cs" />
@@ -218,17 +215,11 @@
     <Compile Include="..\TimeSeries\WaterYear.cs" Link="WaterYear.cs" />
     <Compile Include="..\TimeSeries\YearRange.cs" Link="YearRange.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="..\TimeSeries\IdahoPower\test.xml" Link="IdahoPower\test.xml" />
     <Content Include="..\TimeSeries\Reports\YakimaStatusReport.txt" Link="Reports\YakimaStatusReport.txt" />
     <Content Include="..\TimeSeries\Reports\YakimaStatusTemplate.txt" Link="Reports\YakimaStatusTemplate.txt" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Reclamation.NetCore\Reclamation.NetCore.csproj" />
-  </ItemGroup>
-
   <ItemGroup>
     <Folder Include="AgriMet\" />
     <Folder Include="Alarms\" />
@@ -258,7 +249,6 @@
     <Folder Include="NOAA\" />
     <Folder Include="IdahoPower\" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="..\TimeSeries\AgriMet\CropDatesDataSet.xsc" Link="AgriMet\CropDatesDataSet.xsc" />
     <None Include="..\TimeSeries\AgriMet\CropDatesDataSet.xsd" Link="AgriMet\CropDatesDataSet.xsd" />
@@ -283,19 +273,10 @@
     </None>
     <None Include="..\TimeSeries\TimeSeriesDatabaseDataSet.xss" Link="TimeSeriesDatabaseDataSet.xss" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="NUnit" Version="3.13.2" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
-  </ItemGroup>
-
-  
-  
-
 </Project>

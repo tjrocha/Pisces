@@ -1,128 +1,72 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
-    <ProjectGuid>{37B543F5-03A5-479E-B20C-7B4ACC53D16A}</ProjectGuid>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
-  </PropertyGroup>
-  <PropertyGroup>
-    <RootNamespace>Reclamation.TimeSeries.Excel</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aga.Controls">
       <HintPath>..\ThirdParty\Aga.Controls.dll</HintPath>
     </Reference>
     <Reference Include="SpreadsheetGear2017.Core, Version=8.6.9.102, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PaidThirdParty\SpreadsheetGear2017.Core.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="SpreadsheetGear2017.Drawing, Version=8.6.9.102, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PaidThirdParty\SpreadsheetGear2017.Drawing.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyVersion.cs">
-      <Link>AssemblyVersion.cs</Link>
-    </Compile>
-    <Compile Include="ImportExcelDatabase.cs">
+    <Compile Include="..\AssemblyVersion.cs" Link="AssemblyVersion.cs" />
+    <Compile Update="ImportExcelDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportExcelDatabase.Designer.cs">
+    <Compile Update="ImportExcelDatabase.Designer.cs">
       <DependentUpon>ImportExcelDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImportExcelStandard.cs">
+    <Compile Update="ImportExcelStandard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportExcelStandard.Designer.cs">
+    <Compile Update="ImportExcelStandard.Designer.cs">
       <DependentUpon>ImportExcelStandard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImportExcelWaterYear.cs">
+    <Compile Update="ImportExcelWaterYear.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportExcelWaterYear.Designer.cs">
+    <Compile Update="ImportExcelWaterYear.Designer.cs">
       <DependentUpon>ImportExcelWaterYear.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpreadsheetGearExcel.cs" />
-    <Compile Include="SpreadsheetGearSeries.cs" />
-    <Compile Include="Tests\TestSpreadsheetGearSeries.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Reclamation.Core.csproj">
-      <Project>{80C73D4C-43CF-42DE-ADDC-7B0F06ECF086}</Project>
-      <Name>Reclamation.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimeSeries\Reclamation.TimeSeries.csproj">
-      <Project>{5DD20A8A-4037-4885-AB91-2F5A3D1F48B4}</Project>
-      <Name>Reclamation.TimeSeries</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\Core\Reclamation.Core.csproj" />
+    <ProjectReference Include="..\TimeSeries\Reclamation.TimeSeries.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ImportExcelDatabase.resx">
+    <EmbeddedResource Update="ImportExcelDatabase.resx">
       <DependentUpon>ImportExcelDatabase.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImportExcelStandard.resx">
+    <EmbeddedResource Update="ImportExcelStandard.resx">
       <DependentUpon>ImportExcelStandard.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImportExcelWaterYear.resx">
+    <EmbeddedResource Update="ImportExcelWaterYear.resx">
       <DependentUpon>ImportExcelWaterYear.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Compile Remove="ExcelOleDatabase.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="NUnit">
-      <Version>3.13.3</Version>
-    </PackageReference>
-    <PackageReference Include="System.Data.SQLite.Core">
-      <Version>1.0.118</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

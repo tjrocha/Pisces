@@ -1,16 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFramework>net4.8</TargetFramework>
+  <PropertyGroup>
+    <TargetFramework>net4.8</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-	</PropertyGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Core\Reclamation.Core.csproj" />
-	  <ProjectReference Include="..\TimeSeries\Reclamation.TimeSeries.csproj" />
-	  <ProjectReference Include="..\Reclamation.Windows\Reclamation.Windows.csproj" />
-	</ItemGroup>
-
-
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Reclamation.Core.csproj" />
+    <ProjectReference Include="..\TimeSeries\Reclamation.TimeSeries.csproj" />
+    <ProjectReference Include="..\Reclamation.Windows\Reclamation.Windows.csproj" />
+  </ItemGroup>
 </Project>

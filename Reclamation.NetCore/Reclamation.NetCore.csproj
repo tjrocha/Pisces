@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="..\Core\Arguments.cs" Link="Arguments.cs" />
     <Compile Include="..\Core\AssemblyUtility.cs" Link="AssemblyUtility.cs" />
@@ -42,7 +40,6 @@
     <Compile Include="..\Core\Web.cs" Link="Web.cs" />
     <Compile Include="..\Core\ZipFileUtility.cs" Link="ZipFileUtility.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.2" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.2" />
@@ -52,13 +49,7 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Tests\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
-  </ItemGroup>
-
 </Project>

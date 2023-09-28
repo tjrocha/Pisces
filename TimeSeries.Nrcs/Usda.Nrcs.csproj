@@ -1,133 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Usda</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetFrameworks>net48;net6.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>10.0</LangVersion>
+    <!--<AssemblyName>Usda.Nrcs</AssemblyName>-->
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Services" />
+    <Compile Remove="UsdaTester\**" />
+    <EmbeddedResource Remove="UsdaTester\**" />
+    <None Remove="UsdaTester\**" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\averagesData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\averagesPeakData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\centralTendencyData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\centralTendencyPeakData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\CentralTendencySWEStatisticsData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\configuration1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\data1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\diagnostics1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\element1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\forecast1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\forecastEquation1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\forecastFull1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPeriod1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPeriodAverage1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPeriodCentralTendency1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\forecastPoint1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\heightDepth1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\hourlyData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\insertedOrUpdatedData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\instantaneousData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\peakData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\reservoirMetadata1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\stationDataAssuredFlags1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\stationElement1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\stationMetaData1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Update="Web References\gov.usda.egov.sc.wcc\unit1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="Web References\gov.usda.egov.sc.wcc\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="https://wcc.sc.egov.usda.gov/awdbWebService/services%3fWSDL">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\gov.usda.egov.sc.wcc\</RelPath>
-      <UpdateFromURL>https://wcc.sc.egov.usda.gov/awdbWebService/services%3fWSDL</UpdateFromURL>
-      <ServiceLocationURL></ServiceLocationURL>
-      <CachedDynamicPropName></CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Usda_Nrcs_Web_gov_usda_egov_sc_wcc_AwdbWebService</CachedSettingsPropName>
-    </WebReferenceUrl>
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.10.*" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="4.10.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.10.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.10.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.10.*" />
   </ItemGroup>
 </Project>

@@ -1,24 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <OutputType>Exe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
     <ProjectReference Include="..\..\Reclamation.Windows\Reclamation.Windows.csproj" />
     <ProjectReference Include="..\..\Reclamation.Riverware\Reclamation.Riverware.csproj" />
-
-
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
-
-
-
 </Project>

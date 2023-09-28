@@ -1,26 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <OutputType>WinExe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="ZedGraph" Version="5.1.7" />
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
     <ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
-
-
-
 </Project>

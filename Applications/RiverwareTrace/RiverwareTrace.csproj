@@ -1,30 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFramework>net4.8</TargetFramework>
-		<OutputType>Exe</OutputType>
-		<AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-	</PropertyGroup>
-
-	<ItemGroup>
-	  <None Include="..\cfg\daily_pcode.csv" Link="daily_pcode.csv">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="..\cfg\reclamationcgi.csv" Link="reclamationcgi.csv">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Include="..\cfg\site.csv" Link="site.csv">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
-		<ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj" />
-		<ProjectReference Include="..\..\Reclamation.Riverware\Reclamation.Riverware.csproj" />
-	</ItemGroup>
-
-
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\cfg\daily_pcode.csv" Link="daily_pcode.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\cfg\reclamationcgi.csv" Link="reclamationcgi.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\cfg\site.csv" Link="site.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
+    <ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj" />
+    <ProjectReference Include="..\..\Reclamation.Riverware\Reclamation.Riverware.csproj" />
+  </ItemGroup>
 </Project>
