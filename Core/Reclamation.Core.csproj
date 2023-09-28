@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net4.8;net6.0</TargetFrameworks>
+    <TargetFrameworks>net48;net6.0</TargetFrameworks>
   </PropertyGroup>
   <Target Name="BeforeBuild">
     <MakeDir Directories="C:\Temp" Condition=" !Exists('C:\Temp') AND $(OS) == 'Windows_NT' " />
