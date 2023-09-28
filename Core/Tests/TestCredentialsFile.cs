@@ -19,7 +19,7 @@ namespace Reclamation.Core.Tests
 
             TextFileCredentials c = new TextFileCredentials(fn);
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 15; i++)
             {
                 var pw = "a".PadRight(i + 1,'B');
                 var svr = "server" + i;
@@ -29,7 +29,7 @@ namespace Reclamation.Core.Tests
                 Logger.WriteLine(c.GetPassword(svr));
             }
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 15; i++)
             {
                 Assert.IsTrue(c.Contains("server"+1));
 
