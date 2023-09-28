@@ -1,7 +1,6 @@
 using Reclamation.Core;
 using System;
 using System.Net;
-using System.Net.Http;
 
 namespace Reclamation.TimeSeries.HDB
 {
@@ -125,9 +124,9 @@ namespace Reclamation.TimeSeries.HDB
             Logger.WriteLine(url);
             Messages.Add(url);
             var x = "";
-            using (HttpClient client = new HttpClient())
+            using (WebClient client = new WebClient())
             {
-                x = client.GetStringAsync(url).ToString();
+                x = client.DownloadString(url).ToString();
             }
             x = x.Replace("<PRE>", "");
             var data = x.Split('\n');

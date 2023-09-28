@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
+using System.Net;
 
 namespace Reclamation.TimeSeries.SHEF
 {
@@ -136,8 +136,8 @@ namespace Reclamation.TimeSeries.SHEF
             if (m_filename.Contains("http") && !s_cache.ContainsKey(m_filename))
             {
                 Logger.WriteLine("Reading file from web: '" + m_filename + "'");
-                HttpClient client = new HttpClient();
-                Stream stream = client.GetStreamAsync(m_filename).Result;
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead(m_filename);
                 StreamReader reader = new StreamReader(stream);
                 String content = reader.ReadToEnd();
 
