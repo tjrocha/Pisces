@@ -13,12 +13,6 @@ namespace Pisces.NunitTests.SeriesTypes
     public class Cr10xTest
     {
 
-        public static void Main()
-        {
-            Cr10xTest t = new Cr10xTest();
-            t.AshlandCreek();
-        }
-
         [Test]
         public void JulianDate()
         {

@@ -14,12 +14,6 @@ namespace Pisces.NunitTests.Estimation
     public class TestScaleDailyToMonthlyVolume
     {
 
-        public static void Main()
-        {
-            TestScaleDailyToMonthlyVolume t = new TestScaleDailyToMonthlyVolume();
-            t.ScaleDailyToMonthlyVolume();
-        }
-
         static DateTime t1 = new DateTime(1927, 10, 1);
         static DateTime t2 = new DateTime(1949, 9, 30);
 
