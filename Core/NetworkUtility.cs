@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Net.NetworkInformation;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.IO;
 
 namespace Reclamation.Core
 {
@@ -13,6 +16,9 @@ namespace Reclamation.Core
         private static bool knowMyIP = false;
         private static bool alreadyInitialized = false;
 
+        // loop through all machine ip's to determine if the machine is connected to the internal network
+        //https://superuser.com/questions/1034471/how-do-i-extract-the-ipv4-ip-address-from-the-output-of-ipconfig
+        //https://stackoverflow.com/questions/8529181/which-terminal-command-to-get-just-ip-address-and-nothing-else
         public static bool Intranet
         {
             get
@@ -24,22 +30,54 @@ namespace Reclamation.Core
                     knowMyIP = true;
                 }
 
-                // Check if we can see the lrgs1 server
                 try
                 {
                     if (!alreadyInitialized)
                     {
-                        alreadyInitialized = true;
-                        var lrgs1Host = Dns.GetHostEntry("140.218.6.18");
-                        s_intranet = true;
-                        knowMyIP = true;
+                        var tempFile = FileUtility.GetTempFileName(".csv");
+
+                        var cmd = new Process();
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                        {
+                            cmd.StartInfo.FileName = "cmd.exe";
+                            cmd.StartInfo.Arguments = $"/C for /F \"tokens=14\" %A in ('\"ipconfig | findstr IPv4\"') do echo %A >> {tempFile}";
+                        }
+                        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                        {
+                            cmd.StartInfo.FileName = "/bin/bash";
+                            cmd.StartInfo.Arguments = $"ip -4 addr | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){{3}}' >> {tempFile}";
+                        }
+                        else
+                        {
+                            throw new PlatformNotSupportedException($"error: unsupported platform: {RuntimeInformation.OSDescription}");
+                        }
+
+                        cmd.StartInfo.UseShellExecute = false;
+                        cmd.StartInfo.CreateNoWindow = true;
+                        cmd.StartInfo.RedirectStandardOutput = true;
+                        cmd.Start();
+                        cmd.WaitForExit();
+                        cmd.Close();
+
+                        var result = File.ReadAllLines(tempFile);
+                        foreach (var item in result)
+                        {
+                            if (item.StartsWith(prefix))
+                            {
+                                alreadyInitialized = true;
+                                s_intranet = true;
+                                knowMyIP = true;
+                                break;
+                            }
+                        }
+                        File.Delete(tempFile);
                     }
                 }
                 catch
                 {
+
                     s_intranet = false;
                 }
-
                 return s_intranet;
             }
         }

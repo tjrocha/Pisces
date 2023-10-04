@@ -1,27 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
     <ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Data.DataSetExtensions" />
-  </ItemGroup>
-
   <ItemGroup>
     <None Update="site_list.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-
-
 </Project>

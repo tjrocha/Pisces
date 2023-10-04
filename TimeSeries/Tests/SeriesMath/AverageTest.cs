@@ -159,7 +159,7 @@ units:feet
         var s7 = Math.WeeklyAverageSimple(s);
 
         s7.WriteToConsole();
-        Assert.AreEqual(DateTime.Parse("2004-02-12 23:59:59.9"), s7[0].DateTime);
+        Assert.AreEqual(DateTime.Parse("2004-02-12 23:59:59.89"), s7[0].DateTime);
         Assert.AreEqual(2.17, s7[0].Value, 0.01);
         Assert.AreEqual(101.32, s7[1].Value, 0.01);
     }

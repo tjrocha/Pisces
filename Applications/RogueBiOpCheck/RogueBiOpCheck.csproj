@@ -1,12 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-
   <ItemGroup>
     <None Include="..\cfg\instant_pcode.csv" Link="instant_pcode.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -18,12 +15,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
     <ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj" />
   </ItemGroup>
-
-
-
 </Project>

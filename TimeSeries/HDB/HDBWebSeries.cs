@@ -126,7 +126,7 @@ namespace Reclamation.TimeSeries.HDB
             var x = "";
             using (WebClient client = new WebClient())
             {
-                x = client.DownloadString(url);
+                x = client.DownloadString(url).ToString();
             }
             x = x.Replace("<PRE>", "");
             var data = x.Split('\n');

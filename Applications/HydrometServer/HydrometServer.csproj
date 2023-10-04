@@ -1,26 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFrameworks>net48;net7.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <StartupObject>HydrometServer.Program</StartupObject>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
     <ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Data.DataSetExtensions" />
-  </ItemGroup>
-
   <ItemGroup>
     <None Update="rating_tables.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-
-
 </Project>

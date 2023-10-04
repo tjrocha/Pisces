@@ -14,8 +14,8 @@ build:
 test:
   assemblies:
     ## Test the libraries
-    - Core\bin\Debug\Reclamation.Core.dll
-    - TimeSeries\bin\Debug\Reclamation.TimeSeries.dll
+    - Core\$(OutDir)\Reclamation.Core.dll
+    - TimeSeries\$(OutDir)\Reclamation.TimeSeries.dll
 
   categories:
     except:

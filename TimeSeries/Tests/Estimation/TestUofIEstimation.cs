@@ -14,12 +14,6 @@ namespace Pisces.NunitTests.Estimation
     public class TestUofIEstimation
     {
 
-        public static void Main()
-        {
-            TestUofIEstimation t = new TestUofIEstimation();
-            t.UofIDisaggregation();
-        }
-
         static DateTime t1 = new DateTime(1997, 1, 1);
         static DateTime t2 = new DateTime(1997, 12, 31);
 

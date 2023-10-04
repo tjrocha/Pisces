@@ -103,5 +103,9 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
             UserPreference.Save("HydrometCustomServer", CustomIP);
         }
 
+        private void textBoxDbName_TextChanged(object sender, EventArgs e)
+        {
+            UserPreference.Save("TimeSeriesDatabaseName", this.textBoxDbName.Text);
+        }
     }
 }

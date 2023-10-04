@@ -1,27 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
     <UserSecretsId>45b42ca4-3bdd-4f73-8c14-31c161b3d763</UserSecretsId>
-    <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0.2</AssemblyVersion>
     <FileVersion>1.0.0.2</FileVersion>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-  </PropertyGroup>
-  <Target Name="GatherAllFilesToPublish">
-  </Target>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.1\PiscesAPI.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
+    <DocumentationFile>bin\$(Configuration)\netcoreapp2.1\PiscesAPI.xml</DocumentationFile>
     <DefineConstants>TRACE;DEBUG;NETCOREAPP2_1;READONLY</DefineConstants>
   </PropertyGroup>
-
+  <Target Name="GatherAllFilesToPublish" />
   <ItemGroup>
     <Compile Remove="Extensions\**" />
     <Compile Remove="wwwroot\swagger\**" />
@@ -32,41 +23,34 @@
     <None Remove="Extensions\**" />
     <None Remove="wwwroot\swagger\**" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.6" />
     <PackageReference Include="MySql.Data" Version="8.0.28" />
-    <PackageReference Include="Npgsql" Version="6.0.3" />
+    <PackageReference Include="Npgsql" Version="7.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="SwashBuckle.AspNetCore.MicrosoftExtensions" Version="0.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.4.0" />
   </ItemGroup>
-
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\Reclamation.NetCore\Reclamation.NetCore.csproj" />
-    <ProjectReference Include="..\..\Reclamation.NetTimeSeries\Reclamation.NetTimeSeries.csproj" />
+    <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
+    <ProjectReference Include="..\..\TimeSeries\Reclamation.TimeSeries.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Update="hosting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 </Project>

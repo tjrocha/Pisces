@@ -94,17 +94,9 @@ namespace Reclamation.TimeSeries.Nrcs
         if (NetworkFromTriplet(m_triplet) == "SNOW")
           dur = duration.SEMIMONTHLY;
 
-#if NET48
-        var ws = new AwdbWebService();
-                  var data = ws.getData(new string[] { m_triplet }, Parameter, 1, null,
-                    dur, true, t1.ToString("yyyy-MM-dd"), t2.ToString("yyyy-MM-dd"),false,false);
-#elif NET7_0_OR_GREATER
         var ws = new AwdbWebServiceClient();
         var data = ws.getData(new string[] { m_triplet }, Parameter, 1, null,
           dur, true, t1.ToString("yyyy-MM-dd"), t2.ToString("yyyy-MM-dd"), false);
-#endif
-
-
 
         Console.Write(Parameter+" "+"duration = " + dur + " " + m_triplet);
                 Console.Write(" " +t1.ToString("yyyy-MM-dd"));

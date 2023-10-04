@@ -1431,8 +1431,8 @@ namespace Reclamation.TimeSeries
         private static Point SumWeek(Series s, DateTime t)
         {
             Point rval = new Point();
-            DateTime t2 = t.Date.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59.9);
-
+            DateTime t2 = t.Date.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59.89);
+            
             Series week = Math.Subset(s,new DateRange(t,t2));
             //Series week = Math.Subset(s, new DateRange(t, t.AddDays(7)));
             Logger.WriteLine("subset for week has "+week.Count + " points ");
