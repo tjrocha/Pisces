@@ -98,6 +98,7 @@
             this.textBoxDbName.Size = new System.Drawing.Size(186, 20);
             this.textBoxDbName.TabIndex = 46;
             this.textBoxDbName.Text = "timeseries";
+            this.textBoxDbName.TextChanged += new System.EventHandler(this.textBoxDbName_TextChanged);
             // 
             // labelDbName
             // 

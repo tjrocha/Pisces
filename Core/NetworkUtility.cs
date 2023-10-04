@@ -30,7 +30,7 @@ namespace Reclamation.Core
                     if (!alreadyInitialized)
                     {
                         alreadyInitialized = true;
-                        var lrgs1Host = Dns.GetHostEntry("140.218.6.18");
+                        var lrgs1Host = Dns.GetHostEntry("140.214.20.1");
                         s_intranet = true;
                         knowMyIP = true;
                     }
