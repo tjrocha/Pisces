@@ -54,8 +54,8 @@ namespace Reclamation.Core
 
         private static string GetFilename()
         {
-
-            string appName = Assembly.GetEntryAssembly().GetName().Name;
+            var assembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
+            string appName = assembly.GetName().Name;
             string tmpPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string filename = Path.Combine(tmpPath, appName+".xml");
             return filename;
