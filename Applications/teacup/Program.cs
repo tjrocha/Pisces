@@ -33,7 +33,14 @@ namespace Teacup
                 HServer = HydrometHost.Yakima;
 
             var bmp = SKBitmap.Decode(args[0]);
-            var canvas = new SKCanvas(bmp);
+            var imageInfo = new SKImageInfo
+            {
+                Width = bmp.Width,
+                Height = bmp.Height,
+            };
+            var surface = SKSurface.Create(imageInfo);
+            var canvas = surface.Canvas;
+            canvas.DrawBitmap(bmp, new SKPoint());
 
             WriteDate(date, canvas);
 
@@ -55,7 +62,12 @@ namespace Teacup
 
                 }
             }
-            bmp.CopyTo(SKBitmap.Decode(args[1]));//save the image file 
+
+            //save the image file
+            var canvasImage = surface.Snapshot();
+            var canvasBitmap = SKBitmap.Decode(canvasImage.Encode());
+            using var sr = File.OpenWrite(args[1]);
+            canvasBitmap.Encode(sr, SKEncodedImageFormat.Bmp, 100);
         }
 
 
