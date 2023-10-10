@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <AssemblyName>Teacup</AssemblyName>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyTitle>teacup</AssemblyTitle>
     <Product>teacup</Product>
@@ -60,6 +60,9 @@
     <Content Include="bg\tuabg.gif" />
     <Content Include="bg\umabackground.gif" />
     <Content Include="bg\yakbackground.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="7.0.96" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />

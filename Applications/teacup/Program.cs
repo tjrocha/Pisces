@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.IO;
 using Reclamation.Core;
 using Reclamation.TimeSeries.Hydromet;
+using SkiaSharp;
+
 namespace Teacup
 {
     class Program
@@ -21,20 +22,20 @@ namespace Teacup
                 Console.WriteLine("Usage: TeaCup.exe infile outfile configfile  [date: mm/dd/yyyy]  ");
                 return;
             }
-            
+
             if (args.Length == 4)//Given a date by the user
             {
                 date = Convert.ToDateTime(args[3]);
             }
             //Read the config file
-            string[] lines = System.IO.File.ReadAllLines(args[2]);
+            string[] lines = File.ReadAllLines(args[2]);
             if (args[2].Contains("yak"))
                 HServer = HydrometHost.Yakima;
-            
-            var gif = Image.FromFile(args[0]);
-            var bmp = new Bitmap(gif);
 
-            WriteDate(date, bmp);
+            var bmp = SKBitmap.Decode(args[0]);
+            var canvas = new SKCanvas(bmp);
+
+            WriteDate(date, bmp, canvas);
 
             for (int i = 0; i < lines.Length; i++)
             {
@@ -42,22 +43,24 @@ namespace Teacup
 
                 if (cfg.IsCFS)
                 {
-                    DrawCFS(HServer, date, bmp, cfg);
+                    DrawCFS(HServer, date, bmp, cfg, canvas);
                 }
                 else if (cfg.IsTeacup)
                 {
-                    DrawTeacup(HServer, date, bmp, cfg);
+                    DrawTeacup(HServer, date, bmp, cfg, canvas);
                 }
                 else if (cfg.IsLine)
                 {
-                    DrawLine(HServer,date, bmp, cfg);
+                    DrawLine(HServer, date, bmp, cfg, canvas);
 
                 }
             }
-            bmp.Save(args[1]);//save the image file 
+            bmp.CopyTo(SKBitmap.Decode(args[1]));//save the image file 
         }
 
-        private static void DrawLine(HydrometHost HServer, DateTime date, Bitmap bmp, ConfigLine cfg)
+
+        private static void DrawLine(HydrometHost HServer, DateTime date, 
+            SKBitmap bmp, ConfigLine cfg, SKCanvas canvas)
         {
             string number = "";
             double value = ReadHydrometValue(cfg.cbtt, cfg.pcode, date, HServer );
@@ -74,38 +77,77 @@ namespace Teacup
             {
                 number = "MISSING";
             }
+            
             string Text = cfg.ResName + "  " + number + " " + cfg.units;
-            Point Location = new Point(cfg.col, cfg.row);
-            Rectangle rect1 = new Rectangle(cfg.col, cfg.row + 2, 90, 10);
-            using (Graphics graphics = Graphics.FromImage(bmp))
+            SKPoint Location = new SKPoint(cfg.col, cfg.row);
+            SKRect rect1 = new SKRect(cfg.col, cfg.row + 2, 90, 10);
+            
+            var rect1Paint = new SKPaint
             {
-                using (Font arialFont = new Font("Arial", 7))
-                {
-                    graphics.FillRectangle(Brushes.White, rect1);
-                    graphics.DrawString(Text, arialFont, Brushes.Red, Location);
-                }
-            }
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.White,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 7,
+            };
+            canvas.DrawRect(rect1, rect1Paint);
+
+            var textPaint = new SKPaint
+            {
+                Color = SKColors.Red,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 7,
+            };
+            canvas.DrawText(Text, Location, textPaint);
+
+
+            //using (Graphics graphics = Graphics.FromImage(bmp))
+            //{
+            //    using (Font arialFont = new Font("Arial", 7))
+            //    {
+            //        graphics.FillRectangle(Brushes.White, rect1);
+            //        graphics.DrawString(Text, arialFont, Brushes.Red, Location);
+            //    }
+            //}
         }
 
-        private static void WriteDate(DateTime date, Bitmap bmp)
+        private static void WriteDate(DateTime date, SKBitmap bmp, SKCanvas canvas)
         {
             string firstText = date.ToString("MM/dd/yyyy");
             //Location of the date
-            PointF firstLocation = new PointF(2f, 3f);
+            SKPoint firstLocation = new SKPoint(2f, 3f);
             //load the image file  
-            Rectangle rect = new Rectangle(0, 0, 100, 20);
+            SKRect rect = new SKRect(0, 0, 100, 20);
+
             //Fill the background and draw the string
-            using (Graphics graphics = Graphics.FromImage(bmp))
+            var rectPaint = new SKPaint
             {
-                using (Font TNRFont = new Font("Carbon", 10))
-                {
-                    graphics.FillRectangle(Brushes.White, rect);
-                    graphics.DrawString(firstText, TNRFont, Brushes.Blue, firstLocation);
-                }
-            }
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.White,
+                Typeface = SKTypeface.FromFamilyName("Carbon"),
+                TextSize = 10,
+            };
+            canvas.DrawRect(rect, rectPaint);
+
+            var textPaint = new SKPaint
+            {
+                Color = SKColors.Blue,
+                Typeface = SKTypeface.FromFamilyName("Carbon"),
+                TextSize = 10,
+            };
+            canvas.DrawText(firstText, firstLocation, textPaint);
+
+            //using (Graphics graphics = Graphics.FromImage(bmp))
+            //{
+            //    using (Font TNRFont = new Font("Carbon", 10))
+            //    {
+            //        graphics.FillRectangle(Brushes.White, rect);
+            //        graphics.DrawString(firstText, TNRFont, Brushes.Blue, firstLocation);
+            //    }
+            //}
         }
 
-        private static void DrawCFS(HydrometHost HServer, DateTime date, Bitmap bmp, ConfigLine cfg)
+        private static void DrawCFS(HydrometHost HServer, DateTime date, 
+            SKBitmap bmp, ConfigLine cfg, SKCanvas canvas)
         {
             string number;
             double value = ReadHydrometValue(cfg.cbtt, cfg.pcode, date, HServer);
@@ -119,19 +161,39 @@ namespace Teacup
                 number = value.ToString("F0");
             }
             string Text = cfg.cbtt + "  " + number + " " + cfg.type;
-            Point Location = new Point(cfg.col, cfg.row + 5);
-            Rectangle rect1 = new Rectangle(cfg.col, cfg.row + 7, 85, 10);
-            using (Graphics graphics = Graphics.FromImage(bmp))
+            SKPoint Location = new SKPoint(cfg.col, cfg.row + 5);
+            SKRect rect1 = new SKRect(cfg.col, cfg.row + 7, 85, 10);
+
+            //Fill the background and draw the string
+            var rect1Paint = new SKPaint
             {
-                using (Font arialFont = new Font("Arial", 7))
-                {
-                    graphics.FillRectangle(Brushes.White, rect1);
-                    graphics.DrawString(Text, arialFont, Brushes.Red, Location);
-                }
-            }
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.White,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 7,
+            };
+            canvas.DrawRect(rect1, rect1Paint);
+
+            var textPaint = new SKPaint
+            {
+                Color = SKColors.Red,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 7,
+            };
+            canvas.DrawText(Text, Location, textPaint);
+
+            //using (Graphics graphics = Graphics.FromImage(bmp))
+            //{
+            //    using (Font arialFont = new Font("Arial", 7))
+            //    {
+            //        graphics.FillRectangle(Brushes.White, rect1);
+            //        graphics.DrawString(Text, arialFont, Brushes.Red, Location);
+            //    }
+            //}
         }
 
-        private static void DrawTeacup(HydrometHost HServer, DateTime date, Bitmap bmp, ConfigLine cfg)
+        private static void DrawTeacup(HydrometHost HServer, DateTime date, 
+            SKBitmap bmp, ConfigLine cfg, SKCanvas canvas)
         {
             string number = "";
             string Percent;
@@ -178,37 +240,72 @@ namespace Teacup
                 number = value.ToString("F0");
                 Percent = (percent * 100).ToString("F0");
             }
+            
             //Create Isosceles trapizoid
             string Text = cfg.ResName + "\n" + number + "/" + cfg.capacity + "\n" + Percent + "% Full";
-            Point Location = new Point(cfg.col, cfg.row);
-            //Line color and size
-            Pen bluePen = new Pen(Color.RoyalBlue, 2);
-            //Fill Color for background
-            SolidBrush whiteBrush = new SolidBrush(Color.White);
-            SolidBrush blueBrush = new SolidBrush(Color.RoyalBlue);
+            SKPoint Location = new SKPoint(cfg.col, cfg.row);
+            
             //Setting the points of the trapezoid
-            Point point1 = new Point(cfg.col, cfg.row); //lower left
-            Point point2 = new Point(cfg.col + 10 * cfg.size, cfg.row); //lower right
-            Point point3 = new Point(cfg.col + 20 * cfg.size, cfg.row - 20 * cfg.size); //upper right
-            Point point4 = new Point(cfg.col - 10 * cfg.size, cfg.row - 20 * cfg.size); //upper left
-            Point[] curvePoints = { point1, point2, point3, point4 };
+            SKPoint point1 = new SKPoint(cfg.col, cfg.row); //lower left
+            SKPoint point2 = new SKPoint(cfg.col + 10 * cfg.size, cfg.row); //lower right
+            SKPoint point3 = new SKPoint(cfg.col + 20 * cfg.size, cfg.row - 20 * cfg.size); //upper right
+            SKPoint point4 = new SKPoint(cfg.col - 10 * cfg.size, cfg.row - 20 * cfg.size); //upper left
+            SKPoint[] curvePoints = { point1, point2, point3, point4 };
+            
             //setting points of percent full
-            Point point1f = new Point(cfg.col, cfg.row); //lower left
-            Point point2f = new Point(cfg.col + 10 * cfg.size, cfg.row); //lower right
-            Point point3f = new Point(cfg.col + 10 * cfg.size + cfg.size * full * 10 / 100, cfg.row - 20 * cfg.size * full / 100); //upper right
-            Point point4f = new Point(cfg.col - 10 * cfg.size * full / 100, cfg.row - 20 * cfg.size * full / 100); //upper left
-            Point[] fullPoints = { point1f, point2f, point3f, point4f };
-            //Create Graphics
-            using (Graphics graphics = Graphics.FromImage(bmp))
+            SKPoint point1f = new SKPoint(cfg.col, cfg.row); //lower left
+            SKPoint point2f = new SKPoint(cfg.col + 10 * cfg.size, cfg.row); //lower right
+            SKPoint point3f = new SKPoint(cfg.col + 10 * cfg.size + cfg.size * full * 10 / 100, cfg.row - 20 * cfg.size * full / 100); //upper right
+            SKPoint point4f = new SKPoint(cfg.col - 10 * cfg.size * full / 100, cfg.row - 20 * cfg.size * full / 100); //upper left
+            SKPoint[] fullPoints = { point1f, point2f, point3f, point4f };
+
+            var poly1Paint = new SKPaint
             {
-                using (Font arialFont = new Font("Arial", 8))
-                {
-                    graphics.FillPolygon(whiteBrush, curvePoints);
-                    graphics.DrawPolygon(bluePen, curvePoints);
-                    graphics.DrawString(Text, arialFont, Brushes.Red, Location);
-                    graphics.FillPolygon(blueBrush, fullPoints);
-                }
-            }
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.White,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 8,
+            };
+            canvas.DrawPoints(SKPointMode.Polygon, curvePoints, poly1Paint);
+
+            var poly2Paint = new SKPaint
+            {
+                Style = SKPaintStyle.Stroke,
+                StrokeWidth = 2,
+                Color = SKColors.Blue,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 8,
+            };
+            canvas.DrawPoints(SKPointMode.Polygon, curvePoints, poly2Paint);
+
+            var textPaint = new SKPaint
+            {
+                Color = SKColors.Red,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 8,
+            };
+            canvas.DrawText(Text, Location, textPaint);
+
+            var poly3Paint = new SKPaint
+            {
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.Blue,
+                Typeface = SKTypeface.FromFamilyName("Arial"),
+                TextSize = 8,
+            };
+            canvas.DrawPoints(SKPointMode.Polygon, fullPoints, poly2Paint);
+
+            ////Create Graphics
+            //using (Graphics graphics = Graphics.FromImage(bmp))
+            //{
+            //    using (Font arialFont = new Font("Arial", 8))
+            //    {
+            //        graphics.FillPolygon(whiteBrush, curvePoints);
+            //        graphics.DrawPolygon(bluePen, curvePoints);
+            //        graphics.DrawString(Text, arialFont, Brushes.Red, Location);
+            //        graphics.FillPolygon(blueBrush, fullPoints);
+            //    }
+            //}
         }
 
         private static double ReadHydrometValue(string cbtt, string pcode, DateTime date,HydrometHost server) 
@@ -222,5 +319,7 @@ namespace Teacup
 
             return value;
         }
+
+
     }
 }
