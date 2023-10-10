@@ -35,7 +35,7 @@ namespace Teacup
             var bmp = SKBitmap.Decode(args[0]);
             var canvas = new SKCanvas(bmp);
 
-            WriteDate(date, bmp, canvas);
+            WriteDate(date, canvas);
 
             for (int i = 0; i < lines.Length; i++)
             {
@@ -43,15 +43,15 @@ namespace Teacup
 
                 if (cfg.IsCFS)
                 {
-                    DrawCFS(HServer, date, bmp, cfg, canvas);
+                    DrawCFS(HServer, date, cfg, canvas);
                 }
                 else if (cfg.IsTeacup)
                 {
-                    DrawTeacup(HServer, date, bmp, cfg, canvas);
+                    DrawTeacup(HServer, date, cfg, canvas);
                 }
                 else if (cfg.IsLine)
                 {
-                    DrawLine(HServer, date, bmp, cfg, canvas);
+                    DrawLine(HServer, date, cfg, canvas);
 
                 }
             }
@@ -60,7 +60,7 @@ namespace Teacup
 
 
         private static void DrawLine(HydrometHost HServer, DateTime date, 
-            SKBitmap bmp, ConfigLine cfg, SKCanvas canvas)
+            ConfigLine cfg, SKCanvas canvas)
         {
             string number = "";
             double value = ReadHydrometValue(cfg.cbtt, cfg.pcode, date, HServer );
@@ -110,7 +110,7 @@ namespace Teacup
             //}
         }
 
-        private static void WriteDate(DateTime date, SKBitmap bmp, SKCanvas canvas)
+        private static void WriteDate(DateTime date, SKCanvas canvas)
         {
             string firstText = date.ToString("MM/dd/yyyy");
             //Location of the date
@@ -147,7 +147,7 @@ namespace Teacup
         }
 
         private static void DrawCFS(HydrometHost HServer, DateTime date, 
-            SKBitmap bmp, ConfigLine cfg, SKCanvas canvas)
+            ConfigLine cfg, SKCanvas canvas)
         {
             string number;
             double value = ReadHydrometValue(cfg.cbtt, cfg.pcode, date, HServer);
@@ -193,7 +193,7 @@ namespace Teacup
         }
 
         private static void DrawTeacup(HydrometHost HServer, DateTime date, 
-            SKBitmap bmp, ConfigLine cfg, SKCanvas canvas)
+            ConfigLine cfg, SKCanvas canvas)
         {
             string number = "";
             string Percent;
