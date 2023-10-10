@@ -37,6 +37,9 @@ namespace Teacup
             {
                 Width = bmp.Width,
                 Height = bmp.Height,
+                ColorType = SKImageInfo.PlatformColorType,
+                ColorSpace = SKColorSpace.CreateSrgb(),
+                AlphaType = SKAlphaType.Premul
             };
             var surface = SKSurface.Create(imageInfo);
             var canvas = surface.Canvas;
@@ -67,7 +70,7 @@ namespace Teacup
             var canvasImage = surface.Snapshot();
             var canvasBitmap = SKBitmap.Decode(canvasImage.Encode());
             using var sr = File.OpenWrite(args[1]);
-            canvasBitmap.Encode(sr, SKEncodedImageFormat.Bmp, 100);
+            canvasBitmap.Encode(sr, SKEncodedImageFormat.Gif, 100);
         }
 
 
