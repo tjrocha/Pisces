@@ -62,7 +62,7 @@
     <Content Include="bg\yakbackground.gif" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="7.0.96" />
+    <PackageReference Include="SkiaSharp" Version="2.88.6" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Reclamation.Core.csproj" />
