@@ -68,9 +68,9 @@ namespace Teacup
 
             //save the image file
             var canvasImage = surface.Snapshot();
-            var canvasBitmap = SKBitmap.Decode(canvasImage.Encode());
+            var canvasBitmap = SKBitmap.FromImage(canvasImage);
             using var sr = File.OpenWrite(args[1]);
-            canvasBitmap.Encode(sr, SKEncodedImageFormat.Gif, 100);
+            canvasBitmap.Encode(sr, SKEncodedImageFormat.Png, 100);
         }
 
 
