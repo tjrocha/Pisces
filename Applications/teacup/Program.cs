@@ -6,6 +6,7 @@ using System.IO;
 using Reclamation.Core;
 using Reclamation.TimeSeries.Hydromet;
 using SkiaSharp;
+using System.Configuration;
 
 namespace Teacup
 {
@@ -99,7 +100,8 @@ namespace Teacup
             {
                 Color = SKColors.Red,
                 Typeface = SKTypeface.FromFamilyName("Arial"),
-                TextSize = 7,
+                TextSize = 8,
+                IsAntialias = true,
             };
             canvas.DrawText(Text, Location, textPaint);
         }
@@ -115,6 +117,7 @@ namespace Teacup
                 Color = SKColors.Blue,
                 Typeface = SKTypeface.FromFamilyName("Courier New"),
                 TextSize = 11,
+                IsAntialias = true,
             };
             canvas.DrawText(firstText, firstLocation, textPaint);
         }
@@ -140,8 +143,21 @@ namespace Teacup
             {
                 Color = SKColors.Red,
                 Typeface = SKTypeface.FromFamilyName("Arial"),
-                TextSize = 7,
+                TextSize = 8,
+                IsAntialias = true,
+                TextScaleX = 1.25f,
             };
+
+            var rect = new SKRect();
+            textPaint.MeasureText(Text, ref rect);
+            var textRec = new SKPaint
+            {
+                Color = SKColors.White
+            };
+            rect.Offset(Location);
+            rect.Inflate(2, 2);
+
+            canvas.DrawRect(rect, textRec);
             canvas.DrawText(Text, Location, textPaint);
         }
 
@@ -239,6 +255,8 @@ namespace Teacup
                 Color = SKColors.Red,
                 Typeface = SKTypeface.FromFamilyName("Arial"),
                 TextSize = 8,
+                IsAntialias = true,
+                TextScaleX = 1.25f,
             };
             canvas.DrawText(cfg.ResName, new SKPoint(cfg.col + 2, cfg.row + 10), textPaint);
             canvas.DrawText($"{number}/{cfg.capacity}", new SKPoint(cfg.col + 2, cfg.row + 18), textPaint);
