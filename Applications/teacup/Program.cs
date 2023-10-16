@@ -6,7 +6,6 @@ using System.IO;
 using Reclamation.Core;
 using Reclamation.TimeSeries.Hydromet;
 using SkiaSharp;
-using System.Configuration;
 
 namespace Teacup
 {
