@@ -84,7 +84,7 @@ namespace Reclamation.RiverwareDmi
             else if (arguments.Contains("updbfilename"))
             {
                 string pdbFileName = arguments["updbfilename"];
-                Regex regex = new Regex(@"\$(.*?)\\");
+                Regex regex = new Regex(@"\$(.*?)[\\\/]");
                 Match match = regex.Match(pdbFileName);
                 if (match.Success)
                 {
