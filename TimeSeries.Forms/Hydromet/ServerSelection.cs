@@ -31,11 +31,11 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
 
             if (this.radioButtonBoiseLinux.Checked)
             {
-                UserPreference.Save("HydrometServer", HydrometHost.PNLinux.ToString());
+                UserPreference.Save("HydrometServer", HydrometHost.PN.ToString());
             }
             else if (this.radioButtonYakHydromet.Checked)
             {
-                UserPreference.Save("HydrometServer", HydrometHost.YakimaLinux.ToString());
+                UserPreference.Save("HydrometServer", HydrometHost.Yakima.ToString());
             }
             else if (this.radioButtonGP.Checked)
             {
@@ -57,11 +57,11 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
             this.textBoxCustomSource.Enabled = false;
 
             // retiring PN 
-            if (svr == HydrometHost.PNLinux)
+            if (svr == HydrometHost.PN)
             {
                 this.radioButtonBoiseLinux.Checked = true;
             }
-            else if (svr == HydrometHost.YakimaLinux)
+            else if (svr == HydrometHost.Yakima)
             {
                 this.radioButtonYakHydromet.Checked = true;
             }

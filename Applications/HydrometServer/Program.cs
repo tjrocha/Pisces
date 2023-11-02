@@ -80,7 +80,7 @@ namespace HydrometServer
                     string dir = CropDatesDataSet.GetCropOutputDirectory(year);
                     Logger.WriteLine("output dir = " + dir);
                    
-                    CropChartGenerator.CreateCropReports(year, dir, HydrometHost.PNLinux);
+                    CropChartGenerator.CreateCropReports(year, dir, HydrometHost.PN);
                     return;
                 }
 
@@ -171,7 +171,7 @@ namespace HydrometServer
 
                 if (args.Contains("import-hydromet-instant"))
                 {
-                    HydrometHost host = HydrometHost.PNLinux;
+                    HydrometHost host = HydrometHost.PN;
                     if (args["import-hydromet-instant"] != "")
                         host = (HydrometHost)Enum.Parse(typeof(HydrometHost), args["import-hydromet-instant"]);
 
@@ -181,7 +181,7 @@ namespace HydrometServer
 
                 if (args.Contains("import-hydromet-daily"))
                 {
-                    HydrometHost host = HydrometHost.PNLinux;
+                    HydrometHost host = HydrometHost.PN;
                     if (args["import-hydromet-daily"] != "")
                         host = (HydrometHost)Enum.Parse(typeof(HydrometHost), args["import-hydromet-daily"]);
 
@@ -550,7 +550,7 @@ namespace HydrometServer
             int block = 1;
             foreach (string query in GetBlockOfQueries(db, TimeInterval.Monthly, filter, propertyFilter))
             {
-                var table = HydrometDataUtility.MPollTable(HydrometHost.PNLinux, query, t1, t2);
+                var table = HydrometDataUtility.MPollTable(HydrometHost.PN, query, t1, t2);
                 Console.WriteLine("Block "+block + " has "+table.Rows.Count     +" rows ");
                 Console.WriteLine(query);
                 SaveTableToSeries(db, table, TimeInterval.Monthly);

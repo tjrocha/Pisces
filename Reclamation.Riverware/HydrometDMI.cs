@@ -44,11 +44,11 @@ namespace Reclamation.Riverware
 
             if (server.ToLower() == "pnhyd")
             {
-                this.server = HydrometHost.PNLinux;
+                this.server = HydrometHost.PN;
             }
             else if (server.ToLower() == "yakhyd")
             {
-                this.server = HydrometHost.YakimaLinux;
+                this.server = HydrometHost.Yakima;
             }
             else
             {

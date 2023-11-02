@@ -27,7 +27,7 @@ namespace Reclamation.TimeSeries.Hydromet
 
         public HydrometDailySeries(string cbtt, string pcode)
         {
-            Init(cbtt, pcode, HydrometHost.PNLinux);
+            Init(cbtt, pcode, HydrometHost.PN);
         }
 
         public HydrometDailySeries(TimeSeriesDatabase db, TimeSeriesDatabaseDataSet.SeriesCatalogRow sr):base(db,sr)
@@ -351,7 +351,7 @@ namespace Reclamation.TimeSeries.Hydromet
                         select row.Field<string>("cbtt")
                           +" "+  row.Field<string>("pcode");
                            
-           Cache.Add(query.ToArray(),t1,t2, HydrometHost.PNLinux,TimeInterval.Daily);
+           Cache.Add(query.ToArray(),t1,t2, HydrometHost.PN,TimeInterval.Daily);
 
         }
 

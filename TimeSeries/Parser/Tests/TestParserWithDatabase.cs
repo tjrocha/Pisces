@@ -54,7 +54,7 @@ namespace Reclamation.TimeSeries.Parser.Tests
             DateTime t = new DateTime(2022, 9, 1);
 
             var s = HydrometInfoUtility.Read("afci", "ch", t, t, 
-                TimeInterval.Irregular, HydrometHost.PNLinux);
+                TimeInterval.Irregular, HydrometHost.PN);
             s.Name = "afci_ch";
             _db.AddSeries(s);
             s.Properties.Set("shift", "-0.42");

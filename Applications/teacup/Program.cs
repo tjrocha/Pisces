@@ -14,7 +14,7 @@ namespace Teacup
         static void Main(string[] args)
         {
             Logger.EnableLogger(); // for debug info
-            HydrometHost HServer = HydrometHost.PNLinux;
+            HydrometHost HServer = HydrometHost.PN;
             DateTime date = DateTime.Now.AddDays(-1).Date;
 
             if (args.Length != 3 && args.Length != 4)
@@ -35,7 +35,7 @@ namespace Teacup
                 test = ReadHydrometValue("bigi", "qd", date, HServer);
                 if (test == 998877)
                 {
-                    HServer = HydrometHost.YakimaLinux;
+                    HServer = HydrometHost.Yakima;
                     test = ReadHydrometValue("bigi", "qd", date, HServer);
 
                     if (test == 998877)

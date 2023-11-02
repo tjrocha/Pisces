@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 namespace Reclamation.TimeSeries.Hydromet
 {
-    public enum HydrometHost { PNLinux, YakimaLinux, GreatPlains, Custom };
+    public enum HydrometHost { PN, Yakima, GreatPlains, Custom };
 
     /// <summary>
     /// Common hydromet helper functions
@@ -156,7 +156,7 @@ namespace Reclamation.TimeSeries.Hydromet
         public static HydrometHost HydrometServerFromString(string server)
         {
             if (server == "")
-                return HydrometHost.PNLinux;
+                return HydrometHost.PN;
             HydrometHost rval;
             try
             {
@@ -164,7 +164,7 @@ namespace Reclamation.TimeSeries.Hydromet
             }
             catch
             {
-                rval = HydrometHost.PNLinux;
+                rval = HydrometHost.PN;
             }
             return rval;
         }
@@ -177,7 +177,7 @@ namespace Reclamation.TimeSeries.Hydromet
             if (NetworkUtility.MyIpStartsWith(ConfigurationManager.AppSettings["GPNetworkPrefix"]))
                 UserPreference.SetDefault("HydrometServer", HydrometHost.GreatPlains.ToString(), false);
             else
-                UserPreference.SetDefault("HydrometServer", HydrometHost.PNLinux.ToString(), false);
+                UserPreference.SetDefault("HydrometServer", HydrometHost.PN.ToString(), false);
         }
 
         internal static void ParseConnectionString(string connectionString, out HydrometHost svr, out string cbtt, out string pcode)
@@ -813,7 +813,7 @@ VCAO        QJ      : 1966-1972, 1974, 1977
                 url = url.Replace("site=pali", "site=" + cbtt.Trim());
                 url = url.Replace("pcode=q", "pcode=" + pcode.Trim());
             }
-            else if (server == HydrometHost.PNLinux || server == HydrometHost.YakimaLinux)
+            else if (server == HydrometHost.PN || server == HydrometHost.Yakima)
             {
                 url = GetRatingTableURL() + ratingName;
 
@@ -1093,9 +1093,9 @@ VCAO        QJ      : 1966-1972, 1974, 1977
         {
             var svr = HydrometServerFromPreferences();
             string rt = "";
-            if (svr == HydrometHost.PNLinux)
+            if (svr == HydrometHost.PN)
                 rt = ConfigurationManager.AppSettings["RatingTablePath"];
-            else if (svr == HydrometHost.YakimaLinux)
+            else if (svr == HydrometHost.Yakima)
                 rt = ConfigurationManager.AppSettings["YakimaRatingTablePath"];
             else
                 return "";
