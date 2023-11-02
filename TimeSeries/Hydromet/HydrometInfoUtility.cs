@@ -818,8 +818,7 @@ VCAO        QJ      : 1966-1972, 1974, 1977
                 url = url.Replace("site=pali", "site=" + cbtt.Trim());
                 url = url.Replace("pcode=q", "pcode=" + pcode.Trim());
             }
-            else if( server == HydrometHost.PN || server == HydrometHost.PNLinux 
-                || server == HydrometHost.YakimaLinux)
+            else if (server == HydrometHost.PNLinux || server == HydrometHost.YakimaLinux)
             {
                 url = GetRatingTableURL() + ratingName;
 
@@ -829,12 +828,6 @@ VCAO        QJ      : 1966-1972, 1974, 1977
                 var rt = new TimeSeriesDatabaseDataSet.RatingTableDataTable();
                 rt.ReadFile(tmp);
                 return rt;
-            }
-            else if (server == HydrometHost.Yakima)
-            {            // yakima ?
-                url = "https://www.usbr.gov/pn-bin/yak/expandrtf.pl?site=kee&pcode=af&form=col";
-                url = url.Replace("site=kee", "site=" + cbtt.Trim());
-                url = url.Replace("pcode=af", "pcode=" + pcode.Trim());
             }
 
             string[] data = Web.GetPage(url);

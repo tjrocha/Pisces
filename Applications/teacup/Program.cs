@@ -27,11 +27,29 @@ namespace Teacup
             {
                 date = Convert.ToDateTime(args[3]);
             }
-            //Read the config file
-            string[] lines = File.ReadAllLines(args[2]);
-            if (args[2].Contains("yak"))
-                HServer = HydrometHost.Yakima;
-            
+
+            // try PN database, if down, try Yakima backup
+            double test;
+            try
+            {
+                test = ReadHydrometValue("bigi", "qd", date, HServer);
+                if (test == 998877)
+                {
+                    HServer = HydrometHost.YakimaLinux;
+                    test = ReadHydrometValue("bigi", "qd", date, HServer);
+
+                    if (test == 998877)
+                    {
+                        throw new Exception();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"unable to find a hydromet server\n\n{e.Message}");
+                return;
+            }
+
             var bmp = SKBitmap.Decode(args[0]);
             var imageInfo = new SKImageInfo
             {
@@ -47,6 +65,8 @@ namespace Teacup
 
             WriteDate(date, canvas);
 
+            //Read the config file
+            string[] lines = File.ReadAllLines(args[2]);
             for (int i = 0; i < lines.Length; i++)
             {
                 var cfg = new ConfigLine(lines[i]);

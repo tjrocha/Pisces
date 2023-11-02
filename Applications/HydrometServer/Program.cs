@@ -171,7 +171,7 @@ namespace HydrometServer
 
                 if (args.Contains("import-hydromet-instant"))
                 {
-                    HydrometHost host = HydrometHost.PN;
+                    HydrometHost host = HydrometHost.PNLinux;
                     if (args["import-hydromet-instant"] != "")
                         host = (HydrometHost)Enum.Parse(typeof(HydrometHost), args["import-hydromet-instant"]);
 
@@ -181,7 +181,7 @@ namespace HydrometServer
 
                 if (args.Contains("import-hydromet-daily"))
                 {
-                    HydrometHost host = HydrometHost.PN;
+                    HydrometHost host = HydrometHost.PNLinux;
                     if (args["import-hydromet-daily"] != "")
                         host = (HydrometHost)Enum.Parse(typeof(HydrometHost), args["import-hydromet-daily"]);
 
@@ -320,9 +320,9 @@ namespace HydrometServer
             Console.WriteLine("           if --compare then compare data in databases without copying");
             Console.WriteLine("     example:  --copy-daily=daily_ahti_etos --source=\"Server=127.0.0.1;Database=timeseries;User id=me;password=[^543}9].*;\"");
             
-            Console.WriteLine("--import-hydromet-instant[=Yakima|PNLinux|GreatPlains|PN]");
+            Console.WriteLine("--import-hydromet-instant[=PN|Yakima|GreatPlains]");
             Console.WriteLine("           imports hydromet (vms) instant data default (t1-3 days)");
-            Console.WriteLine("--import-hydromet-daily[=Yakima|PNLinux|GreatPlains|PN]");
+            Console.WriteLine("--import-hydromet-daily[=PN|Yakima|GreatPlains]");
             Console.WriteLine("           imports hydromet (vms) daily data default ( t1-100 days)");
             Console.WriteLine("--import-hydromet-monthly");
             Console.WriteLine("           imports hydromet monthly data ( last 5 years)");
@@ -550,7 +550,7 @@ namespace HydrometServer
             int block = 1;
             foreach (string query in GetBlockOfQueries(db, TimeInterval.Monthly, filter, propertyFilter))
             {
-                var table = HydrometDataUtility.MPollTable(HydrometHost.PN, query, t1, t2);
+                var table = HydrometDataUtility.MPollTable(HydrometHost.PNLinux, query, t1, t2);
                 Console.WriteLine("Block "+block + " has "+table.Rows.Count     +" rows ");
                 Console.WriteLine(query);
                 SaveTableToSeries(db, table, TimeInterval.Monthly);
