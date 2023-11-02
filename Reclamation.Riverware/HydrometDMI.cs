@@ -48,7 +48,7 @@ namespace Reclamation.Riverware
             }
             else if (server.ToLower() == "yakhyd")
             {
-                this.server = HydrometHost.Yakima;
+                this.server = HydrometHost.YakimaLinux;
             }
             else
             {

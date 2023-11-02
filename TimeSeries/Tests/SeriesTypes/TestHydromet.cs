@@ -78,12 +78,12 @@ END DATA
             
             Series s = HydrometDailySeries.Read("ticw", "qd",
                 DateTime.Parse("2006-09-15"),
-                DateTime.Parse("2006-09-20"), HydrometHost.Yakima);
+                DateTime.Parse("2006-09-20"), HydrometHost.PNLinux);
 
 
             Series s2 = HydrometDailySeries.Read("ticw", "qd",
                 DateTime.Parse("2006-09-15"),
-                DateTime.Parse("2006-09-20"), HydrometHost.Yakima);
+                DateTime.Parse("2006-09-20"), HydrometHost.PNLinux);
 
 
             DateTime[] dates ={

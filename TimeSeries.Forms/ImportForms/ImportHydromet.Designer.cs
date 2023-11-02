@@ -190,9 +190,9 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             this.radioButtonYakima.AutoSize = true;
             this.radioButtonYakima.Location = new System.Drawing.Point(18, 42);
             this.radioButtonYakima.Name = "radioButtonYakima";
-            this.radioButtonYakima.Size = new System.Drawing.Size(101, 17);
+            this.radioButtonYakima.Size = new System.Drawing.Size(58, 17);
             this.radioButtonYakima.TabIndex = 11;
-            this.radioButtonYakima.Text = "yakima (yakhyd)";
+            this.radioButtonYakima.Text = "yakima";
             this.radioButtonYakima.UseVisualStyleBackColor = true;
             // 
             // groupBox3
