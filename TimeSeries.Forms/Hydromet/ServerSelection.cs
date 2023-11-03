@@ -33,10 +33,6 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
             {
                 UserPreference.Save("HydrometServer", HydrometHost.PN.ToString());
             }
-            else if (this.radioButtonYakHydromet.Checked)
-            {
-                UserPreference.Save("HydrometServer", HydrometHost.Yakima.ToString());
-            }
             else if (this.radioButtonGP.Checked)
             {
                 UserPreference.Save("HydrometServer", HydrometHost.GreatPlains.ToString());
@@ -60,10 +56,6 @@ namespace Reclamation.TimeSeries.Forms.Hydromet
             if (svr == HydrometHost.PN)
             {
                 this.radioButtonBoiseLinux.Checked = true;
-            }
-            else if (svr == HydrometHost.Yakima)
-            {
-                this.radioButtonYakHydromet.Checked = true;
             }
             else if (svr == HydrometHost.GreatPlains)
             {

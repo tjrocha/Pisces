@@ -41,7 +41,6 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButtonHyd1 = new System.Windows.Forms.RadioButton();
             this.radioButtonGP = new System.Windows.Forms.RadioButton();
-            this.radioButtonYakima = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButtonMpoll = new System.Windows.Forms.RadioButton();
             this.radioButtonFifteenMinute = new System.Windows.Forms.RadioButton();
@@ -155,10 +154,9 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             // 
             this.groupBox2.Controls.Add(this.radioButtonHyd1);
             this.groupBox2.Controls.Add(this.radioButtonGP);
-            this.groupBox2.Controls.Add(this.radioButtonYakima);
             this.groupBox2.Location = new System.Drawing.Point(15, 154);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(179, 110);
+            this.groupBox2.Size = new System.Drawing.Size(179, 81);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Server";
@@ -178,22 +176,12 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
             // radioButtonGP
             // 
             this.radioButtonGP.AutoSize = true;
-            this.radioButtonGP.Location = new System.Drawing.Point(18, 65);
+            this.radioButtonGP.Location = new System.Drawing.Point(18, 45);
             this.radioButtonGP.Name = "radioButtonGP";
             this.radioButtonGP.Size = new System.Drawing.Size(79, 17);
             this.radioButtonGP.TabIndex = 12;
             this.radioButtonGP.Text = "great plains";
             this.radioButtonGP.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonYakima
-            // 
-            this.radioButtonYakima.AutoSize = true;
-            this.radioButtonYakima.Location = new System.Drawing.Point(18, 42);
-            this.radioButtonYakima.Name = "radioButtonYakima";
-            this.radioButtonYakima.Size = new System.Drawing.Size(58, 17);
-            this.radioButtonYakima.TabIndex = 11;
-            this.radioButtonYakima.Text = "yakima";
-            this.radioButtonYakima.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -296,7 +284,6 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButtonYakima;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButtonFifteenMinute;
         private System.Windows.Forms.RadioButton radioButtonDailyAverage;

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 namespace Reclamation.TimeSeries.Hydromet
 {
-    public enum HydrometHost { PN, Yakima, GreatPlains, Custom };
+    public enum HydrometHost { PN, GreatPlains, Custom };
 
     /// <summary>
     /// Common hydromet helper functions
@@ -813,7 +813,7 @@ VCAO        QJ      : 1966-1972, 1974, 1977
                 url = url.Replace("site=pali", "site=" + cbtt.Trim());
                 url = url.Replace("pcode=q", "pcode=" + pcode.Trim());
             }
-            else if (server == HydrometHost.PN || server == HydrometHost.Yakima)
+            else if (server == HydrometHost.PN)
             {
                 url = GetRatingTableURL() + ratingName;
 
@@ -1095,8 +1095,6 @@ VCAO        QJ      : 1966-1972, 1974, 1977
             string rt = "";
             if (svr == HydrometHost.PN)
                 rt = ConfigurationManager.AppSettings["RatingTablePath"];
-            else if (svr == HydrometHost.Yakima)
-                rt = ConfigurationManager.AppSettings["YakimaRatingTablePath"];
             else
                 return "";
 

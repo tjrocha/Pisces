@@ -85,9 +85,6 @@ namespace Reclamation.TimeSeries.Forms.ImportForms
         {
             get
             {
-                if (this.radioButtonYakima.Checked)
-                    return HydrometHost.Yakima;
-
                 if (this.radioButtonHyd1.Checked)
                     return HydrometHost.PN;
 
