@@ -35,8 +35,8 @@ namespace Reclamation.TimeSeries.Hydromet
 
         string m_cbtt;
         string m_pcode;
-        HydrometHost server = HydrometHost.PNLinux;
-        public HydrometMonthlySeries(string cbtt, string pcode, HydrometHost server=HydrometHost.PNLinux)
+        HydrometHost server = HydrometHost.PN;
+        public HydrometMonthlySeries(string cbtt, string pcode, HydrometHost server=HydrometHost.PN)
         {
             this.TimeInterval = TimeSeries.TimeInterval.Monthly;
             this.Units = "";
@@ -73,7 +73,7 @@ namespace Reclamation.TimeSeries.Hydromet
         protected override Series CreateFromConnectionString()
         {
             string str = ConnectionStringToken("server");
-            HydrometHost svr = HydrometHost.PNLinux;
+            HydrometHost svr = HydrometHost.PN;
             if( str.Trim() != "")
                  svr = (HydrometHost)Enum.Parse(typeof(HydrometHost), str);
 
@@ -606,7 +606,7 @@ namespace Reclamation.TimeSeries.Hydromet
             var t1 = HydrometDataUtility.T1Thirty;
             var t2 = HydrometDataUtility.T2Thirty;
 
-            var s2 = new HydrometMonthlySeries(cbtt, pcode, HydrometHost.PNLinux);
+            var s2 = new HydrometMonthlySeries(cbtt, pcode, HydrometHost.PN);
             s2.Read(t1, t2);
             MonthDayRange rng = new MonthDayRange(month1, 1, month2, 1);
             var runoff2 = Math.AggregateAndSubset(StatisticalMethods.Sum, s2, rng, 10);

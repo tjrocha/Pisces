@@ -100,7 +100,7 @@ namespace Pisces.NunitTests.Database
         [Test]
         public void HydrometDailyFactory()
         {
-            Series s = new Reclamation.TimeSeries.Hydromet.HydrometDailySeries("jck", "af", HydrometHost.PNLinux);
+            Series s = new Reclamation.TimeSeries.Hydromet.HydrometDailySeries("jck", "af", HydrometHost.PN);
             s.Read(DateTime.Now.AddDays(-365), DateTime.Now.Date);
             int sdi = db.AddSeries(s);
             Assert.AreEqual("acre-feet", s.Units);

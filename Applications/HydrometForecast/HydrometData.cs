@@ -15,7 +15,7 @@ namespace HydrometForecast
     /// </summary>
     public class HydrometData
     {
-        public static HydrometHost s_server = HydrometHost.PNLinux;
+        public static HydrometHost s_server = HydrometHost.PN;
 
         public static string FileName = ""; // when empty use hydromet server
         static HydrometData()

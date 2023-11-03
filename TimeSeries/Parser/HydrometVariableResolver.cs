@@ -23,7 +23,7 @@ namespace Reclamation.TimeSeries.Parser
         {
             get { return svr; }
         }
-        public HydrometVariableResolver(HydrometHost h= HydrometHost.PNLinux):base()
+        public HydrometVariableResolver(HydrometHost h= HydrometHost.PN):base()
         {
             svr = h;
         }

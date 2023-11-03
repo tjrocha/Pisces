@@ -80,7 +80,7 @@ namespace HydrometServer
                     string dir = CropDatesDataSet.GetCropOutputDirectory(year);
                     Logger.WriteLine("output dir = " + dir);
                    
-                    CropChartGenerator.CreateCropReports(year, dir, HydrometHost.PNLinux);
+                    CropChartGenerator.CreateCropReports(year, dir, HydrometHost.PN);
                     return;
                 }
 
@@ -320,9 +320,9 @@ namespace HydrometServer
             Console.WriteLine("           if --compare then compare data in databases without copying");
             Console.WriteLine("     example:  --copy-daily=daily_ahti_etos --source=\"Server=127.0.0.1;Database=timeseries;User id=me;password=[^543}9].*;\"");
             
-            Console.WriteLine("--import-hydromet-instant[=Yakima|PNLinux|GreatPlains|PN]");
+            Console.WriteLine("--import-hydromet-instant[=PN|Yakima|GreatPlains]");
             Console.WriteLine("           imports hydromet (vms) instant data default (t1-3 days)");
-            Console.WriteLine("--import-hydromet-daily[=Yakima|PNLinux|GreatPlains|PN]");
+            Console.WriteLine("--import-hydromet-daily[=PN|Yakima|GreatPlains]");
             Console.WriteLine("           imports hydromet (vms) daily data default ( t1-100 days)");
             Console.WriteLine("--import-hydromet-monthly");
             Console.WriteLine("           imports hydromet monthly data ( last 5 years)");

@@ -28,11 +28,9 @@ namespace Reclamation.Riverware
         List<bool> mrm_init = new List<bool>();
         DateTime startDate;
         DateTime endDate;
-        HydrometHost server;
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="server">either pnhyd or yakhyd</param>
         /// <param name="controlFilename">riverware control file</param>
         /// <param name="startDate">riverware simulation start date</param>
         public HydrometDMI(string server, string controlFilename, 
@@ -41,19 +39,6 @@ namespace Reclamation.Riverware
             controlFile1 = new ControlFile(controlFilename);
             this.startDate = startDate;
             this.endDate = endDate;
-
-            if (server.ToLower() == "pnhyd")
-            {
-                this.server = HydrometHost.PNLinux;
-            }
-            else if (server.ToLower() == "yakhyd")
-            {
-                this.server = HydrometHost.Yakima;
-            }
-            else
-            {
-                throw new NotImplementedException($"unknown server string: '{server}' only pnhyd or yakhyd supported");
-            }
         }
 
         public void ExportTextFilesDMI()
@@ -74,7 +59,7 @@ namespace Reclamation.Riverware
             for (int i = 0; i < cbtt.Count; i++)
             {
                 HydrometDailySeries s =
-                    new HydrometDailySeries(cbtt[i], pcode[i], this.server);
+                    new HydrometDailySeries(cbtt[i], pcode[i], HydrometHost.PN);
                 
                 DateTime t1 = startDate.AddDays(daysOffset[i]);
                 if (mrm_init[i])

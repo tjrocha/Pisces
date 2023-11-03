@@ -14,7 +14,7 @@ namespace Teacup
         static void Main(string[] args)
         {
             Logger.EnableLogger(); // for debug info
-            HydrometHost HServer = HydrometHost.PNLinux;
+            HydrometHost HServer = HydrometHost.PN;
             DateTime date = DateTime.Now.AddDays(-1).Date;
 
             if (args.Length != 3 && args.Length != 4)
@@ -27,11 +27,7 @@ namespace Teacup
             {
                 date = Convert.ToDateTime(args[3]);
             }
-            //Read the config file
-            string[] lines = File.ReadAllLines(args[2]);
-            if (args[2].Contains("yak"))
-                HServer = HydrometHost.Yakima;
-            
+
             var bmp = SKBitmap.Decode(args[0]);
             var imageInfo = new SKImageInfo
             {
@@ -47,6 +43,8 @@ namespace Teacup
 
             WriteDate(date, canvas);
 
+            //Read the config file
+            string[] lines = File.ReadAllLines(args[2]);
             for (int i = 0; i < lines.Length; i++)
             {
                 var cfg = new ConfigLine(lines[i]);

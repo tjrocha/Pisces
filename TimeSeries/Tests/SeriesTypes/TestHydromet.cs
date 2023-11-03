@@ -43,7 +43,7 @@ END DATA
             DateTime t1 = new DateTime(2004, 1, 1);
             DateTime t2 = new DateTime(2004, 1, 2);
 
-            Series s = HydrometInfoUtility.Read("jck", "af", t1, t2, TimeInterval.Irregular, HydrometHost.PNLinux);
+            Series s = HydrometInfoUtility.Read("jck", "af", t1, t2, TimeInterval.Irregular, HydrometHost.PN);
             s.WriteToConsole();
             Assert.AreEqual(192, s.Count, "number of records read");
             //  143482.03 
@@ -78,12 +78,12 @@ END DATA
             
             Series s = HydrometDailySeries.Read("ticw", "qd",
                 DateTime.Parse("2006-09-15"),
-                DateTime.Parse("2006-09-20"), HydrometHost.Yakima);
+                DateTime.Parse("2006-09-20"), HydrometHost.PN);
 
 
             Series s2 = HydrometDailySeries.Read("ticw", "qd",
                 DateTime.Parse("2006-09-15"),
-                DateTime.Parse("2006-09-20"), HydrometHost.Yakima);
+                DateTime.Parse("2006-09-20"), HydrometHost.PN);
 
 
             DateTime[] dates ={

@@ -31,11 +31,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButtonCustomSource = new System.Windows.Forms.RadioButton();
             this.textBoxCustomSource = new System.Windows.Forms.TextBox();
-            this.radioButtonYakLinux = new System.Windows.Forms.RadioButton();
             this.textBoxDbName = new System.Windows.Forms.TextBox();
             this.labelDbName = new System.Windows.Forms.Label();
-            this.radioButtonPnHydromet = new System.Windows.Forms.RadioButton();
-            this.radioButtonYakHydromet = new System.Windows.Forms.RadioButton();
             this.radioButtonBoiseLinux = new System.Windows.Forms.RadioButton();
             this.radioButtonGP = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
@@ -45,11 +42,8 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonCustomSource);
             this.groupBox1.Controls.Add(this.textBoxCustomSource);
-            this.groupBox1.Controls.Add(this.radioButtonYakLinux);
             this.groupBox1.Controls.Add(this.textBoxDbName);
             this.groupBox1.Controls.Add(this.labelDbName);
-            this.groupBox1.Controls.Add(this.radioButtonPnHydromet);
-            this.groupBox1.Controls.Add(this.radioButtonYakHydromet);
             this.groupBox1.Controls.Add(this.radioButtonBoiseLinux);
             this.groupBox1.Controls.Add(this.radioButtonGP);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -65,7 +59,7 @@
             // radioButtonCustomSource
             // 
             this.radioButtonCustomSource.AutoSize = true;
-            this.radioButtonCustomSource.Location = new System.Drawing.Point(15, 118);
+            this.radioButtonCustomSource.Location = new System.Drawing.Point(15, 72);
             this.radioButtonCustomSource.Name = "radioButtonCustomSource";
             this.radioButtonCustomSource.Size = new System.Drawing.Size(97, 17);
             this.radioButtonCustomSource.TabIndex = 50;
@@ -75,21 +69,11 @@
             // 
             // textBoxCustomSource
             // 
-            this.textBoxCustomSource.Location = new System.Drawing.Point(118, 118);
+            this.textBoxCustomSource.Location = new System.Drawing.Point(118, 70);
             this.textBoxCustomSource.Name = "textBoxCustomSource";
             this.textBoxCustomSource.Size = new System.Drawing.Size(110, 20);
             this.textBoxCustomSource.TabIndex = 48;
             this.textBoxCustomSource.TextChanged += new System.EventHandler(this.textBoxCustomSource_TextChanged);
-            // 
-            // radioButtonYakLinux
-            // 
-            this.radioButtonYakLinux.Location = new System.Drawing.Point(15, 93);
-            this.radioButtonYakLinux.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButtonYakLinux.Name = "radioButtonYakLinux";
-            this.radioButtonYakLinux.Size = new System.Drawing.Size(136, 20);
-            this.radioButtonYakLinux.TabIndex = 47;
-            this.radioButtonYakLinux.Text = "Yakima Linux";
-            this.radioButtonYakLinux.CheckedChanged += new System.EventHandler(this.serverChanged);
             // 
             // textBoxDbName
             // 
@@ -109,27 +93,6 @@
             this.labelDbName.TabIndex = 45;
             this.labelDbName.Text = "database name:";
             // 
-            // radioButtonPnHydromet
-            // 
-            this.radioButtonPnHydromet.Location = new System.Drawing.Point(208, 23);
-            this.radioButtonPnHydromet.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButtonPnHydromet.Name = "radioButtonPnHydromet";
-            this.radioButtonPnHydromet.Size = new System.Drawing.Size(152, 20);
-            this.radioButtonPnHydromet.TabIndex = 0;
-            this.radioButtonPnHydromet.Text = "Boise Hydromet VMS";
-            this.radioButtonPnHydromet.Visible = false;
-            this.radioButtonPnHydromet.CheckedChanged += new System.EventHandler(this.serverChanged);
-            // 
-            // radioButtonYakHydromet
-            // 
-            this.radioButtonYakHydromet.Location = new System.Drawing.Point(15, 45);
-            this.radioButtonYakHydromet.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButtonYakHydromet.Name = "radioButtonYakHydromet";
-            this.radioButtonYakHydromet.Size = new System.Drawing.Size(112, 20);
-            this.radioButtonYakHydromet.TabIndex = 3;
-            this.radioButtonYakHydromet.Text = "Yakima Hydromet";
-            this.radioButtonYakHydromet.CheckedChanged += new System.EventHandler(this.serverChanged);
-            // 
             // radioButtonBoiseLinux
             // 
             this.radioButtonBoiseLinux.Checked = true;
@@ -144,7 +107,7 @@
             // 
             // radioButtonGP
             // 
-            this.radioButtonGP.Location = new System.Drawing.Point(15, 69);
+            this.radioButtonGP.Location = new System.Drawing.Point(15, 47);
             this.radioButtonGP.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonGP.Name = "radioButtonGP";
             this.radioButtonGP.Size = new System.Drawing.Size(112, 20);
@@ -171,11 +134,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonBoiseLinux;
         private System.Windows.Forms.RadioButton radioButtonGP;
-        private System.Windows.Forms.RadioButton radioButtonYakHydromet;
-        private System.Windows.Forms.RadioButton radioButtonPnHydromet;
         private System.Windows.Forms.TextBox textBoxDbName;
         private System.Windows.Forms.Label labelDbName;
-        private System.Windows.Forms.RadioButton radioButtonYakLinux;
         private System.Windows.Forms.TextBox textBoxCustomSource;
         private System.Windows.Forms.RadioButton radioButtonCustomSource;
     }

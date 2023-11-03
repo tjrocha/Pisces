@@ -182,20 +182,20 @@ namespace Reclamation.TimeSeries.Reports
         }
         private static double MultiYearAvg(DateTime t,DateTime t1, DateTime t2)
         {
-            var s = HydrometDailySeries.GetMultiYearAverage("sys", "af",
-                HydrometHost.Yakima, t1, t2);
+            var server = UserPreference.Lookup("HydrometServer");
+            var host = (HydrometHost)Enum.Parse(typeof(HydrometHost), server, true);
+            var s = HydrometDailySeries.GetMultiYearAverage("sys", "af", host, t1, t2);
             
             int y=2001;
             if (t.Month >= 10)
                 y = 2000;
             DateTime t2000 = new DateTime(y, t.Month, t.Day);
-            
 
             int idx = s.IndexOf(t2000.Date);
 
             if (idx >= 0 && !s[idx].IsMissing)
             {
-                var af = HydrometDailySeries.Read("sys", "af", t, t, HydrometHost.Yakima);
+                var af = HydrometDailySeries.Read("sys", "af", t, t, host);
                 af.RemoveMissing();
                 if (af.Count == 1)
                 {
@@ -205,7 +205,7 @@ namespace Reclamation.TimeSeries.Reports
                 }
             }
 
-            return Reclamation.TimeSeries.Point.MissingValueFlag;
+            return Point.MissingValueFlag;
 
         }
         private string[] DataSubset(string pcode)

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 namespace Reclamation.TimeSeries.Hydromet
 {
-    public enum HydrometHost { PN, Yakima, GreatPlains, PNLinux, YakimaLinux, Custom };
+    public enum HydrometHost { PN, GreatPlains, Custom };
 
     /// <summary>
     /// Common hydromet helper functions
@@ -150,13 +150,13 @@ namespace Reclamation.TimeSeries.Hydromet
         public static HydrometHost HydrometServerFromPreferences()
         {
             HydrometHost svr = HydrometInfoUtility.HydrometServerFromString(
-    UserPreference.Lookup("HydrometServer"));
+                UserPreference.Lookup("HydrometServer"));
             return svr;
         }
         public static HydrometHost HydrometServerFromString(string server)
         {
             if (server == "")
-                return HydrometHost.PNLinux;
+                return HydrometHost.PN;
             HydrometHost rval;
             try
             {
@@ -164,7 +164,7 @@ namespace Reclamation.TimeSeries.Hydromet
             }
             catch
             {
-                rval = HydrometHost.PNLinux;
+                rval = HydrometHost.PN;
             }
             return rval;
         }
@@ -174,15 +174,10 @@ namespace Reclamation.TimeSeries.Hydromet
         /// </summary>
         public static void SetDefaultHydrometServer()
         {
-            var yak = System.Configuration.ConfigurationManager.AppSettings["YakimaNetworkPrefix"];
-            var gp = System.Configuration.ConfigurationManager.AppSettings["GPNetworkPrefix"];
-
-            if (NetworkUtility.MyIpStartsWith(yak))
-                UserPreference.SetDefault("HydrometServer", HydrometHost.Yakima.ToString(), false);
-            else if (NetworkUtility.MyIpStartsWith(gp))
+            if (NetworkUtility.MyIpStartsWith(ConfigurationManager.AppSettings["GPNetworkPrefix"]))
                 UserPreference.SetDefault("HydrometServer", HydrometHost.GreatPlains.ToString(), false);
             else
-                UserPreference.SetDefault("HydrometServer", HydrometHost.PNLinux.ToString(), false);
+                UserPreference.SetDefault("HydrometServer", HydrometHost.PN.ToString(), false);
         }
 
         internal static void ParseConnectionString(string connectionString, out HydrometHost svr, out string cbtt, out string pcode)
@@ -818,8 +813,7 @@ VCAO        QJ      : 1966-1972, 1974, 1977
                 url = url.Replace("site=pali", "site=" + cbtt.Trim());
                 url = url.Replace("pcode=q", "pcode=" + pcode.Trim());
             }
-            else if( server == HydrometHost.PN || server == HydrometHost.PNLinux 
-                || server == HydrometHost.YakimaLinux)
+            else if (server == HydrometHost.PN)
             {
                 url = GetRatingTableURL() + ratingName;
 
@@ -829,12 +823,6 @@ VCAO        QJ      : 1966-1972, 1974, 1977
                 var rt = new TimeSeriesDatabaseDataSet.RatingTableDataTable();
                 rt.ReadFile(tmp);
                 return rt;
-            }
-            else if (server == HydrometHost.Yakima)
-            {            // yakima ?
-                url = "https://www.usbr.gov/pn-bin/yak/expandrtf.pl?site=kee&pcode=af&form=col";
-                url = url.Replace("site=kee", "site=" + cbtt.Trim());
-                url = url.Replace("pcode=af", "pcode=" + pcode.Trim());
             }
 
             string[] data = Web.GetPage(url);
@@ -881,13 +869,10 @@ VCAO        QJ      : 1966-1972, 1974, 1977
                 var m = re.Match(tf[i]);
                 if (m.Success)
                 {
-                    double x, y;
-                    if (double.TryParse(m.Groups["x"].Value, out x)
-                        )
+                    if (double.TryParse(m.Groups["x"].Value, out double x))
                     {
-                        if (double.TryParse(m.Groups["y"].Value, out y)
-                            && System.Math.Abs(998877 - y) > 0.01
-                            )
+                        if (double.TryParse(m.Groups["y"].Value, out double y)
+                            && System.Math.Abs(998877 - y) > 0.01)
                         {
                             t.AddRatingTableRow(x, y);
                         }
@@ -1108,11 +1093,8 @@ VCAO        QJ      : 1966-1972, 1974, 1977
         {
             var svr = HydrometServerFromPreferences();
             string rt = "";
-            if (svr == HydrometHost.PNLinux)
+            if (svr == HydrometHost.PN)
                 rt = ConfigurationManager.AppSettings["RatingTablePath"];
-            else
-            if (svr == HydrometHost.YakimaLinux)
-                rt = ConfigurationManager.AppSettings["YakimaRatingTablePath"];
             else
                 return "";
 

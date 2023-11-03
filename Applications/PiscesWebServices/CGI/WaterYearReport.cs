@@ -97,7 +97,7 @@ namespace PiscesWebServices.CGI
 
             var x = new SeriesList();
 
-            Series s = new HydrometDailySeries(siteID, parameter, HydrometHost.PNLinux);
+            Series s = new HydrometDailySeries(siteID, parameter, HydrometHost.PN);
             x.Add(s);
             var result = PiscesAnalysis.WaterYears(x, years.ToArray(), true, 10, true,startOf30YearAvearge);
             var tbl = result.ToDataTable(true);
@@ -115,7 +115,7 @@ namespace PiscesWebServices.CGI
         private void PrintHtmlReport(TimeRange r, string siteID, string parameter)
         {
             Console.Write("Content-type: text/html\n\n");
-            var s = new HydrometDailySeries(siteID, parameter, HydrometHost.PNLinux);
+            var s = new HydrometDailySeries(siteID, parameter, HydrometHost.PN);
             var startYear = r.StartDate.Year;
             var endYear = r.EndDate.Year;
             DateTime t1 = r.StartDate;

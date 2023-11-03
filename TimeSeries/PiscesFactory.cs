@@ -83,7 +83,22 @@ namespace Reclamation.TimeSeries
             int sdi = sr.id;
             try
             {
-                
+                // backwards compatibility with VAX/Linux HydrometHost options
+                if (sr.ConnectionString.Contains("PNLinux")
+                    || sr.ConnectionString.Contains("YakimaLinux")
+                    || sr.ConnectionString.Contains("Yakima"))
+                {
+                    var entries = sr.ConnectionString.Split(';');
+                    foreach (var entry in entries)
+                    {
+                        var svr = "server=";
+                        if (entry.Contains(svr))
+                        {
+                            sr.ConnectionString = sr.ConnectionString.Replace(entry, $"{svr}PN");
+                            break;
+                        }
+                    }
+                }
                 
                 if (sr.Provider.Trim() == "")
                     sr.Provider = "Series";

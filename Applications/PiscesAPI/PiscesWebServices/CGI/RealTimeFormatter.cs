@@ -111,7 +111,7 @@ namespace PiscesWebServices.CGI
         public override void PrintDataTable(SeriesList list, DataTable table)
         {
             // add a column for 30 year average to the table.
-            //Series s = new HydrometDailySeries(dailySiteID, dailyPcode, HydrometHost.PNLinux);
+            //Series s = new HydrometDailySeries(dailySiteID, dailyPcode, HydrometHost.PN);
             var s = m_db.GetSeriesFromTableName("daily_" + dailySiteID + "_" + dailyPcode);
             if (s == null)
             {
