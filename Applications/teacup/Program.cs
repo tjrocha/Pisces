@@ -28,28 +28,6 @@ namespace Teacup
                 date = Convert.ToDateTime(args[3]);
             }
 
-            // try PN database, if down, try Yakima backup
-            double test;
-            try
-            {
-                test = ReadHydrometValue("bigi", "qd", date, HServer);
-                if (test == 998877)
-                {
-                    HServer = HydrometHost.Yakima;
-                    test = ReadHydrometValue("bigi", "qd", date, HServer);
-
-                    if (test == 998877)
-                    {
-                        throw new Exception();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"unable to find a hydromet server\n\n{e.Message}");
-                return;
-            }
-
             var bmp = SKBitmap.Decode(args[0]);
             var imageInfo = new SKImageInfo
             {
