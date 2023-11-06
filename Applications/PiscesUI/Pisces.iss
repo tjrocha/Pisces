@@ -1,6 +1,7 @@
 #define AppName "Pisces"
-#define SrcApp ".\bin\debug\Pisces.exe"
-#define FileVerStr GetStringFileInfo(SrcApp, "ProductVersion")
+#define DotNetVersion = "net48"
+#define SrcApp "bin\debug\"+DotNetVersion+"\Pisces.exe"
+#define FileVerStr GetVersionNumbersString(SrcApp)
 #define public StripBuild(str aVerStr) Copy(aVerStr, 1, RPos(".", aVerStr)-1)
 #define AppVerStr StripBuild(FileVerStr)
 
@@ -47,25 +48,25 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 ; dll's
-Source:  "bin\debug\*.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\*.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Pisces
-Source:  "bin\debug\Pisces.exe";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "bin\debug\plugins.txt";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "bin\debug\Pisces.exe.config";   DestDir: "{app}";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\Pisces.exe";   DestDir: "{app}";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\plugins.txt";   DestDir: "{app}";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\Pisces.exe.config";   DestDir: "{app}";   Flags: ignoreversion
 Source:  "..\..\private.config";   DestDir: "{app}";   Flags: ignoreversion
-Source:  "bin\debug\images\*";   DestDir: "{app}\images";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\images\*";   DestDir: "{app}\images";   Flags: ignoreversion
 
 ; Hec-dss
-Source:  "bin\debug\bin64\Hec.Dss.Native.dll";   DestDir: "{app}\bin64";   Flags: ignoreversion
-Source:  "bin\debug\bin32\Hec.Dss.Native.dll";   DestDir: "{app}\bin32";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\bin64\Hec.Dss.Native.dll";   DestDir: "{app}\bin64";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\bin32\Hec.Dss.Native.dll";   DestDir: "{app}\bin32";   Flags: ignoreversion
 
 ; SQLite
-Source:  "bin\debug\x86\SQLite.Interop.dll";   DestDir: "{app}\x86";   Flags: ignoreversion
-Source:  "bin\debug\x64\SQLite.Interop.dll";   DestDir: "{app}\x64";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\x86\SQLite.Interop.dll";   DestDir: "{app}\x86";   Flags: ignoreversion
+Source:  "bin\debug\{#DotNetVersion}\x64\SQLite.Interop.dll";   DestDir: "{app}\x64";   Flags: ignoreversion
 
 ; config folder
-Source:  "bin\debug\cfg\*";   DestDir: "{app}\cfg";   Flags: ignoreversion recursesubdirs
+Source:  "bin\debug\{#DotNetVersion}\cfg\*";   DestDir: "{app}\cfg";   Flags: ignoreversion recursesubdirs
 
 ; Sample Data and templates
 Source:  "..\..\PiscesTestData\data\el68d_export.csv";   DestDir: "{app}\sample-data";   Flags: ignoreversion
