@@ -23,6 +23,11 @@ namespace Reclamation.Core
 
         public static string Encrypt(string plainText, string passPhrase)
         {
+            if (string.IsNullOrEmpty(plainText))
+            {
+                return string.Empty;
+            }
+
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
             // so that the same Salt and IV values can be used when decrypting.  
             var saltStringBytes = Generate256BitsOfRandomEntropy();
@@ -51,7 +56,7 @@ namespace Reclamation.Core
         {
             if (string.IsNullOrEmpty(cipherText))
             {
-                return "";
+                return string.Empty;
             }
 
             // Get the complete stream of bytes that represent:
