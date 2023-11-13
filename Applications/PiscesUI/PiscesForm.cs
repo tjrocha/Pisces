@@ -525,14 +525,12 @@ namespace Reclamation.TimeSeries.Forms
             {
                 double lat = 0;
                 double lon = 0;
-                double elev = 0;
 
                 double.TryParse(d.Lat, out lat);
                 double.TryParse(d.Lon, out lon);
-                double.TryParse(d.Elevation, out elev);
 
                 DB.AddSiteWithTemplate(CurrentFolder, d.SeriesCatalog, d.SiteName, d.SiteID, 
-                    d.State, elev, lat, lon, d.TimeZone, d.Install,d.Program);
+                    d.State, d.Elevation, lat, lon, d.TimeZone, d.Install,d.Program);
                 DB.ResumeTreeUpdates();
                 DatabaseChanged();
             }

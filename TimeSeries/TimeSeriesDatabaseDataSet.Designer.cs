@@ -2537,7 +2537,7 @@ namespace Reclamation.TimeSeries {
                         string state, 
                         double latitude, 
                         double longitude, 
-                        double elevation, 
+                        string elevation, 
                         string timezone, 
                         string install, 
                         string horizontal_datum, 
@@ -2629,7 +2629,7 @@ namespace Reclamation.TimeSeries {
                 base.Columns.Add(this.columnlatitude);
                 this.columnlongitude = new global::System.Data.DataColumn("longitude", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlongitude);
-                this.columnelevation = new global::System.Data.DataColumn("elevation", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnelevation = new global::System.Data.DataColumn("elevation", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnelevation);
                 this.columntimezone = new global::System.Data.DataColumn("timezone", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntimezone);
@@ -4584,10 +4584,10 @@ namespace Reclamation.TimeSeries {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double elevation {
+            public string elevation {
                 get {
                     try {
-                        return ((double)(this[this.tablesitecatalog.elevationColumn]));
+                        return ((string)(this[this.tablesitecatalog.elevationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'elevation\' in table \'sitecatalog\' is DBNull.", e);
