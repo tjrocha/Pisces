@@ -26,18 +26,12 @@ namespace Reclamation.Core
             tf = new TextFile(m_fileName);
         }
 
-        public void Save(string server, string password)
+        public void Save(string server)
         {
            int idx =  tf.IndexOf(server);    
             if( idx <0)
             {
                 tf.Add(server);
-                //tf.Add( Protect(password));
-                tf.Add(StringCipher.Encrypt(password,""));
-            }
-            else
-            {
-                tf.FileData[idx + 1] = StringCipher.Encrypt(password,"");
             }
             tf.SaveAs(tf.FileName);
         }
@@ -46,16 +40,6 @@ namespace Reclamation.Core
         {
             return tf.IndexOf(server.Trim()) >= 0;
         }
-
-        public string GetPassword(string server)
-        {
-            int idx = tf.IndexOf(server.Trim());
-            if(idx < 0)
-            return "";
-
-            return StringCipher.Decrypt(tf.FileData[idx + 1],"");
-        }
-
 
     }
 }

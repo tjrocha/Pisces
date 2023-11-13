@@ -25,17 +25,7 @@ namespace Reclamation.Core.Tests
                 var svr = "server" + i;
                 Logger.WriteLine(svr);
                 Logger.WriteLine(pw);
-                c.Save(svr, pw);
-                Logger.WriteLine(c.GetPassword(svr));
-            }
-
-            for (int i = 0; i < 15; i++)
-            {
-                Assert.IsTrue(c.Contains("server"+1));
-
-                var pw = "a".PadRight(i+1,'B');
-                var svr = c.GetPassword("server" + i);
-                Assert.AreEqual(svr, pw);
+                c.Save(svr);
             }
 
         }
