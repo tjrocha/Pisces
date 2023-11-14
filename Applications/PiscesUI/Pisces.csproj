@@ -51,6 +51,9 @@
     <Reference Include="libsim">
       <HintPath>..\..\ThirdParty\Modsim\libsim.dll</HintPath>
     </Reference>
+    <Reference Include="MultiFactorAuthenticator">
+      <HintPath>..\..\ThirdParty\MultiFactorAuthenticator.dll</HintPath>
+    </Reference>
     <Reference Include="SpreadsheetGear2017.Core, Version=8.6.9.102, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL">
       <HintPath>..\..\PaidThirdParty\SpreadsheetGear2017.Core.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
