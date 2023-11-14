@@ -37,7 +37,7 @@ namespace Reclamation.Core
             }
             else
             {
-                tf.FileData[idx + 1] = StringCipher.Encrypt(password,"");
+                tf[idx + 1] = StringCipher.Encrypt(password, "");
             }
             tf.SaveAs(tf.FileName);
         }
@@ -53,7 +53,7 @@ namespace Reclamation.Core
             if(idx < 0)
             return "";
 
-            return StringCipher.Decrypt(tf.FileData[idx + 1],"");
+            return StringCipher.Decrypt(tf[idx + 1],"");
         }
 
 
