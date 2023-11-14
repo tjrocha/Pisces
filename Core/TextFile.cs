@@ -101,16 +101,6 @@ namespace Reclamation.Core
         {
             get { return lines.ToArray(); }
         }
-
-        /////<summary>
-        ///// gets or sets text file line
-        /////</summary>
-        //public string this[int key]
-        //{
-        //    get { return lines[key]; }
-        //    set { lines[key] = value; }
-        //}
-
         /// <summary>
         /// number of lines in file
         /// </summary>
