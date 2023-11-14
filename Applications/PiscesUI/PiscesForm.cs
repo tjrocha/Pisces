@@ -10,6 +10,7 @@ using Reclamation.TimeSeries.Forms.Graphing;
 using System.Collections.Generic;
 using Reclamation.TimeSeries.Forms.Alarms;
 using Reclamation.TimeSeries.Forms.MetaData;
+using Reclamation.MultiFactorAuthenticator;
 
 namespace Reclamation.TimeSeries.Forms
 {
@@ -29,6 +30,25 @@ namespace Reclamation.TimeSeries.Forms
 
         public PiscesForm(string fileName)
         {
+            if (NetworkUtility.Intranet)
+            {
+                try
+                {
+                    MultiFactorAuthenticator.MultiFactorAuthenticator.AuthenticateSmartCard();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(
+                        "SmartCard Authentication Failed. Closing HydrometTools.",
+                        "Authentication Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Stop,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.ServiceNotification);
+                    Environment.Exit(-1);
+                }
+            }
+
             m_pluginManager = new PluginManager();
             m_pluginManager.LoadPlugins();// loads assemblies into memory.
 
@@ -571,6 +591,8 @@ namespace Reclamation.TimeSeries.Forms
             menuProperties.Enabled = singleSelection;
             menuClear.Enabled = singleSeriesSelected;
             menuCalculate.Enabled = isCalculation && anySelected;
+
+            connectToServer.Visible = NetworkUtility.Intranet;
 
         }
 
