@@ -122,7 +122,7 @@ namespace Reclamation.TimeSeries.Forms
                 Properties.Settings.Default.Save();
             }
 
-            credentials.Save(comboBox1.Text.Trim());
+            credentials.Save(comboBox1.Text.Trim(), textBoxPassword.Text);
             UserPreference.Save("SelectedDatabaseServer", comboBox1.Text.Trim());
         }
 
@@ -150,6 +150,15 @@ namespace Reclamation.TimeSeries.Forms
                     cb.SelectedIndex = currentIdx;
                 }
             }
+
+            if( credentials.Contains( sel))
+            {
+                textBoxPassword.Text = credentials.GetPassword(sel);
+            }
+            else
+            {
+                textBoxPassword.Text = "";
+            }
         }
 
         private void comboBox1_DropDown(object sender, EventArgs e)
@@ -164,5 +173,12 @@ namespace Reclamation.TimeSeries.Forms
             LoadDatabaseList();
         }
 
+        private void checkBoxHide_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxHide.Checked)
+                this.textBoxPassword.PasswordChar = '*';
+            else
+                this.textBoxPassword.PasswordChar = '\0';
+        }
     }
 }

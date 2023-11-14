@@ -33,6 +33,7 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.checkBoxHide = new System.Windows.Forms.CheckBox();
             this.textBoxUser = new System.Windows.Forms.TextBox();
             this.labeluserprompt = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -84,6 +85,19 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "password";
             // 
+            // checkBoxHide
+            // 
+            this.checkBoxHide.AutoSize = true;
+            this.checkBoxHide.Checked = true;
+            this.checkBoxHide.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxHide.Location = new System.Drawing.Point(180, 108);
+            this.checkBoxHide.Name = "checkBoxHide";
+            this.checkBoxHide.Size = new System.Drawing.Size(46, 17);
+            this.checkBoxHide.TabIndex = 9;
+            this.checkBoxHide.Text = "hide";
+            this.checkBoxHide.UseVisualStyleBackColor = true;
+            this.checkBoxHide.CheckedChanged += new System.EventHandler(this.checkBoxHide_CheckedChanged);
+            // 
             // textBoxUser
             // 
             this.textBoxUser.Location = new System.Drawing.Point(12, 29);
@@ -108,6 +122,7 @@
             this.ClientSize = new System.Drawing.Size(377, 142);
             this.Controls.Add(this.labeluserprompt);
             this.Controls.Add(this.textBoxUser);
+            this.Controls.Add(this.checkBoxHide);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPassword);
@@ -128,6 +143,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBoxHide;
         private System.Windows.Forms.TextBox textBoxUser;
         private System.Windows.Forms.Label labeluserprompt;
     }
