@@ -61,14 +61,14 @@ namespace Reclamation.Core
             if (f1.lines.Count != f2.lines.Count)
                 rval.Add("Length of files is different");
 
-            
+
             for (int i = 0; i < maxIndex; i++)
             {
                 string l1 = f1.lines[i];
                 string l2 = f2.lines[i];
                 if (l1 != l2)
                 {
-                    rval.Add("File 1: <" + l1+">  File 2:<"+l2+">");
+                    rval.Add("File 1: <" + l1 + ">  File 2:<" + l2 + ">");
                 }
             }
             return rval.ToArray();
@@ -83,7 +83,7 @@ namespace Reclamation.Core
             lines.Add(line);
         }
 
-        
+
         /// <summary>
         /// Reads text file. keeps lines that match the expression
         /// </summary>
@@ -95,7 +95,7 @@ namespace Reclamation.Core
             ReadFile(filename, expression);
         }
         /// <summary>
-        /// retruns file data as array of strings
+        /// returns file data as array of strings
         /// </summary>
         public string[] FileData
         {
@@ -192,6 +192,7 @@ namespace Reclamation.Core
         public string this[int index]
         {
             get { return lines[index]; }
+            set { lines[index] = value; }
         }
 
         void ReadFile(string filename)
