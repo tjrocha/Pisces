@@ -57,6 +57,12 @@ namespace Reclamation.TimeSeries.Forms
             m_pluginManager.RegisterPlugins(this.contextMenuStripTree.Items["AddMenu"]);
             m_pluginManager.PluginClick += m_pluginManager_PluginClick;
             Enabling();
+
+            // form is sent to background due to smart card authentication,
+            // this brings it back into focus
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.Activate();
         }
 
         void m_pluginManager_PluginClick(object sender, EventArgs e)
