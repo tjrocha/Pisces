@@ -87,7 +87,6 @@ namespace Reclamation.Core
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SqlTableEditor));
             this.buttonSave = new System.Windows.Forms.Button();
             this.dataGrid1 = new System.Windows.Forms.DataGridView();
             this.comboBoxTableNames = new System.Windows.Forms.ComboBox();
@@ -127,7 +126,7 @@ namespace Reclamation.Core
             // 
             // buttonExcel
             // 
-            this.buttonExcel.Image = ((System.Drawing.Image)(resources.GetObject("buttonExcel.Image")));
+            this.buttonExcel.Image = global::Reclamation.TimeSeries.Forms.Properties.Resources.buttonExcel_Image;
             this.buttonExcel.Location = new System.Drawing.Point(390, 1);
             this.buttonExcel.Name = "buttonExcel";
             this.buttonExcel.Size = new System.Drawing.Size(44, 40);
